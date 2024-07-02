@@ -41,5 +41,30 @@ namespace TudoAcabaEmPizza
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmPedido_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbItemAdicional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
