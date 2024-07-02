@@ -16,5 +16,15 @@ namespace TudoAcabaEmPizza
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
