@@ -77,7 +77,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.HotTrack;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(285, 31);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
@@ -106,7 +106,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.HotTrack;
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(285, 189);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
@@ -140,7 +140,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = SystemColors.HotTrack;
+            label3.ForeColor = Color.ForestGreen;
             label3.Location = new Point(285, 87);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
@@ -151,7 +151,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.HotTrack;
+            pictureBox1.BackColor = Color.ForestGreen;
             pictureBox1.Location = new Point(12, 31);
             pictureBox1.Margin = new Padding(2, 3, 2, 3);
             pictureBox1.Name = "pictureBox1";
@@ -188,7 +188,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.ForeColor = SystemColors.HotTrack;
+            label5.ForeColor = Color.ForestGreen;
             label5.Location = new Point(285, 275);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
@@ -200,7 +200,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = SystemColors.HotTrack;
+            label6.ForeColor = Color.ForestGreen;
             label6.Location = new Point(578, 275);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
@@ -211,7 +211,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.ForeColor = SystemColors.HotTrack;
+            label7.ForeColor = Color.ForestGreen;
             label7.Location = new Point(882, 275);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
@@ -222,7 +222,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.ForeColor = SystemColors.HotTrack;
+            label8.ForeColor = Color.ForestGreen;
             label8.Location = new Point(578, 87);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
@@ -233,7 +233,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.ForeColor = SystemColors.HotTrack;
+            label9.ForeColor = Color.ForestGreen;
             label9.Location = new Point(882, 87);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
@@ -279,7 +279,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.ForeColor = SystemColors.HotTrack;
+            label10.ForeColor = Color.ForestGreen;
             label10.Location = new Point(285, 344);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
@@ -290,7 +290,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.ForeColor = SystemColors.HotTrack;
+            label11.ForeColor = Color.ForestGreen;
             label11.Location = new Point(578, 344);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
@@ -301,7 +301,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.ForeColor = SystemColors.HotTrack;
+            label12.ForeColor = Color.ForestGreen;
             label12.Location = new Point(882, 345);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
@@ -384,7 +384,7 @@
             // lsbProdutos
             // 
             lsbProdutos.BackColor = SystemColors.HighlightText;
-            lsbProdutos.ForeColor = SystemColors.HotTrack;
+            lsbProdutos.ForeColor = Color.ForestGreen;
             lsbProdutos.FormattingEnabled = true;
             lsbProdutos.ItemHeight = 21;
             lsbProdutos.Items.AddRange(new object[] { "1 - Pizza de Mussarela", "2 - Pizza Calabresa", "3 - Pizza Moda Donatello", "4 - Pizza Sensação", "5 - Pizza Ouro Branco", "6 - Coca Cola 3 litros", "7 - Queijo Extra", "8 - Bacon Extra", "9 - Cheddar", "10 - Calabresa Extra" });
@@ -432,6 +432,7 @@
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label8);
+            groupBox1.ForeColor = Color.ForestGreen;
             groupBox1.Location = new Point(39, 22);
             groupBox1.Margin = new Padding(2, 3, 2, 3);
             groupBox1.Name = "groupBox1";
@@ -445,7 +446,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(22, 40);
+            pictureBox3.Location = new Point(22, 42);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(166, 136);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -466,7 +467,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.BackColor = SystemColors.HotTrack;
+            btnEditar.BackColor = Color.ForestGreen;
             btnEditar.ForeColor = SystemColors.HighlightText;
             btnEditar.Location = new Point(22, 598);
             btnEditar.Margin = new Padding(2, 3, 2, 3);
@@ -490,14 +491,13 @@
             // 
             // cmbITamanho
             // 
-            btnEditar.BackColor = SystemColors.HotTrack;
-            btnEditar.ForeColor = SystemColors.HighlightText;
-            btnEditar.Location = new Point(22, 598);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(166, 30);
-            btnEditar.TabIndex = 19;
-            btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = false;
+            cmbITamanho.FormattingEnabled = true;
+            cmbITamanho.Location = new Point(285, 300);
+            cmbITamanho.Margin = new Padding(2, 3, 2, 3);
+            cmbITamanho.Name = "cmbITamanho";
+            cmbITamanho.Size = new Size(224, 29);
+            cmbITamanho.TabIndex = 11;
+            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
             // 
             // FrmPedido
             // 

@@ -65,6 +65,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(462, 105);
             label1.Name = "label1";
             label1.Size = new Size(36, 15);
@@ -73,16 +74,19 @@
             // 
             // btnAbrir
             // 
+            btnAbrir.BackColor = Color.ForestGreen;
+            btnAbrir.ForeColor = SystemColors.HighlightText;
             btnAbrir.Location = new Point(142, 523);
             btnAbrir.Name = "btnAbrir";
             btnAbrir.Size = new Size(384, 34);
             btnAbrir.TabIndex = 3;
             btnAbrir.Text = "Abrir Pedido";
-            btnAbrir.UseVisualStyleBackColor = true;
+            btnAbrir.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(462, 201);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
@@ -99,6 +103,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = Color.ForestGreen;
             label3.Location = new Point(462, 308);
             label3.Name = "label3";
             label3.Size = new Size(78, 15);
@@ -114,16 +119,19 @@
             // 
             // btnEncerrar
             // 
+            btnEncerrar.BackColor = Color.ForestGreen;
+            btnEncerrar.ForeColor = SystemColors.Control;
             btnEncerrar.Location = new Point(741, 523);
             btnEncerrar.Name = "btnEncerrar";
             btnEncerrar.Size = new Size(384, 34);
             btnEncerrar.TabIndex = 8;
             btnEncerrar.Text = "Encerrar Pedido";
-            btnEncerrar.UseVisualStyleBackColor = true;
+            btnEncerrar.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(462, 404);
             label4.Name = "label4";
             label4.Size = new Size(61, 15);
@@ -149,6 +157,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.ForestGreen;
             label5.Location = new Point(547, 9);
             label5.Name = "label5";
             label5.Size = new Size(101, 36);
@@ -158,6 +167,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = Color.ForestGreen;
             label6.Location = new Point(849, 404);
             label6.Name = "label6";
             label6.Size = new Size(51, 15);

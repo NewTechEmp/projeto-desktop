@@ -40,7 +40,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(66, 53);
+            label1.ForeColor = SystemColors.HotTrack;
+            label1.Location = new Point(68, 26);
             label1.Name = "label1";
             label1.Size = new Size(41, 15);
             label1.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(68, 136);
+            txtSenha.Location = new Point(68, 122);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(254, 23);
             txtSenha.TabIndex = 2;
@@ -63,7 +64,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 77);
+            label2.ForeColor = SystemColors.HotTrack;
+            label2.Location = new Point(68, 107);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 3;
@@ -76,16 +78,17 @@
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
             gbLogin.Controls.Add(txtEmail);
+            gbLogin.ForeColor = SystemColors.HotTrack;
             gbLogin.Location = new Point(83, 48);
             gbLogin.Name = "gbLogin";
-            gbLogin.Size = new Size(377, 161);
+            gbLogin.Size = new Size(377, 188);
             gbLogin.TabIndex = 4;
             gbLogin.TabStop = false;
             gbLogin.Text = "Login";
             // 
             // button1
             // 
-            button1.Location = new Point(247, 137);
+            button1.Location = new Point(247, 151);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 4;

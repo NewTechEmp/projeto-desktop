@@ -90,7 +90,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.HotTrack;
+            BackColor = Color.ForestGreen;
             ClientSize = new Size(1029, 450);
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);

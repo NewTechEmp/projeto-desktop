@@ -48,12 +48,14 @@
             // 
             // btnInserir
             // 
+            btnInserir.BackColor = SystemColors.HotTrack;
+            btnInserir.ForeColor = SystemColors.ControlLightLight;
             btnInserir.Location = new Point(489, 229);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
+            btnInserir.Size = new Size(75, 32);
             btnInserir.TabIndex = 0;
             btnInserir.Text = "&Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -76,6 +78,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = SystemColors.HotTrack;
             label2.Location = new Point(60, 47);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
@@ -97,6 +100,7 @@
             gbCadastro.Controls.Add(txtNome);
             gbCadastro.Controls.Add(label2);
             gbCadastro.Controls.Add(btnInserir);
+            gbCadastro.ForeColor = SystemColors.HotTrack;
             gbCadastro.Location = new Point(137, 82);
             gbCadastro.Name = "gbCadastro";
             gbCadastro.Size = new Size(643, 315);
@@ -106,21 +110,25 @@
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.HotTrack;
+            button1.ForeColor = SystemColors.HighlightText;
             button1.Location = new Point(60, 229);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(79, 32);
             button1.TabIndex = 16;
             button1.Text = "&Excluir";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // btnEditar
             // 
+            btnEditar.BackColor = SystemColors.HotTrack;
+            btnEditar.ForeColor = SystemColors.ControlLightLight;
             btnEditar.Location = new Point(273, 229);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(75, 32);
             btnEditar.TabIndex = 15;
             btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -174,6 +182,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = SystemColors.HotTrack;
             label3.Location = new Point(340, 47);
             label3.Name = "label3";
             label3.Size = new Size(28, 15);

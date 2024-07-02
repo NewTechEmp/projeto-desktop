@@ -330,7 +330,6 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.HotTrack;
             label9.Location = new Point(464, 13);
             label9.Name = "label9";
             label9.Size = new Size(156, 36);
