@@ -140,7 +140,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(39, 41);
+            dataGridView1.Location = new Point(54, 41);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(386, 404);
             dataGridView1.TabIndex = 11;
@@ -149,7 +149,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(556, 9);
+            label5.Location = new Point(547, 9);
             label5.Name = "label5";
             label5.Size = new Size(101, 36);
             label5.TabIndex = 12;

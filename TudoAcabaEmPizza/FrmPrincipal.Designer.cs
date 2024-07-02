@@ -33,8 +33,8 @@
             produtoToolStripMenuItem = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
-            caixaToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
+            caixaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -74,17 +74,17 @@
             cadastreSeToolStripMenuItem.Size = new Size(82, 20);
             cadastreSeToolStripMenuItem.Text = "&Cadastre-Se";
             // 
+            // loginToolStripMenuItem
+            // 
+            loginToolStripMenuItem.Name = "loginToolStripMenuItem";
+            loginToolStripMenuItem.Size = new Size(104, 22);
+            loginToolStripMenuItem.Text = "&Login";
+            // 
             // caixaToolStripMenuItem
             // 
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
             caixaToolStripMenuItem.Size = new Size(48, 20);
             caixaToolStripMenuItem.Text = "&Caixa";
-            // 
-            // loginToolStripMenuItem
-            // 
-            loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(180, 22);
-            loginToolStripMenuItem.Text = "&Login";
             // 
             // Form1
             // 
@@ -99,6 +99,7 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

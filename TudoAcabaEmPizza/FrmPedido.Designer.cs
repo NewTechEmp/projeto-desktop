@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPedido));
             label1 = new Label();
             txtCodBarras = new TextBox();
             txtProduto = new TextBox();
@@ -60,14 +61,16 @@
             lblData = new Label();
             lsbProdutos = new ListBox();
             groupBox1 = new GroupBox();
+            pictureBox3 = new PictureBox();
             dateTimePicker1 = new DateTimePicker();
-            cmbITamanho = new ComboBox();
-            btnCancelar = new Button();
             btnEditar = new Button();
+            btnCancelar = new Button();
+            cmbITamanho = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -115,6 +118,7 @@
             // btnInserir
             // 
             btnInserir.Location = new Point(882, 214);
+            btnInserir.Margin = new Padding(2, 3, 2, 3);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(106, 29);
             btnInserir.TabIndex = 3;
@@ -125,6 +129,7 @@
             // btnExcluir
             // 
             btnExcluir.Location = new Point(1000, 213);
+            btnExcluir.Margin = new Padding(2, 3, 2, 3);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(106, 30);
             btnExcluir.TabIndex = 3;
@@ -147,7 +152,8 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.HotTrack;
-            pictureBox1.Location = new Point(13, 31);
+            pictureBox1.Location = new Point(12, 31);
+            pictureBox1.Margin = new Padding(2, 3, 2, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(189, 156);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -174,6 +180,7 @@
             // 
             label4.AutoSize = true;
             label4.Location = new Point(321, 402);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(0, 21);
             label4.TabIndex = 5;
@@ -237,7 +244,8 @@
             // cmbItemAdicional
             // 
             cmbItemAdicional.FormattingEnabled = true;
-            cmbItemAdicional.Location = new Point(883, 115);
+            cmbItemAdicional.Location = new Point(882, 115);
+            cmbItemAdicional.Margin = new Padding(2, 3, 2, 3);
             cmbItemAdicional.Name = "cmbItemAdicional";
             cmbItemAdicional.Size = new Size(224, 29);
             cmbItemAdicional.TabIndex = 11;
@@ -248,21 +256,22 @@
             txtSubTotal.Location = new Point(285, 369);
             txtSubTotal.Margin = new Padding(4);
             txtSubTotal.Name = "txtSubTotal";
-            txtSubTotal.Size = new Size(251, 29);
+            txtSubTotal.Size = new Size(252, 29);
             txtSubTotal.TabIndex = 12;
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(577, 369);
+            txtTotal.Location = new Point(578, 369);
             txtTotal.Margin = new Padding(4);
             txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(251, 29);
+            txtTotal.Size = new Size(252, 29);
             txtTotal.TabIndex = 13;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(882, 369);
+            comboBox1.Margin = new Padding(2, 3, 2, 3);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(224, 29);
             comboBox1.TabIndex = 14;
@@ -293,7 +302,7 @@
             // 
             label12.AutoSize = true;
             label12.ForeColor = SystemColors.HotTrack;
-            label12.Location = new Point(883, 345);
+            label12.Location = new Point(882, 345);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(185, 21);
@@ -304,6 +313,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(285, 426);
+            dataGridView1.Margin = new Padding(2, 3, 2, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(821, 210);
             dataGridView1.TabIndex = 18;
@@ -313,6 +323,7 @@
             btnFinalizarPed.BackColor = SystemColors.HotTrack;
             btnFinalizarPed.ForeColor = SystemColors.HighlightText;
             btnFinalizarPed.Location = new Point(22, 669);
+            btnFinalizarPed.Margin = new Padding(2, 3, 2, 3);
             btnFinalizarPed.Name = "btnFinalizarPed";
             btnFinalizarPed.Size = new Size(166, 38);
             btnFinalizarPed.TabIndex = 19;
@@ -324,6 +335,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label13.Location = new Point(48, 194);
+            label13.Margin = new Padding(2, 0, 2, 0);
             label13.Name = "label13";
             label13.Size = new Size(131, 15);
             label13.TabIndex = 20;
@@ -331,7 +343,8 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(13, 214);
+            pictureBox2.Location = new Point(12, 214);
+            pictureBox2.Margin = new Padding(2, 3, 2, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(100, 83);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -342,6 +355,7 @@
             // 
             lblFuncionario.AutoSize = true;
             lblFuncionario.Location = new Point(119, 213);
+            lblFuncionario.Margin = new Padding(2, 0, 2, 0);
             lblFuncionario.Name = "lblFuncionario";
             lblFuncionario.Size = new Size(57, 21);
             lblFuncionario.TabIndex = 24;
@@ -351,6 +365,7 @@
             // 
             lblCargoFuncionario.AutoSize = true;
             lblCargoFuncionario.Location = new Point(119, 245);
+            lblCargoFuncionario.Margin = new Padding(2, 0, 2, 0);
             lblCargoFuncionario.Name = "lblCargoFuncionario";
             lblCargoFuncionario.Size = new Size(55, 21);
             lblCargoFuncionario.TabIndex = 24;
@@ -360,6 +375,7 @@
             // 
             lblData.AutoSize = true;
             lblData.Location = new Point(119, 275);
+            lblData.Margin = new Padding(2, 0, 2, 0);
             lblData.Name = "lblData";
             lblData.Size = new Size(46, 21);
             lblData.TabIndex = 24;
@@ -372,13 +388,15 @@
             lsbProdutos.FormattingEnabled = true;
             lsbProdutos.ItemHeight = 21;
             lsbProdutos.Items.AddRange(new object[] { "1 - Pizza de Mussarela", "2 - Pizza Calabresa", "3 - Pizza Moda Donatello", "4 - Pizza Sensação", "5 - Pizza Ouro Branco", "6 - Coca Cola 3 litros", "7 - Queijo Extra", "8 - Bacon Extra", "9 - Cheddar", "10 - Calabresa Extra" });
-            lsbProdutos.Location = new Point(13, 315);
+            lsbProdutos.Location = new Point(12, 315);
+            lsbProdutos.Margin = new Padding(2, 3, 2, 3);
             lsbProdutos.Name = "lsbProdutos";
             lsbProdutos.Size = new Size(189, 277);
             lsbProdutos.TabIndex = 25;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(pictureBox3);
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Controls.Add(lsbProdutos);
@@ -415,54 +433,70 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label8);
             groupBox1.Location = new Point(39, 22);
+            groupBox1.Margin = new Padding(2, 3, 2, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1113, 713);
+            groupBox1.Padding = new Padding(2, 3, 2, 3);
+            groupBox1.Size = new Size(1112, 713);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Pedido";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(22, 40);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(166, 136);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 27;
+            pictureBox3.TabStop = false;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.CalendarForeColor = SystemColors.InactiveCaptionText;
             dateTimePicker1.CalendarTitleForeColor = SystemColors.InfoText;
             dateTimePicker1.Location = new Point(285, 112);
+            dateTimePicker1.Margin = new Padding(2, 3, 2, 3);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(251, 29);
+            dateTimePicker1.Size = new Size(252, 29);
             dateTimePicker1.TabIndex = 26;
             dateTimePicker1.Value = new DateTime(2024, 7, 2, 9, 39, 34, 0);
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // cmbITamanho
-            // 
-            cmbITamanho.FormattingEnabled = true;
-            cmbITamanho.Location = new Point(285, 300);
-            cmbITamanho.Name = "cmbITamanho";
-            cmbITamanho.Size = new Size(224, 29);
-            cmbITamanho.TabIndex = 11;
-            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = SystemColors.HotTrack;
-            btnCancelar.ForeColor = SystemColors.HighlightText;
-            btnCancelar.Location = new Point(22, 634);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(166, 29);
-            btnCancelar.TabIndex = 19;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnEditar
             // 
             btnEditar.BackColor = SystemColors.HotTrack;
             btnEditar.ForeColor = SystemColors.HighlightText;
             btnEditar.Location = new Point(22, 598);
+            btnEditar.Margin = new Padding(2, 3, 2, 3);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(166, 30);
             btnEditar.TabIndex = 19;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = SystemColors.HotTrack;
+            btnCancelar.ForeColor = SystemColors.HighlightText;
+            btnCancelar.Location = new Point(22, 634);
+            btnCancelar.Margin = new Padding(2, 3, 2, 3);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(166, 29);
+            btnCancelar.TabIndex = 19;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // cmbITamanho
+            // 
+            cmbITamanho.FormattingEnabled = true;
+            cmbITamanho.Location = new Point(285, 300);
+            cmbITamanho.Margin = new Padding(2, 3, 2, 3);
+            cmbITamanho.Name = "cmbITamanho";
+            cmbITamanho.Size = new Size(224, 29);
+            cmbITamanho.TabIndex = 11;
+            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
             // 
             // FrmPedido
             // 
@@ -482,6 +516,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -524,5 +559,6 @@
         private Button btnEditar;
         private Button btnCancelar;
         private ComboBox cmbITamanho;
+        private PictureBox pictureBox3;
     }
 }

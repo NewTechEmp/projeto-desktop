@@ -39,7 +39,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(68, 26);
+            label1.Location = new Point(66, 53);
             label1.Name = "label1";
             label1.Size = new Size(41, 15);
             label1.TabIndex = 0;
@@ -47,14 +47,14 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(68, 44);
+            txtEmail.Location = new Point(68, 71);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(254, 23);
             txtEmail.TabIndex = 1;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(68, 95);
+            txtSenha.Location = new Point(68, 136);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(254, 23);
             txtSenha.TabIndex = 2;
@@ -62,7 +62,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 77);
+            label2.Location = new Point(68, 106);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 3;
@@ -74,9 +74,9 @@
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
             gbLogin.Controls.Add(txtEmail);
-            gbLogin.Location = new Point(83, 48);
+            gbLogin.Location = new Point(83, 12);
             gbLogin.Name = "gbLogin";
-            gbLogin.Size = new Size(377, 161);
+            gbLogin.Size = new Size(440, 287);
             gbLogin.TabIndex = 4;
             gbLogin.TabStop = false;
             gbLogin.Text = "Login";
@@ -85,7 +85,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(580, 277);
+            ClientSize = new Size(610, 378);
             Controls.Add(gbLogin);
             Name = "FrmLogin";
             Text = "FrmLogin";
