@@ -33,6 +33,7 @@
             txtSenha = new TextBox();
             label2 = new Label();
             gbLogin = new GroupBox();
+            button1 = new Button();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 106);
+            label2.Location = new Point(68, 77);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 3;
@@ -70,16 +71,26 @@
             // 
             // gbLogin
             // 
+            gbLogin.Controls.Add(button1);
             gbLogin.Controls.Add(txtSenha);
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
             gbLogin.Controls.Add(txtEmail);
-            gbLogin.Location = new Point(83, 12);
+            gbLogin.Location = new Point(83, 48);
             gbLogin.Name = "gbLogin";
-            gbLogin.Size = new Size(440, 287);
+            gbLogin.Size = new Size(377, 161);
             gbLogin.TabIndex = 4;
             gbLogin.TabStop = false;
             gbLogin.Text = "Login";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(247, 137);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 4;
+            button1.Text = "Entrar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // FrmLogin
             // 
@@ -101,5 +112,6 @@
         private TextBox txtSenha;
         private Label label2;
         private GroupBox gbLogin;
+        private Button button1;
     }
 }

@@ -490,13 +490,14 @@
             // 
             // cmbITamanho
             // 
-            cmbITamanho.FormattingEnabled = true;
-            cmbITamanho.Location = new Point(285, 300);
-            cmbITamanho.Margin = new Padding(2, 3, 2, 3);
-            cmbITamanho.Name = "cmbITamanho";
-            cmbITamanho.Size = new Size(224, 29);
-            cmbITamanho.TabIndex = 11;
-            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
+            btnEditar.BackColor = SystemColors.HotTrack;
+            btnEditar.ForeColor = SystemColors.HighlightText;
+            btnEditar.Location = new Point(22, 598);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(166, 30);
+            btnEditar.TabIndex = 19;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // FrmPedido
             // 
