@@ -34,13 +34,14 @@
             label2 = new Label();
             gbLogin = new GroupBox();
             button1 = new Button();
+            btnCancelar = new Button();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = SystemColors.HotTrack;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(68, 26);
             label1.Name = "label1";
             label1.Size = new Size(41, 15);
@@ -73,12 +74,13 @@
             // 
             // gbLogin
             // 
+            gbLogin.Controls.Add(btnCancelar);
             gbLogin.Controls.Add(button1);
             gbLogin.Controls.Add(txtSenha);
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
             gbLogin.Controls.Add(txtEmail);
-            gbLogin.ForeColor = SystemColors.HotTrack;
+            gbLogin.ForeColor = Color.ForestGreen;
             gbLogin.Location = new Point(83, 48);
             gbLogin.Name = "gbLogin";
             gbLogin.Size = new Size(377, 188);
@@ -88,12 +90,22 @@
             // 
             // button1
             // 
-            button1.Location = new Point(247, 151);
+            button1.Location = new Point(247, 137);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 4;
             button1.Text = "Entrar";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.ForeColor = Color.ForestGreen;
+            btnCancelar.Location = new Point(68, 137);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // FrmLogin
             // 
@@ -116,5 +128,6 @@
         private Label label2;
         private GroupBox gbLogin;
         private Button button1;
+        private Button btnCancelar;
     }
 }
