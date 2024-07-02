@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace TudoAcabaEmPizza
 {
-    public partial class FrmCaixa : Form
+    public partial class FrmCadastro : Form
     {
-        public FrmCaixa()
+        public FrmCadastro()
         {
             InitializeComponent();
         }
-
     }
 }
