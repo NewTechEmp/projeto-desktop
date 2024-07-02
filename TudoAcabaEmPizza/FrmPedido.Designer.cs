@@ -147,7 +147,6 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.HotTrack;
-            pictureBox1.Image = Properties.Resources.cowabunga_1;
             pictureBox1.Location = new Point(13, 31);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(189, 156);
@@ -332,7 +331,6 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.chapolin_e1628950647374;
             pictureBox2.Location = new Point(13, 214);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(100, 83);
