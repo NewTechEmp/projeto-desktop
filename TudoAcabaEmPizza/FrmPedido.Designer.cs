@@ -61,9 +61,9 @@
             lsbProdutos = new ListBox();
             groupBox1 = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
-            cmbITamanho = new ComboBox();
-            btnCancelar = new Button();
             btnEditar = new Button();
+            btnCancelar = new Button();
+            cmbITamanho = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -433,14 +433,16 @@
             dateTimePicker1.Value = new DateTime(2024, 7, 2, 9, 39, 34, 0);
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // cmbITamanho
+            // btnEditar
             // 
-            cmbITamanho.FormattingEnabled = true;
-            cmbITamanho.Location = new Point(285, 300);
-            cmbITamanho.Name = "cmbITamanho";
-            cmbITamanho.Size = new Size(224, 29);
-            cmbITamanho.TabIndex = 11;
-            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
+            btnEditar.BackColor = SystemColors.HotTrack;
+            btnEditar.ForeColor = SystemColors.HighlightText;
+            btnEditar.Location = new Point(22, 598);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(166, 30);
+            btnEditar.TabIndex = 19;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
@@ -453,16 +455,14 @@
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // btnEditar
+            // cmbITamanho
             // 
-            btnEditar.BackColor = SystemColors.HotTrack;
-            btnEditar.ForeColor = SystemColors.HighlightText;
-            btnEditar.Location = new Point(22, 598);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(166, 30);
-            btnEditar.TabIndex = 19;
-            btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = false;
+            cmbITamanho.FormattingEnabled = true;
+            cmbITamanho.Location = new Point(285, 300);
+            cmbITamanho.Name = "cmbITamanho";
+            cmbITamanho.Size = new Size(224, 29);
+            cmbITamanho.TabIndex = 11;
+            cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
             // 
             // FrmPedido
             // 
