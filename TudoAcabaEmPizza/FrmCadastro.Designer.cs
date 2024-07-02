@@ -102,7 +102,6 @@
             gbCadastro.TabIndex = 3;
             gbCadastro.TabStop = false;
             gbCadastro.Text = "Informações para cadastro";
-            gbCadastro.Enter += this.groupBox1_Enter;
             // 
             // txtCpf
             // 
@@ -196,7 +195,6 @@
             Controls.Add(label1);
             Name = "FrmCadastro";
             Text = "FrmCadastro";
-            Load += this.FrmCadastro_Load;
             gbCadastro.ResumeLayout(false);
             gbCadastro.PerformLayout();
             ResumeLayout(false);
