@@ -92,30 +92,36 @@
             // 
             // btnConsultar
             // 
+            btnConsultar.BackColor = Color.ForestGreen;
+            btnConsultar.ForeColor = SystemColors.ControlLightLight;
             btnConsultar.Location = new Point(402, 326);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(79, 30);
             btnConsultar.TabIndex = 17;
             btnConsultar.Text = "&Consultar";
-            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.UseVisualStyleBackColor = false;
             // 
             // btnEditar
             // 
+            btnEditar.BackColor = Color.ForestGreen;
+            btnEditar.ForeColor = SystemColors.ControlLightLight;
             btnEditar.Location = new Point(237, 326);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(79, 30);
             btnEditar.TabIndex = 16;
             btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnInserir
             // 
+            btnInserir.BackColor = Color.ForestGreen;
+            btnInserir.ForeColor = SystemColors.ControlLightLight;
             btnInserir.Location = new Point(53, 326);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(79, 30);
             btnInserir.TabIndex = 15;
             btnInserir.Text = "&Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.UseVisualStyleBackColor = false;
             // 
             // textBox2
             // 
@@ -315,7 +321,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.HotTrack;
+            label9.ForeColor = Color.ForestGreen;
             label9.Location = new Point(464, 13);
             label9.Name = "label9";
             label9.Size = new Size(156, 36);
