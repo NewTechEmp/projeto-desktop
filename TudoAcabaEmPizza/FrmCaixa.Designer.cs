@@ -191,6 +191,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
+            ForeColor = SystemColors.HotTrack;
             Name = "FrmCaixa";
             Text = "FrmCaixa";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -33,16 +33,16 @@
             txtNome = new TextBox();
             label2 = new Label();
             gbCadastro = new GroupBox();
-            txtCpf = new TextBox();
-            label3 = new Label();
-            label5 = new Label();
-            txtEmail = new TextBox();
+            button1 = new Button();
+            btnEditar = new Button();
+            label8 = new Label();
+            textBox2 = new TextBox();
             label7 = new Label();
             textBox1 = new TextBox();
-            btnEditar = new Button();
-            button1 = new Button();
-            textBox2 = new TextBox();
-            label8 = new Label();
+            label5 = new Label();
+            txtEmail = new TextBox();
+            label3 = new Label();
+            txtCpf = new TextBox();
             gbCadastro.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,6 +59,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.HotTrack;
             label1.Location = new Point(349, 9);
             label1.Name = "label1";
             label1.Size = new Size(204, 36);
@@ -103,37 +104,40 @@
             gbCadastro.TabStop = false;
             gbCadastro.Text = "Informações para cadastro";
             // 
-            // txtCpf
+            // button1
             // 
-            txtCpf.Location = new Point(340, 65);
-            txtCpf.Name = "txtCpf";
-            txtCpf.Size = new Size(224, 23);
-            txtCpf.TabIndex = 3;
+            button1.Location = new Point(60, 229);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 16;
+            button1.Text = "&Excluir";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // btnEditar
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(340, 47);
-            label3.Name = "label3";
-            label3.Size = new Size(28, 15);
-            label3.TabIndex = 4;
-            label3.Text = "CPF";
+            btnEditar.Location = new Point(273, 229);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 15;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // label8
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(60, 100);
-            label5.Name = "label5";
-            label5.Size = new Size(36, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Email";
+            label8.AutoSize = true;
+            label8.Location = new Point(60, 151);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 15);
+            label8.TabIndex = 14;
+            label8.Text = "2º Telefone";
             // 
-            // txtEmail
+            // textBox2
             // 
-            txtEmail.Location = new Point(60, 118);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(224, 23);
-            txtEmail.TabIndex = 7;
+            textBox2.Location = new Point(60, 169);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "Opcional";
+            textBox2.Size = new Size(224, 23);
+            textBox2.TabIndex = 13;
             // 
             // label7
             // 
@@ -151,40 +155,37 @@
             textBox1.Size = new Size(224, 23);
             textBox1.TabIndex = 11;
             // 
-            // btnEditar
+            // label5
             // 
-            btnEditar.Location = new Point(273, 229);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 15;
-            btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            label5.AutoSize = true;
+            label5.Location = new Point(60, 100);
+            label5.Name = "label5";
+            label5.Size = new Size(36, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Email";
             // 
-            // button1
+            // txtEmail
             // 
-            button1.Location = new Point(60, 229);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 16;
-            button1.Text = "&Excluir";
-            button1.UseVisualStyleBackColor = true;
+            txtEmail.Location = new Point(60, 118);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(224, 23);
+            txtEmail.TabIndex = 7;
             // 
-            // textBox2
+            // label3
             // 
-            textBox2.Location = new Point(60, 169);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Opcional";
-            textBox2.Size = new Size(224, 23);
-            textBox2.TabIndex = 13;
+            label3.AutoSize = true;
+            label3.Location = new Point(340, 47);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 15);
+            label3.TabIndex = 4;
+            label3.Text = "CPF";
             // 
-            // label8
+            // txtCpf
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(60, 151);
-            label8.Name = "label8";
-            label8.Size = new Size(65, 15);
-            label8.TabIndex = 14;
-            label8.Text = "2º Telefone";
+            txtCpf.Location = new Point(340, 65);
+            txtCpf.Name = "txtCpf";
+            txtCpf.Size = new Size(224, 23);
+            txtCpf.TabIndex = 3;
             // 
             // FrmCadastro
             // 
