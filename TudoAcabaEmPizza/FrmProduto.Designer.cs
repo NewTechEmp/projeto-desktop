@@ -83,6 +83,7 @@
             gbProdutos.Controls.Add(txtDescricao);
             gbProdutos.Controls.Add(textBox1);
             gbProdutos.Controls.Add(label4);
+            gbProdutos.ForeColor = Color.ForestGreen;
             gbProdutos.Location = new Point(270, 52);
             gbProdutos.Name = "gbProdutos";
             gbProdutos.Size = new Size(520, 375);
@@ -140,7 +141,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = SystemColors.HotTrack;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(192, 29);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
@@ -161,7 +162,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.HotTrack;
+            label2.ForeColor = SystemColors.InactiveCaption;
             label2.Location = new Point(113, 64);
             label2.Name = "label2";
             label2.Size = new Size(97, 15);
