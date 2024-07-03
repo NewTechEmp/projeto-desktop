@@ -33,8 +33,8 @@
             txtSenha = new TextBox();
             label2 = new Label();
             gbLogin = new GroupBox();
-            button1 = new Button();
             btnCancelar = new Button();
+            button1 = new Button();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,14 +50,14 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(68, 71);
+            txtEmail.Location = new Point(68, 44);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(254, 23);
             txtEmail.TabIndex = 1;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(68, 122);
+            txtSenha.Location = new Point(68, 98);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(254, 23);
             txtSenha.TabIndex = 2;
@@ -65,8 +65,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(68, 107);
+            label2.ForeColor = Color.ForestGreen;
+            label2.Location = new Point(68, 83);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 3;
@@ -88,24 +88,24 @@
             gbLogin.TabStop = false;
             gbLogin.Text = "Login";
             // 
-            // button1
-            // 
-            button1.Location = new Point(247, 137);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Entrar";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // btnCancelar
             // 
             btnCancelar.ForeColor = Color.ForestGreen;
-            btnCancelar.Location = new Point(68, 137);
+            btnCancelar.Location = new Point(68, 141);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(247, 141);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 4;
+            button1.Text = "Entrar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // FrmLogin
             // 

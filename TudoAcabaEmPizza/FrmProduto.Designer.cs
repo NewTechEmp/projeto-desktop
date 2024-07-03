@@ -93,7 +93,7 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.BackColor = SystemColors.HotTrack;
+            btnConsultar.BackColor = Color.ForestGreen;
             btnConsultar.ForeColor = SystemColors.HighlightText;
             btnConsultar.Location = new Point(402, 326);
             btnConsultar.Name = "btnConsultar";
@@ -104,7 +104,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.BackColor = SystemColors.HotTrack;
+            btnEditar.BackColor = Color.ForestGreen;
             btnEditar.ForeColor = SystemColors.HighlightText;
             btnEditar.Location = new Point(237, 326);
             btnEditar.Name = "btnEditar";
@@ -115,7 +115,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.BackColor = SystemColors.HotTrack;
+            btnInserir.BackColor = Color.ForestGreen;
             btnInserir.ForeColor = SystemColors.ControlLightLight;
             btnInserir.Location = new Point(53, 326);
             btnInserir.Name = "btnInserir";
@@ -152,7 +152,7 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = SystemColors.ControlLightLight;
-            label8.ForeColor = SystemColors.HotTrack;
+            label8.ForeColor = Color.ForestGreen;
             label8.Location = new Point(101, 281);
             label8.Name = "label8";
             label8.Size = new Size(109, 15);
@@ -162,7 +162,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.InactiveCaption;
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(113, 64);
             label2.Name = "label2";
             label2.Size = new Size(97, 15);
@@ -180,7 +180,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.ForeColor = SystemColors.HotTrack;
+            label7.ForeColor = Color.ForestGreen;
             label7.Location = new Point(116, 244);
             label7.Name = "label7";
             label7.Size = new Size(94, 15);
@@ -213,7 +213,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = SystemColors.HotTrack;
+            label6.ForeColor = Color.ForestGreen;
             label6.Location = new Point(152, 209);
             label6.Name = "label6";
             label6.Size = new Size(58, 15);
@@ -223,7 +223,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = SystemColors.HotTrack;
+            label3.ForeColor = Color.ForestGreen;
             label3.Location = new Point(152, 102);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
@@ -233,7 +233,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.ForeColor = SystemColors.HotTrack;
+            label5.ForeColor = Color.ForestGreen;
             label5.Location = new Point(108, 174);
             label5.Name = "label5";
             label5.Size = new Size(102, 15);
@@ -257,7 +257,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.ForeColor = SystemColors.HotTrack;
+            label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(132, 139);
             label4.Name = "label4";
             label4.Size = new Size(78, 15);
@@ -331,6 +331,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.ForestGreen;
             label9.Location = new Point(464, 13);
             label9.Name = "label9";
             label9.Size = new Size(156, 36);
