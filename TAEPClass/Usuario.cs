@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComClassSys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,58 @@ using System.Threading.Tasks;
 
 namespace TAEPClass
 {
-    internal class Usuario
+    public  class Usuario
     {
+
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }   
+        public bool Ativo {  get; set; }    
+        public Nivel NivelId {  get; set; }
+
+        public Usuario(int id, string nome, string email, string senha, bool ativo, Nivel nivelId)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            Ativo = ativo;
+            NivelId = nivelId;
+        }
+
+        public Usuario(string nome, string email, string senha, bool ativo, Nivel nivelId)
+        {
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            Ativo = ativo;
+            NivelId = nivelId;
+        }
+
+        public Usuario (string nome, string email, string senha, Nivel nivelId )
+        {
+            Nome= nome;
+            Email = email;
+            Senha = senha;
+            NivelId= nivelId;
+        }
+        public void Inserir()
+        {
+
+        }
+        public bool Editar(int id)
+        {
+
+        }
+        public void ObterPorId(int id)
+        {
+
+        }
+
+        public static List<Usuario> ObterLista()
+        {
+
+        }
     }
 }
