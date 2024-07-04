@@ -176,6 +176,7 @@
             txtId.ReadOnly = true;
             txtId.Size = new Size(55, 23);
             txtId.TabIndex = 1;
+            txtId.TextChanged += txtId_TextChanged;
             // 
             // label7
             // 
@@ -206,6 +207,7 @@
             // mtbCodBarras
             // 
             mtbCodBarras.Location = new Point(216, 61);
+            mtbCodBarras.Mask = "0.000000.000000";
             mtbCodBarras.Name = "mtbCodBarras";
             mtbCodBarras.Size = new Size(164, 23);
             mtbCodBarras.TabIndex = 3;

@@ -34,7 +34,7 @@
             label2 = new Label();
             gbLogin = new GroupBox();
             btnCancelar = new Button();
-            button1 = new Button();
+            btnEntrar = new Button();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             // gbLogin
             // 
             gbLogin.Controls.Add(btnCancelar);
-            gbLogin.Controls.Add(button1);
+            gbLogin.Controls.Add(btnEntrar);
             gbLogin.Controls.Add(txtSenha);
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
@@ -98,14 +98,14 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnEntrar
             // 
-            button1.Location = new Point(247, 141);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Entrar";
-            button1.UseVisualStyleBackColor = true;
+            btnEntrar.Location = new Point(247, 141);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(75, 23);
+            btnEntrar.TabIndex = 4;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = true;
             // 
             // FrmLogin
             // 
@@ -127,7 +127,7 @@
         private TextBox txtSenha;
         private Label label2;
         private GroupBox gbLogin;
-        private Button button1;
+        private Button btnEntrar;
         private Button btnCancelar;
     }
 }
