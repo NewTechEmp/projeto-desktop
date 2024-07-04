@@ -16,5 +16,10 @@ namespace TudoAcabaEmPizza
         {
             InitializeComponent();
         }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

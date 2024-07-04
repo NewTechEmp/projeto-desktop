@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            txtNivel = new TextBox();
+            txtSenha = new TextBox();
+            txtEmail = new TextBox();
+            btnInserir = new Button();
+            btnAlterar = new Button();
+            btnConsultar = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvUsuario = new DataGridView();
             label2 = new Label();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
+            pbUsuario = new PictureBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(txtNivel);
+            groupBox1.Controls.Add(txtSenha);
+            groupBox1.Controls.Add(txtEmail);
+            groupBox1.Controls.Add(btnInserir);
+            groupBox1.Controls.Add(btnAlterar);
+            groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dgvUsuario);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(pbUsuario);
             groupBox1.Location = new Point(80, 29);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(921, 618);
@@ -69,63 +69,63 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Usuario";
             // 
-            // textBox3
+            // txtNivel
             // 
-            textBox3.Location = new Point(621, 248);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(182, 23);
-            textBox3.TabIndex = 5;
+            txtNivel.Location = new Point(621, 248);
+            txtNivel.Name = "txtNivel";
+            txtNivel.Size = new Size(182, 23);
+            txtNivel.TabIndex = 5;
             // 
-            // textBox2
+            // txtSenha
             // 
-            textBox2.Location = new Point(349, 248);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(190, 23);
-            textBox2.TabIndex = 5;
+            txtSenha.Location = new Point(349, 248);
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(190, 23);
+            txtSenha.TabIndex = 5;
             // 
-            // textBox1
+            // txtEmail
             // 
-            textBox1.Location = new Point(84, 248);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(175, 23);
-            textBox1.TabIndex = 5;
+            txtEmail.Location = new Point(84, 248);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(175, 23);
+            txtEmail.TabIndex = 5;
             // 
-            // button3
+            // btnInserir
             // 
-            button3.BackColor = Color.ForestGreen;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(661, 361);
-            button3.Name = "button3";
-            button3.Size = new Size(85, 33);
-            button3.TabIndex = 4;
-            button3.Text = "&Inserir";
-            button3.UseVisualStyleBackColor = false;
+            btnInserir.BackColor = Color.ForestGreen;
+            btnInserir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInserir.ForeColor = SystemColors.ControlLightLight;
+            btnInserir.Location = new Point(661, 361);
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(85, 33);
+            btnInserir.TabIndex = 4;
+            btnInserir.Text = "&Inserir";
+            btnInserir.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnAlterar
             // 
-            button2.BackColor = Color.ForestGreen;
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(396, 361);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 33);
-            button2.TabIndex = 4;
-            button2.Text = "&Alterar";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            btnAlterar.BackColor = Color.ForestGreen;
+            btnAlterar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAlterar.ForeColor = SystemColors.ControlLightLight;
+            btnAlterar.Location = new Point(387, 361);
+            btnAlterar.Name = "btnAlterar";
+            btnAlterar.Size = new Size(93, 33);
+            btnAlterar.TabIndex = 4;
+            btnAlterar.Text = "&Alterar";
+            btnAlterar.UseVisualStyleBackColor = false;
+            btnAlterar.Click += button2_Click;
             // 
-            // button1
+            // btnConsultar
             // 
-            button1.BackColor = Color.ForestGreen;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(96, 361);
-            button1.Name = "button1";
-            button1.Size = new Size(98, 33);
-            button1.TabIndex = 4;
-            button1.Text = "&Consultar";
-            button1.UseVisualStyleBackColor = false;
+            btnConsultar.BackColor = Color.ForestGreen;
+            btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConsultar.ForeColor = SystemColors.ControlLightLight;
+            btnConsultar.Location = new Point(96, 361);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(98, 33);
+            btnConsultar.TabIndex = 4;
+            btnConsultar.Text = "&Consultar";
+            btnConsultar.UseVisualStyleBackColor = false;
             // 
             // label5
             // 
@@ -160,13 +160,13 @@
             label3.TabIndex = 3;
             label3.Text = "E-mail";
             // 
-            // dataGridView1
+            // dgvUsuario
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(32, 400);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(856, 198);
-            dataGridView1.TabIndex = 2;
+            dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuario.Location = new Point(32, 400);
+            dgvUsuario.Name = "dgvUsuario";
+            dgvUsuario.Size = new Size(856, 198);
+            dgvUsuario.TabIndex = 2;
             // 
             // label2
             // 
@@ -192,14 +192,14 @@
             label1.TabIndex = 1;
             label1.Text = "Tudo Acaba em Pizza!";
             // 
-            // pictureBox1
+            // pbUsuario
             // 
-            pictureBox1.Location = new Point(18, 35);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(151, 126);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pbUsuario.Location = new Point(6, 37);
+            pbUsuario.Name = "pbUsuario";
+            pbUsuario.Size = new Size(151, 126);
+            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbUsuario.TabIndex = 0;
+            pbUsuario.TabStop = false;
             // 
             // FrmUsuario
             // 
@@ -212,26 +212,26 @@
             Load += FrmUsuario_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox groupBox1;
-        private PictureBox pictureBox1;
+        private PictureBox pbUsuario;
         private Label label5;
         private Label label4;
         private Label label3;
-        private DataGridView dataGridView1;
+        private DataGridView dgvUsuario;
         private Label label2;
         private Label label1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private TextBox txtNivel;
+        private TextBox txtSenha;
+        private TextBox txtEmail;
+        private Button btnInserir;
+        private Button btnAlterar;
+        private Button btnConsultar;
     }
 }
