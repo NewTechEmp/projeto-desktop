@@ -1,6 +1,6 @@
 ﻿namespace TudoAcabaEmPizza
 {
-    partial class FrmTipoBorda
+    partial class FrmNivel
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "TipoBorda";
+            SuspendLayout();
+            // 
+            // FrmNivel
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "FrmNivel";
+            Text = "FrmNivel";
+            Load += fmrNivel_Load;
+            ResumeLayout(false);
         }
 
         #endregion
