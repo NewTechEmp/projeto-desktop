@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TAEPClass;
 
 namespace TAEPClass
 {
@@ -21,6 +22,7 @@ namespace TAEPClass
         public List<Endereco> Enderecos{ get; set;}
         public List<Telefone> Telefones { get; set; }
 
+        public Cliente(){}
         public Cliente(int id, string nome, DateTime dataNasc, string cpf, string email, string senha, DateTime datacad, bool ativo, List<Endereco> endereco, List<Telefone> telefone)
         {
             Id = id;
@@ -59,12 +61,14 @@ namespace TAEPClass
         }
         public static Cliente ObterPorId(int id)
         {
-
+            Cliente cliente = new();
+            return cliente;
         }
 
         public static List<Cliente> ObterLista(int id)
         {
-
+            List<Cliente> cliente = new();
+            return cliente;
         }
     }
 }

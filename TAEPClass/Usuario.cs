@@ -1,4 +1,4 @@
-﻿using ComClassSys;
+﻿using TAEPClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ namespace TAEPClass
         public bool Ativo {  get; set; }    
         public Nivel NivelId {  get; set; }
 
+        public Usuario() { }
         public Usuario(int id, string nome, string email, string senha, bool ativo, Nivel nivelId)
         {
             Id = id;
@@ -49,16 +50,17 @@ namespace TAEPClass
         }
         public bool Editar(int id)
         {
-
+            return true;
         }
         public void ObterPorId(int id)
         {
-
+            Usuario usuario = new();
         }
 
         public static List<Usuario> ObterLista()
         {
-
+            List<Usuario> usuario = new();
+            return usuario;
         }
     }
 }

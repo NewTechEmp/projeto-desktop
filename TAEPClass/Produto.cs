@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TAEPClass;
 
 namespace TAEPClass
 {
@@ -19,6 +20,7 @@ namespace TAEPClass
         public int CategoriasId { get; set; }   
         public bool Ativo {  get; set; }
 
+        public Produto() { }
         public Produto(int id, string nome, string descricao, double valorUnit, string codBarras, string? linkImage, DateTime dataCad, int categoriasId, bool ativo)
         {
             Id = id;
@@ -68,12 +70,14 @@ namespace TAEPClass
 
         public static Produto ObterPorId(int id)
         {
-
+            Produto produto = new();
+            return produto;
         }
 
         public static List<Produto> ObterLista(int id)
         {
-
+            List<Produto> produto = new();
+            return produto;
         }
     }
 }

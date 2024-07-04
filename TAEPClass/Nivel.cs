@@ -1,11 +1,13 @@
-﻿using System.Data;
+﻿using MySql.Data.MySqlClient;
+using TAEPClass;
+using System.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComClassSys
+namespace TAEPClass
 {
     public class Nivel
     {
@@ -30,6 +32,19 @@ namespace ComClassSys
         }
         // métodos da classe
         public void Inserir()
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_niveis_insert";
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.ExecuteNonQuery();
+        }
+        public void Editar()
+        {
+            
+        }
+        public void Desativar()
         {
 
         }

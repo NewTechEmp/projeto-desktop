@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TAEPClass;
 
 namespace TAEPClass
 {
@@ -15,6 +16,7 @@ namespace TAEPClass
         public string Descricao { get; set; }   
         public bool Ativo { get; set; }
 
+        public TipoTelefone() { }
         public TipoTelefone(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
@@ -41,12 +43,14 @@ namespace TAEPClass
 
         public static TipoTelefone ObterPorId(int id)
         {
-
+            TipoTelefone tipoTelefone = new();
+            return tipoTelefone;
         }
 
         public static List<TipoTelefone> ObterListaPorid(int id)
         {
-
+            List<TipoTelefone> tipoTelefones = new();
+            return tipoTelefones;
         }
     }
 }

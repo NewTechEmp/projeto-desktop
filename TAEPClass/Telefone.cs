@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TAEPClass;
 
 namespace TAEPClass
 {
@@ -53,12 +54,14 @@ namespace TAEPClass
 
         public static Telefone ObterPorId(int id)
         {
-
+            Telefone telefone = new();
+            return telefone;
         }
 
         public static List<Telefone> ObterLista(int clienteId)
         {
-
+            List<Telefone> telefone = new();
+            return telefone;
         }
 
 
