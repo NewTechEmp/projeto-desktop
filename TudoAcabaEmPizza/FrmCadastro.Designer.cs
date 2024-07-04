@@ -56,6 +56,7 @@
             btnInserir.TabIndex = 0;
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = false;
+            btnInserir.Click += btnInserir_Click;
             // 
             // label1
             // 

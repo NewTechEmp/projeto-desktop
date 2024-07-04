@@ -40,7 +40,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = SystemColors.HighlightText;
+            menuStrip1.BackColor = Color.DarkViolet;
             menuStrip1.Items.AddRange(new ToolStripItem[] { pedidoToolStripMenuItem, produtoToolStripMenuItem, usuarioToolStripMenuItem, cadastreSeToolStripMenuItem, caixaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -77,20 +77,22 @@
             // loginToolStripMenuItem
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(104, 22);
+            loginToolStripMenuItem.Size = new Size(180, 22);
             loginToolStripMenuItem.Text = "&Login";
             // 
             // caixaToolStripMenuItem
             // 
+            caixaToolStripMenuItem.ForeColor = Color.Black;
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
             caixaToolStripMenuItem.Size = new Size(48, 20);
             caixaToolStripMenuItem.Text = "&Caixa";
+            caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.ForestGreen;
+            BackColor = Color.DarkGreen;
             ClientSize = new Size(1029, 450);
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
