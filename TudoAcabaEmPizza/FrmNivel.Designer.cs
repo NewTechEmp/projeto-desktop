@@ -36,7 +36,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Name = "FrmNivel";
-            Text = "fmrNivel";
+            Text = "FrmNivel";
             Load += fmrNivel_Load;
             ResumeLayout(false);
         }
