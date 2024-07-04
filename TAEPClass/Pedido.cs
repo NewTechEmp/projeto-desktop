@@ -7,7 +7,7 @@ using TAEPClass;
 
 namespace TAEPClass
 {
-    internal class ItemPedido
+    internal class Pedido
     {
     }
 }

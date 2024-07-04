@@ -320,7 +320,7 @@
             // 
             // btnFinalizarPed
             // 
-            btnFinalizarPed.BackColor = SystemColors.HotTrack;
+            btnFinalizarPed.BackColor = Color.ForestGreen;
             btnFinalizarPed.ForeColor = SystemColors.HighlightText;
             btnFinalizarPed.Location = new Point(22, 669);
             btnFinalizarPed.Margin = new Padding(2, 3, 2, 3);
@@ -479,7 +479,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.BackColor = SystemColors.HotTrack;
+            btnCancelar.BackColor = Color.ForestGreen;
             btnCancelar.ForeColor = SystemColors.HighlightText;
             btnCancelar.Location = new Point(22, 634);
             btnCancelar.Margin = new Padding(2, 3, 2, 3);

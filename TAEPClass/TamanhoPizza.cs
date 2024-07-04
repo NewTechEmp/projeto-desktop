@@ -8,28 +8,26 @@ using TAEPClass;
 
 namespace TAEPClass
 {
-    public  class TipoTelefone
+    internal class TamanhoPizza
     {
-        
-
-        public int Id { get; set; } 
-        public string Sigla { get; set; }   
-        public string Descricao { get; set; }   
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public string Sigla { get; set; }
         public bool Ativo { get; set; }
 
-        public TipoTelefone() { }
-        public TipoTelefone(int id, string sigla, string descricao, bool ativo)
+        // construtores
+        public TamanhoPizza() { }
+        public TamanhoPizza(string descricao, string sigla)
+        {
+            Descricao = descricao;
+            Sigla = sigla;
+        }
+        public TamanhoPizza(int id, string descricao, string sigla, bool ativo)
         {
             Id = id;
-            Sigla = sigla;
             Descricao = descricao;
+            Sigla = sigla;
             Ativo = ativo;
-        }
-
-        public TipoTelefone(string sigla, string descricao)
-        {
-            Sigla = sigla;
-            Descricao = descricao;
         }
 
         // métodos da classe
@@ -37,8 +35,8 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_tipotelefone_insert";
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.CommandText = "sp_tamanhopizza_insert";
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
@@ -46,9 +44,9 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_tipotelefone_update";
+            cmd.CommandText = "sp_tamanhopizza_update";
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
@@ -56,39 +54,39 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_tipotelefone_update";
+            cmd.CommandText = "sp_tamanhopizza_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spativo", Ativo);
             cmd.ExecuteNonQuery();
         }
-        public static List<TipoTelefone> ObterLista()
+        public static List<TamanhoPizza> ObterLista()
         {
-            List<TipoTelefone> tipotelefone = new();
+            List<TamanhoPizza> tamanhoPizza = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipotelefone";
+            cmd.CommandText = "select * from tamanhopizza";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                tipotelefone.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
+                tamanhoPizza.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
             }
-            return tipotelefone;
+            return tamanhoPizza;
         }
-        public static TipoTelefone ObterPorId(int id)
+        public static TamanhoPizza ObterPorId(int id)
         {
-            TipoTelefone tipoTelefone = new();
+            TamanhoPizza tamanhoPizza = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from tipotelefone where id  = {id}";
+            cmd.CommandText = $"select * from tamanhopizza where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                tipoTelefone.Id = dr.GetInt32(0);
-                tipoTelefone.Descricao = dr.GetString(1);
-                tipoTelefone.Sigla = dr.GetString(2);
-                tipoTelefone.Ativo = dr.GetBoolean(3);
+                tamanhoPizza.Id = dr.GetInt32(0);
+                tamanhoPizza.Descricao = dr.GetString(1);
+                tamanhoPizza.Sigla = dr.GetString(2);
+                tamanhoPizza.Ativo = dr.GetBoolean(3);
             }
-            return tipoTelefone;
+            return tamanhoPizza;
         }
     }
 }
