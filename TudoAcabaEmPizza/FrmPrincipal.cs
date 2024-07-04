@@ -11,5 +11,10 @@ namespace TudoAcabaEmPizza
         {
 
         }
+
+        private void caixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
