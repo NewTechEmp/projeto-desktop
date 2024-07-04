@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TAEPClass;
 
 namespace TudoAcabaEmPizza
 {
-    public partial class FrmNivel : Form
+    public partial class FrmTipoBorda : Form
     {
-        public FrmNivel()
+        public FrmTipoBorda()
         {
             InitializeComponent();
-        }
-
-        private void fmrNivel_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

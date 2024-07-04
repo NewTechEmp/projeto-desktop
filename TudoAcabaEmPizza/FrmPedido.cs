@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TAEPClass;
 
 namespace TudoAcabaEmPizza
 {
@@ -49,7 +51,8 @@ namespace TudoAcabaEmPizza
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
-
+            var dataAtual = DateTime.Now;
+            dtpDataPedido.Value = dataAtual;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -63,6 +66,11 @@ namespace TudoAcabaEmPizza
         }
 
         private void cmbItemAdicional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFuncionario_Click(object sender, EventArgs e)
         {
 
         }
