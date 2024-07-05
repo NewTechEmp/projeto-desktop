@@ -71,7 +71,7 @@ namespace TAEPClass
                     dr.GetString(2), 
                     dr.GetDateTime(3),
                     Cliente.ObterPorId((4)),
-                    Produto.ObterLista((5))
+                    Produto.ObterPorId((5))
                     ));
             }
             return avaliacaos;

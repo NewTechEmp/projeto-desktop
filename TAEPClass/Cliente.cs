@@ -32,7 +32,7 @@ namespace TAEPClass
             Cpf = cpf;
             Email = email;
             Senha = senha;
-            Datacad = datacad;
+            DataCad = datacad;
             Ativo = ativo;
             Enderecos = endereco;
             Telefones = telefone;
@@ -45,7 +45,7 @@ namespace TAEPClass
             Cpf = cpf;
             Email = email;
             Senha = senha;
-            Datacad = datacad;
+            DataCad = datacad;
             Ativo = ativo;
             Enderecos = enderecos;
             Telefones = telefones;
@@ -62,7 +62,27 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
-
+        }
+        public bool Editar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_cliente_update";
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spid", id);
+            cmd.Parameters.AddWithValue("sptelefone", Telefones);
+            cmd.Parameters.AddWithValue("spemail", Email);
+            cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
+        }
+        public bool Deletar(int id, bool ativo)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_cliente_delete";
+            cmd.Parameters.AddWithValue("spid", id);
+            cmd.Parameters.AddWithValue("spativo", ativo);
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public static Cliente ObterPorId(int id)
         {
@@ -115,22 +135,6 @@ namespace TAEPClass
             }
             return clientes;
         }
-        public bool Editar(int id)
-        {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("sptelefone", Telefones);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
-            // if (se) ternário
-            //     [      condição      ] [?] então [:] senão
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
-
-        }
-
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, DataCad);

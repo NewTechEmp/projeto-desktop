@@ -77,7 +77,7 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
+            cmd.CommandText = "sp_telete_update";
             cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spativo", ativo);
             return cmd.ExecuteNonQuery() > -1 ? true : false;

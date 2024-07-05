@@ -1,6 +1,6 @@
 ﻿namespace TudoAcabaEmPizza
 {
-    partial class FrmNivel
+    partial class FrmTipoBorda
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,6 @@
             ClientSize = new Size(800, 450);
             Name = "FrmNivel";
             Text = "FrmNivel";
-            Load += fmrNivel_Load;
             ResumeLayout(false);
         }
 
