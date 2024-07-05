@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             pedidoToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
+            tipoDeBordaToolStripMenuItem = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
@@ -57,9 +58,17 @@
             // 
             // produtoToolStripMenuItem
             // 
+            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             produtoToolStripMenuItem.Size = new Size(62, 20);
             produtoToolStripMenuItem.Text = "&Produto";
+            // 
+            // tipoDeBordaToolStripMenuItem
+            // 
+            tipoDeBordaToolStripMenuItem.Name = "tipoDeBordaToolStripMenuItem";
+            tipoDeBordaToolStripMenuItem.Size = new Size(147, 22);
+            tipoDeBordaToolStripMenuItem.Text = "&Tipo de Borda";
+            tipoDeBordaToolStripMenuItem.Click += tipoDeBordaToolStripMenuItem_Click;
             // 
             // usuarioToolStripMenuItem
             // 
@@ -96,7 +105,7 @@
             ClientSize = new Size(1029, 450);
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ForeColor = SystemColors.HotTrack;
+            ForeColor = SystemColors.Desktop;
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmPrincipal";
@@ -118,5 +127,6 @@
         private ToolStripMenuItem cadastreSeToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem caixaToolStripMenuItem;
+        private ToolStripMenuItem tipoDeBordaToolStripMenuItem;
     }
 }

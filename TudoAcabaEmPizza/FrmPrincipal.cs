@@ -24,5 +24,12 @@ namespace TudoAcabaEmPizza
         {
 
         }
+
+        private void tipoDeBordaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTipoBorda frmTipoBorda = new();
+            frmTipoBorda.MdiParent = this;
+            frmTipoBorda.Show();
+        }
     }
 }
