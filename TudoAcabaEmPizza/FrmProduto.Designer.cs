@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gbProdutos = new GroupBox();
+            cbmCategoria = new ComboBox();
             mskCodigo = new MaskedTextBox();
             label7 = new Label();
             label6 = new Label();
@@ -54,7 +55,6 @@
             clnImage = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
             label9 = new Label();
-            cbmCategoria = new ComboBox();
             gbProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
@@ -85,6 +85,14 @@
             gbProdutos.TabIndex = 16;
             gbProdutos.TabStop = false;
             gbProdutos.Text = "Dados de inserção";
+            // 
+            // cbmCategoria
+            // 
+            cbmCategoria.FormattingEnabled = true;
+            cbmCategoria.Location = new Point(131, 260);
+            cbmCategoria.Name = "cbmCategoria";
+            cbmCategoria.Size = new Size(211, 23);
+            cbmCategoria.TabIndex = 21;
             // 
             // mskCodigo
             // 
@@ -200,6 +208,7 @@
             btnEditar.TabIndex = 16;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnInserir
             // 
@@ -305,14 +314,6 @@
             label9.Size = new Size(156, 36);
             label9.TabIndex = 19;
             label9.Text = "Produto";
-            // 
-            // cbmCategoria
-            // 
-            cbmCategoria.FormattingEnabled = true;
-            cbmCategoria.Location = new Point(131, 260);
-            cbmCategoria.Name = "cbmCategoria";
-            cbmCategoria.Size = new Size(211, 23);
-            cbmCategoria.TabIndex = 21;
             // 
             // FrmProduto
             // 

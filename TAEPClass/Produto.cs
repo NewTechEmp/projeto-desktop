@@ -80,12 +80,12 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
-            cmd.Parameters.AddWithValue("spdata_cad", DataCad);
-            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id)
         {
+            bool resultado = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_update";
@@ -96,7 +96,17 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
             cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return resultado;
         }
         public bool Deletar(int id, bool ativo)
         {
@@ -134,7 +144,7 @@ namespace TAEPClass
                         dr.GetString(5),
                         dr.GetDateTime(6),
                         Categoria.ObterPorId((5)),
-                        dr.GetBoolean(6)
+                        dr.GetBoolean(7)
                     )
                 );
             }
@@ -159,7 +169,7 @@ namespace TAEPClass
                         dr.GetString(5),
                         dr.GetDateTime(6),
                         Categoria.ObterPorId((5)),
-                        dr.GetBoolean(6)
+                        dr.GetBoolean(7)
                 );
             }
             return produto;

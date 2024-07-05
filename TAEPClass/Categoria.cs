@@ -66,18 +66,32 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spativo", Ativo);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
-        public static List<Categoria> ObterLista()
+        public static List<Categoria> ObterLista(string descricao = null)
         {
-            List<Categoria> categoria = new();
+            List<Categoria> lista = new List<Categoria>();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from categorias";
+            if (descricao == null)
+            {
+                cmd.CommandText = "select * from categorias order by nome";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from categorias where nome like '%{descricao}%' order by nome";
+            }
+
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                categoria.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
+                Categoria cat = new Categoria();
+                cat.Id = dr.GetInt32(0);
+                cat.Descricao = dr.GetString(1);
+                cat.Sigla = null;
+
+                lista.Add(cat);
             }
-            return categoria;
+
+            return lista;
         }
         public static Categoria ObterPorId(int id)
         {

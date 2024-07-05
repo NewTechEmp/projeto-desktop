@@ -55,6 +55,11 @@ namespace TudoAcabaEmPizza
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
+            var categorias = Categoria.ObterLista();
+            cbmCategoria.DataSource = categorias;
+            cbmCategoria.DisplayMember = "descricao";
+            cbmCategoria.ValueMember = "id";
+
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
             int count = 0;
@@ -92,6 +97,27 @@ namespace TudoAcabaEmPizza
 
             produto.Inserir();
             FrmProduto_Load(sender, e);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new(
+                txtNome.Text
+                ,txtDescricao.Text
+                ,double.Parse(txtValor.Text)
+                , mskCodigo.Text
+                , txtLinkImage.Text
+                , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
+                );
+            if(produto.Editar(produto.Id))
+            {
+                FrmProduto_Load(sender, e); ;
+                MessageBox.Show($"O produto \" {produto.Nome} \" foi alterado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show($"Falha ao alterar o produto \" {produto.Nome} \"!");
+            }
         }
     }
 }
