@@ -8,25 +8,26 @@ using System.Threading.Tasks;
 
 namespace TAEPClass
 {
-    internal class TipoBorda
+    public class TipoBorda
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
-        public string Sigla { get; set; }
+        public double Valor { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public TipoBorda() { }
-        public TipoBorda(string descricao, string sigla)
+        public TipoBorda(string descricao, double valor)
         {
             Descricao = descricao;
-            Sigla = sigla;
+            Valor = valor;
+           
         }
-        public TipoBorda(int id, string descricao, string sigla, bool ativo)
+        public TipoBorda(int id, string descricao, double valor, bool ativo)
         {
             Id = id;
             Descricao = descricao;
-            Sigla = sigla;
+            Valor = valor;
             Ativo = ativo;
         }
 
@@ -37,7 +38,7 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipoborda_insert";
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("sppreco", Valor);
             cmd.ExecuteNonQuery();
         }
         public void Editar()
@@ -47,7 +48,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_tipoborda_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("sppreco", Valor);
             cmd.ExecuteNonQuery();
         }
         public void Desativar()
@@ -64,11 +65,11 @@ namespace TAEPClass
             List<TipoBorda> tipoBorda = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipoborda";
+            cmd.CommandText = "select * from tipos_borda";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                tipoBorda.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
+                tipoBorda.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetDouble(2), dr.GetBoolean(3)));
             }
             return tipoBorda;
         }
@@ -77,13 +78,13 @@ namespace TAEPClass
             TipoBorda tipoBorda = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from tipoborda where id  = {id}";
+            cmd.CommandText = $"select * from tipos_borda where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 tipoBorda.Id = dr.GetInt32(0);
                 tipoBorda.Descricao = dr.GetString(1);
-                tipoBorda.Sigla = dr.GetString(2);
+                tipoBorda.Valor = dr.GetDouble(2);
                 tipoBorda.Ativo = dr.GetBoolean(3);
             }
             return tipoBorda;

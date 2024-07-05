@@ -35,6 +35,7 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
+            tiposDeBordaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             // 
             // produtoToolStripMenuItem
             // 
+            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tiposDeBordaToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             produtoToolStripMenuItem.Size = new Size(62, 20);
             produtoToolStripMenuItem.Text = "&Produto";
@@ -77,7 +79,7 @@
             // loginToolStripMenuItem
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(180, 22);
+            loginToolStripMenuItem.Size = new Size(104, 22);
             loginToolStripMenuItem.Text = "&Login";
             // 
             // caixaToolStripMenuItem
@@ -87,6 +89,13 @@
             caixaToolStripMenuItem.Size = new Size(48, 20);
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
+            // 
+            // tiposDeBordaToolStripMenuItem
+            // 
+            tiposDeBordaToolStripMenuItem.Name = "tiposDeBordaToolStripMenuItem";
+            tiposDeBordaToolStripMenuItem.Size = new Size(180, 22);
+            tiposDeBordaToolStripMenuItem.Text = "&Tipos de borda";
+            tiposDeBordaToolStripMenuItem.Click += tiposDeBordaToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -117,5 +126,6 @@
         private ToolStripMenuItem cadastreSeToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem caixaToolStripMenuItem;
+        private ToolStripMenuItem tiposDeBordaToolStripMenuItem;
     }
 }
