@@ -33,8 +33,8 @@
             txtSenha = new TextBox();
             label2 = new Label();
             gbLogin = new GroupBox();
-            btnCancelar = new Button();
             btnEntrar = new Button();
+            btnCancelar = new Button();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -88,18 +88,6 @@
             gbLogin.TabStop = false;
             gbLogin.Text = "Login";
             // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.ForestGreen;
-            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelar.ForeColor = SystemColors.ControlLightLight;
-            btnCancelar.Location = new Point(68, 145);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(81, 27);
-            btnCancelar.TabIndex = 6;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            // 
             // btnEntrar
             // 
             btnEntrar.BackColor = Color.ForestGreen;
@@ -112,6 +100,18 @@
             btnEntrar.Text = "&Entrar";
             btnEntrar.UseVisualStyleBackColor = false;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.ForestGreen;
+            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = SystemColors.ControlLightLight;
+            btnCancelar.Location = new Point(68, 145);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(81, 27);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -120,6 +120,7 @@
             Controls.Add(gbLogin);
             Name = "FrmLogin";
             Text = "FrmLogin";
+            Load += FrmLogin_Load;
             gbLogin.ResumeLayout(false);
             gbLogin.PerformLayout();
             ResumeLayout(false);

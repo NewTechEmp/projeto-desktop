@@ -16,5 +16,10 @@ namespace TudoAcabaEmPizza
         {
             InitializeComponent();
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
