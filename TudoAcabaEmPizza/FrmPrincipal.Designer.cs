@@ -36,6 +36,7 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
+            categoriaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             // produtoToolStripMenuItem
             // 
-            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem });
+            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem, categoriaToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             produtoToolStripMenuItem.Size = new Size(62, 20);
             produtoToolStripMenuItem.Text = "&Produto";
@@ -66,7 +67,7 @@
             // tipoDeBordaToolStripMenuItem
             // 
             tipoDeBordaToolStripMenuItem.Name = "tipoDeBordaToolStripMenuItem";
-            tipoDeBordaToolStripMenuItem.Size = new Size(147, 22);
+            tipoDeBordaToolStripMenuItem.Size = new Size(180, 22);
             tipoDeBordaToolStripMenuItem.Text = "&Tipo de Borda";
             tipoDeBordaToolStripMenuItem.Click += tipoDeBordaToolStripMenuItem_Click;
             // 
@@ -96,6 +97,13 @@
             caixaToolStripMenuItem.Size = new Size(48, 20);
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
+            // 
+            // categoriaToolStripMenuItem
+            // 
+            categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
+            categoriaToolStripMenuItem.Size = new Size(180, 22);
+            categoriaToolStripMenuItem.Text = "&Categoria";
+            categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -128,5 +136,6 @@
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem caixaToolStripMenuItem;
         private ToolStripMenuItem tipoDeBordaToolStripMenuItem;
+        private ToolStripMenuItem categoriaToolStripMenuItem;
     }
 }
