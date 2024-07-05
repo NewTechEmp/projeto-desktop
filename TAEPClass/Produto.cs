@@ -66,14 +66,13 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
-            cmd.Parameters.AddWithValue("spcod_barras", Nome);
-            cmd.Parameters.AddWithValue("", Descricao);
-            cmd.Parameters.AddWithValue("spdescricao", ValorUnit);
-            cmd.Parameters.AddWithValue("spvalor_unit", CodBarras);
-            cmd.Parameters.AddWithValue("", LinkImagem);
-            cmd.Parameters.AddWithValue("", DataCad);
-            cmd.Parameters.AddWithValue("", CategoriaId);
-            cmd.Parameters.AddWithValue("", Ativo);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
+            cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
+            cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
+            cmd.Parameters.AddWithValue("spdata_cad", DataCad);
+            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id)
@@ -81,15 +80,14 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_update";
-            cmd.Parameters.AddWithValue("spId", Id);
-            cmd.Parameters.AddWithValue("spcod_barras", Nome);
-            cmd.Parameters.AddWithValue("", Descricao);
-            cmd.Parameters.AddWithValue("spdescricao", ValorUnit);
-            cmd.Parameters.AddWithValue("spvalor_unit", CodBarras);
-            cmd.Parameters.AddWithValue("", LinkImagem);
-            cmd.Parameters.AddWithValue("", DataCad);
-            cmd.Parameters.AddWithValue("", CategoriaId);
-            cmd.Parameters.AddWithValue("", Ativo);
+            cmd.Parameters.AddWithValue("spid", id);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
+            cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
+            cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
+            cmd.Parameters.AddWithValue("spdata_cad", DataCad);
+            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public bool Deletar(int id, bool ativo)
