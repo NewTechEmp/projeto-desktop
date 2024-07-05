@@ -43,11 +43,25 @@ namespace TAEPClass
         // metodos da classe
         public void Inserir()
         {
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_avaliacao_insert";
+            cmd.Parameters.AddWithValue("spnota", Nota);
+            cmd.Parameters.AddWithValue("spcomentario", Comentario);
+            cmd.Parameters.AddWithValue("scliente_id", Cliente);
+            cmd.Parameters.AddWithValue("spproduto_id", Produto);
         }
-        public void Editar()
+        public bool Editar(int id)
         {
-
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_avaliacao_update";
+            cmd.Parameters.AddWithValue("spid", id);
+            cmd.Parameters.AddWithValue("spnota", Nota);
+            cmd.Parameters.AddWithValue("spcomentario", Comentario);
+            cmd.Parameters.AddWithValue("scliente_id", Cliente);
+            cmd.Parameters.AddWithValue("spproduto_id", Produto);
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public static List<Avaliacao> ObterLista(string descricao = null)
         {                                                                                           

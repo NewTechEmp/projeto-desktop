@@ -56,16 +56,16 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("sppreco", Valor);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
-        public void Desativar()
+        public bool Desativar(int id, bool ativo)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipoborda_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spativo", Ativo);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public static List<TipoBorda> ObterLista()
         {

@@ -40,7 +40,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
-        public void Editar()
+        public bool Editar(int id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -48,16 +48,16 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
-        public void Desativar()
+        public bool Desativar(int id, bool ativo)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipoendereco_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spativo", Ativo);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public static List<TipoEndereco> ObterLista()
         {
