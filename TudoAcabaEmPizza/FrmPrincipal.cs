@@ -22,7 +22,10 @@ namespace TudoAcabaEmPizza
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            //FrmLogin login = new();            
+            //login.StartPosition = FormStartPosition.CenterScreen;
+            //login.ShowDialog();
+            //tslUsuario.Text = $"{Program.Usuario.Nome}  -  {Program.Usuario.Nivel.Nome}";
         }
 
         private void tipoDeBordaToolStripMenuItem_Click(object sender, EventArgs e)

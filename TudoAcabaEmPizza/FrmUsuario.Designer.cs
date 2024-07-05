@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            label6 = new Label();
             txtNome = new TextBox();
             txtNivel = new TextBox();
             txtSenha = new TextBox();
@@ -40,15 +41,14 @@
             label4 = new Label();
             label3 = new Label();
             dgvUsuario = new DataGridView();
-            label2 = new Label();
-            label1 = new Label();
-            pbUsuario = new PictureBox();
-            label6 = new Label();
             Id = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Ativo = new DataGridViewTextBoxColumn();
             NivelId = new DataGridViewTextBoxColumn();
+            label2 = new Label();
+            label1 = new Label();
+            pbUsuario = new PictureBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
@@ -77,6 +77,17 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Usuario";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.ForestGreen;
+            label6.Location = new Point(41, 240);
+            label6.Name = "label6";
+            label6.Size = new Size(41, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Nome";
             // 
             // txtNome
             // 
@@ -117,6 +128,7 @@
             btnInserir.TabIndex = 4;
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = false;
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnAlterar
             // 
@@ -186,50 +198,6 @@
             dgvUsuario.Size = new Size(703, 198);
             dgvUsuario.TabIndex = 2;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Showcard Gothic", 17.75F);
-            label2.ForeColor = Color.ForestGreen;
-            label2.Location = new Point(396, 96);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(115, 30);
-            label2.TabIndex = 1;
-            label2.Text = "Usuario";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.ForestGreen;
-            label1.Location = new Point(264, 22);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(434, 46);
-            label1.TabIndex = 1;
-            label1.Text = "Tudo Acaba em Pizza!";
-            // 
-            // pbUsuario
-            // 
-            pbUsuario.Location = new Point(6, 22);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(151, 143);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 0;
-            pbUsuario.TabStop = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.ForestGreen;
-            label6.Location = new Point(41, 240);
-            label6.Name = "label6";
-            label6.Size = new Size(41, 15);
-            label6.TabIndex = 7;
-            label6.Text = "Nome";
-            // 
             // Id
             // 
             Id.Frozen = true;
@@ -264,6 +232,39 @@
             NivelId.Name = "NivelId";
             NivelId.ReadOnly = true;
             NivelId.Width = 150;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Showcard Gothic", 17.75F);
+            label2.ForeColor = Color.ForestGreen;
+            label2.Location = new Point(396, 96);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(115, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Usuario";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.ForestGreen;
+            label1.Location = new Point(264, 22);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(434, 46);
+            label1.TabIndex = 1;
+            label1.Text = "Tudo Acaba em Pizza!";
+            // 
+            // pbUsuario
+            // 
+            pbUsuario.Location = new Point(6, 22);
+            pbUsuario.Name = "pbUsuario";
+            pbUsuario.Size = new Size(151, 143);
+            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbUsuario.TabIndex = 0;
+            pbUsuario.TabStop = false;
             // 
             // FrmUsuario
             // 
