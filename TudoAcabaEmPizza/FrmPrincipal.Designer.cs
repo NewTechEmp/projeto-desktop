@@ -1,6 +1,6 @@
 ﻿namespace TudoAcabaEmPizza
 {
-    partial class Form1
+    partial class FrmPrincipal
     {
         /// <summary>
         ///  Required designer variable.
@@ -35,7 +35,6 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            tiposDeBordaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +57,6 @@
             // 
             // produtoToolStripMenuItem
             // 
-            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tiposDeBordaToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             produtoToolStripMenuItem.Size = new Size(62, 20);
             produtoToolStripMenuItem.Text = "&Produto";
@@ -90,14 +88,7 @@
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // tiposDeBordaToolStripMenuItem
-            // 
-            tiposDeBordaToolStripMenuItem.Name = "tiposDeBordaToolStripMenuItem";
-            tiposDeBordaToolStripMenuItem.Size = new Size(180, 22);
-            tiposDeBordaToolStripMenuItem.Text = "&Tipos de borda";
-            tiposDeBordaToolStripMenuItem.Click += tiposDeBordaToolStripMenuItem_Click;
-            // 
-            // Form1
+            // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(9F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -106,11 +97,11 @@
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.HotTrack;
-            ImeMode = ImeMode.Off;
+            IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "Form1";
+            Name = "FrmPrincipal";
             Text = "Form1";
-            Load += Form1_Load;
+            WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -126,6 +117,5 @@
         private ToolStripMenuItem cadastreSeToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem caixaToolStripMenuItem;
-        private ToolStripMenuItem tiposDeBordaToolStripMenuItem;
     }
 }

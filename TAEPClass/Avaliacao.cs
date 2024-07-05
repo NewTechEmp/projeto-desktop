@@ -49,12 +49,19 @@ namespace TAEPClass
         {
 
         }
-        public static List<Avaliacao> ObterLista()
-        {
+        public static List<Avaliacao> ObterLista(string descricao = null)
+        {                                                                                           
             List<Avaliacao> avaliacaos = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from adicional";
+            if (descricao == null)
+            {
+                cmd.CommandText = "select * from adicional order by descricao";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from adicional where nome like '%{descricao}%' order by descricao";
+            }
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -63,8 +70,8 @@ namespace TAEPClass
                     dr.GetDouble(1),
                     dr.GetString(2), 
                     dr.GetDateTime(3),
-                    Produto.ObterLista((4)),
-                    Cliente.ObterLista((5))
+                    Cliente.ObterPorId((4)),
+                    Produto.ObterLista((5))
                     ));
             }
             return avaliacaos;
