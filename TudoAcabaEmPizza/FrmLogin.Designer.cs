@@ -35,6 +35,7 @@
             gbLogin = new GroupBox();
             btnEntrar = new Button();
             btnCancelar = new Button();
+            label3 = new Label();
             gbLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             gbLogin.Controls.Add(label2);
             gbLogin.Controls.Add(txtEmail);
             gbLogin.ForeColor = Color.ForestGreen;
-            gbLogin.Location = new Point(83, 48);
+            gbLogin.Location = new Point(81, 109);
             gbLogin.Name = "gbLogin";
             gbLogin.Size = new Size(377, 188);
             gbLogin.TabIndex = 4;
@@ -112,11 +113,23 @@
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.SeaGreen;
+            label3.Location = new Point(234, 50);
+            label3.Name = "label3";
+            label3.Size = new Size(107, 36);
+            label3.TabIndex = 5;
+            label3.Text = "LOGIN";
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(610, 378);
+            Controls.Add(label3);
             Controls.Add(gbLogin);
             Name = "FrmLogin";
             Text = "FrmLogin";
@@ -124,6 +137,7 @@
             gbLogin.ResumeLayout(false);
             gbLogin.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -135,5 +149,6 @@
         private GroupBox gbLogin;
         private Button btnCancelar;
         private Button btnEntrar;
+        private Label label3;
     }
 }

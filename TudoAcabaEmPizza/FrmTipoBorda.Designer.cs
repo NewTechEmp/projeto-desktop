@@ -49,14 +49,14 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(239, 128);
+            txtDescricao.Location = new Point(130, 68);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(304, 23);
+            txtDescricao.Size = new Size(284, 23);
             txtDescricao.TabIndex = 0;
             // 
             // txtPreco
             // 
-            txtPreco.Location = new Point(239, 175);
+            txtPreco.Location = new Point(130, 115);
             txtPreco.Name = "txtPreco";
             txtPreco.Size = new Size(100, 23);
             txtPreco.TabIndex = 0;
@@ -64,25 +64,26 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(18, 68);
+            label1.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(6, 68);
             label1.Name = "label1";
-            label1.Size = new Size(94, 25);
+            label1.Size = new Size(105, 23);
             label1.TabIndex = 1;
             label1.Text = "Descrição";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(18, 115);
+            label2.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.Location = new Point(6, 115);
             label2.Name = "label2";
-            label2.Size = new Size(60, 25);
+            label2.Size = new Size(65, 23);
             label2.TabIndex = 1;
             label2.Text = "Preço";
             // 
             // btnInserir
             // 
+            btnInserir.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             btnInserir.Location = new Point(28, 185);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(84, 31);
@@ -93,6 +94,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             btnEditar.Location = new Point(179, 185);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(81, 31);
@@ -103,6 +105,7 @@
             // 
             // btnObterPorId
             // 
+            btnObterPorId.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             btnObterPorId.Location = new Point(315, 185);
             btnObterPorId.Name = "btnObterPorId";
             btnObterPorId.Size = new Size(79, 31);
@@ -123,7 +126,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(239, 83);
+            txtId.Location = new Point(130, 18);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(55, 23);
@@ -132,10 +135,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(18, 18);
+            label4.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Location = new Point(6, 18);
             label4.Name = "label4";
-            label4.Size = new Size(30, 25);
+            label4.Size = new Size(28, 23);
             label4.TabIndex = 1;
             label4.Text = "ID";
             // 
@@ -178,13 +181,16 @@
             // 
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(txtPreco);
+            groupBox1.Controls.Add(txtId);
             groupBox1.Controls.Add(btnObterPorId);
             groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(txtDescricao);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnInserir);
-            groupBox1.Location = new Point(130, 60);
+            groupBox1.Location = new Point(139, 60);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(431, 222);
+            groupBox1.Size = new Size(422, 222);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados de inserção";
@@ -196,10 +202,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvTipoBorda);
             Controls.Add(label3);
-            Controls.Add(txtId);
-            Controls.Add(txtPreco);
-            Controls.Add(txtDescricao);
             Controls.Add(groupBox1);
+            Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            ForeColor = SystemColors.HotTrack;
             Name = "FrmTipoBorda";
             Text = "FrmTipoBorda";
             Load += FrmTipoBorda_Load;

@@ -28,8 +28,8 @@ namespace TudoAcabaEmPizza
             {
                 dgvTipoBorda.Rows.Add();
                 dgvTipoBorda.Rows[count].Cells[0].Value = tipoBorda.Id;
-                dgvTipoBorda.Rows[count].Cells[0].Value = tipoBorda.Descricao;
-                dgvTipoBorda.Rows[count].Cells[0].Value = tipoBorda.Valor;
+                dgvTipoBorda.Rows[count].Cells[1].Value = tipoBorda.Descricao;
+                dgvTipoBorda.Rows[count].Cells[2].Value = tipoBorda.Valor;
 
 
                 count++;
@@ -42,10 +42,8 @@ namespace TudoAcabaEmPizza
         {
             TipoBorda tipoBorda = new(txtDescricao.Text, double.Parse(txtPreco.Text));
             tipoBorda.Inserir();
-            if (tipoBorda.Id > 0)
-            {
-                MessageBox.Show($"O tipo {tipoBorda.Descricao} foi inserido com sucesso.");
-            }
+            FrmTipoBorda_Load(sender,e);
+           
         }
 
         private void btnObterPorId_Click(object sender, EventArgs e)
