@@ -31,14 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPedido));
             label1 = new Label();
             txtCodBarras = new TextBox();
-            txtProduto = new TextBox();
             label2 = new Label();
             btnInserir = new Button();
             btnExcluir = new Button();
             label3 = new Label();
             pictureBox1 = new PictureBox();
             txtQuant = new TextBox();
-            txtDesconto = new TextBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -52,22 +50,33 @@
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvPedido = new DataGridView();
             btnFinalizarPed = new Button();
             label13 = new Label();
             pictureBox2 = new PictureBox();
             lblFuncionario = new Label();
             lblCargoFuncionario = new Label();
-            lblData = new Label();
             lsbProdutos = new ListBox();
             groupBox1 = new GroupBox();
+            comboBox4 = new ComboBox();
+            comboBox2 = new ComboBox();
             pictureBox3 = new PictureBox();
-            dateTimePicker1 = new DateTimePicker();
+            dtpDataPedido = new DateTimePicker();
             btnEditar = new Button();
             btnCancelar = new Button();
             cmbITamanho = new ComboBox();
+            label14 = new Label();
+            textBox1 = new TextBox();
+            label15 = new Label();
+            textBox2 = new TextBox();
+            clnFuncionario = new DataGridViewTextBoxColumn();
+            clnNomeCliente = new DataGridViewTextBoxColumn();
+            clnSubTotal = new DataGridViewTextBoxColumn();
+            clnTotal = new DataGridViewTextBoxColumn();
+            clnDesconto = new DataGridViewTextBoxColumn();
+            clnTanho = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPedido).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -88,26 +97,18 @@
             // 
             // txtCodBarras
             // 
-            txtCodBarras.Location = new Point(578, 112);
+            txtCodBarras.Location = new Point(563, 247);
             txtCodBarras.Margin = new Padding(4);
             txtCodBarras.Name = "txtCodBarras";
             txtCodBarras.Size = new Size(250, 29);
             txtCodBarras.TabIndex = 1;
             txtCodBarras.TextChanged += textBox2_TextChanged;
             // 
-            // txtProduto
-            // 
-            txtProduto.Location = new Point(285, 214);
-            txtProduto.Margin = new Padding(4);
-            txtProduto.Name = "txtProduto";
-            txtProduto.Size = new Size(543, 29);
-            txtProduto.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.ForestGreen;
-            label2.Location = new Point(285, 189);
+            label2.Location = new Point(272, 327);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(72, 21);
@@ -117,7 +118,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(882, 214);
+            btnInserir.Location = new Point(867, 349);
             btnInserir.Margin = new Padding(2, 3, 2, 3);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(106, 29);
@@ -128,7 +129,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(1000, 213);
+            btnExcluir.Location = new Point(985, 348);
             btnExcluir.Margin = new Padding(2, 3, 2, 3);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(106, 30);
@@ -141,7 +142,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.ForestGreen;
-            label3.Location = new Point(285, 87);
+            label3.Location = new Point(270, 222);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(104, 21);
@@ -162,24 +163,16 @@
             // 
             // txtQuant
             // 
-            txtQuant.Location = new Point(578, 300);
+            txtQuant.Location = new Point(563, 435);
             txtQuant.Margin = new Padding(4);
             txtQuant.Name = "txtQuant";
             txtQuant.Size = new Size(250, 29);
             txtQuant.TabIndex = 1;
             // 
-            // txtDesconto
-            // 
-            txtDesconto.Location = new Point(882, 300);
-            txtDesconto.Margin = new Padding(4);
-            txtDesconto.Name = "txtDesconto";
-            txtDesconto.Size = new Size(224, 29);
-            txtDesconto.TabIndex = 1;
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(321, 402);
+            label4.Location = new Point(306, 537);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(0, 21);
@@ -189,7 +182,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.ForestGreen;
-            label5.Location = new Point(285, 275);
+            label5.Location = new Point(270, 410);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(81, 21);
@@ -201,7 +194,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.ForestGreen;
-            label6.Location = new Point(578, 275);
+            label6.Location = new Point(563, 410);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(100, 21);
@@ -212,7 +205,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.ForestGreen;
-            label7.Location = new Point(882, 275);
+            label7.Location = new Point(867, 410);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(82, 21);
@@ -223,7 +216,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.ForestGreen;
-            label8.Location = new Point(578, 87);
+            label8.Location = new Point(563, 222);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(139, 21);
@@ -234,7 +227,7 @@
             // 
             label9.AutoSize = true;
             label9.ForeColor = Color.ForestGreen;
-            label9.Location = new Point(882, 87);
+            label9.Location = new Point(867, 222);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(122, 21);
@@ -244,7 +237,7 @@
             // cmbItemAdicional
             // 
             cmbItemAdicional.FormattingEnabled = true;
-            cmbItemAdicional.Location = new Point(882, 115);
+            cmbItemAdicional.Location = new Point(867, 250);
             cmbItemAdicional.Margin = new Padding(2, 3, 2, 3);
             cmbItemAdicional.Name = "cmbItemAdicional";
             cmbItemAdicional.Size = new Size(224, 29);
@@ -253,7 +246,7 @@
             // 
             // txtSubTotal
             // 
-            txtSubTotal.Location = new Point(285, 369);
+            txtSubTotal.Location = new Point(270, 504);
             txtSubTotal.Margin = new Padding(4);
             txtSubTotal.Name = "txtSubTotal";
             txtSubTotal.Size = new Size(252, 29);
@@ -261,7 +254,7 @@
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(578, 369);
+            txtTotal.Location = new Point(563, 504);
             txtTotal.Margin = new Padding(4);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(252, 29);
@@ -270,7 +263,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(882, 369);
+            comboBox1.Location = new Point(867, 504);
             comboBox1.Margin = new Padding(2, 3, 2, 3);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(224, 29);
@@ -280,7 +273,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = Color.ForestGreen;
-            label10.Location = new Point(285, 344);
+            label10.Location = new Point(270, 479);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(83, 21);
@@ -291,7 +284,7 @@
             // 
             label11.AutoSize = true;
             label11.ForeColor = Color.ForestGreen;
-            label11.Location = new Point(578, 344);
+            label11.Location = new Point(563, 479);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(48, 21);
@@ -302,27 +295,29 @@
             // 
             label12.AutoSize = true;
             label12.ForeColor = Color.ForestGreen;
-            label12.Location = new Point(882, 345);
+            label12.Location = new Point(867, 480);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(185, 21);
             label12.TabIndex = 17;
             label12.Text = "Método de Pagamento";
             // 
-            // dataGridView1
+            // dgvPedido
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(285, 426);
-            dataGridView1.Margin = new Padding(2, 3, 2, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(821, 210);
-            dataGridView1.TabIndex = 18;
+            dgvPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPedido.Columns.AddRange(new DataGridViewColumn[] { clnFuncionario, clnNomeCliente, clnSubTotal, clnTotal, clnDesconto, clnTanho });
+            dgvPedido.Location = new Point(270, 561);
+            dgvPedido.Margin = new Padding(2, 3, 2, 3);
+            dgvPedido.Name = "dgvPedido";
+            dgvPedido.RowHeadersVisible = false;
+            dgvPedido.Size = new Size(821, 210);
+            dgvPedido.TabIndex = 18;
             // 
             // btnFinalizarPed
             // 
             btnFinalizarPed.BackColor = Color.ForestGreen;
             btnFinalizarPed.ForeColor = SystemColors.HighlightText;
-            btnFinalizarPed.Location = new Point(22, 669);
+            btnFinalizarPed.Location = new Point(22, 706);
             btnFinalizarPed.Margin = new Padding(2, 3, 2, 3);
             btnFinalizarPed.Name = "btnFinalizarPed";
             btnFinalizarPed.Size = new Size(166, 38);
@@ -360,6 +355,7 @@
             lblFuncionario.Size = new Size(57, 21);
             lblFuncionario.TabIndex = 24;
             lblFuncionario.Text = "Nome";
+            lblFuncionario.Click += lblFuncionario_Click;
             // 
             // lblCargoFuncionario
             // 
@@ -370,16 +366,6 @@
             lblCargoFuncionario.Size = new Size(55, 21);
             lblCargoFuncionario.TabIndex = 24;
             lblCargoFuncionario.Text = "Cargo";
-            // 
-            // lblData
-            // 
-            lblData.AutoSize = true;
-            lblData.Location = new Point(119, 275);
-            lblData.Margin = new Padding(2, 0, 2, 0);
-            lblData.Name = "lblData";
-            lblData.Size = new Size(46, 21);
-            lblData.TabIndex = 24;
-            lblData.Text = "Data";
             // 
             // lsbProdutos
             // 
@@ -396,23 +382,26 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(comboBox4);
+            groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(pictureBox3);
-            groupBox1.Controls.Add(dateTimePicker1);
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dtpDataPedido);
+            groupBox1.Controls.Add(dgvPedido);
             groupBox1.Controls.Add(lsbProdutos);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(lblData);
             groupBox1.Controls.Add(lblCargoFuncionario);
             groupBox1.Controls.Add(lblFuncionario);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(txtQuant);
             groupBox1.Controls.Add(pictureBox2);
-            groupBox1.Controls.Add(txtDesconto);
             groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(txtProduto);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(btnFinalizarPed);
             groupBox1.Controls.Add(txtCodBarras);
+            groupBox1.Controls.Add(label15);
+            groupBox1.Controls.Add(label14);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label3);
@@ -437,11 +426,27 @@
             groupBox1.Margin = new Padding(2, 3, 2, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2, 3, 2, 3);
-            groupBox1.Size = new Size(1112, 713);
+            groupBox1.Size = new Size(1220, 798);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Pedido";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // comboBox4
+            // 
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(351, 324);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(464, 29);
+            comboBox4.TabIndex = 28;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(868, 435);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(223, 29);
+            comboBox2.TabIndex = 28;
             // 
             // pictureBox3
             // 
@@ -453,17 +458,19 @@
             pictureBox3.TabIndex = 27;
             pictureBox3.TabStop = false;
             // 
-            // dateTimePicker1
+            // dtpDataPedido
             // 
-            dateTimePicker1.CalendarForeColor = SystemColors.InactiveCaptionText;
-            dateTimePicker1.CalendarTitleForeColor = SystemColors.InfoText;
-            dateTimePicker1.Location = new Point(285, 112);
-            dateTimePicker1.Margin = new Padding(2, 3, 2, 3);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(252, 29);
-            dateTimePicker1.TabIndex = 26;
-            dateTimePicker1.Value = new DateTime(2024, 7, 2, 9, 39, 34, 0);
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            dtpDataPedido.CalendarForeColor = SystemColors.InactiveCaptionText;
+            dtpDataPedido.CalendarTitleForeColor = SystemColors.InfoText;
+            dtpDataPedido.Enabled = false;
+            dtpDataPedido.Format = DateTimePickerFormat.Short;
+            dtpDataPedido.Location = new Point(270, 247);
+            dtpDataPedido.Margin = new Padding(2, 3, 2, 3);
+            dtpDataPedido.Name = "dtpDataPedido";
+            dtpDataPedido.Size = new Size(252, 29);
+            dtpDataPedido.TabIndex = 26;
+            dtpDataPedido.Value = new DateTime(2024, 7, 4, 11, 16, 16, 0);
+            dtpDataPedido.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // btnEditar
             // 
@@ -481,7 +488,7 @@
             // 
             btnCancelar.BackColor = Color.ForestGreen;
             btnCancelar.ForeColor = SystemColors.HighlightText;
-            btnCancelar.Location = new Point(22, 634);
+            btnCancelar.Location = new Point(22, 653);
             btnCancelar.Margin = new Padding(2, 3, 2, 3);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(166, 29);
@@ -492,12 +499,98 @@
             // cmbITamanho
             // 
             cmbITamanho.FormattingEnabled = true;
-            cmbITamanho.Location = new Point(285, 300);
+            cmbITamanho.Location = new Point(270, 435);
             cmbITamanho.Margin = new Padding(2, 3, 2, 3);
             cmbITamanho.Name = "cmbITamanho";
             cmbITamanho.Size = new Size(224, 29);
             cmbITamanho.TabIndex = 11;
             cmbITamanho.SelectedIndexChanged += cmbItemAdicional_SelectedIndexChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.ForeColor = Color.ForestGreen;
+            label14.Location = new Point(218, 140);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(85, 21);
+            label14.TabIndex = 2;
+            label14.Text = "Cliente ID";
+            label14.Click += label2_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(287, 184);
+            textBox1.Margin = new Padding(4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(804, 29);
+            textBox1.TabIndex = 1;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.ForeColor = Color.ForestGreen;
+            label15.Location = new Point(218, 184);
+            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(61, 21);
+            label15.TabIndex = 2;
+            label15.Text = "Nome:";
+            label15.Click += label2_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(311, 137);
+            textBox2.Margin = new Padding(4);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(47, 29);
+            textBox2.TabIndex = 1;
+            // 
+            // clnFuncionario
+            // 
+            clnFuncionario.Frozen = true;
+            clnFuncionario.HeaderText = "Funcionário";
+            clnFuncionario.Name = "clnFuncionario";
+            clnFuncionario.ReadOnly = true;
+            clnFuncionario.Width = 178;
+            // 
+            // clnNomeCliente
+            // 
+            clnNomeCliente.Frozen = true;
+            clnNomeCliente.HeaderText = "Nome do Cliente";
+            clnNomeCliente.Name = "clnNomeCliente";
+            clnNomeCliente.ReadOnly = true;
+            clnNomeCliente.Width = 180;
+            // 
+            // clnSubTotal
+            // 
+            clnSubTotal.Frozen = true;
+            clnSubTotal.HeaderText = "SubTotal";
+            clnSubTotal.Name = "clnSubTotal";
+            clnSubTotal.ReadOnly = true;
+            // 
+            // clnTotal
+            // 
+            clnTotal.Frozen = true;
+            clnTotal.HeaderText = "Total";
+            clnTotal.Name = "clnTotal";
+            clnTotal.ReadOnly = true;
+            // 
+            // clnDesconto
+            // 
+            clnDesconto.Frozen = true;
+            clnDesconto.HeaderText = "Desconto";
+            clnDesconto.Name = "clnDesconto";
+            clnDesconto.ReadOnly = true;
+            clnDesconto.Width = 120;
+            // 
+            // clnTanho
+            // 
+            clnTanho.Frozen = true;
+            clnTanho.HeaderText = "Tamanho Pizza";
+            clnTanho.Name = "clnTanho";
+            clnTanho.ReadOnly = true;
+            clnTanho.Width = 140;
             // 
             // FrmPedido
             // 
@@ -513,7 +606,7 @@
             Text = "FrmPedido";
             Load += FrmPedido_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPedido).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -526,14 +619,12 @@
         private Label label1;
         private TextBox txtDataPed;
         private TextBox txtCodBarras;
-        private TextBox txtProduto;
         private Label label2;
         private Button btnInserir;
         private Button btnExcluir;
         private Label label3;
         private PictureBox pictureBox1;
         private TextBox txtQuant;
-        private TextBox txtDesconto;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -547,19 +638,30 @@
         private Label label10;
         private Label label11;
         private Label label12;
-        private DataGridView dataGridView1;
+        private DataGridView dgvPedido;
         private Button btnFinalizarPed;
         private Label label13;
         private PictureBox pictureBox2;
         private Label lblFuncionario;
         private Label lblCargoFuncionario;
-        private Label lblData;
         private ListBox lsbProdutos;
         private GroupBox groupBox1;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDataPedido;
         private Button btnEditar;
         private Button btnCancelar;
         private ComboBox cmbITamanho;
         private PictureBox pictureBox3;
+        private ComboBox comboBox2;
+        private ComboBox comboBox4;
+        private Label label14;
+        private TextBox textBox1;
+        private Label label15;
+        private TextBox textBox2;
+        private DataGridViewTextBoxColumn clnFuncionario;
+        private DataGridViewTextBoxColumn clnNomeCliente;
+        private DataGridViewTextBoxColumn clnSubTotal;
+        private DataGridViewTextBoxColumn clnTotal;
+        private DataGridViewTextBoxColumn clnDesconto;
+        private DataGridViewTextBoxColumn clnTanho;
     }
 }

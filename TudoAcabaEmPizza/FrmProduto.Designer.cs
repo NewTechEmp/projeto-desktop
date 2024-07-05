@@ -32,57 +32,52 @@
             btnConsultar = new Button();
             btnEditar = new Button();
             btnInserir = new Button();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             label1 = new Label();
-            label8 = new Label();
-            label2 = new Label();
             txtId = new TextBox();
-            label7 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            mtbCodBarras = new MaskedTextBox();
-            label6 = new Label();
-            label3 = new Label();
-            label5 = new Label();
-            txtDescricao = new TextBox();
-            textBox1 = new TextBox();
-            label4 = new Label();
             dgvProdutos = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            CodBarras = new DataGridViewTextBoxColumn();
-            Descricao = new DataGridViewTextBoxColumn();
-            Valor = new DataGridViewTextBoxColumn();
-            UniVenda = new DataGridViewTextBoxColumn();
-            CategoriaId = new DataGridViewTextBoxColumn();
-            EstoqueMin = new DataGridViewTextBoxColumn();
-            Desconto = new DataGridViewTextBoxColumn();
             label9 = new Label();
+            txtNome = new TextBox();
+            txtDescricao = new TextBox();
+            txtValor = new TextBox();
+            txtCodBarras = new TextBox();
+            txtLinkImage = new TextBox();
+            txtCategoria = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            Id = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnDescricao = new DataGridViewTextBoxColumn();
+            clnValor = new DataGridViewTextBoxColumn();
+            clncodBar = new DataGridViewTextBoxColumn();
+            clnImage = new DataGridViewTextBoxColumn();
+            clnCategoria = new DataGridViewTextBoxColumn();
             gbProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // gbProdutos
             // 
+            gbProdutos.Controls.Add(label7);
+            gbProdutos.Controls.Add(label6);
+            gbProdutos.Controls.Add(label5);
+            gbProdutos.Controls.Add(label4);
+            gbProdutos.Controls.Add(label3);
+            gbProdutos.Controls.Add(label2);
+            gbProdutos.Controls.Add(txtCategoria);
+            gbProdutos.Controls.Add(txtLinkImage);
+            gbProdutos.Controls.Add(txtCodBarras);
+            gbProdutos.Controls.Add(txtValor);
+            gbProdutos.Controls.Add(txtDescricao);
+            gbProdutos.Controls.Add(txtNome);
             gbProdutos.Controls.Add(btnConsultar);
             gbProdutos.Controls.Add(btnEditar);
             gbProdutos.Controls.Add(btnInserir);
-            gbProdutos.Controls.Add(textBox2);
-            gbProdutos.Controls.Add(textBox3);
             gbProdutos.Controls.Add(label1);
-            gbProdutos.Controls.Add(label8);
-            gbProdutos.Controls.Add(label2);
             gbProdutos.Controls.Add(txtId);
-            gbProdutos.Controls.Add(label7);
-            gbProdutos.Controls.Add(comboBox1);
-            gbProdutos.Controls.Add(comboBox2);
-            gbProdutos.Controls.Add(mtbCodBarras);
-            gbProdutos.Controls.Add(label6);
-            gbProdutos.Controls.Add(label3);
-            gbProdutos.Controls.Add(label5);
-            gbProdutos.Controls.Add(txtDescricao);
-            gbProdutos.Controls.Add(textBox1);
-            gbProdutos.Controls.Add(label4);
             gbProdutos.ForeColor = Color.ForestGreen;
             gbProdutos.Location = new Point(270, 52);
             gbProdutos.Name = "gbProdutos";
@@ -124,210 +119,32 @@
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = false;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(216, 241);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(164, 23);
-            textBox2.TabIndex = 12;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(216, 278);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(164, 23);
-            textBox3.TabIndex = 14;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.ForestGreen;
-            label1.Location = new Point(192, 29);
+            label1.Location = new Point(107, 83);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 0;
             label1.Text = "ID";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = SystemColors.ControlLightLight;
-            label8.ForeColor = Color.ForestGreen;
-            label8.Location = new Point(101, 281);
-            label8.Name = "label8";
-            label8.Size = new Size(109, 15);
-            label8.TabIndex = 13;
-            label8.Text = "Classe de Desconto";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.ForestGreen;
-            label2.Location = new Point(113, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(97, 15);
-            label2.TabIndex = 0;
-            label2.Text = "Código de Barras";
-            // 
             // txtId
             // 
-            txtId.Location = new Point(216, 26);
+            txtId.Location = new Point(131, 83);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(55, 23);
             txtId.TabIndex = 1;
-            txtId.TextChanged += txtId_TextChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = Color.ForestGreen;
-            label7.Location = new Point(116, 244);
-            label7.Name = "label7";
-            label7.Size = new Size(94, 15);
-            label7.TabIndex = 11;
-            label7.Text = "Estoque mínimo";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(216, 171);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(164, 23);
-            comboBox1.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(216, 206);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(164, 23);
-            comboBox2.TabIndex = 10;
-            // 
-            // mtbCodBarras
-            // 
-            mtbCodBarras.Location = new Point(216, 61);
-            mtbCodBarras.Mask = "0.000000.000000";
-            mtbCodBarras.Name = "mtbCodBarras";
-            mtbCodBarras.Size = new Size(164, 23);
-            mtbCodBarras.TabIndex = 3;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.ForestGreen;
-            label6.Location = new Point(152, 209);
-            label6.Name = "label6";
-            label6.Size = new Size(58, 15);
-            label6.TabIndex = 9;
-            label6.Text = "Categoria";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.ForestGreen;
-            label3.Location = new Point(152, 102);
-            label3.Name = "label3";
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Descrição";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.ForestGreen;
-            label5.Location = new Point(108, 174);
-            label5.Name = "label5";
-            label5.Size = new Size(102, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Unidade de Venda";
-            // 
-            // txtDescricao
-            // 
-            txtDescricao.Location = new Point(216, 99);
-            txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(164, 23);
-            txtDescricao.TabIndex = 5;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(216, 136);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 7;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.ForestGreen;
-            label4.Location = new Point(132, 139);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 15);
-            label4.TabIndex = 6;
-            label4.Text = "Valor Unitário";
             // 
             // dgvProdutos
             // 
-            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { Id, CodBarras, Descricao, Valor, UniVenda, CategoriaId, EstoqueMin, Desconto });
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { Id, clnNome, clnDescricao, clnValor, clncodBar, clnImage, clnCategoria });
             dgvProdutos.Location = new Point(106, 451);
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.RowHeadersVisible = false;
             dgvProdutos.Size = new Size(825, 150);
             dgvProdutos.TabIndex = 18;
-            // 
-            // Id
-            // 
-            Id.Frozen = true;
-            Id.HeaderText = "ID";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Width = 60;
-            // 
-            // CodBarras
-            // 
-            CodBarras.HeaderText = "Código de Barras";
-            CodBarras.Name = "CodBarras";
-            CodBarras.ReadOnly = true;
-            CodBarras.Width = 122;
-            // 
-            // Descricao
-            // 
-            Descricao.HeaderText = "Descrição";
-            Descricao.Name = "Descricao";
-            Descricao.ReadOnly = true;
-            Descricao.Width = 150;
-            // 
-            // Valor
-            // 
-            Valor.HeaderText = "Valor";
-            Valor.Name = "Valor";
-            // 
-            // UniVenda
-            // 
-            UniVenda.HeaderText = "Unidada de Venda";
-            UniVenda.Name = "UniVenda";
-            UniVenda.ReadOnly = true;
-            UniVenda.Width = 110;
-            // 
-            // CategoriaId
-            // 
-            CategoriaId.HeaderText = "Categoria ID";
-            CategoriaId.Name = "CategoriaId";
-            CategoriaId.ReadOnly = true;
-            // 
-            // EstoqueMin
-            // 
-            EstoqueMin.HeaderText = "Estoque Mínimo";
-            EstoqueMin.Name = "EstoqueMin";
-            EstoqueMin.ReadOnly = true;
-            EstoqueMin.Width = 110;
-            // 
-            // Desconto
-            // 
-            Desconto.HeaderText = "Desconto";
-            Desconto.Name = "Desconto";
-            Desconto.ReadOnly = true;
-            Desconto.Width = 70;
             // 
             // label9
             // 
@@ -339,6 +156,160 @@
             label9.Size = new Size(156, 36);
             label9.TabIndex = 19;
             label9.Text = "Produto";
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(131, 112);
+            txtNome.Name = "txtNome";
+            txtNome.PlaceholderText = "Obrigatório";
+            txtNome.Size = new Size(211, 23);
+            txtNome.TabIndex = 18;
+            // 
+            // txtDescricao
+            // 
+            txtDescricao.Location = new Point(131, 141);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(211, 23);
+            txtDescricao.TabIndex = 18;
+            // 
+            // txtValor
+            // 
+            txtValor.Location = new Point(131, 170);
+            txtValor.Name = "txtValor";
+            txtValor.PlaceholderText = "Obrigatório";
+            txtValor.Size = new Size(211, 23);
+            txtValor.TabIndex = 18;
+            // 
+            // txtCodBarras
+            // 
+            txtCodBarras.Location = new Point(131, 199);
+            txtCodBarras.Name = "txtCodBarras";
+            txtCodBarras.Size = new Size(211, 23);
+            txtCodBarras.TabIndex = 18;
+            // 
+            // txtLinkImage
+            // 
+            txtLinkImage.Location = new Point(131, 228);
+            txtLinkImage.Name = "txtLinkImage";
+            txtLinkImage.Size = new Size(211, 23);
+            txtLinkImage.TabIndex = 18;
+            // 
+            // txtCategoria
+            // 
+            txtCategoria.Location = new Point(131, 257);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.PlaceholderText = "Obrigatório";
+            txtCategoria.Size = new Size(211, 23);
+            txtCategoria.TabIndex = 18;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(74, 115);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 15);
+            label2.TabIndex = 19;
+            label2.Text = "* Nome";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(67, 149);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 15);
+            label3.TabIndex = 19;
+            label3.Text = " Descrição";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(84, 178);
+            label4.Name = "label4";
+            label4.Size = new Size(41, 15);
+            label4.TabIndex = 19;
+            label4.Text = "* Valor";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(31, 207);
+            label5.Name = "label5";
+            label5.Size = new Size(97, 15);
+            label5.TabIndex = 19;
+            label5.Text = "Codigo de barras";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(53, 231);
+            label6.Name = "label6";
+            label6.Size = new Size(76, 15);
+            label6.TabIndex = 19;
+            label6.Text = "Link Imagem";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(56, 260);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 15);
+            label7.TabIndex = 19;
+            label7.Text = "* Categoria";
+            // 
+            // Id
+            // 
+            Id.Frozen = true;
+            Id.HeaderText = "ID";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 60;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.Width = 127;
+            // 
+            // clnDescricao
+            // 
+            clnDescricao.Frozen = true;
+            clnDescricao.HeaderText = "Descrição";
+            clnDescricao.Name = "clnDescricao";
+            clnDescricao.ReadOnly = true;
+            clnDescricao.Width = 127;
+            // 
+            // clnValor
+            // 
+            clnValor.Frozen = true;
+            clnValor.HeaderText = "Valor";
+            clnValor.Name = "clnValor";
+            clnValor.ReadOnly = true;
+            clnValor.Width = 127;
+            // 
+            // clncodBar
+            // 
+            clncodBar.Frozen = true;
+            clncodBar.HeaderText = "Codigo de Barras";
+            clncodBar.Name = "clncodBar";
+            clncodBar.ReadOnly = true;
+            clncodBar.Width = 127;
+            // 
+            // clnImage
+            // 
+            clnImage.Frozen = true;
+            clnImage.HeaderText = "Link imagem";
+            clnImage.Name = "clnImage";
+            clnImage.ReadOnly = true;
+            clnImage.Width = 127;
+            // 
+            // clnCategoria
+            // 
+            clnCategoria.Frozen = true;
+            clnCategoria.HeaderText = "Categoria";
+            clnCategoria.Name = "clnCategoria";
+            clnCategoria.ReadOnly = true;
+            clnCategoria.Width = 127;
             // 
             // FrmProduto
             // 
@@ -364,31 +335,28 @@
         private Button btnConsultar;
         private Button btnEditar;
         private Button btnInserir;
-        private TextBox textBox2;
-        private TextBox textBox3;
         private Label label1;
-        private Label label8;
-        private Label label2;
         private TextBox txtId;
-        private Label label7;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private MaskedTextBox mtbCodBarras;
-        private Label label6;
-        private Label label3;
-        private Label label5;
-        private TextBox txtDescricao;
-        private TextBox textBox1;
-        private Label label4;
         private DataGridView dgvProdutos;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn CodBarras;
-        private DataGridViewTextBoxColumn Descricao;
-        private DataGridViewTextBoxColumn Valor;
-        private DataGridViewTextBoxColumn UniVenda;
-        private DataGridViewTextBoxColumn CategoriaId;
-        private DataGridViewTextBoxColumn EstoqueMin;
-        private DataGridViewTextBoxColumn Desconto;
         private Label label9;
+        private TextBox txtNome;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private TextBox txtCategoria;
+        private TextBox txtLinkImage;
+        private TextBox txtCodBarras;
+        private TextBox txtValor;
+        private TextBox txtDescricao;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnDescricao;
+        private DataGridViewTextBoxColumn clnValor;
+        private DataGridViewTextBoxColumn clncodBar;
+        private DataGridViewTextBoxColumn clnImage;
+        private DataGridViewTextBoxColumn clnCategoria;
     }
 }

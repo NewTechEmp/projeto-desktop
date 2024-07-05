@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txtNome = new TextBox();
             txtNivel = new TextBox();
             txtSenha = new TextBox();
             txtEmail = new TextBox();
@@ -42,6 +43,12 @@
             label2 = new Label();
             label1 = new Label();
             pbUsuario = new PictureBox();
+            label6 = new Label();
+            Id = new DataGridViewTextBoxColumn();
+            Nome = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Ativo = new DataGridViewTextBoxColumn();
+            NivelId = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
@@ -49,6 +56,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(txtNome);
             groupBox1.Controls.Add(txtNivel);
             groupBox1.Controls.Add(txtSenha);
             groupBox1.Controls.Add(txtEmail);
@@ -69,23 +78,30 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Usuario";
             // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(41, 258);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(193, 23);
+            txtNome.TabIndex = 6;
+            // 
             // txtNivel
             // 
-            txtNivel.Location = new Point(621, 248);
+            txtNivel.Location = new Point(759, 258);
             txtNivel.Name = "txtNivel";
-            txtNivel.Size = new Size(182, 23);
+            txtNivel.Size = new Size(105, 23);
             txtNivel.TabIndex = 5;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(349, 248);
+            txtSenha.Location = new Point(534, 258);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(190, 23);
+            txtSenha.Size = new Size(178, 23);
             txtSenha.TabIndex = 5;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(84, 248);
+            txtEmail.Location = new Point(300, 258);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(175, 23);
             txtEmail.TabIndex = 5;
@@ -95,7 +111,7 @@
             btnInserir.BackColor = Color.ForestGreen;
             btnInserir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInserir.ForeColor = SystemColors.ControlLightLight;
-            btnInserir.Location = new Point(661, 361);
+            btnInserir.Location = new Point(710, 361);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(85, 33);
             btnInserir.TabIndex = 4;
@@ -107,7 +123,7 @@
             btnAlterar.BackColor = Color.ForestGreen;
             btnAlterar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAlterar.ForeColor = SystemColors.ControlLightLight;
-            btnAlterar.Location = new Point(387, 361);
+            btnAlterar.Location = new Point(436, 361);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(93, 33);
             btnAlterar.TabIndex = 4;
@@ -120,7 +136,7 @@
             btnConsultar.BackColor = Color.ForestGreen;
             btnConsultar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConsultar.ForeColor = SystemColors.ControlLightLight;
-            btnConsultar.Location = new Point(96, 361);
+            btnConsultar.Location = new Point(145, 361);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(98, 33);
             btnConsultar.TabIndex = 4;
@@ -132,7 +148,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.ForestGreen;
-            label5.Location = new Point(621, 230);
+            label5.Location = new Point(759, 240);
             label5.Name = "label5";
             label5.Size = new Size(36, 15);
             label5.TabIndex = 3;
@@ -143,7 +159,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.ForestGreen;
-            label4.Location = new Point(349, 230);
+            label4.Location = new Point(534, 240);
             label4.Name = "label4";
             label4.Size = new Size(41, 15);
             label4.TabIndex = 3;
@@ -154,7 +170,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.ForestGreen;
-            label3.Location = new Point(84, 230);
+            label3.Location = new Point(300, 240);
             label3.Name = "label3";
             label3.Size = new Size(41, 15);
             label3.TabIndex = 3;
@@ -163,9 +179,11 @@
             // dgvUsuario
             // 
             dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuario.Location = new Point(32, 400);
+            dgvUsuario.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, Email, Ativo, NivelId });
+            dgvUsuario.Location = new Point(111, 400);
             dgvUsuario.Name = "dgvUsuario";
-            dgvUsuario.Size = new Size(856, 198);
+            dgvUsuario.RowHeadersVisible = false;
+            dgvUsuario.Size = new Size(703, 198);
             dgvUsuario.TabIndex = 2;
             // 
             // label2
@@ -194,12 +212,58 @@
             // 
             // pbUsuario
             // 
-            pbUsuario.Location = new Point(6, 37);
+            pbUsuario.Location = new Point(6, 22);
             pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(151, 126);
+            pbUsuario.Size = new Size(151, 143);
             pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pbUsuario.TabIndex = 0;
             pbUsuario.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.ForestGreen;
+            label6.Location = new Point(41, 240);
+            label6.Name = "label6";
+            label6.Size = new Size(41, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Nome";
+            // 
+            // Id
+            // 
+            Id.Frozen = true;
+            Id.HeaderText = "ID";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            Nome.HeaderText = "Nome";
+            Nome.Name = "Nome";
+            Nome.ReadOnly = true;
+            Nome.Width = 150;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "E-mail";
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 150;
+            // 
+            // Ativo
+            // 
+            Ativo.HeaderText = "Ativo";
+            Ativo.Name = "Ativo";
+            Ativo.ReadOnly = true;
+            Ativo.Width = 150;
+            // 
+            // NivelId
+            // 
+            NivelId.HeaderText = "Nível_ID";
+            NivelId.Name = "NivelId";
+            NivelId.ReadOnly = true;
+            NivelId.Width = 150;
             // 
             // FrmUsuario
             // 
@@ -233,5 +297,12 @@
         private Button btnInserir;
         private Button btnAlterar;
         private Button btnConsultar;
+        private TextBox txtNome;
+        private Label label6;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Nome;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Ativo;
+        private DataGridViewTextBoxColumn NivelId;
     }
 }

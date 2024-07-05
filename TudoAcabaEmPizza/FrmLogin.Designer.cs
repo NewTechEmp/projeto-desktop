@@ -74,8 +74,8 @@
             // 
             // gbLogin
             // 
-            gbLogin.Controls.Add(btnCancelar);
             gbLogin.Controls.Add(btnEntrar);
+            gbLogin.Controls.Add(btnCancelar);
             gbLogin.Controls.Add(txtSenha);
             gbLogin.Controls.Add(label1);
             gbLogin.Controls.Add(label2);
@@ -90,22 +90,27 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.ForeColor = Color.ForestGreen;
-            btnCancelar.Location = new Point(68, 141);
+            btnCancelar.BackColor = Color.ForestGreen;
+            btnCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.ForeColor = SystemColors.ControlLightLight;
+            btnCancelar.Location = new Point(68, 145);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 5;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Size = new Size(81, 27);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnEntrar
             // 
-            btnEntrar.Location = new Point(247, 141);
+            btnEntrar.BackColor = Color.ForestGreen;
+            btnEntrar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEntrar.ForeColor = SystemColors.ControlLightLight;
+            btnEntrar.Location = new Point(241, 145);
             btnEntrar.Name = "btnEntrar";
-            btnEntrar.Size = new Size(75, 23);
-            btnEntrar.TabIndex = 4;
-            btnEntrar.Text = "Entrar";
-            btnEntrar.UseVisualStyleBackColor = true;
+            btnEntrar.Size = new Size(81, 27);
+            btnEntrar.TabIndex = 7;
+            btnEntrar.Text = "&Entrar";
+            btnEntrar.UseVisualStyleBackColor = false;
             // 
             // FrmLogin
             // 
@@ -127,7 +132,7 @@
         private TextBox txtSenha;
         private Label label2;
         private GroupBox gbLogin;
-        private Button btnEntrar;
         private Button btnCancelar;
+        private Button btnEntrar;
     }
 }
