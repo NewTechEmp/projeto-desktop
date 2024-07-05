@@ -136,7 +136,7 @@ namespace TAEPClass
             Usuario usuario = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = md5('{senha}') and ativo = 1";
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = aes_encrypt('{senha}','NewTech@123') and ativo = 1";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
