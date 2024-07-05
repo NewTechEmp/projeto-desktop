@@ -8,7 +8,7 @@ using TAEPClass;
 
 namespace TAEPClass
 {
-    internal class TipoEndereco
+    public class TipoEndereco
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
@@ -64,7 +64,7 @@ namespace TAEPClass
             List<TipoEndereco> tipoEndereco = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipoendereco";
+            cmd.CommandText = "select * from tipoendereco order by descricao";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
