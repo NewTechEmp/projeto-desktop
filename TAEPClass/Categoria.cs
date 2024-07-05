@@ -30,13 +30,20 @@ namespace TAEPClass
             Ativo = ativo;
         }
 
+        public Categoria(int id, string descricao, string sigla)
+        {
+            Id = id;
+            Descricao = descricao;
+            Sigla = sigla;
+        }
+
         // métodos da classe
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_insert";
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("spnome", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
@@ -45,8 +52,8 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_update";
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spnome", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
@@ -64,7 +71,7 @@ namespace TAEPClass
             List<Categoria> categoria = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from categoria";
+            cmd.CommandText = "select * from categorias";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -77,7 +84,7 @@ namespace TAEPClass
             Categoria categoria = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from categoria where id  = {id}";
+            cmd.CommandText = $"select * from categorias where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

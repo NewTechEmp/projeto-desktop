@@ -81,11 +81,11 @@ namespace TudoAcabaEmPizza
             if (tipoBorda.Editar(tipoBorda.Id))
             {
                 FrmTipoBorda_Load(sender, e);
-                MessageBox.Show($"A categoria \" {tipoBorda.Descricao} \" foi alterado com sucesso!");
+                MessageBox.Show($"A Borda: \" {tipoBorda.Descricao} \" foi alterada com sucesso!");
             }
             else
             {
-                MessageBox.Show($"Falha ao alterar a categoria \" {tipoBorda.Descricao} \" !");
+                MessageBox.Show($"Falha ao alterar a borda \" {tipoBorda.Descricao} \" !");
             }
         }
     }
