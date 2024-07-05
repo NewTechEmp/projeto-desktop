@@ -62,14 +62,32 @@ namespace TudoAcabaEmPizza
             {
                 if (txtId.Text.Length > 0)
                 {
-                    Categoria categoria = Categoria.ObterPorId(int.Parse(txtId.Text));
-                    txtCategoriaNome.Text = categoria.Nome;
-                    txtSigla.Text = categoria.Sigla;
+                    TipoBorda tipoBorda = TipoBorda.ObterPorId(int.Parse(txtId.Text));
+                    txtDescricao.Text = tipoBorda.Descricao;
+                    txtPreco.Text = Convert.ToString(tipoBorda.Valor);
                     txtId.ReadOnly = true;
-                    btnConsultar.Text = "&Consultar";
+                    btnObterPorId.Text = "&Consultar";
                     btnEditar.Enabled = true;
 
                 }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            TipoBorda tipoBorda = new(
+                   int.Parse(txtId.Text)
+                   , txtDescricao.Text
+                   , double.Parse(txtPreco.Text)
+                   );
+            if (tipoBorda.Editar(tipoBorda.Id))
+            {
+                FrmTipoBorda_Load(sender, e);
+                MessageBox.Show($"A categoria \" {tipoBorda.Descricao} \" foi alterado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show($"Falha ao alterar a categoria \" {tipoBorda.Descricao} \" !");
             }
         }
     }

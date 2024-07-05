@@ -31,6 +31,13 @@ namespace TAEPClass
             Ativo = ativo;
         }
 
+        public TipoBorda(int id, string descricao, double valor)
+        {
+            Id = id;
+            Descricao = descricao;
+            Valor = valor;
+        }
+
         // métodos da classe
         public void Inserir()
         {
@@ -41,7 +48,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("sppreco", Valor);
             cmd.ExecuteNonQuery();
         }
-        public void Editar()
+        public bool Editar(int id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;

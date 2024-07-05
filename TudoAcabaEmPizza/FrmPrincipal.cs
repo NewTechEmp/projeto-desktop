@@ -17,7 +17,12 @@ namespace TudoAcabaEmPizza
             FrmTipoBorda frmTipoBorda = new();
             frmTipoBorda.MdiParent = this;
             frmTipoBorda.Show();
-              
+
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
