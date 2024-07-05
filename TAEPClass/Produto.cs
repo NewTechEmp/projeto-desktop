@@ -20,7 +20,16 @@ namespace TAEPClass
         public Categoria CategoriaId { get; set; }   
         public bool Ativo {  get; set; }
 
-        public Produto() { }
+        public Produto(string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, Categoria categoriaId)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            ValorUnit = valorUnit;
+            CodBarras = codBarras;
+            LinkImagem = linkImagem;
+            CategoriaId = categoriaId;
+        }
+        public Produto () { }
         public Produto(int id) 
         {
             Id = id;
@@ -72,7 +81,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
             cmd.Parameters.AddWithValue("spdata_cad", DataCad);
-            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id)
@@ -86,8 +95,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
-            cmd.Parameters.AddWithValue("spdata_cad", DataCad);
-            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public bool Deletar(int id, bool ativo)

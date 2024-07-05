@@ -42,5 +42,12 @@ namespace TudoAcabaEmPizza
             frmCategoria.Show();
 
         }
+
+        private void cadastroEConsultasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProduto frmProduto = new();
+            frmProduto.MdiParent = this;
+            frmProduto.Show();
+        }
     }
 }

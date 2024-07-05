@@ -32,11 +32,12 @@
             pedidoToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
             tipoDeBordaToolStripMenuItem = new ToolStripMenuItem();
+            categoriaToolStripMenuItem = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            categoriaToolStripMenuItem = new ToolStripMenuItem();
+            cadastroEConsultasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             // produtoToolStripMenuItem
             // 
-            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem, categoriaToolStripMenuItem });
+            produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem, categoriaToolStripMenuItem, cadastroEConsultasToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             produtoToolStripMenuItem.Size = new Size(62, 20);
             produtoToolStripMenuItem.Text = "&Produto";
@@ -67,9 +68,16 @@
             // tipoDeBordaToolStripMenuItem
             // 
             tipoDeBordaToolStripMenuItem.Name = "tipoDeBordaToolStripMenuItem";
-            tipoDeBordaToolStripMenuItem.Size = new Size(180, 22);
+            tipoDeBordaToolStripMenuItem.Size = new Size(185, 22);
             tipoDeBordaToolStripMenuItem.Text = "&Tipo de Borda";
             tipoDeBordaToolStripMenuItem.Click += tipoDeBordaToolStripMenuItem_Click;
+            // 
+            // categoriaToolStripMenuItem
+            // 
+            categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
+            categoriaToolStripMenuItem.Size = new Size(185, 22);
+            categoriaToolStripMenuItem.Text = "&Categoria";
+            categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
             // 
             // usuarioToolStripMenuItem
             // 
@@ -98,12 +106,12 @@
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // categoriaToolStripMenuItem
+            // cadastroEConsultasToolStripMenuItem
             // 
-            categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            categoriaToolStripMenuItem.Size = new Size(180, 22);
-            categoriaToolStripMenuItem.Text = "&Categoria";
-            categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
+            cadastroEConsultasToolStripMenuItem.Name = "cadastroEConsultasToolStripMenuItem";
+            cadastroEConsultasToolStripMenuItem.Size = new Size(185, 22);
+            cadastroEConsultasToolStripMenuItem.Text = "&Cadastro e Consultas";
+            cadastroEConsultasToolStripMenuItem.Click += cadastroEConsultasToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -137,5 +145,6 @@
         private ToolStripMenuItem caixaToolStripMenuItem;
         private ToolStripMenuItem tipoDeBordaToolStripMenuItem;
         private ToolStripMenuItem categoriaToolStripMenuItem;
+        private ToolStripMenuItem cadastroEConsultasToolStripMenuItem;
     }
 }
