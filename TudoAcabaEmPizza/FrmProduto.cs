@@ -102,7 +102,8 @@ namespace TudoAcabaEmPizza
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Produto produto = new(
-                txtNome.Text
+                int.Parse(txtId.Text)
+                ,txtNome.Text
                 ,txtDescricao.Text
                 ,double.Parse(txtValor.Text)
                 , mskCodigo.Text
@@ -111,7 +112,7 @@ namespace TudoAcabaEmPizza
                 );
             if(produto.Editar(produto.Id))
             {
-                FrmProduto_Load(sender, e); ;
+                FrmProduto_Load(sender, e);
                 MessageBox.Show($"O produto \" {produto.Nome} \" foi alterado com sucesso!");
             }
             else

@@ -33,11 +33,11 @@
             produtoToolStripMenuItem = new ToolStripMenuItem();
             tipoDeBordaToolStripMenuItem = new ToolStripMenuItem();
             categoriaToolStripMenuItem = new ToolStripMenuItem();
+            cadastroEConsultasToolStripMenuItem = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            cadastroEConsultasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,6 +79,13 @@
             categoriaToolStripMenuItem.Text = "&Categoria";
             categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
             // 
+            // cadastroEConsultasToolStripMenuItem
+            // 
+            cadastroEConsultasToolStripMenuItem.Name = "cadastroEConsultasToolStripMenuItem";
+            cadastroEConsultasToolStripMenuItem.Size = new Size(185, 22);
+            cadastroEConsultasToolStripMenuItem.Text = "&Cadastro e Consultas";
+            cadastroEConsultasToolStripMenuItem.Click += cadastroEConsultasToolStripMenuItem_Click;
+            // 
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
@@ -106,13 +113,6 @@
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // cadastroEConsultasToolStripMenuItem
-            // 
-            cadastroEConsultasToolStripMenuItem.Name = "cadastroEConsultasToolStripMenuItem";
-            cadastroEConsultasToolStripMenuItem.Size = new Size(185, 22);
-            cadastroEConsultasToolStripMenuItem.Text = "&Cadastro e Consultas";
-            cadastroEConsultasToolStripMenuItem.Click += cadastroEConsultasToolStripMenuItem_Click;
-            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(9F, 15F);
@@ -121,12 +121,12 @@
             ClientSize = new Size(1029, 450);
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ForeColor = SystemColors.Desktop;
+            ForeColor = SystemColors.ControlText;
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmPrincipal";
             Text = "Form1";
-            WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Minimized;
             Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

@@ -70,6 +70,17 @@ namespace TAEPClass
             CategoriaId = categoriaId;
         }
 
+        public Produto(int id, string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, Categoria categoriaId)
+        {
+            Id = id;
+            Nome = nome;
+            Descricao = descricao;
+            ValorUnit = valorUnit;
+            CodBarras = codBarras;
+            LinkImagem = linkImagem;
+            CategoriaId = categoriaId;
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -95,7 +106,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
-            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId.Id);
             try
             {
                 cmd.ExecuteNonQuery();
