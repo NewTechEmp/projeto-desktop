@@ -36,6 +36,14 @@ namespace TAEPClass
             TipoTelefones = tipoTelefone;
             ClienteId = clienteId;
         }
+        public Telefone( string ddi, string ddd, string numero, TipoTelefone tipoTelefone, int clienteId)
+        {
+            Ddi = ddi;
+            Ddd = ddd;
+            Numero = numero;
+            TipoTelefones = tipoTelefone;
+            ClienteId = clienteId;
+        }
 
         public Telefone(string ddd, string ddi, string numero, bool ativo, TipoTelefone tipoTelefone, int clienteId)
         {

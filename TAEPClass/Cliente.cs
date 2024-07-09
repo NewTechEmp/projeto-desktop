@@ -51,16 +51,25 @@ namespace TAEPClass
             Telefones = telefones;
         }
 
+        public Cliente(string nome, DateTime dataNasc, string cpf, string email, string senha)
+        {
+            Nome = nome;
+            DataNasc = dataNasc;
+            Cpf = cpf;
+            Email = email;
+            Senha = senha;
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
             cmd.Parameters.AddWithValue("spnome", Nome);
+            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
             cmd.Parameters.AddWithValue("spcpf", Cpf);
-            cmd.Parameters.AddWithValue("sptelefone", Telefones);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id)

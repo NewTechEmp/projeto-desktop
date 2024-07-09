@@ -22,17 +22,30 @@ namespace TAEPClass
         public string Bairro { get; set; }  
         public string Cidade { get; set; }  
         public string Uf {  get; set; }
-        
+
         public Endereco() { }
         public Endereco(int id) 
         {
             Id = id;
         }
-        public Endereco(int id, string cep, bool ativo, int clienteId, TipoEndereco tipoEnderecos, string logradouro, string numero, string complemento,string bairro, string cidade, string uf)
+        public Endereco(int id, string cep, bool ativo, int clienteId, TipoEndereco tipoEnderecos, string logradouro, string numero, string complemento, string bairro, string cidade, string uf)
         {
             Id = id;
             Cep = cep;
             Ativo = ativo;
+            ClienteId = clienteId;
+            TipoEnderecos = tipoEnderecos;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            Uf = uf;
+        }
+        public Endereco(int id, string cep,int clienteId, TipoEndereco tipoEnderecos, string logradouro, string numero, string complemento, string bairro, string cidade, string uf)
+        {
+            Id = id;
+            Cep = cep;
             ClienteId = clienteId;
             TipoEnderecos = tipoEnderecos;
             Logradouro = logradouro;
@@ -43,10 +56,10 @@ namespace TAEPClass
             Uf = uf;
         }
 
-        public Endereco(string cep, bool ativo, int clienteId, TipoEndereco tipoEnderecos, string logradouro, string numero, string complemento,string bairro, string cidade, string uf)
+        public Endereco(string cep, int clienteId, TipoEndereco tipoEnderecos, string logradouro, string numero, string complemento,string bairro, string cidade, string uf)
         {
             Cep = cep;
-            Ativo = ativo;
+   
             ClienteId = clienteId;
             TipoEnderecos = tipoEnderecos;
             Logradouro = logradouro;
@@ -55,6 +68,19 @@ namespace TAEPClass
             Bairro = bairro;
             Cidade = cidade;
             Uf = uf;
+        }
+
+        public Endereco(int clienteId, string cep, string logradouro, string numero, string complemento, string bairro, string cidade, string uf, TipoEndereco tipoEndereco)
+        {
+            ClienteId = clienteId;
+            Cep = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            Uf = uf;
+            TipoEnderecos = tipoEndereco;
         }
 
         public void Inserir()
@@ -101,7 +127,7 @@ namespace TAEPClass
         }
         public static Endereco ObterPorId(int id)
         {
-            Endereco endereco = new();
+            Endereco endereco = new Endereco();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from enderecos where id = {id}";
@@ -137,15 +163,14 @@ namespace TAEPClass
                     new(
                         dr.GetInt32(0),
                         dr.GetString(1),
-                        dr.GetBoolean(2),
-                        dr.GetInt32(3),
-                        TipoEndereco.ObterPorId((4)),
+                        dr.GetInt32(2),
+                        TipoEndereco.ObterPorId((3)),
+                        dr.GetString(4),
                         dr.GetString(5),
                         dr.GetString(6),
                         dr.GetString(7),
                         dr.GetString(8),
-                        dr.GetString(9),
-                        dr.GetString(10)
+                        dr.GetString(9)
                         )
                     );
             }

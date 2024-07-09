@@ -30,8 +30,19 @@
         {
             label1 = new Label();
             grbCliente = new GroupBox();
+            dgvEnderecos = new DataGridView();
+            clnCep = new DataGridViewTextBoxColumn();
+            clnLogradouro = new DataGridViewTextBoxColumn();
+            clnNumeroCasa = new DataGridViewTextBoxColumn();
+            clnComplemento = new DataGridViewTextBoxColumn();
+            clnBairro = new DataGridViewTextBoxColumn();
+            clnCidade = new DataGridViewTextBoxColumn();
+            clnUf = new DataGridViewTextBoxColumn();
+            clnTipoEnd = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tbpDadosCliente = new TabPage();
+            dtpDatanasc = new DateTimePicker();
+            mskCpf = new MaskedTextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -39,20 +50,12 @@
             label3 = new Label();
             ID = new Label();
             btnInserir = new Button();
-            btnConsultar = new Button();
-            btnEditar = new Button();
+            btnConsultarCliente = new Button();
+            btnEditarCliente = new Button();
             txtSenha = new TextBox();
             txtEmail = new TextBox();
-            txtCPF = new TextBox();
-            txtDataNasc = new TextBox();
             txtNome = new TextBox();
             txtId = new TextBox();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             tbpEnderecosCliente = new TabPage();
             label16 = new Label();
             btnConsultarEndereco = new Button();
@@ -77,24 +80,24 @@
             txtClienteId = new TextBox();
             txtCep = new TextBox();
             tbpTelefonesCliente = new TabPage();
+            btnObterTelefone = new Button();
+            btnEditarTelefone = new Button();
+            btnInserirTelefone = new Button();
+            label22 = new Label();
+            textId = new TextBox();
+            label21 = new Label();
             cmbTipoTelefone = new ComboBox();
             label20 = new Label();
             label19 = new Label();
             label18 = new Label();
-            mskNumero = new MaskedTextBox();
+            mskNumeroTelefone = new MaskedTextBox();
             mskDdd = new MaskedTextBox();
             mskDdi = new MaskedTextBox();
             label17 = new Label();
-            label21 = new Label();
-            textId = new TextBox();
-            label22 = new Label();
-            btnObterTelefone = new Button();
-            btnEditarTelefone = new Button();
-            btnInserirTelefone = new Button();
             grbCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
             tabControl1.SuspendLayout();
             tbpDadosCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tbpEnderecosCliente.SuspendLayout();
             tbpTelefonesCliente.SuspendLayout();
             SuspendLayout();
@@ -112,6 +115,7 @@
             // 
             // grbCliente
             // 
+            grbCliente.Controls.Add(dgvEnderecos);
             grbCliente.Controls.Add(tabControl1);
             grbCliente.Location = new Point(20, 57);
             grbCliente.Name = "grbCliente";
@@ -119,6 +123,79 @@
             grbCliente.TabIndex = 1;
             grbCliente.TabStop = false;
             grbCliente.Text = "Dados de Inserção";
+            // 
+            // dgvEnderecos
+            // 
+            dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { clnCep, clnLogradouro, clnNumeroCasa, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEnd });
+            dgvEnderecos.Location = new Point(10, 382);
+            dgvEnderecos.Name = "dgvEnderecos";
+            dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.Size = new Size(752, 179);
+            dgvEnderecos.TabIndex = 35;
+            // 
+            // clnCep
+            // 
+            clnCep.Frozen = true;
+            clnCep.HeaderText = "CEP";
+            clnCep.Name = "clnCep";
+            clnCep.ReadOnly = true;
+            clnCep.Width = 70;
+            // 
+            // clnLogradouro
+            // 
+            clnLogradouro.Frozen = true;
+            clnLogradouro.HeaderText = "Logradouro";
+            clnLogradouro.Name = "clnLogradouro";
+            clnLogradouro.ReadOnly = true;
+            clnLogradouro.Width = 160;
+            // 
+            // clnNumeroCasa
+            // 
+            clnNumeroCasa.Frozen = true;
+            clnNumeroCasa.HeaderText = "N°";
+            clnNumeroCasa.Name = "clnNumeroCasa";
+            clnNumeroCasa.ReadOnly = true;
+            clnNumeroCasa.Width = 35;
+            // 
+            // clnComplemento
+            // 
+            clnComplemento.Frozen = true;
+            clnComplemento.HeaderText = "Complemento";
+            clnComplemento.Name = "clnComplemento";
+            clnComplemento.ReadOnly = true;
+            // 
+            // clnBairro
+            // 
+            clnBairro.Frozen = true;
+            clnBairro.HeaderText = "Bairro";
+            clnBairro.Name = "clnBairro";
+            clnBairro.ReadOnly = true;
+            clnBairro.Width = 111;
+            // 
+            // clnCidade
+            // 
+            clnCidade.Frozen = true;
+            clnCidade.HeaderText = "Cidade";
+            clnCidade.Name = "clnCidade";
+            clnCidade.ReadOnly = true;
+            clnCidade.Width = 90;
+            // 
+            // clnUf
+            // 
+            clnUf.Frozen = true;
+            clnUf.HeaderText = "UF";
+            clnUf.Name = "clnUf";
+            clnUf.ReadOnly = true;
+            clnUf.Width = 35;
+            // 
+            // clnTipoEnd
+            // 
+            clnTipoEnd.Frozen = true;
+            clnTipoEnd.HeaderText = "Tipo End";
+            clnTipoEnd.Name = "clnTipoEnd";
+            clnTipoEnd.ReadOnly = true;
+            clnTipoEnd.Width = 150;
             // 
             // tabControl1
             // 
@@ -128,11 +205,13 @@
             tabControl1.Location = new Point(6, 22);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(756, 498);
+            tabControl1.Size = new Size(756, 354);
             tabControl1.TabIndex = 0;
             // 
             // tbpDadosCliente
             // 
+            tbpDadosCliente.Controls.Add(dtpDatanasc);
+            tbpDadosCliente.Controls.Add(mskCpf);
             tbpDadosCliente.Controls.Add(label7);
             tbpDadosCliente.Controls.Add(label6);
             tbpDadosCliente.Controls.Add(label5);
@@ -140,22 +219,35 @@
             tbpDadosCliente.Controls.Add(label3);
             tbpDadosCliente.Controls.Add(ID);
             tbpDadosCliente.Controls.Add(btnInserir);
-            tbpDadosCliente.Controls.Add(btnConsultar);
-            tbpDadosCliente.Controls.Add(btnEditar);
+            tbpDadosCliente.Controls.Add(btnConsultarCliente);
+            tbpDadosCliente.Controls.Add(btnEditarCliente);
             tbpDadosCliente.Controls.Add(txtSenha);
             tbpDadosCliente.Controls.Add(txtEmail);
-            tbpDadosCliente.Controls.Add(txtCPF);
-            tbpDadosCliente.Controls.Add(txtDataNasc);
             tbpDadosCliente.Controls.Add(txtNome);
             tbpDadosCliente.Controls.Add(txtId);
-            tbpDadosCliente.Controls.Add(dataGridView1);
             tbpDadosCliente.Location = new Point(4, 24);
             tbpDadosCliente.Name = "tbpDadosCliente";
             tbpDadosCliente.Padding = new Padding(3);
-            tbpDadosCliente.Size = new Size(748, 470);
+            tbpDadosCliente.Size = new Size(748, 326);
             tbpDadosCliente.TabIndex = 0;
             tbpDadosCliente.Text = "Dados Cliente";
             tbpDadosCliente.UseVisualStyleBackColor = true;
+            // 
+            // dtpDatanasc
+            // 
+            dtpDatanasc.Format = DateTimePickerFormat.Short;
+            dtpDatanasc.Location = new Point(173, 100);
+            dtpDatanasc.Name = "dtpDatanasc";
+            dtpDatanasc.Size = new Size(105, 23);
+            dtpDatanasc.TabIndex = 24;
+            // 
+            // mskCpf
+            // 
+            mskCpf.Location = new Point(173, 135);
+            mskCpf.Mask = "000.000.000-00";
+            mskCpf.Name = "mskCpf";
+            mskCpf.Size = new Size(390, 23);
+            mskCpf.TabIndex = 23;
             // 
             // label7
             // 
@@ -213,7 +305,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(499, 275);
+            btnInserir.Location = new Point(329, 275);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(75, 23);
             btnInserir.TabIndex = 13;
@@ -221,23 +313,23 @@
             btnInserir.UseVisualStyleBackColor = true;
             btnInserir.Click += btnInserir_Click;
             // 
-            // btnConsultar
+            // btnConsultarCliente
             // 
-            btnConsultar.Location = new Point(337, 275);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(75, 23);
-            btnConsultar.TabIndex = 14;
-            btnConsultar.Text = "&Consultar";
-            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultarCliente.Location = new Point(472, 275);
+            btnConsultarCliente.Name = "btnConsultarCliente";
+            btnConsultarCliente.Size = new Size(75, 23);
+            btnConsultarCliente.TabIndex = 14;
+            btnConsultarCliente.Text = "&Consultar";
+            btnConsultarCliente.UseVisualStyleBackColor = true;
             // 
-            // btnEditar
+            // btnEditarCliente
             // 
-            btnEditar.Location = new Point(173, 275);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
-            btnEditar.TabIndex = 15;
-            btnEditar.Text = "&Editar";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditarCliente.Location = new Point(173, 275);
+            btnEditarCliente.Name = "btnEditarCliente";
+            btnEditarCliente.Size = new Size(75, 23);
+            btnEditarCliente.TabIndex = 15;
+            btnEditarCliente.Text = "&Editar";
+            btnEditarCliente.UseVisualStyleBackColor = true;
             // 
             // txtSenha
             // 
@@ -253,20 +345,6 @@
             txtEmail.Size = new Size(390, 23);
             txtEmail.TabIndex = 8;
             // 
-            // txtCPF
-            // 
-            txtCPF.Location = new Point(173, 135);
-            txtCPF.Name = "txtCPF";
-            txtCPF.Size = new Size(390, 23);
-            txtCPF.TabIndex = 9;
-            // 
-            // txtDataNasc
-            // 
-            txtDataNasc.Location = new Point(173, 98);
-            txtDataNasc.Name = "txtDataNasc";
-            txtDataNasc.Size = new Size(390, 23);
-            txtDataNasc.TabIndex = 10;
-            // 
             // txtNome
             // 
             txtNome.Location = new Point(173, 56);
@@ -280,48 +358,6 @@
             txtId.Name = "txtId";
             txtId.Size = new Size(68, 23);
             txtId.TabIndex = 12;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            dataGridView1.Location = new Point(6, 304);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(735, 156);
-            dataGridView1.TabIndex = 6;
-            // 
-            // Column1
-            // 
-            Column1.Frozen = true;
-            Column1.HeaderText = "ID";
-            Column1.Name = "Column1";
-            Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            Column2.Frozen = true;
-            Column2.HeaderText = "Nome";
-            Column2.Name = "Column2";
-            Column2.Width = 250;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Data Nascimento";
-            Column3.Name = "Column3";
-            Column3.Width = 108;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "CPF";
-            Column4.Name = "Column4";
-            Column4.Width = 111;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Email";
-            Column5.Name = "Column5";
-            Column5.Width = 213;
             // 
             // tbpEnderecosCliente
             // 
@@ -350,7 +386,7 @@
             tbpEnderecosCliente.Location = new Point(4, 24);
             tbpEnderecosCliente.Name = "tbpEnderecosCliente";
             tbpEnderecosCliente.Padding = new Padding(3);
-            tbpEnderecosCliente.Size = new Size(748, 470);
+            tbpEnderecosCliente.Size = new Size(748, 326);
             tbpEnderecosCliente.TabIndex = 1;
             tbpEnderecosCliente.Text = "Endereços Cliente";
             tbpEnderecosCliente.UseVisualStyleBackColor = true;
@@ -368,7 +404,7 @@
             // 
             // btnConsultarEndereco
             // 
-            btnConsultarEndereco.Location = new Point(463, 393);
+            btnConsultarEndereco.Location = new Point(528, 277);
             btnConsultarEndereco.Name = "btnConsultarEndereco";
             btnConsultarEndereco.Size = new Size(75, 32);
             btnConsultarEndereco.TabIndex = 30;
@@ -377,7 +413,7 @@
             // 
             // btnEditarEndereco
             // 
-            btnEditarEndereco.Location = new Point(351, 393);
+            btnEditarEndereco.Location = new Point(416, 277);
             btnEditarEndereco.Name = "btnEditarEndereco";
             btnEditarEndereco.Size = new Size(75, 32);
             btnEditarEndereco.TabIndex = 31;
@@ -386,7 +422,7 @@
             // 
             // btnSalvarEndereco
             // 
-            btnSalvarEndereco.Location = new Point(248, 393);
+            btnSalvarEndereco.Location = new Point(313, 277);
             btnSalvarEndereco.Name = "btnSalvarEndereco";
             btnSalvarEndereco.Size = new Size(75, 32);
             btnSalvarEndereco.TabIndex = 32;
@@ -396,17 +432,17 @@
             // 
             // mskUf
             // 
-            mskUf.Location = new Point(281, 347);
+            mskUf.Location = new Point(684, 223);
             mskUf.Mask = "aa";
             mskUf.Name = "mskUf";
-            mskUf.Size = new Size(211, 23);
+            mskUf.Size = new Size(33, 23);
             mskUf.TabIndex = 29;
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.ForeColor = SystemColors.HotTrack;
-            label15.Location = new Point(254, 347);
+            label15.Location = new Point(657, 226);
             label15.Name = "label15";
             label15.Size = new Size(21, 15);
             label15.TabIndex = 28;
@@ -416,7 +452,7 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = SystemColors.HotTrack;
-            label14.Location = new Point(231, 315);
+            label14.Location = new Point(5, 283);
             label14.Name = "label14";
             label14.Size = new Size(44, 15);
             label14.TabIndex = 27;
@@ -426,7 +462,7 @@
             // 
             label13.AutoSize = true;
             label13.ForeColor = SystemColors.HotTrack;
-            label13.Location = new Point(237, 286);
+            label13.Location = new Point(307, 232);
             label13.Name = "label13";
             label13.Size = new Size(38, 15);
             label13.TabIndex = 26;
@@ -434,31 +470,31 @@
             // 
             // txtCidade
             // 
-            txtCidade.Location = new Point(281, 315);
+            txtCidade.Location = new Point(55, 283);
             txtCidade.Name = "txtCidade";
-            txtCidade.Size = new Size(214, 23);
+            txtCidade.Size = new Size(202, 23);
             txtCidade.TabIndex = 24;
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(281, 286);
+            txtBairro.Location = new Point(351, 226);
             txtBairro.Name = "txtBairro";
-            txtBairro.Size = new Size(214, 23);
+            txtBairro.Size = new Size(278, 23);
             txtBairro.TabIndex = 23;
             // 
             // cmbTipoEndereco
             // 
             cmbTipoEndereco.FormattingEnabled = true;
-            cmbTipoEndereco.Location = new Point(281, 173);
+            cmbTipoEndereco.Location = new Point(442, 168);
             cmbTipoEndereco.Name = "cmbTipoEndereco";
-            cmbTipoEndereco.Size = new Size(214, 23);
+            cmbTipoEndereco.Size = new Size(225, 23);
             cmbTipoEndereco.TabIndex = 22;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.ForeColor = SystemColors.HotTrack;
-            label12.Location = new Point(217, 145);
+            label12.Location = new Point(22, 119);
             label12.Name = "label12";
             label12.Size = new Size(58, 15);
             label12.TabIndex = 12;
@@ -468,7 +504,7 @@
             // 
             label11.AutoSize = true;
             label11.ForeColor = SystemColors.HotTrack;
-            label11.Location = new Point(191, 257);
+            label11.Location = new Point(4, 226);
             label11.Name = "label11";
             label11.Size = new Size(84, 15);
             label11.TabIndex = 11;
@@ -478,17 +514,17 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = SystemColors.HotTrack;
-            label10.Location = new Point(224, 231);
+            label10.Location = new Point(507, 119);
             label10.Name = "label10";
-            label10.Size = new Size(51, 15);
+            label10.Size = new Size(21, 15);
             label10.TabIndex = 10;
-            label10.Text = "Número";
+            label10.Text = "N°";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.HotTrack;
-            label9.Location = new Point(193, 173);
+            label9.Location = new Point(351, 171);
             label9.Name = "label9";
             label9.Size = new Size(82, 15);
             label9.TabIndex = 9;
@@ -498,7 +534,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = SystemColors.HotTrack;
-            label8.Location = new Point(206, 202);
+            label8.Location = new Point(11, 171);
             label8.Name = "label8";
             label8.Size = new Size(69, 15);
             label8.TabIndex = 8;
@@ -508,7 +544,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(247, 116);
+            label2.Location = new Point(206, 119);
             label2.Name = "label2";
             label2.Size = new Size(28, 15);
             label2.TabIndex = 7;
@@ -516,35 +552,35 @@
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(281, 228);
+            txtNumero.Location = new Point(547, 116);
             txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(214, 23);
+            txtNumero.Size = new Size(120, 23);
             txtNumero.TabIndex = 6;
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(281, 257);
+            txtComplemento.Location = new Point(94, 226);
             txtComplemento.Name = "txtComplemento";
-            txtComplemento.Size = new Size(214, 23);
+            txtComplemento.Size = new Size(207, 23);
             txtComplemento.TabIndex = 5;
             // 
             // txtLogradouro
             // 
-            txtLogradouro.Location = new Point(281, 199);
+            txtLogradouro.Location = new Point(86, 168);
             txtLogradouro.Name = "txtLogradouro";
             txtLogradouro.Size = new Size(214, 23);
             txtLogradouro.TabIndex = 3;
             // 
             // txtClienteId
             // 
-            txtClienteId.Location = new Point(281, 142);
+            txtClienteId.Location = new Point(86, 116);
             txtClienteId.Name = "txtClienteId";
-            txtClienteId.Size = new Size(214, 23);
+            txtClienteId.Size = new Size(105, 23);
             txtClienteId.TabIndex = 2;
             // 
             // txtCep
             // 
-            txtCep.Location = new Point(281, 113);
+            txtCep.Location = new Point(240, 116);
             txtCep.Name = "txtCep";
             txtCep.Size = new Size(214, 23);
             txtCep.TabIndex = 1;
@@ -561,22 +597,77 @@
             tbpTelefonesCliente.Controls.Add(label20);
             tbpTelefonesCliente.Controls.Add(label19);
             tbpTelefonesCliente.Controls.Add(label18);
-            tbpTelefonesCliente.Controls.Add(mskNumero);
+            tbpTelefonesCliente.Controls.Add(mskNumeroTelefone);
             tbpTelefonesCliente.Controls.Add(mskDdd);
             tbpTelefonesCliente.Controls.Add(mskDdi);
             tbpTelefonesCliente.Controls.Add(label17);
             tbpTelefonesCliente.Location = new Point(4, 24);
             tbpTelefonesCliente.Name = "tbpTelefonesCliente";
             tbpTelefonesCliente.Padding = new Padding(3);
-            tbpTelefonesCliente.Size = new Size(748, 470);
+            tbpTelefonesCliente.Size = new Size(748, 326);
             tbpTelefonesCliente.TabIndex = 2;
             tbpTelefonesCliente.Text = "Telefones Cliente";
             tbpTelefonesCliente.UseVisualStyleBackColor = true;
             // 
+            // btnObterTelefone
+            // 
+            btnObterTelefone.Location = new Point(437, 262);
+            btnObterTelefone.Name = "btnObterTelefone";
+            btnObterTelefone.Size = new Size(75, 32);
+            btnObterTelefone.TabIndex = 31;
+            btnObterTelefone.Text = "&Consultar";
+            btnObterTelefone.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarTelefone
+            // 
+            btnEditarTelefone.Location = new Point(325, 262);
+            btnEditarTelefone.Name = "btnEditarTelefone";
+            btnEditarTelefone.Size = new Size(75, 32);
+            btnEditarTelefone.TabIndex = 32;
+            btnEditarTelefone.Text = "&Editar";
+            btnEditarTelefone.UseVisualStyleBackColor = true;
+            // 
+            // btnInserirTelefone
+            // 
+            btnInserirTelefone.Location = new Point(222, 262);
+            btnInserirTelefone.Name = "btnInserirTelefone";
+            btnInserirTelefone.Size = new Size(75, 32);
+            btnInserirTelefone.TabIndex = 33;
+            btnInserirTelefone.Text = "&Inserir";
+            btnInserirTelefone.UseVisualStyleBackColor = true;
+            btnInserirTelefone.Click += btnInserirTelefone_Click;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = SystemColors.HotTrack;
+            label22.Location = new Point(191, 97);
+            label22.Name = "label22";
+            label22.Size = new Size(58, 15);
+            label22.TabIndex = 30;
+            label22.Text = "ID Cliente";
+            // 
+            // textId
+            // 
+            textId.Location = new Point(257, 97);
+            textId.Name = "textId";
+            textId.Size = new Size(211, 23);
+            textId.TabIndex = 29;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.ForeColor = SystemColors.HotTrack;
+            label21.Location = new Point(161, 216);
+            label21.Name = "label21";
+            label21.Size = new Size(93, 15);
+            label21.TabIndex = 28;
+            label21.Text = "Tipo de Telefone";
+            // 
             // cmbTipoTelefone
             // 
             cmbTipoTelefone.FormattingEnabled = true;
-            cmbTipoTelefone.Location = new Point(284, 249);
+            cmbTipoTelefone.Location = new Point(257, 213);
             cmbTipoTelefone.Name = "cmbTipoTelefone";
             cmbTipoTelefone.Size = new Size(211, 23);
             cmbTipoTelefone.TabIndex = 27;
@@ -585,7 +676,7 @@
             // 
             label20.AutoSize = true;
             label20.ForeColor = SystemColors.HotTrack;
-            label20.Location = new Point(224, 223);
+            label20.Location = new Point(197, 187);
             label20.Name = "label20";
             label20.Size = new Size(57, 15);
             label20.TabIndex = 26;
@@ -595,7 +686,7 @@
             // 
             label19.AutoSize = true;
             label19.ForeColor = SystemColors.HotTrack;
-            label19.Location = new Point(250, 199);
+            label19.Location = new Point(223, 163);
             label19.Name = "label19";
             label19.Size = new Size(31, 15);
             label19.TabIndex = 25;
@@ -605,23 +696,23 @@
             // 
             label18.AutoSize = true;
             label18.ForeColor = SystemColors.HotTrack;
-            label18.Location = new Point(250, 165);
+            label18.Location = new Point(223, 129);
             label18.Name = "label18";
             label18.Size = new Size(26, 15);
             label18.TabIndex = 24;
             label18.Text = "DDI";
             // 
-            // mskNumero
+            // mskNumeroTelefone
             // 
-            mskNumero.Location = new Point(284, 220);
-            mskNumero.Mask = "000000000";
-            mskNumero.Name = "mskNumero";
-            mskNumero.Size = new Size(211, 23);
-            mskNumero.TabIndex = 23;
+            mskNumeroTelefone.Location = new Point(257, 184);
+            mskNumeroTelefone.Mask = "000000000";
+            mskNumeroTelefone.Name = "mskNumeroTelefone";
+            mskNumeroTelefone.Size = new Size(211, 23);
+            mskNumeroTelefone.TabIndex = 23;
             // 
             // mskDdd
             // 
-            mskDdd.Location = new Point(284, 191);
+            mskDdd.Location = new Point(257, 155);
             mskDdd.Mask = "00";
             mskDdd.Name = "mskDdd";
             mskDdd.Size = new Size(211, 23);
@@ -629,7 +720,7 @@
             // 
             // mskDdi
             // 
-            mskDdi.Location = new Point(284, 162);
+            mskDdi.Location = new Point(257, 126);
             mskDdi.Mask = "+00";
             mskDdi.Name = "mskDdi";
             mskDdi.Size = new Size(211, 23);
@@ -646,60 +737,6 @@
             label17.TabIndex = 13;
             label17.Text = "Cadastro de Telefones do Cliente";
             // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.ForeColor = SystemColors.HotTrack;
-            label21.Location = new Point(188, 252);
-            label21.Name = "label21";
-            label21.Size = new Size(93, 15);
-            label21.TabIndex = 28;
-            label21.Text = "Tipo de Telefone";
-            // 
-            // textId
-            // 
-            textId.Location = new Point(284, 278);
-            textId.Name = "textId";
-            textId.Size = new Size(211, 23);
-            textId.TabIndex = 29;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.ForeColor = SystemColors.HotTrack;
-            label22.Location = new Point(218, 278);
-            label22.Name = "label22";
-            label22.Size = new Size(58, 15);
-            label22.TabIndex = 30;
-            label22.Text = "ID Cliente";
-            // 
-            // btnObterTelefone
-            // 
-            btnObterTelefone.Location = new Point(456, 324);
-            btnObterTelefone.Name = "btnObterTelefone";
-            btnObterTelefone.Size = new Size(75, 32);
-            btnObterTelefone.TabIndex = 31;
-            btnObterTelefone.Text = "&Consultar";
-            btnObterTelefone.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarTelefone
-            // 
-            btnEditarTelefone.Location = new Point(344, 324);
-            btnEditarTelefone.Name = "btnEditarTelefone";
-            btnEditarTelefone.Size = new Size(75, 32);
-            btnEditarTelefone.TabIndex = 32;
-            btnEditarTelefone.Text = "&Editar";
-            btnEditarTelefone.UseVisualStyleBackColor = true;
-            // 
-            // btnInserirTelefone
-            // 
-            btnInserirTelefone.Location = new Point(241, 324);
-            btnInserirTelefone.Name = "btnInserirTelefone";
-            btnInserirTelefone.Size = new Size(75, 32);
-            btnInserirTelefone.TabIndex = 33;
-            btnInserirTelefone.Text = "&Inserir";
-            btnInserirTelefone.UseVisualStyleBackColor = true;
-            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -710,10 +747,10 @@
             Name = "FrmCliente";
             Text = "FrmCliente";
             grbCliente.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvEnderecos).EndInit();
             tabControl1.ResumeLayout(false);
             tbpDadosCliente.ResumeLayout(false);
             tbpDadosCliente.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tbpEnderecosCliente.ResumeLayout(false);
             tbpEnderecosCliente.PerformLayout();
             tbpTelefonesCliente.ResumeLayout(false);
@@ -735,20 +772,12 @@
         private Label label3;
         private Label ID;
         private Button btnInserir;
-        private Button btnConsultar;
-        private Button btnEditar;
+        private Button btnConsultarCliente;
+        private Button btnEditarCliente;
         private TextBox txtSenha;
         private TextBox txtEmail;
-        private TextBox txtCPF;
-        private TextBox txtDataNasc;
         private TextBox txtNome;
         private TextBox txtId;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
         private TabPage tbpEnderecosCliente;
         private TabPage tbpTelefonesCliente;
         private TextBox txtNumero;
@@ -774,7 +803,7 @@
         private Button btnSalvarEndereco;
         private Label label16;
         private Label label17;
-        private MaskedTextBox mskNumero;
+        private MaskedTextBox mskNumeroTelefone;
         private MaskedTextBox mskDdd;
         private MaskedTextBox mskDdi;
         private Label label20;
@@ -791,5 +820,16 @@
         private ComboBox comboBox1;
         private MaskedTextBox maskedTextBox3;
         private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox mskCpf;
+        private DateTimePicker dtpDatanasc;
+        private DataGridView dgvEnderecos;
+        private DataGridViewTextBoxColumn clnCep;
+        private DataGridViewTextBoxColumn clnLogradouro;
+        private DataGridViewTextBoxColumn clnNumeroCasa;
+        private DataGridViewTextBoxColumn clnComplemento;
+        private DataGridViewTextBoxColumn clnBairro;
+        private DataGridViewTextBoxColumn clnCidade;
+        private DataGridViewTextBoxColumn clnUf;
+        private DataGridViewTextBoxColumn clnTipoEnd;
     }
 }
