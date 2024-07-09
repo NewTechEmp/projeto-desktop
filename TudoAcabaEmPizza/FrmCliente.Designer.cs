@@ -55,9 +55,9 @@
             Column5 = new DataGridViewTextBoxColumn();
             tbpEnderecosCliente = new TabPage();
             label16 = new Label();
-            buConsultar = new Button();
-            buEditar = new Button();
-            buSalvar = new Button();
+            btnConsultarEndereco = new Button();
+            btnEditarEndereco = new Button();
+            btnSalvarEndereco = new Button();
             mskUf = new MaskedTextBox();
             label15 = new Label();
             label14 = new Label();
@@ -77,7 +77,20 @@
             txtClienteId = new TextBox();
             txtCep = new TextBox();
             tbpTelefonesCliente = new TabPage();
+            cmbTipoTelefone = new ComboBox();
+            label20 = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            mskNumero = new MaskedTextBox();
+            mskDdd = new MaskedTextBox();
+            mskDdi = new MaskedTextBox();
             label17 = new Label();
+            label21 = new Label();
+            textId = new TextBox();
+            label22 = new Label();
+            btnObterTelefone = new Button();
+            btnEditarTelefone = new Button();
+            btnInserirTelefone = new Button();
             grbCliente.SuspendLayout();
             tabControl1.SuspendLayout();
             tbpDadosCliente.SuspendLayout();
@@ -313,9 +326,9 @@
             // tbpEnderecosCliente
             // 
             tbpEnderecosCliente.Controls.Add(label16);
-            tbpEnderecosCliente.Controls.Add(buConsultar);
-            tbpEnderecosCliente.Controls.Add(buEditar);
-            tbpEnderecosCliente.Controls.Add(buSalvar);
+            tbpEnderecosCliente.Controls.Add(btnConsultarEndereco);
+            tbpEnderecosCliente.Controls.Add(btnEditarEndereco);
+            tbpEnderecosCliente.Controls.Add(btnSalvarEndereco);
             tbpEnderecosCliente.Controls.Add(mskUf);
             tbpEnderecosCliente.Controls.Add(label15);
             tbpEnderecosCliente.Controls.Add(label14);
@@ -353,33 +366,33 @@
             label16.TabIndex = 33;
             label16.Text = "cadastro de endereços do cliente";
             // 
-            // buConsultar
+            // btnConsultarEndereco
             // 
-            buConsultar.Location = new Point(463, 393);
-            buConsultar.Name = "buConsultar";
-            buConsultar.Size = new Size(75, 32);
-            buConsultar.TabIndex = 30;
-            buConsultar.Text = "&Consultar";
-            buConsultar.UseVisualStyleBackColor = true;
+            btnConsultarEndereco.Location = new Point(463, 393);
+            btnConsultarEndereco.Name = "btnConsultarEndereco";
+            btnConsultarEndereco.Size = new Size(75, 32);
+            btnConsultarEndereco.TabIndex = 30;
+            btnConsultarEndereco.Text = "&Consultar";
+            btnConsultarEndereco.UseVisualStyleBackColor = true;
             // 
-            // buEditar
+            // btnEditarEndereco
             // 
-            buEditar.Location = new Point(351, 393);
-            buEditar.Name = "buEditar";
-            buEditar.Size = new Size(75, 32);
-            buEditar.TabIndex = 31;
-            buEditar.Text = "&Editar";
-            buEditar.UseVisualStyleBackColor = true;
+            btnEditarEndereco.Location = new Point(351, 393);
+            btnEditarEndereco.Name = "btnEditarEndereco";
+            btnEditarEndereco.Size = new Size(75, 32);
+            btnEditarEndereco.TabIndex = 31;
+            btnEditarEndereco.Text = "&Editar";
+            btnEditarEndereco.UseVisualStyleBackColor = true;
             // 
-            // buSalvar
+            // btnSalvarEndereco
             // 
-            buSalvar.Location = new Point(248, 393);
-            buSalvar.Name = "buSalvar";
-            buSalvar.Size = new Size(75, 32);
-            buSalvar.TabIndex = 32;
-            buSalvar.Text = "&Salvar";
-            buSalvar.UseVisualStyleBackColor = true;
-            buSalvar.Click += buSalvar_Click;
+            btnSalvarEndereco.Location = new Point(248, 393);
+            btnSalvarEndereco.Name = "btnSalvarEndereco";
+            btnSalvarEndereco.Size = new Size(75, 32);
+            btnSalvarEndereco.TabIndex = 32;
+            btnSalvarEndereco.Text = "&Salvar";
+            btnSalvarEndereco.UseVisualStyleBackColor = true;
+            btnSalvarEndereco.Click += buSalvar_Click;
             // 
             // mskUf
             // 
@@ -538,6 +551,19 @@
             // 
             // tbpTelefonesCliente
             // 
+            tbpTelefonesCliente.Controls.Add(btnObterTelefone);
+            tbpTelefonesCliente.Controls.Add(btnEditarTelefone);
+            tbpTelefonesCliente.Controls.Add(btnInserirTelefone);
+            tbpTelefonesCliente.Controls.Add(label22);
+            tbpTelefonesCliente.Controls.Add(textId);
+            tbpTelefonesCliente.Controls.Add(label21);
+            tbpTelefonesCliente.Controls.Add(cmbTipoTelefone);
+            tbpTelefonesCliente.Controls.Add(label20);
+            tbpTelefonesCliente.Controls.Add(label19);
+            tbpTelefonesCliente.Controls.Add(label18);
+            tbpTelefonesCliente.Controls.Add(mskNumero);
+            tbpTelefonesCliente.Controls.Add(mskDdd);
+            tbpTelefonesCliente.Controls.Add(mskDdi);
             tbpTelefonesCliente.Controls.Add(label17);
             tbpTelefonesCliente.Location = new Point(4, 24);
             tbpTelefonesCliente.Name = "tbpTelefonesCliente";
@@ -546,6 +572,68 @@
             tbpTelefonesCliente.TabIndex = 2;
             tbpTelefonesCliente.Text = "Telefones Cliente";
             tbpTelefonesCliente.UseVisualStyleBackColor = true;
+            // 
+            // cmbTipoTelefone
+            // 
+            cmbTipoTelefone.FormattingEnabled = true;
+            cmbTipoTelefone.Location = new Point(284, 249);
+            cmbTipoTelefone.Name = "cmbTipoTelefone";
+            cmbTipoTelefone.Size = new Size(211, 23);
+            cmbTipoTelefone.TabIndex = 27;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.ForeColor = SystemColors.HotTrack;
+            label20.Location = new Point(224, 223);
+            label20.Name = "label20";
+            label20.Size = new Size(57, 15);
+            label20.TabIndex = 26;
+            label20.Text = "NÙMERO";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.ForeColor = SystemColors.HotTrack;
+            label19.Location = new Point(250, 199);
+            label19.Name = "label19";
+            label19.Size = new Size(31, 15);
+            label19.TabIndex = 25;
+            label19.Text = "DDD";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.ForeColor = SystemColors.HotTrack;
+            label18.Location = new Point(250, 165);
+            label18.Name = "label18";
+            label18.Size = new Size(26, 15);
+            label18.TabIndex = 24;
+            label18.Text = "DDI";
+            // 
+            // mskNumero
+            // 
+            mskNumero.Location = new Point(284, 220);
+            mskNumero.Mask = "000000000";
+            mskNumero.Name = "mskNumero";
+            mskNumero.Size = new Size(211, 23);
+            mskNumero.TabIndex = 23;
+            // 
+            // mskDdd
+            // 
+            mskDdd.Location = new Point(284, 191);
+            mskDdd.Mask = "00";
+            mskDdd.Name = "mskDdd";
+            mskDdd.Size = new Size(211, 23);
+            mskDdd.TabIndex = 22;
+            // 
+            // mskDdi
+            // 
+            mskDdi.Location = new Point(284, 162);
+            mskDdi.Mask = "+00";
+            mskDdi.Name = "mskDdi";
+            mskDdi.Size = new Size(211, 23);
+            mskDdi.TabIndex = 21;
             // 
             // label17
             // 
@@ -557,6 +645,60 @@
             label17.Size = new Size(618, 40);
             label17.TabIndex = 13;
             label17.Text = "Cadastro de Telefones do Cliente";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.ForeColor = SystemColors.HotTrack;
+            label21.Location = new Point(188, 252);
+            label21.Name = "label21";
+            label21.Size = new Size(93, 15);
+            label21.TabIndex = 28;
+            label21.Text = "Tipo de Telefone";
+            // 
+            // textId
+            // 
+            textId.Location = new Point(284, 278);
+            textId.Name = "textId";
+            textId.Size = new Size(211, 23);
+            textId.TabIndex = 29;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = SystemColors.HotTrack;
+            label22.Location = new Point(218, 278);
+            label22.Name = "label22";
+            label22.Size = new Size(58, 15);
+            label22.TabIndex = 30;
+            label22.Text = "ID Cliente";
+            // 
+            // btnObterTelefone
+            // 
+            btnObterTelefone.Location = new Point(456, 324);
+            btnObterTelefone.Name = "btnObterTelefone";
+            btnObterTelefone.Size = new Size(75, 32);
+            btnObterTelefone.TabIndex = 31;
+            btnObterTelefone.Text = "&Consultar";
+            btnObterTelefone.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarTelefone
+            // 
+            btnEditarTelefone.Location = new Point(344, 324);
+            btnEditarTelefone.Name = "btnEditarTelefone";
+            btnEditarTelefone.Size = new Size(75, 32);
+            btnEditarTelefone.TabIndex = 32;
+            btnEditarTelefone.Text = "&Editar";
+            btnEditarTelefone.UseVisualStyleBackColor = true;
+            // 
+            // btnInserirTelefone
+            // 
+            btnInserirTelefone.Location = new Point(241, 324);
+            btnInserirTelefone.Name = "btnInserirTelefone";
+            btnInserirTelefone.Size = new Size(75, 32);
+            btnInserirTelefone.TabIndex = 33;
+            btnInserirTelefone.Text = "&Inserir";
+            btnInserirTelefone.UseVisualStyleBackColor = true;
             // 
             // FrmCliente
             // 
@@ -627,11 +769,24 @@
         private ComboBox cmbTipoEndereco;
         private Label label15;
         private MaskedTextBox mskUf;
-        private Button buConsultar;
-        private Button buEditar;
-        private Button buSalvar;
+        private Button btnConsultarEndereco;
+        private Button btnEditarEndereco;
+        private Button btnSalvarEndereco;
         private Label label16;
         private Label label17;
+        private MaskedTextBox mskNumero;
+        private MaskedTextBox mskDdd;
+        private MaskedTextBox mskDdi;
+        private Label label20;
+        private Label label19;
+        private Label label18;
+        private ComboBox cmbTipoTelefone;
+        private Label label21;
+        private Label label22;
+        private TextBox textId;
+        private Button btnObterTelefone;
+        private Button btnEditarTelefone;
+        private Button btnInserirTelefone;
         private ComboBox cbmCategoria;
         private ComboBox comboBox1;
         private MaskedTextBox maskedTextBox3;
