@@ -49,5 +49,12 @@ namespace TudoAcabaEmPizza
             frmProduto.MdiParent = this;
             frmProduto.Show();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente frmCliente = new();
+            frmCliente.MdiParent = this;    
+            frmCliente.Show();
+        }
     }
 }

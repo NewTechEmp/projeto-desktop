@@ -64,7 +64,7 @@ namespace TAEPClass
             List<TipoEndereco> tipoEndereco = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipoendereco order by descricao";
+            cmd.CommandText = "select * from tipos_endereco order by descricao";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -77,7 +77,7 @@ namespace TAEPClass
             TipoEndereco tipoEndereco = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from tipoendereco where id  = {id}";
+            cmd.CommandText = $"select * from tipos_endereco where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

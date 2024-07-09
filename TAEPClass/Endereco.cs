@@ -64,7 +64,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_endereco_insert";
             cmd.Parameters.AddWithValue("spcep", Cep);
             cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos);
+            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos.Id);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
             cmd.Parameters.AddWithValue("spnumero", Numero);
             cmd.Parameters.AddWithValue("spcomplemento", Complemento);
@@ -77,10 +77,10 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
+            cmd.CommandText = "sp_enderecos_update";
             cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos);
+            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos.Id);
             cmd.Parameters.AddWithValue("spcep", Cep);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
             cmd.Parameters.AddWithValue("spnumero", Numero);
@@ -94,7 +94,7 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
+            cmd.CommandText = "sp_enderecos_delete";
             cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spativo", ativo);
             return cmd.ExecuteNonQuery() > -1 ? true : false;

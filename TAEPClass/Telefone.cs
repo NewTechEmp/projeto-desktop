@@ -65,7 +65,7 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
+            cmd.CommandText = "sp_telefone_update";
             cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spddi", Ddi);
             cmd.Parameters.AddWithValue("spddd", Ddd);
@@ -77,7 +77,7 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_telete_update";
+            cmd.CommandText = "sp_telefone_delete";
             cmd.Parameters.AddWithValue("spid", id);
             cmd.Parameters.AddWithValue("spativo", ativo);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
@@ -87,7 +87,7 @@ namespace TAEPClass
             Telefone telefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from enderecos where id = {id}";
+            cmd.CommandText = $"select * from telefones where id = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -102,7 +102,7 @@ namespace TAEPClass
             List<Telefone> telefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from enderecos where cliente_id = {clienteId}";
+            cmd.CommandText = $"select * from telefones where cliente_id = {clienteId}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

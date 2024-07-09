@@ -26,5 +26,20 @@ namespace TudoAcabaEmPizza
         {
 
         }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buSalvar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

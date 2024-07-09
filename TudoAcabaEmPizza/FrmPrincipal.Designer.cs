@@ -38,6 +38,7 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
+            clienteToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,7 +95,7 @@
             // 
             // cadastreSeToolStripMenuItem
             // 
-            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem });
+            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem, clienteToolStripMenuItem });
             cadastreSeToolStripMenuItem.Name = "cadastreSeToolStripMenuItem";
             cadastreSeToolStripMenuItem.Size = new Size(82, 20);
             cadastreSeToolStripMenuItem.Text = "&Cadastre-Se";
@@ -102,7 +103,7 @@
             // loginToolStripMenuItem
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(104, 22);
+            loginToolStripMenuItem.Size = new Size(180, 22);
             loginToolStripMenuItem.Text = "&Login";
             // 
             // caixaToolStripMenuItem
@@ -112,6 +113,13 @@
             caixaToolStripMenuItem.Size = new Size(48, 20);
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
+            // 
+            // clienteToolStripMenuItem
+            // 
+            clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            clienteToolStripMenuItem.Size = new Size(180, 22);
+            clienteToolStripMenuItem.Text = "&Cliente";
+            clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -146,5 +154,6 @@
         private ToolStripMenuItem tipoDeBordaToolStripMenuItem;
         private ToolStripMenuItem categoriaToolStripMenuItem;
         private ToolStripMenuItem cadastroEConsultasToolStripMenuItem;
+        private ToolStripMenuItem clienteToolStripMenuItem;
     }
 }
