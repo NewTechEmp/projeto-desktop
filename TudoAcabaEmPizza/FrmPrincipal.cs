@@ -53,8 +53,15 @@ namespace TudoAcabaEmPizza
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCliente frmCliente = new();
-            frmCliente.MdiParent = this;    
+            frmCliente.MdiParent = this;
             frmCliente.Show();
+        }
+
+        private void tipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTipoEndereco frmTipoEndereco = new();    
+            frmTipoEndereco.MdiParent = this;
+            frmTipoEndereco.Show();
         }
     }
 }

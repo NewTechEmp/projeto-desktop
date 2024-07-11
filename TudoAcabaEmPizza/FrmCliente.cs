@@ -57,6 +57,11 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(int clienteId)
         {
+            var tipoEndereco = TipoEndereco.ObterLista();
+            cmbTipoEndereco.DataSource = tipoEndereco;
+            cmbTipoEndereco.DisplayMember = "descricao";
+            cmbTipoEndereco.ValueMember = "id";
+
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
@@ -104,7 +109,7 @@ namespace TudoAcabaEmPizza
             if (btnConsultarCliente.Text == "&Consultar")
             {
                 txtNome.Clear();
-               mskCpf.Clear();
+                mskCpf.Clear();
                 txtEmail.Clear();
                 txtSenha.Clear();
                 txtId.ReadOnly = false;
@@ -125,6 +130,48 @@ namespace TudoAcabaEmPizza
 
                 }
             }
+        }
+
+        private void btnConsultarEndereco_Click(object sender, EventArgs e)
+        {
+            if (btnConsultarEndereco.Text == "&Consultar")
+            {
+                mskCep.Clear();
+                txtLogradouro.Clear();
+                txtComplemento.Clear();
+                txtClienteId.Clear();
+                txtBairro.Clear();
+                txtCidade.Clear();
+                txtNumero.Clear();
+                txtIdEndereco.ReadOnly = false;
+                txtIdEndereco.Focus();
+                btnConsultarEndereco.Text = "&Obter por ID";
+            }
+            else
+            {
+                if (txtIdEndereco.Text.Length > 0)
+                {
+                    Endereco endereco = Endereco.ObterPorId(int.Parse(txtIdEndereco.Text));
+                    mskCep.Text = endereco.Cep;
+                    txtLogradouro.Text = endereco.Logradouro;
+                    txtComplemento.Text = endereco.Complemento;
+                    endereco.ClienteId = int.Parse(txtClienteId.Text);
+                    txtBairro.Text = endereco.Bairro;
+                    txtCidade.Text = endereco.Cidade;
+                    txtNumero.Text = endereco.Numero;
+
+
+                    txtIdEndereco.ReadOnly = true;
+                    btnConsultarEndereco.Text = "&Consultar";
+                    btnEditarEndereco.Enabled = true;
+
+                }
+            }
+        }
+
+        private void FrmCliente_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
