@@ -418,7 +418,7 @@
             // mskCep
             // 
             mskCep.Location = new Point(341, 115);
-            mskCep.Mask = "00000-00";
+            mskCep.Mask = "00000-000";
             mskCep.Name = "mskCep";
             mskCep.Size = new Size(222, 23);
             mskCep.TabIndex = 34;

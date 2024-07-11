@@ -52,15 +52,31 @@ namespace TudoAcabaEmPizza
 
         private void buSalvar_Click(object sender, EventArgs e)
         {
+            // codigo abaixo está com erro vou arrumar amanhã. ass: antonio
+            /*string TipoEnd = cmbTipoEndereco.SelectedItem.ToString();
+            TipoEnd = TipoEnd.Substring(0, 3);
+            mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskUf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            Endereco endereco = new(
+                 int.Parse(txtClienteId.Text),
+                 mskCep.Text,
+                 txtLogradouro.Text,
+                 txtNumero.Text,
+                 txtComplemento.Text,
+                 txtBairro.Text,
+                 txtCidade.Text,
+                 mskUf.Text,
+                 TipoEnd
 
+                 );
+            endereco.Inserir();
+            FrmCliente_Load(int.Parse(txtClienteId.Text));
+            */
         }
 
         private void FrmCliente_Load(int clienteId)
         {
-            var tipoEndereco = TipoEndereco.ObterLista();
-            cmbTipoEndereco.DataSource = tipoEndereco;
-            cmbTipoEndereco.DisplayMember = "descricao";
-            cmbTipoEndereco.ValueMember = "id";
+            
 
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
@@ -171,7 +187,10 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-
+            var tipoEndereco = TipoEndereco.ObterLista();
+            cmbTipoEndereco.DataSource = tipoEndereco;
+            cmbTipoEndereco.DisplayMember = "descricao";
+            cmbTipoEndereco.ValueMember = "id";
         }
     }
 }
