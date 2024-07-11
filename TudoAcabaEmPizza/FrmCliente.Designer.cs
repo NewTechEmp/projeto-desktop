@@ -321,6 +321,7 @@
             btnConsultarCliente.TabIndex = 14;
             btnConsultarCliente.Text = "&Consultar";
             btnConsultarCliente.UseVisualStyleBackColor = true;
+            btnConsultarCliente.Click += btnConsultarCliente_Click;
             // 
             // btnEditarCliente
             // 
@@ -356,6 +357,7 @@
             // 
             txtId.Location = new Point(173, 13);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(68, 23);
             txtId.TabIndex = 12;
             // 

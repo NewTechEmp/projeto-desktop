@@ -44,9 +44,9 @@ namespace TudoAcabaEmPizza
                 txtEmail.Text,
                 txtSenha.Text);
             cliente.Inserir();
-            if (cliente.Id > 0)
+            if (cliente.Id == 0)
             {
-                MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastro com sucesso");
+                MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
             }
         }
 
@@ -80,14 +80,14 @@ namespace TudoAcabaEmPizza
         {
             mskDdi.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskDdd.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            mskNumeroTelefone.TextMaskFormat= MaskFormat.ExcludePromptAndLiterals;
+            mskNumeroTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             Telefone telefone = new(
                 mskDdi.Text
-                ,mskDdd.Text
+                , mskDdd.Text
                 , mskNumeroTelefone.Text
-                ,TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
-                ,Convert.ToInt32(txtClienteId.Text)
+                , TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
+                , Convert.ToInt32(txtClienteId.Text)
                 );
 
             telefone.Inserir();
@@ -97,6 +97,34 @@ namespace TudoAcabaEmPizza
             }
 
 
+        }
+
+        private void btnConsultarCliente_Click(object sender, EventArgs e)
+        {
+            if (btnConsultarCliente.Text == "&Consultar")
+            {
+                txtNome.Clear();
+               mskCpf.Clear();
+                txtEmail.Clear();
+                txtSenha.Clear();
+                txtId.ReadOnly = false;
+                txtId.Focus();
+                btnConsultarCliente.Text = "&Obter por ID";
+            }
+            else
+            {
+                if (txtId.Text.Length > 0)
+                {
+                    Cliente cliente = Cliente.ObterPorId(int.Parse(txtId.Text));
+                    txtNome.Text = cliente.Nome;
+                    mskCpf.Text = cliente.Cpf;
+                    txtEmail.Text = cliente.Email;
+                    txtId.ReadOnly = true;
+                    btnConsultarCliente.Text = "&Consultar";
+                    btnEditarCliente.Enabled = true;
+
+                }
+            }
         }
     }
 }
