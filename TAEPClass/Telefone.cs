@@ -65,7 +65,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spddi", Ddi);
             cmd.Parameters.AddWithValue("spddd", Ddd);
             cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones);
+            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones.Id);
             cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }

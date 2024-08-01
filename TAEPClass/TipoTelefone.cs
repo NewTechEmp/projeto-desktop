@@ -38,8 +38,8 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipotelefone_insert";
-            cmd.Parameters.AddWithValue("spnome", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("spdescricao",Descricao );
             cmd.ExecuteNonQuery();
         }
         public bool Editar(int id)
@@ -66,7 +66,7 @@ namespace TAEPClass
             List<TipoTelefone> tipotelefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipotelefone";
+            cmd.CommandText = "select * from tipos_telefone";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -79,7 +79,7 @@ namespace TAEPClass
             TipoTelefone tipoTelefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from tipotelefone where id  = {id}";
+            cmd.CommandText = $"select * from tipos_telefone where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

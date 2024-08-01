@@ -53,8 +53,6 @@ namespace TudoAcabaEmPizza
         private void buSalvar_Click(object sender, EventArgs e)
         {
             // codigo abaixo está com erro vou arrumar amanhã. ass: antonio
-            /*string TipoEnd = cmbTipoEndereco.SelectedItem.ToString();
-            TipoEnd = TipoEnd.Substring(0, 3);
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskUf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Endereco endereco = new(
@@ -66,12 +64,12 @@ namespace TudoAcabaEmPizza
                  txtBairro.Text,
                  txtCidade.Text,
                  mskUf.Text,
-                 TipoEnd
+                 TipoEndereco.ObterPorId(Convert.ToInt32(cmbTipoEndereco.SelectedValue))
 
                  );
             endereco.Inserir();
             FrmCliente_Load(int.Parse(txtClienteId.Text));
-            */
+            
         }
 
         private void FrmCliente_Load(int clienteId)

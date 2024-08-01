@@ -87,10 +87,10 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_endereco_insert";
+            cmd.CommandText = "sp_enderecos_insert";
             cmd.Parameters.AddWithValue("spcep", Cep);
             cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos.Id);
+            cmd.Parameters.AddWithValue("sp_tipoendereco_id", TipoEnderecos.Id);
             cmd.Parameters.AddWithValue("splogradouro", Logradouro);
             cmd.Parameters.AddWithValue("spnumero", Numero);
             cmd.Parameters.AddWithValue("spcomplemento", Complemento);
@@ -163,14 +163,15 @@ namespace TAEPClass
                     new(
                         dr.GetInt32(0),
                         dr.GetString(1),
-                        dr.GetInt32(2),
-                        TipoEndereco.ObterPorId((3)),
-                        dr.GetString(4),
+                        dr.GetBoolean(2),
+                        dr.GetInt32(3),
+                        TipoEndereco.ObterPorId((4)),
                         dr.GetString(5),
                         dr.GetString(6),
                         dr.GetString(7),
                         dr.GetString(8),
-                        dr.GetString(9)
+                        dr.GetString(9),
+                        dr.GetString(10)
                         )
                     );
             }
