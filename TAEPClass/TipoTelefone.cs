@@ -12,24 +12,25 @@ namespace TAEPClass
     {
         
 
-        public int Id { get; set; } 
-        public string Sigla { get; set; }   
-        public string Descricao { get; set; }   
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public string Sigla { get; set; }    
         public bool Ativo { get; set; }
 
         public TipoTelefone() { }
         public TipoTelefone(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
-            Sigla = sigla;
             Descricao = descricao;
+            Sigla = sigla;
             Ativo = ativo;
         }
 
-        public TipoTelefone(string sigla, string descricao)
+        public TipoTelefone( string descricao,string sigla)
         {
-            Sigla = sigla;
             Descricao = descricao;
+            Sigla = sigla;
+           
         }
 
         // métodos da classe
@@ -38,8 +39,8 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipotelefone_insert";
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.Parameters.AddWithValue("spdescricao",Descricao );
+            cmd.Parameters.AddWithValue("spsigla",Sigla );
             cmd.ExecuteNonQuery();
         }
         public bool Editar(int id)
@@ -48,7 +49,7 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipotelefone_update";
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.Parameters.AddWithValue(" spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
@@ -66,7 +67,7 @@ namespace TAEPClass
             List<TipoTelefone> tipotelefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tipos_telefone";
+            cmd.CommandText = "select * from tipos_telefone order by descricao";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

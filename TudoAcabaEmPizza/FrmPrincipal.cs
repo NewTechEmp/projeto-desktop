@@ -59,7 +59,14 @@ namespace TudoAcabaEmPizza
 
         private void tipoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
+        }
+
+        private void tipoTelefoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTipoTelefone frmTipoTelefone = new();
+            frmTipoTelefone.MdiParent = this;
+            frmTipoTelefone.Show();
         }
     }
 }

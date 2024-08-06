@@ -44,7 +44,7 @@ namespace TudoAcabaEmPizza
                 txtEmail.Text,
                 txtSenha.Text);
             cliente.Inserir();
-            if (cliente.Id == 0)
+            if (cliente.Id > 0)
             {
                 MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
             }
@@ -52,11 +52,10 @@ namespace TudoAcabaEmPizza
 
         private void buSalvar_Click(object sender, EventArgs e)
         {
-            // codigo abaixo está com erro vou arrumar amanhã. ass: antonio
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskUf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Endereco endereco = new(
-                 int.Parse(txtClienteId.Text),
+                 txtEmailCliente.Text,
                  mskCep.Text,
                  txtLogradouro.Text,
                  txtNumero.Text,
@@ -68,15 +67,15 @@ namespace TudoAcabaEmPizza
 
                  );
             endereco.Inserir();
-            FrmCliente_Load(int.Parse(txtClienteId.Text));
-            
+            FrmCliente_Load(txtEmailCliente.Text);
+
         }
 
-        private void FrmCliente_Load(int clienteId)
+        private void FrmCliente_Load(string clienteEmail)
         {
-            
 
-            var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
+
+            var listaEnderecos = Endereco.ObterListaPorCliente(clienteEmail);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
             dgvEnderecos.Rows.Clear();
@@ -105,8 +104,9 @@ namespace TudoAcabaEmPizza
                 mskDdi.Text
                 , mskDdd.Text
                 , mskNumeroTelefone.Text
+                , txtClienteEmailTelefone.Text
                 , TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
-                , Convert.ToInt32(txtClienteId.Text)
+
                 );
 
             telefone.Inserir();
@@ -153,7 +153,7 @@ namespace TudoAcabaEmPizza
                 mskCep.Clear();
                 txtLogradouro.Clear();
                 txtComplemento.Clear();
-                txtClienteId.Clear();
+                txtEmailCliente.Clear();
                 txtBairro.Clear();
                 txtCidade.Clear();
                 txtNumero.Clear();
@@ -169,7 +169,7 @@ namespace TudoAcabaEmPizza
                     mskCep.Text = endereco.Cep;
                     txtLogradouro.Text = endereco.Logradouro;
                     txtComplemento.Text = endereco.Complemento;
-                    endereco.ClienteId = int.Parse(txtClienteId.Text);
+                    endereco.ClienteEmail = txtEmailCliente.Text;
                     txtBairro.Text = endereco.Bairro;
                     txtCidade.Text = endereco.Cidade;
                     txtNumero.Text = endereco.Numero;
@@ -189,6 +189,21 @@ namespace TudoAcabaEmPizza
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
             cmbTipoEndereco.ValueMember = "id";
+        }
+
+        private void tbpDadosCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

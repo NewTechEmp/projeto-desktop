@@ -38,8 +38,9 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             clienteToolStripMenuItem = new ToolStripMenuItem();
-            caixaToolStripMenuItem = new ToolStripMenuItem();
             tipoToolStripMenuItem = new ToolStripMenuItem();
+            caixaToolStripMenuItem = new ToolStripMenuItem();
+            tipoTelefoneToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -96,7 +97,7 @@
             // 
             // cadastreSeToolStripMenuItem
             // 
-            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem, clienteToolStripMenuItem, tipoToolStripMenuItem });
+            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem, clienteToolStripMenuItem, tipoToolStripMenuItem, tipoTelefoneToolStripMenuItem });
             cadastreSeToolStripMenuItem.Name = "cadastreSeToolStripMenuItem";
             cadastreSeToolStripMenuItem.Size = new Size(82, 20);
             cadastreSeToolStripMenuItem.Text = "&Cadastre-Se";
@@ -114,6 +115,13 @@
             clienteToolStripMenuItem.Text = "&Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
+            // tipoToolStripMenuItem
+            // 
+            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
+            tipoToolStripMenuItem.Size = new Size(180, 22);
+            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
+            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
+            // 
             // caixaToolStripMenuItem
             // 
             caixaToolStripMenuItem.ForeColor = Color.Black;
@@ -122,12 +130,12 @@
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // tipoToolStripMenuItem
+            // tipoTelefoneToolStripMenuItem
             // 
-            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
-            tipoToolStripMenuItem.Size = new Size(180, 22);
-            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
-            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
+            tipoTelefoneToolStripMenuItem.Name = "tipoTelefoneToolStripMenuItem";
+            tipoTelefoneToolStripMenuItem.Size = new Size(180, 22);
+            tipoTelefoneToolStripMenuItem.Text = "&Tipo Telefone";
+            tipoTelefoneToolStripMenuItem.Click += tipoTelefoneToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -164,5 +172,6 @@
         private ToolStripMenuItem cadastroEConsultasToolStripMenuItem;
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem tipoToolStripMenuItem;
+        private ToolStripMenuItem tipoTelefoneToolStripMenuItem;
     }
 }

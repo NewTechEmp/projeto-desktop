@@ -111,8 +111,8 @@ namespace TAEPClass
                     dr.GetString(5),
                     dr.GetDateTime(6),
                     dr.GetBoolean(7),
-                    Endereco.ObterListaPorCliente(dr.GetInt32(0)),
-                    Telefone.ObterListaPorCliente(dr.GetInt32(0))
+                    Endereco.ObterListaPorCliente(dr.GetString(0)),
+                    Telefone.ObterListaPorCliente(dr.GetString(0))
                     );
             }
 
@@ -137,8 +137,8 @@ namespace TAEPClass
                     dr.GetString(5),
                     dr.GetDateTime(6),
                     dr.GetBoolean(7),
-                    Endereco.ObterListaPorCliente(dr.GetInt32(0)),
-                    Telefone.ObterListaPorCliente(dr.GetInt32(0))
+                    Endereco.ObterListaPorCliente(dr.GetString(0)),
+                    Telefone.ObterListaPorCliente(dr.GetString(0))
                     )
                 );
             }

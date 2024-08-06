@@ -41,6 +41,7 @@
             clnTipoEnd = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tbpDadosCliente = new TabPage();
+            txtClienteId = new TextBox();
             dtpDatanasc = new DateTimePicker();
             mskCpf = new MaskedTextBox();
             label7 = new Label();
@@ -57,6 +58,8 @@
             txtNome = new TextBox();
             txtId = new TextBox();
             tbpEnderecosCliente = new TabPage();
+            label12 = new Label();
+            txtEmailCliente = new TextBox();
             label23 = new Label();
             txtIdEndereco = new TextBox();
             mskCep = new MaskedTextBox();
@@ -71,7 +74,6 @@
             txtCidade = new TextBox();
             txtBairro = new TextBox();
             cmbTipoEndereco = new ComboBox();
-            label12 = new Label();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -80,13 +82,12 @@
             txtNumero = new TextBox();
             txtComplemento = new TextBox();
             txtLogradouro = new TextBox();
-            txtClienteId = new TextBox();
             tbpTelefonesCliente = new TabPage();
+            label22 = new Label();
+            txtClienteEmailTelefone = new TextBox();
             btnObterTelefone = new Button();
             btnEditarTelefone = new Button();
             btnInserirTelefone = new Button();
-            label22 = new Label();
-            textId = new TextBox();
             label21 = new Label();
             cmbTipoTelefone = new ComboBox();
             label20 = new Label();
@@ -212,6 +213,7 @@
             // 
             // tbpDadosCliente
             // 
+            tbpDadosCliente.Controls.Add(txtClienteId);
             tbpDadosCliente.Controls.Add(dtpDatanasc);
             tbpDadosCliente.Controls.Add(mskCpf);
             tbpDadosCliente.Controls.Add(label7);
@@ -234,6 +236,16 @@
             tbpDadosCliente.TabIndex = 0;
             tbpDadosCliente.Text = "Dados Cliente";
             tbpDadosCliente.UseVisualStyleBackColor = true;
+            tbpDadosCliente.Click += tbpDadosCliente_Click;
+            // 
+            // txtClienteId
+            // 
+            txtClienteId.Location = new Point(627, 59);
+            txtClienteId.Name = "txtClienteId";
+            txtClienteId.Size = new Size(100, 23);
+            txtClienteId.TabIndex = 2;
+            txtClienteId.Text = "0";
+            txtClienteId.Visible = false;
             // 
             // dtpDatanasc
             // 
@@ -365,6 +377,8 @@
             // 
             // tbpEnderecosCliente
             // 
+            tbpEnderecosCliente.Controls.Add(label12);
+            tbpEnderecosCliente.Controls.Add(txtEmailCliente);
             tbpEnderecosCliente.Controls.Add(label23);
             tbpEnderecosCliente.Controls.Add(txtIdEndereco);
             tbpEnderecosCliente.Controls.Add(mskCep);
@@ -379,7 +393,6 @@
             tbpEnderecosCliente.Controls.Add(txtCidade);
             tbpEnderecosCliente.Controls.Add(txtBairro);
             tbpEnderecosCliente.Controls.Add(cmbTipoEndereco);
-            tbpEnderecosCliente.Controls.Add(label12);
             tbpEnderecosCliente.Controls.Add(label11);
             tbpEnderecosCliente.Controls.Add(label10);
             tbpEnderecosCliente.Controls.Add(label9);
@@ -388,7 +401,6 @@
             tbpEnderecosCliente.Controls.Add(txtNumero);
             tbpEnderecosCliente.Controls.Add(txtComplemento);
             tbpEnderecosCliente.Controls.Add(txtLogradouro);
-            tbpEnderecosCliente.Controls.Add(txtClienteId);
             tbpEnderecosCliente.Location = new Point(4, 24);
             tbpEnderecosCliente.Name = "tbpEnderecosCliente";
             tbpEnderecosCliente.Padding = new Padding(3);
@@ -397,11 +409,29 @@
             tbpEnderecosCliente.Text = "Endereços Cliente";
             tbpEnderecosCliente.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.ForeColor = SystemColors.HotTrack;
+            label12.Location = new Point(118, 108);
+            label12.Name = "label12";
+            label12.Size = new Size(93, 15);
+            label12.TabIndex = 38;
+            label12.Text = "Email do Cliente";
+            label12.Click += label12_Click;
+            // 
+            // txtEmailCliente
+            // 
+            txtEmailCliente.Location = new Point(217, 105);
+            txtEmailCliente.Name = "txtEmailCliente";
+            txtEmailCliente.Size = new Size(212, 23);
+            txtEmailCliente.TabIndex = 37;
+            // 
             // label23
             // 
             label23.AutoSize = true;
             label23.ForeColor = SystemColors.HotTrack;
-            label23.Location = new Point(25, 113);
+            label23.Location = new Point(10, 103);
             label23.Name = "label23";
             label23.Size = new Size(18, 15);
             label23.TabIndex = 36;
@@ -409,7 +439,7 @@
             // 
             // txtIdEndereco
             // 
-            txtIdEndereco.Location = new Point(55, 110);
+            txtIdEndereco.Location = new Point(40, 100);
             txtIdEndereco.Name = "txtIdEndereco";
             txtIdEndereco.ReadOnly = true;
             txtIdEndereco.Size = new Size(50, 23);
@@ -417,10 +447,10 @@
             // 
             // mskCep
             // 
-            mskCep.Location = new Point(341, 115);
+            mskCep.Location = new Point(504, 103);
             mskCep.Mask = "00000-000";
             mskCep.Name = "mskCep";
-            mskCep.Size = new Size(222, 23);
+            mskCep.Size = new Size(64, 23);
             mskCep.TabIndex = 34;
             // 
             // label16
@@ -465,7 +495,7 @@
             // 
             // mskUf
             // 
-            mskUf.Location = new Point(684, 223);
+            mskUf.Location = new Point(627, 236);
             mskUf.Mask = "aa";
             mskUf.Name = "mskUf";
             mskUf.Size = new Size(33, 23);
@@ -475,7 +505,7 @@
             // 
             label15.AutoSize = true;
             label15.ForeColor = SystemColors.HotTrack;
-            label15.Location = new Point(657, 226);
+            label15.Location = new Point(600, 239);
             label15.Name = "label15";
             label15.Size = new Size(21, 15);
             label15.TabIndex = 28;
@@ -485,7 +515,7 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = SystemColors.HotTrack;
-            label14.Location = new Point(5, 283);
+            label14.Location = new Point(25, 244);
             label14.Name = "label14";
             label14.Size = new Size(44, 15);
             label14.TabIndex = 27;
@@ -495,7 +525,7 @@
             // 
             label13.AutoSize = true;
             label13.ForeColor = SystemColors.HotTrack;
-            label13.Location = new Point(307, 232);
+            label13.Location = new Point(338, 206);
             label13.Name = "label13";
             label13.Size = new Size(38, 15);
             label13.TabIndex = 26;
@@ -503,14 +533,14 @@
             // 
             // txtCidade
             // 
-            txtCidade.Location = new Point(55, 283);
+            txtCidade.Location = new Point(75, 244);
             txtCidade.Name = "txtCidade";
-            txtCidade.Size = new Size(202, 23);
+            txtCidade.Size = new Size(229, 23);
             txtCidade.TabIndex = 24;
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(351, 226);
+            txtBairro.Location = new Point(382, 200);
             txtBairro.Name = "txtBairro";
             txtBairro.Size = new Size(278, 23);
             txtBairro.TabIndex = 23;
@@ -518,26 +548,16 @@
             // cmbTipoEndereco
             // 
             cmbTipoEndereco.FormattingEnabled = true;
-            cmbTipoEndereco.Location = new Point(442, 168);
+            cmbTipoEndereco.Location = new Point(434, 156);
             cmbTipoEndereco.Name = "cmbTipoEndereco";
-            cmbTipoEndereco.Size = new Size(225, 23);
+            cmbTipoEndereco.Size = new Size(226, 23);
             cmbTipoEndereco.TabIndex = 22;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.ForeColor = SystemColors.HotTrack;
-            label12.Location = new Point(131, 118);
-            label12.Name = "label12";
-            label12.Size = new Size(58, 15);
-            label12.TabIndex = 12;
-            label12.Text = "ID Cliente";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.ForeColor = SystemColors.HotTrack;
-            label11.Location = new Point(4, 226);
+            label11.Location = new Point(7, 198);
             label11.Name = "label11";
             label11.Size = new Size(84, 15);
             label11.TabIndex = 11;
@@ -547,7 +567,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = SystemColors.HotTrack;
-            label10.Location = new Point(569, 118);
+            label10.Location = new Point(574, 106);
             label10.Name = "label10";
             label10.Size = new Size(21, 15);
             label10.TabIndex = 10;
@@ -557,7 +577,7 @@
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.HotTrack;
-            label9.Location = new Point(351, 171);
+            label9.Location = new Point(344, 159);
             label9.Name = "label9";
             label9.Size = new Size(82, 15);
             label9.TabIndex = 9;
@@ -567,7 +587,7 @@
             // 
             label8.AutoSize = true;
             label8.ForeColor = SystemColors.HotTrack;
-            label8.Location = new Point(11, 171);
+            label8.Location = new Point(0, 156);
             label8.Name = "label8";
             label8.Size = new Size(69, 15);
             label8.TabIndex = 8;
@@ -577,7 +597,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(307, 118);
+            label2.Location = new Point(470, 106);
             label2.Name = "label2";
             label2.Size = new Size(28, 15);
             label2.TabIndex = 7;
@@ -585,39 +605,32 @@
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(609, 115);
+            txtNumero.Location = new Point(614, 103);
             txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(120, 23);
+            txtNumero.Size = new Size(46, 23);
             txtNumero.TabIndex = 6;
             // 
             // txtComplemento
             // 
-            txtComplemento.Location = new Point(94, 226);
+            txtComplemento.Location = new Point(97, 198);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.Size = new Size(207, 23);
             txtComplemento.TabIndex = 5;
             // 
             // txtLogradouro
             // 
-            txtLogradouro.Location = new Point(86, 168);
+            txtLogradouro.Location = new Point(75, 153);
             txtLogradouro.Name = "txtLogradouro";
             txtLogradouro.Size = new Size(214, 23);
             txtLogradouro.TabIndex = 3;
             // 
-            // txtClienteId
-            // 
-            txtClienteId.Location = new Point(195, 115);
-            txtClienteId.Name = "txtClienteId";
-            txtClienteId.Size = new Size(105, 23);
-            txtClienteId.TabIndex = 2;
-            // 
             // tbpTelefonesCliente
             // 
+            tbpTelefonesCliente.Controls.Add(label22);
+            tbpTelefonesCliente.Controls.Add(txtClienteEmailTelefone);
             tbpTelefonesCliente.Controls.Add(btnObterTelefone);
             tbpTelefonesCliente.Controls.Add(btnEditarTelefone);
             tbpTelefonesCliente.Controls.Add(btnInserirTelefone);
-            tbpTelefonesCliente.Controls.Add(label22);
-            tbpTelefonesCliente.Controls.Add(textId);
             tbpTelefonesCliente.Controls.Add(label21);
             tbpTelefonesCliente.Controls.Add(cmbTipoTelefone);
             tbpTelefonesCliente.Controls.Add(label20);
@@ -635,9 +648,27 @@
             tbpTelefonesCliente.Text = "Telefones Cliente";
             tbpTelefonesCliente.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = SystemColors.HotTrack;
+            label22.Location = new Point(161, 98);
+            label22.Name = "label22";
+            label22.Size = new Size(93, 15);
+            label22.TabIndex = 35;
+            label22.Text = "Email do Cliente";
+            // 
+            // txtClienteEmailTelefone
+            // 
+            txtClienteEmailTelefone.Location = new Point(257, 95);
+            txtClienteEmailTelefone.Name = "txtClienteEmailTelefone";
+            txtClienteEmailTelefone.PlaceholderText = "Insira o email do Cliente";
+            txtClienteEmailTelefone.Size = new Size(211, 23);
+            txtClienteEmailTelefone.TabIndex = 34;
+            // 
             // btnObterTelefone
             // 
-            btnObterTelefone.Location = new Point(437, 262);
+            btnObterTelefone.Location = new Point(437, 260);
             btnObterTelefone.Name = "btnObterTelefone";
             btnObterTelefone.Size = new Size(75, 32);
             btnObterTelefone.TabIndex = 31;
@@ -646,7 +677,7 @@
             // 
             // btnEditarTelefone
             // 
-            btnEditarTelefone.Location = new Point(325, 262);
+            btnEditarTelefone.Location = new Point(325, 260);
             btnEditarTelefone.Name = "btnEditarTelefone";
             btnEditarTelefone.Size = new Size(75, 32);
             btnEditarTelefone.TabIndex = 32;
@@ -655,7 +686,7 @@
             // 
             // btnInserirTelefone
             // 
-            btnInserirTelefone.Location = new Point(222, 262);
+            btnInserirTelefone.Location = new Point(222, 260);
             btnInserirTelefone.Name = "btnInserirTelefone";
             btnInserirTelefone.Size = new Size(75, 32);
             btnInserirTelefone.TabIndex = 33;
@@ -663,28 +694,11 @@
             btnInserirTelefone.UseVisualStyleBackColor = true;
             btnInserirTelefone.Click += btnInserirTelefone_Click;
             // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.ForeColor = SystemColors.HotTrack;
-            label22.Location = new Point(191, 97);
-            label22.Name = "label22";
-            label22.Size = new Size(58, 15);
-            label22.TabIndex = 30;
-            label22.Text = "ID Cliente";
-            // 
-            // textId
-            // 
-            textId.Location = new Point(257, 97);
-            textId.Name = "textId";
-            textId.Size = new Size(211, 23);
-            textId.TabIndex = 29;
-            // 
             // label21
             // 
             label21.AutoSize = true;
             label21.ForeColor = SystemColors.HotTrack;
-            label21.Location = new Point(161, 216);
+            label21.Location = new Point(161, 214);
             label21.Name = "label21";
             label21.Size = new Size(93, 15);
             label21.TabIndex = 28;
@@ -693,7 +707,7 @@
             // cmbTipoTelefone
             // 
             cmbTipoTelefone.FormattingEnabled = true;
-            cmbTipoTelefone.Location = new Point(257, 213);
+            cmbTipoTelefone.Location = new Point(257, 211);
             cmbTipoTelefone.Name = "cmbTipoTelefone";
             cmbTipoTelefone.Size = new Size(211, 23);
             cmbTipoTelefone.TabIndex = 27;
@@ -702,7 +716,7 @@
             // 
             label20.AutoSize = true;
             label20.ForeColor = SystemColors.HotTrack;
-            label20.Location = new Point(197, 187);
+            label20.Location = new Point(197, 185);
             label20.Name = "label20";
             label20.Size = new Size(57, 15);
             label20.TabIndex = 26;
@@ -712,7 +726,7 @@
             // 
             label19.AutoSize = true;
             label19.ForeColor = SystemColors.HotTrack;
-            label19.Location = new Point(223, 163);
+            label19.Location = new Point(223, 161);
             label19.Name = "label19";
             label19.Size = new Size(31, 15);
             label19.TabIndex = 25;
@@ -722,7 +736,7 @@
             // 
             label18.AutoSize = true;
             label18.ForeColor = SystemColors.HotTrack;
-            label18.Location = new Point(223, 129);
+            label18.Location = new Point(223, 127);
             label18.Name = "label18";
             label18.Size = new Size(26, 15);
             label18.TabIndex = 24;
@@ -730,7 +744,7 @@
             // 
             // mskNumeroTelefone
             // 
-            mskNumeroTelefone.Location = new Point(257, 184);
+            mskNumeroTelefone.Location = new Point(257, 182);
             mskNumeroTelefone.Mask = "000000000";
             mskNumeroTelefone.Name = "mskNumeroTelefone";
             mskNumeroTelefone.Size = new Size(211, 23);
@@ -738,7 +752,7 @@
             // 
             // mskDdd
             // 
-            mskDdd.Location = new Point(257, 155);
+            mskDdd.Location = new Point(257, 153);
             mskDdd.Mask = "00";
             mskDdd.Name = "mskDdd";
             mskDdd.Size = new Size(211, 23);
@@ -746,7 +760,7 @@
             // 
             // mskDdi
             // 
-            mskDdi.Location = new Point(257, 126);
+            mskDdi.Location = new Point(257, 124);
             mskDdi.Mask = "+00";
             mskDdi.Name = "mskDdi";
             mskDdi.Size = new Size(211, 23);
@@ -791,32 +805,16 @@
         private Label label1;
         private GroupBox grbCliente;
         private TabControl tabControl1;
-        private TabPage tbpDadosCliente;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label ID;
-        private Button btnInserir;
-        private Button btnConsultarCliente;
-        private Button btnEditarCliente;
-        private TextBox txtSenha;
-        private TextBox txtEmail;
-        private TextBox txtNome;
-        private TextBox txtId;
         private TabPage tbpEnderecosCliente;
         private TabPage tbpTelefonesCliente;
         private TextBox txtNumero;
         private TextBox txtComplemento;
         private TextBox txtLogradouro;
-        private TextBox txtClienteId;
         private Label label11;
         private Label label10;
         private Label label9;
         private Label label8;
         private Label label2;
-        private Label label12;
         private Label label14;
         private Label label13;
         private TextBox txtCidade;
@@ -837,8 +835,6 @@
         private Label label18;
         private ComboBox cmbTipoTelefone;
         private Label label21;
-        private Label label22;
-        private TextBox textId;
         private Button btnObterTelefone;
         private Button btnEditarTelefone;
         private Button btnInserirTelefone;
@@ -846,8 +842,6 @@
         private ComboBox comboBox1;
         private MaskedTextBox maskedTextBox3;
         private MaskedTextBox maskedTextBox2;
-        private MaskedTextBox mskCpf;
-        private DateTimePicker dtpDatanasc;
         private DataGridView dgvEnderecos;
         private DataGridViewTextBoxColumn clnCep;
         private DataGridViewTextBoxColumn clnLogradouro;
@@ -860,5 +854,26 @@
         private MaskedTextBox mskCep;
         private Label label23;
         private TextBox txtIdEndereco;
+        private TabPage tbpDadosCliente;
+        private TextBox txtClienteId;
+        private DateTimePicker dtpDatanasc;
+        private MaskedTextBox mskCpf;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label ID;
+        private Button btnInserir;
+        private Button btnConsultarCliente;
+        private Button btnEditarCliente;
+        private TextBox txtSenha;
+        private TextBox txtEmail;
+        private TextBox txtNome;
+        private TextBox txtId;
+        private Label label12;
+        private TextBox txtEmailCliente;
+        private Label label22;
+        private TextBox txtClienteEmailTelefone;
     }
 }

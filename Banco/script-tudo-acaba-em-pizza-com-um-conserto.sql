@@ -26,7 +26,7 @@ CREATE TABLE ENDERECOS
 ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 CEP CHAR(8) NOT NULL,
 ATIVO BIT(1) NOT NULL DEFAULT 1,
-CLIENTE_ID INT NOT NULL,
+EMAIL_CLIENTE varchar(200) NOT NULL,
 TIPO_ENDERECO_ID INT NOT NULL,
 LOGRADOURO VARCHAR(100) NOT NULL,
 NUMERO VARCHAR(40) NOT NULL,
@@ -52,7 +52,7 @@ ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 NOTA DECIMAL(3,2) NOT NULL,
 COMENTARIO VARCHAR(200) NULL,
 DATA_AVALIACAO TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-CLIENTE_ID INT NOT NULL,
+EMAIL_CLIENTE varchar(200) NOT NULL,
 PRODUTO_ID INT NOT NULL
 );
 
@@ -74,7 +74,7 @@ DDD CHAR(2) NOT NULL,
 NUMERO CHAR(9) NOT NULL,
 ATIVO BIT(1) NOT NULL DEFAULT 1,
 TIPO_TELEFONE_ID INT NOT NULL,
-CLIENTE_ID INT NOT NULL
+EMAIL_CLIENTE varchar(200) NOT NULL
 );
 
 -- TABELA PRODUTOS--
@@ -249,8 +249,8 @@ ATIVO BIT(1) NOT NULL DEFAULT 1
 -- CHAVES TABELA ENDERECOS
 -- -----------------------------------------------------
 ALTER TABLE ENDERECOS
-ADD CONSTRAINT FK_ENDERECOS_CLIENTE FOREIGN KEY(CLIENTE_ID)
-REFERENCES CLIENTES(ID);
+ADD CONSTRAINT FK_EMAIL_ENDERECO_CLIENTE FOREIGN KEY(EMAIL_CLIENTE)
+REFERENCES CLIENTES(EMAIL);
 
 ALTER TABLE ENDERECOS
 ADD CONSTRAINT FK_ENDERECOS_TIPO_ENDERECO FOREIGN KEY (TIPO_ENDERECO_ID)
@@ -263,8 +263,8 @@ REFERENCES TIPOS_ENDERECO(ID);
 -- CHAVES TABELA TELEFONE
 -- -----------------------------------------------------
 ALTER TABLE TELEFONES
-ADD CONSTRAINT FK_TELEFONES_CLIENTE FOREIGN KEY(CLIENTE_ID)
-REFERENCES CLIENTES(ID);
+ADD CONSTRAINT FK_TELEFONES_CLIENTE_EMAIL FOREIGN KEY(EMAIL_CLIENTE)
+REFERENCES CLIENTES(EMAIL);
 
 ALTER TABLE TELEFONES
 ADD CONSTRAINT FK_TELEFONES_TIPO_TELEFONE FOREIGN KEY(TIPO_TELEFONE_ID)
@@ -279,8 +279,8 @@ REFERENCES TIPOS_TELEFONE(ID);
 -- CHAVES TABELA AVALIAÇÕES
 -- -----------------------------------------------------
 ALTER TABLE AVALIACOES
-ADD CONSTRAINT FK_AVALIACOES_CLIENTE_ID FOREIGN KEY(CLIENTE_ID)
-REFERENCES CLIENTES(ID);
+ADD CONSTRAINT FK_AVALIACOES_CLIENTE_EMAIL FOREIGN KEY(EMAIL_CLIENTE)
+REFERENCES CLIENTES(email);
 
 ALTER TABLE AVALIACOES
 ADD CONSTRAINT FK_AVALIACOES_PRODUTO_ID FOREIGN KEY(PRODUTO_ID)
@@ -419,11 +419,11 @@ CREATE PROCEDURE `sp_avaliacoes_insert` (
 	-- parametros da procedure
 	spnota decimal(3,2),
     spcomentario varchar(200),
-    spcliente_id int,
+    sp_email_cliente varchar(200),
     spprodutos_id int
 )
 BEGIN
-	insert into avaliacoes values (0,spnota, spcomentario, default, spcliente_id, spprodutos_id);
+	insert into avaliacoes values (0,spnota, spcomentario, default,  sp_email_cliente, spprodutos_id);
 END$$
 
 DELIMITER ;
@@ -438,7 +438,7 @@ CREATE PROCEDURE `sp_avaliacoes_update` (
 	spid int,
 	spnota decimal(3,2),
     spcomentario varchar(200),
-    spcliente_id int,
+	sp_email_cliente varchar(200),
     spprodutos_id int
 )
 BEGIN
@@ -718,7 +718,7 @@ CREATE PROCEDURE `sp_enderecos_insert` (
     -- parametros da procedure
    
     spcep char(8),
-    spcliente_id int,
+    spemail_cliente varchar(200),
     sptipo_endereco_id int,
     splogradouro varchar(100),
     spnumero varchar(40),
@@ -728,7 +728,7 @@ CREATE PROCEDURE `sp_enderecos_insert` (
     spuf char(2)
 ) 
 BEGIN 
-	insert enderecos values (0,spcep,default,spcliente_id,sp_tipoendereco_id,splogradouro,spnumero,spcomplemento,spbairro,spcidade,spuf);
+	insert enderecos values (0,spcep,default,spemail_cliente,sptipo_endereco_id,splogradouro,spnumero,spcomplemento,spbairro,spcidade,spuf);
 	select * from enderecos where id = last_insert_id();
 END$$
 
@@ -743,7 +743,7 @@ USE `TudoAcabaEmPizzaDB`$$
 CREATE PROCEDURE `sp_enderecos_update` (
 	-- parametros da procedure
 	spid int,
-    spcliente_id int,
+     spemail_cliente varchar(200),
     sptipo_endereco_id int,
 	spcep char(8),
     splogradouro varchar(100),
@@ -756,7 +756,7 @@ CREATE PROCEDURE `sp_enderecos_update` (
 BEGIN
 	update enderecos set 
 						id = spid,
-                        cliente_id = spcliente_id,
+                        EMAIL_CLIENTE = spemail_cliente,
                         tipo_endereco_id = sptipo_endereco_id,
 						cep = spcep,
                         logradouro = splogradouro,
@@ -799,10 +799,10 @@ CREATE PROCEDURE `sp_telefone_insert` (
     spddd char(2),
     spnumero char(9),
     sptipo_telefone_id int,
-    spcliente_id int
+    sp_telefone_cliente_email varchar(200)
 )
 BEGIN
-	insert into telefones values (0,spddi,spddd,spnumero,default,sptipo_telefone_id,spcliente_id);
+	insert into telefones values (0,spddi,spddd,spnumero,default,sptipo_telefone_id,sp_telefone_cliente_email );
 END$$
 
 DELIMITER ;
