@@ -6,28 +6,31 @@ using TAEPClass;
 using System.Text;
 using System.Threading.Tasks;
 using TAEPClass;
+using System.Security.Cryptography.X509Certificates;
 
-namespace TAEPClass
+
+public static class Banco
 {
-    public static class Banco
-    {
-        public static MySqlCommand Abrir()
-        {
-            MySqlCommand cmd = new MySqlCommand();
-            // dados da conexão
-            string strconn = @"server=127.0.0.1;database=TudoAcabaEmPizzaDB;user id=root;password=";
-            MySqlConnection cn = new MySqlConnection(strconn);
-            try
-            {
-                cn.Open();
-                cmd.Connection = cn;
+ 
+    private static string strconn = @"server=127.0.0.1;database=TudoAcabaEmPizzaDB;user id=root;password=";
+    
+    public static string caminho = System.Environment.CurrentDirectory;
+   
+    public static string caminhoFotos = caminho+@"\fotos\";  // Substitua por um caminho válido
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return cmd;
+    public static MySqlCommand Abrir()
+    {
+        MySqlCommand cmd = new MySqlCommand();
+        MySqlConnection cn = new MySqlConnection(strconn);
+        try
+        {
+            cn.Open();
+            cmd.Connection = cn;
         }
+        catch (Exception)
+        {
+            throw;
+        }
+        return cmd;
     }
 }

@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TAEPClass;
+using System.IO;
 
 namespace TudoAcabaEmPizza
 {
     public partial class FrmProduto : Form
     {
+        string origemCompleto = "";
+        string foto = "";
+        string pastaDestino = Banco.caminhoFotos;
+        string destinoCompleto = "";
+      
         public FrmProduto()
         {
             InitializeComponent();
@@ -32,7 +38,7 @@ namespace TudoAcabaEmPizza
                 txtNome.Clear();
 
                 txtValor.Clear();
-                txtLinkImage.Clear();
+                pb_foto.Image = null;
                 txtId.ReadOnly = false;
                 txtId.Focus();
                 btnConsultar.Text = "&Obter por ID";
@@ -46,7 +52,7 @@ namespace TudoAcabaEmPizza
                     txtDescricao.Text = produto.Descricao;
                     txtValor.Text = Convert.ToString(produto.ValorUnit);
                     mskCodigo.Text = produto.CodBarras;
-                    txtLinkImage.Text = produto.LinkImagem;
+                    pb_foto.Image = Image.FromFile(produto.LinkImagem);
                     cbmCategoria.SelectedIndex = cbmCategoria.FindString(produto.CategoriaId.Descricao);
                     btnEditar.Enabled = true;
                 }
@@ -84,6 +90,28 @@ namespace TudoAcabaEmPizza
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            if (destinoCompleto == "")
+            {
+                if(MessageBox.Show("Sem foto selecionada, deseja continuar?", "ERRO", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            if(destinoCompleto != "")
+            {
+                System.IO.File.Copy(origemCompleto, destinoCompleto, true);
+                if (File.Exists(destinoCompleto))
+                {
+                    pb_foto.ImageLocation = destinoCompleto;
+                }
+                else
+                {
+                    if(MessageBox.Show("Erro ao localizar foto, deseja continuar ?","ERRO",MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             Produto produto = new Produto(
@@ -91,26 +119,27 @@ namespace TudoAcabaEmPizza
               , txtDescricao.Text
               , Convert.ToDouble(txtValor.Text)
               , mskCodigo.Text
-              , txtLinkImage.Text
+              , pb_foto.ImageLocation = destinoCompleto
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
                 );
 
             produto.Inserir();
-            FrmProduto_Load(sender, e);
+            MessageBox.Show("produto inserido com sucesso");
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Produto produto = new(
                 int.Parse(txtId.Text)
-                ,txtNome.Text
-                ,txtDescricao.Text
-                ,double.Parse(txtValor.Text)
+                , txtNome.Text
+                , txtDescricao.Text
+                , double.Parse(txtValor.Text)
                 , mskCodigo.Text
-                , txtLinkImage.Text
+                , pb_foto.ImageLocation = destinoCompleto
                 , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
                 );
-            if(produto.Editar(produto.Id))
+            if (produto.Editar(produto.Id))
             {
                 FrmProduto_Load(sender, e);
                 MessageBox.Show($"O produto \" {produto.Nome} \" foi alterado com sucesso!");
@@ -119,6 +148,43 @@ namespace TudoAcabaEmPizza
             {
                 MessageBox.Show($"Falha ao alterar o produto \" {produto.Nome} \"!");
             }
+        }
+
+        private void btnAddFoto_Click(object sender, EventArgs e)
+        {
+            origemCompleto = "";
+            foto = "";
+            pastaDestino = Banco.caminhoFotos;
+            destinoCompleto = "";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                origemCompleto=openFileDialog1.FileName;
+                foto=openFileDialog1.SafeFileName;
+                destinoCompleto = pastaDestino + foto;
+            }
+            if(File.Exists(destinoCompleto))
+            {
+                if(MessageBox.Show("Arquivo já existe, deseja substituir ?","Substituir",MessageBoxButtons.YesNo)==DialogResult.No)
+                {
+                    return;
+                }
+            }
+            System.IO.File.Copy(origemCompleto, destinoCompleto, true);
+            if (File.Exists(destinoCompleto))
+            {
+                pb_foto.ImageLocation = origemCompleto;
+                MessageBox.Show(destinoCompleto);
+            }
+            else
+            {
+                MessageBox.Show("Arquivo não copiado");
+            }
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

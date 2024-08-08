@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             gbProdutos = new GroupBox();
+            btnAddFoto = new Button();
+            pb_foto = new PictureBox();
             cbmCategoria = new ComboBox();
             mskCodigo = new MaskedTextBox();
             label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            txtLinkImage = new TextBox();
             txtValor = new TextBox();
             txtDescricao = new TextBox();
             txtNome = new TextBox();
@@ -55,21 +55,23 @@
             clnImage = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
             label9 = new Label();
+            openFileDialog1 = new OpenFileDialog();
             gbProdutos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_foto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // gbProdutos
             // 
+            gbProdutos.Controls.Add(btnAddFoto);
+            gbProdutos.Controls.Add(pb_foto);
             gbProdutos.Controls.Add(cbmCategoria);
             gbProdutos.Controls.Add(mskCodigo);
             gbProdutos.Controls.Add(label7);
-            gbProdutos.Controls.Add(label6);
             gbProdutos.Controls.Add(label5);
             gbProdutos.Controls.Add(label4);
             gbProdutos.Controls.Add(label3);
             gbProdutos.Controls.Add(label2);
-            gbProdutos.Controls.Add(txtLinkImage);
             gbProdutos.Controls.Add(txtValor);
             gbProdutos.Controls.Add(txtDescricao);
             gbProdutos.Controls.Add(txtNome);
@@ -79,17 +81,37 @@
             gbProdutos.Controls.Add(label1);
             gbProdutos.Controls.Add(txtId);
             gbProdutos.ForeColor = Color.ForestGreen;
-            gbProdutos.Location = new Point(270, 52);
+            gbProdutos.Location = new Point(190, 64);
             gbProdutos.Name = "gbProdutos";
-            gbProdutos.Size = new Size(520, 375);
+            gbProdutos.Size = new Size(539, 361);
             gbProdutos.TabIndex = 16;
             gbProdutos.TabStop = false;
             gbProdutos.Text = "Dados de inserção";
             // 
+            // btnAddFoto
+            // 
+            btnAddFoto.Location = new Point(390, 83);
+            btnAddFoto.Name = "btnAddFoto";
+            btnAddFoto.Size = new Size(132, 23);
+            btnAddFoto.TabIndex = 23;
+            btnAddFoto.Text = "Adicione  Foto";
+            btnAddFoto.UseVisualStyleBackColor = true;
+            btnAddFoto.Click += btnAddFoto_Click;
+            // 
+            // pb_foto
+            // 
+            pb_foto.BorderStyle = BorderStyle.FixedSingle;
+            pb_foto.Location = new Point(390, 112);
+            pb_foto.Name = "pb_foto";
+            pb_foto.Size = new Size(132, 171);
+            pb_foto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb_foto.TabIndex = 22;
+            pb_foto.TabStop = false;
+            // 
             // cbmCategoria
             // 
             cbmCategoria.FormattingEnabled = true;
-            cbmCategoria.Location = new Point(131, 260);
+            cbmCategoria.Location = new Point(131, 228);
             cbmCategoria.Name = "cbmCategoria";
             cbmCategoria.Size = new Size(211, 23);
             cbmCategoria.TabIndex = 21;
@@ -105,20 +127,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(56, 260);
+            label7.Location = new Point(31, 231);
             label7.Name = "label7";
             label7.Size = new Size(66, 15);
             label7.TabIndex = 19;
             label7.Text = "* Categoria";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(53, 231);
-            label6.Name = "label6";
-            label6.Size = new Size(76, 15);
-            label6.TabIndex = 19;
-            label6.Text = "Link Imagem";
             // 
             // label5
             // 
@@ -155,13 +168,6 @@
             label2.Size = new Size(48, 15);
             label2.TabIndex = 19;
             label2.Text = "* Nome";
-            // 
-            // txtLinkImage
-            // 
-            txtLinkImage.Location = new Point(131, 228);
-            txtLinkImage.Name = "txtLinkImage";
-            txtLinkImage.Size = new Size(211, 23);
-            txtLinkImage.TabIndex = 18;
             // 
             // txtValor
             // 
@@ -226,7 +232,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.ForestGreen;
-            label1.Location = new Point(107, 83);
+            label1.Location = new Point(107, 74);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 0;
@@ -234,7 +240,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(131, 83);
+            txtId.Location = new Point(131, 74);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(55, 23);
@@ -243,7 +249,7 @@
             // dgvProdutos
             // 
             dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { Id, clnNome, clnDescricao, clnValor, clncodBar, clnImage, clnCategoria });
-            dgvProdutos.Location = new Point(106, 451);
+            dgvProdutos.Location = new Point(26, 431);
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.RowHeadersVisible = false;
             dgvProdutos.Size = new Size(825, 150);
@@ -309,18 +315,24 @@
             label9.AutoSize = true;
             label9.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.ForestGreen;
-            label9.Location = new Point(464, 13);
+            label9.Location = new Point(350, 25);
             label9.Name = "label9";
             label9.Size = new Size(156, 36);
             label9.TabIndex = 19;
             label9.Text = "Produto";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.Filter = "JPG(*.jpg)|*.jpg|PNG(*.png)|*.png";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1047, 613);
+            ClientSize = new Size(862, 613);
             Controls.Add(label9);
             Controls.Add(dgvProdutos);
             Controls.Add(gbProdutos);
@@ -329,6 +341,7 @@
             Load += FrmProduto_Load;
             gbProdutos.ResumeLayout(false);
             gbProdutos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb_foto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -346,12 +359,10 @@
         private Label label9;
         private TextBox txtNome;
         private Label label7;
-        private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox txtLinkImage;
         private TextBox txtValor;
         private TextBox txtDescricao;
         private DataGridViewTextBoxColumn Id;
@@ -363,5 +374,8 @@
         private DataGridViewTextBoxColumn clnCategoria;
         private MaskedTextBox mskCodigo;
         private ComboBox cbmCategoria;
+        private Button btnAddFoto;
+        private PictureBox pb_foto;
+        private OpenFileDialog openFileDialog1;
     }
 }
