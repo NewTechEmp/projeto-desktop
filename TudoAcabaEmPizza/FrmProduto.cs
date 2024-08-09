@@ -174,7 +174,7 @@ namespace TudoAcabaEmPizza
             if (File.Exists(destinoCompleto))
             {
                 pb_foto.ImageLocation = origemCompleto;
-                MessageBox.Show(destinoCompleto);
+                MessageBox.Show("arquivo achado com sucesso");
             }
             else
             {
