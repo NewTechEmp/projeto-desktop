@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace TAEPClass
 {
@@ -47,6 +48,7 @@ namespace TAEPClass
         }
         public void Inserir()
         {
+            CriptografarSenha(Senha);
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_insert";
@@ -61,6 +63,7 @@ namespace TAEPClass
             bool resultado = false;
             if (senhaConfirmar == Senha)
             {
+                CriptografarSenha(Senha);
                 var cmd = Banco.Abrir();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "sp_usuario_update";
@@ -134,20 +137,36 @@ namespace TAEPClass
         public static Usuario EfetuarLogin(string email, string senha)
         {
             Usuario usuario = new();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = aes_encrypt('{senha}','NewTech@123') and ativo = 1";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            if (usuario.VerificarSenha(senha))
             {
-                usuario.Id = dr.GetInt32(0);
-                usuario.Nome = dr.GetString(1);
-                usuario.Email = dr.GetString(2);
-                usuario.Senha = dr.GetString(3);
-                usuario.Ativo = dr.GetBoolean(4);
-                usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(5)));
+                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = '{senha}' and ativo = 1";
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    usuario.Id = dr.GetInt32(0);
+                    usuario.Nome = dr.GetString(1);
+                    usuario.Email = dr.GetString(2);
+                    usuario.Senha = dr.GetString(3);
+                    usuario.Ativo = dr.GetBoolean(4);
+                    usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(5)));
+                }
+                return usuario;
             }
-            return usuario;
+            else
+            {
+                return null;
+            }
+        }
+        private void CriptografarSenha(string senha)
+        {
+            string salt = BCryptNet.GenerateSalt(10);
+            senha = BCryptNet.HashPassword(Senha,salt);
+        }
+        private bool VerificarSenha(string senha)
+        {
+            return BCryptNet.Verify(senha,Senha);
         }
     }
 }
