@@ -70,11 +70,12 @@ namespace TAEPClass
             while (dr.Read())
             {
                 itens.Add(new(dr.GetInt32(0)
-                    , dr.GetInt32(1)
                     , dr.GetDouble(2)
                     ,dr.GetDouble(3)
-                    , Pedido.
-                    , Produto.BuscarPorId(dr.GetInt32(2))));
+                    , Pedido.ObterPorId(dr.GetInt32(4))
+                    , Produto.ObterPorId(dr.GetInt32(5))
+                    , TamanhoPizza.ObterPorId(dr.GetInt32(6))
+                    ));
             }
             return itens;
 

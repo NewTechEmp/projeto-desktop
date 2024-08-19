@@ -15,48 +15,48 @@ namespace TAEPClass
         public Usuario Usuario { get; set; }
         public Cliente Cliente { get; set; }
         public Status StatusId {  get; set; }
-        public ClasseDesconto ClasseDescontoId {  get; set; }
+        public ClasseDesconto ClasseDesconto {  get; set; }
         List<ItemPedido> Itens { get; set; }
 
         public Pedido() { }
 
-        public Pedido(int id, DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDescontoId, List<ItemPedido> itens)
+        public Pedido(int id, DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDesconto, List<ItemPedido> itens)
         {
             Id = id;
             DataPedido = dataPedido;
             Usuario = usuario;
             Cliente = cliente;
             StatusId = statusId;
-            ClasseDescontoId = classeDescontoId;
+            ClasseDesconto = classeDesconto;
             Itens = itens;
         }
 
-        public Pedido(int id, DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDescontoId)
+        public Pedido(int id, DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDesconto)
         {
             Id = id;
             DataPedido = dataPedido;
             Usuario = usuario;
             Cliente = cliente;
             StatusId = statusId;
-            ClasseDescontoId = classeDescontoId;
+            ClasseDesconto = classeDesconto;
 
         }
 
-        public Pedido(DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDescontoId)
+        public Pedido(DateTime dataPedido, Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDesconto)
         {
             DataPedido = dataPedido;
             Usuario = usuario;
             Cliente = cliente;
             StatusId = statusId;
-            ClasseDescontoId = classeDescontoId;
+            ClasseDesconto = classeDesconto;
         }
 
-        public Pedido(Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDescontoId)
+        public Pedido(Usuario usuario, Cliente cliente, Status statusId, ClasseDesconto classeDesconto)
         {
             Usuario = usuario;
             Cliente = cliente;
             StatusId = statusId;
-            ClasseDescontoId = classeDescontoId;
+            ClasseDesconto = classeDesconto;
         }
 
         public void Inserir()
@@ -66,7 +66,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_pedido_insert";
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
-            cmd.Parameters.AddWithValue("spclasse_desconto_id", ClasseDescontoId.Id);
+            cmd.Parameters.AddWithValue("spclasse_desconto_id", ClasseDesconto.Id);
             cmd.Parameters.AddWithValue("spstatus_id", StatusId.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
@@ -84,6 +84,7 @@ namespace TAEPClass
                     , Cliente.ObterPorId(dr.GetInt32(3))
                     ,Status.ObterPorId(dr.GetInt32(5))
                     , ClasseDesconto.ObterPorId(dr.GetInt32(4))
+                     , ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
                     );
             }
 
@@ -97,14 +98,15 @@ namespace TAEPClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                pedidos.Add(dr.GetInt32(0)
+                pedidos = new(dr.GetInt32(0)
                     , dr.GetDateTime(1)
                     , Usuario.ObterPorId(dr.GetInt32(2))
                     , Cliente.ObterPorId(dr.GetInt32(3))
                     , Status.ObterPorId(dr.GetInt32(4))
                     , ClasseDesconto.ObterPorId(dr.GetInt32(5))
                     , ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
-                    );       
+                    
+                    );
             }
             return pedidos;
         }
