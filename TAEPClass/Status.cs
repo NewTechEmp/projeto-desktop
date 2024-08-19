@@ -8,7 +8,7 @@ using TAEPClass;
 
 namespace TAEPClass
 {
-    internal class Status
+    public class Status
     {
         public int Id { get; set; }
         public string Descricao { get; set; }

@@ -52,7 +52,7 @@ namespace TudoAcabaEmPizza
         private void FrmPedido_Load(object sender, EventArgs e)
         {
             var dataAtual = DateTime.Now;
-            dtpDataPedido.Value = dataAtual;
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -71,6 +71,16 @@ namespace TudoAcabaEmPizza
         }
 
         private void lblFuncionario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }

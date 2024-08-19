@@ -68,7 +68,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.HotTrack;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(299, 23);
             label1.Name = "label1";
             label1.Size = new Size(185, 36);
@@ -97,7 +97,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.HotTrack;
+            label3.ForeColor = Color.ForestGreen;
             label3.Location = new Point(6, 124);
             label3.Name = "label3";
             label3.Size = new Size(43, 20);
@@ -108,7 +108,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.HotTrack;
+            label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(18, 32);
             label4.Name = "label4";
             label4.Size = new Size(19, 15);
@@ -119,7 +119,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.HotTrack;
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(6, 68);
             label2.Name = "label2";
             label2.Size = new Size(50, 20);

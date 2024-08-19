@@ -30,6 +30,7 @@
         {
             menuStrip1 = new MenuStrip();
             pedidoToolStripMenuItem = new ToolStripMenuItem();
+            tipoDePagamentoToolStripMenuItem = new ToolStripMenuItem();
             produtoToolStripMenuItem = new ToolStripMenuItem();
             tipoDeBordaToolStripMenuItem = new ToolStripMenuItem();
             categoriaToolStripMenuItem = new ToolStripMenuItem();
@@ -38,104 +39,105 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             clienteToolStripMenuItem = new ToolStripMenuItem();
-            tipoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
-            tipoTelefoneToolStripMenuItem = new ToolStripMenuItem();
+            tipoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.DarkViolet;
+            menuStrip1.BackColor = Color.ForestGreen;
+            menuStrip1.Font = new Font("Segoe UI", 12F);
             menuStrip1.Items.AddRange(new ToolStripItem[] { pedidoToolStripMenuItem, produtoToolStripMenuItem, usuarioToolStripMenuItem, cadastreSeToolStripMenuItem, caixaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 2, 0, 2);
-            menuStrip1.Size = new Size(1029, 24);
+            menuStrip1.Size = new Size(1029, 29);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // pedidoToolStripMenuItem
             // 
+            pedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDePagamentoToolStripMenuItem });
             pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            pedidoToolStripMenuItem.Size = new Size(56, 20);
+            pedidoToolStripMenuItem.Size = new Size(69, 25);
             pedidoToolStripMenuItem.Text = "&Pedido";
+            // 
+            // tipoDePagamentoToolStripMenuItem
+            // 
+            tipoDePagamentoToolStripMenuItem.Name = "tipoDePagamentoToolStripMenuItem";
+            tipoDePagamentoToolStripMenuItem.Size = new Size(213, 26);
+            tipoDePagamentoToolStripMenuItem.Text = "&Tipo de Pagamento";
+            tipoDePagamentoToolStripMenuItem.Click += tipoDePagamentoToolStripMenuItem_Click;
             // 
             // produtoToolStripMenuItem
             // 
             produtoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeBordaToolStripMenuItem, categoriaToolStripMenuItem, cadastroEConsultasToolStripMenuItem });
             produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            produtoToolStripMenuItem.Size = new Size(62, 20);
+            produtoToolStripMenuItem.Size = new Size(78, 25);
             produtoToolStripMenuItem.Text = "&Produto";
             // 
             // tipoDeBordaToolStripMenuItem
             // 
             tipoDeBordaToolStripMenuItem.Name = "tipoDeBordaToolStripMenuItem";
-            tipoDeBordaToolStripMenuItem.Size = new Size(185, 22);
+            tipoDeBordaToolStripMenuItem.Size = new Size(226, 26);
             tipoDeBordaToolStripMenuItem.Text = "&Tipo de Borda";
             tipoDeBordaToolStripMenuItem.Click += tipoDeBordaToolStripMenuItem_Click;
             // 
             // categoriaToolStripMenuItem
             // 
             categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            categoriaToolStripMenuItem.Size = new Size(185, 22);
+            categoriaToolStripMenuItem.Size = new Size(226, 26);
             categoriaToolStripMenuItem.Text = "&Categoria";
             categoriaToolStripMenuItem.Click += categoriaToolStripMenuItem_Click;
             // 
             // cadastroEConsultasToolStripMenuItem
             // 
             cadastroEConsultasToolStripMenuItem.Name = "cadastroEConsultasToolStripMenuItem";
-            cadastroEConsultasToolStripMenuItem.Size = new Size(185, 22);
+            cadastroEConsultasToolStripMenuItem.Size = new Size(226, 26);
             cadastroEConsultasToolStripMenuItem.Text = "&Cadastro e Consultas";
             cadastroEConsultasToolStripMenuItem.Click += cadastroEConsultasToolStripMenuItem_Click;
             // 
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            usuarioToolStripMenuItem.Size = new Size(59, 20);
+            usuarioToolStripMenuItem.Size = new Size(76, 25);
             usuarioToolStripMenuItem.Text = "&Usuario";
             // 
             // cadastreSeToolStripMenuItem
             // 
-            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem, clienteToolStripMenuItem, tipoToolStripMenuItem, tipoTelefoneToolStripMenuItem });
+            cadastreSeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loginToolStripMenuItem, clienteToolStripMenuItem, tipoToolStripMenuItem });
             cadastreSeToolStripMenuItem.Name = "cadastreSeToolStripMenuItem";
-            cadastreSeToolStripMenuItem.Size = new Size(82, 20);
+            cadastreSeToolStripMenuItem.Size = new Size(106, 25);
             cadastreSeToolStripMenuItem.Text = "&Cadastre-Se";
             // 
             // loginToolStripMenuItem
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            loginToolStripMenuItem.Size = new Size(180, 22);
+            loginToolStripMenuItem.Size = new Size(199, 26);
             loginToolStripMenuItem.Text = "&Login";
             // 
             // clienteToolStripMenuItem
             // 
             clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            clienteToolStripMenuItem.Size = new Size(180, 22);
+            clienteToolStripMenuItem.Size = new Size(199, 26);
             clienteToolStripMenuItem.Text = "&Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
-            // 
-            // tipoToolStripMenuItem
-            // 
-            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
-            tipoToolStripMenuItem.Size = new Size(180, 22);
-            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
-            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
             // 
             // caixaToolStripMenuItem
             // 
             caixaToolStripMenuItem.ForeColor = Color.Black;
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            caixaToolStripMenuItem.Size = new Size(48, 20);
+            caixaToolStripMenuItem.Size = new Size(59, 25);
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // tipoTelefoneToolStripMenuItem
+            // tipoToolStripMenuItem
             // 
-            tipoTelefoneToolStripMenuItem.Name = "tipoTelefoneToolStripMenuItem";
-            tipoTelefoneToolStripMenuItem.Size = new Size(180, 22);
-            tipoTelefoneToolStripMenuItem.Text = "&Tipo Telefone";
-            tipoTelefoneToolStripMenuItem.Click += tipoTelefoneToolStripMenuItem_Click;
+            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
+            tipoToolStripMenuItem.Size = new Size(199, 26);
+            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
+            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -171,7 +173,7 @@
         private ToolStripMenuItem categoriaToolStripMenuItem;
         private ToolStripMenuItem cadastroEConsultasToolStripMenuItem;
         private ToolStripMenuItem clienteToolStripMenuItem;
+        private ToolStripMenuItem tipoDePagamentoToolStripMenuItem;
         private ToolStripMenuItem tipoToolStripMenuItem;
-        private ToolStripMenuItem tipoTelefoneToolStripMenuItem;
     }
 }

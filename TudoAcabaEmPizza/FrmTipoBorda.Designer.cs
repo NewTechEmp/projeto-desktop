@@ -65,6 +65,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(6, 68);
             label1.Name = "label1";
             label1.Size = new Size(105, 23);
@@ -75,6 +76,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(6, 115);
             label2.Name = "label2";
             label2.Size = new Size(65, 23);
@@ -84,6 +86,7 @@
             // btnInserir
             // 
             btnInserir.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            btnInserir.ForeColor = Color.ForestGreen;
             btnInserir.Location = new Point(28, 185);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(84, 31);
@@ -95,6 +98,7 @@
             // btnEditar
             // 
             btnEditar.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            btnEditar.ForeColor = Color.ForestGreen;
             btnEditar.Location = new Point(179, 185);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(81, 31);
@@ -106,6 +110,7 @@
             // btnObterPorId
             // 
             btnObterPorId.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            btnObterPorId.ForeColor = Color.ForestGreen;
             btnObterPorId.Location = new Point(315, 185);
             btnObterPorId.Name = "btnObterPorId";
             btnObterPorId.Size = new Size(79, 31);
@@ -118,6 +123,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.ForestGreen;
             label3.Location = new Point(247, 21);
             label3.Name = "label3";
             label3.Size = new Size(247, 36);
@@ -136,6 +142,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(6, 18);
             label4.Name = "label4";
             label4.Size = new Size(28, 23);

@@ -8,7 +8,7 @@ using TAEPClass;
 
 namespace TAEPClass
 {
-    internal class TamanhoPizza
+    public class TamanhoPizza
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
