@@ -52,6 +52,7 @@ namespace TudoAcabaEmPizza
         private void FrmPedido_Load(object sender, EventArgs e)
         {
             var dataAtual = DateTime.Now;
+            txtVendedor.Text = $"{Program.Usuario.Id} - {Program.Usuario.Nome}";
 
         }
 
@@ -83,6 +84,11 @@ namespace TudoAcabaEmPizza
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAbrirPedido_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

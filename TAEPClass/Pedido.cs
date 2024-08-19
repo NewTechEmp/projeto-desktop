@@ -90,15 +90,16 @@ namespace TAEPClass
 
             return pedido;
         }
-        public static List<Pedido> ObterPorClienteId(int ClienteId)
+        public Pedido ObterPorClienteId(int ClienteId)
         {
-            List<Pedido> pedidos = new();
+            Pedido pedido = new();
+
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from pedidos where cliente_id = {ClienteId}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                pedidos = new(dr.GetInt32(0)
+                pedido = new(dr.GetInt32(0)
                     , dr.GetDateTime(1)
                     , Usuario.ObterPorId(dr.GetInt32(2))
                     , Cliente.ObterPorId(dr.GetInt32(3))
@@ -108,8 +109,64 @@ namespace TAEPClass
                     
                     );
             }
-            return pedidos;
+            return pedido;
         }
 
+        public static List<Pedido> ObterLista(Status statusid = null)
+        {
+            List<Pedido> pedido = new();
+            var cmd = Banco.Abrir();
+            if (statusid == null)
+            {
+                cmd.CommandText = "select * from pedidos";
+            }
+            else
+            {
+                cmd.CommandText = $"select * from pedidos where status = {statusid}";
+            }
+
+            cmd.CommandText = $"select * from pedidos";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                pedido.Add(new(dr.GetInt32(0)
+                    , dr.GetDateTime(1)
+                    , Usuario.ObterPorId(dr.GetInt32(2))
+                    , Cliente.ObterPorId(dr.GetInt32(3))
+                    , Status.ObterPorId(dr.GetInt32(4))
+                    , ClasseDesconto.ObterPorId(dr.GetInt32(5))
+                    , ItemPedido.ObterListaPorPedido(dr.GetInt32(0))
+
+                    ));
+
+
+            }
+            return pedido;
+        }
+
+        public bool Alterar(int id)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_pedido_update";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spstatus_id", StatusId.Id);
+            cmd.Parameters.AddWithValue("spclasse_desconto_id", ClasseDesconto.Id);
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
+          
+            return true;
+        }
+        public bool Alterar(Status statusid)
+
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"update pedidos set status = {statusid} where id = {Id}";
+            return cmd.ExecuteNonQuery() > 0 ? true : false;
+        }
+
+        public static double CalcularPedido(int id)
+        {
+            return 0.0;
+        }
     }
 }
