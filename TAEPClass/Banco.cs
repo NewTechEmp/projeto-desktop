@@ -12,7 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 public static class Banco
 {
  
-    private static string strconn = @"server=127.0.0.1;database=Tudo_Acaba_em_Pizza_DB;user id=root;password=";
+    private static string strconn = @"server=127.0.0.1;database=tudo_acaba_em_pizza_db;user id=root;password=";
     
     public static string caminho = System.Environment.CurrentDirectory;
    

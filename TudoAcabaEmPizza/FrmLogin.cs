@@ -28,7 +28,11 @@ namespace TudoAcabaEmPizza
             if (txtEmail.Text != string.Empty && txtSenha.Text != string.Empty)
             {
                 var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text);
-                if (usuario.Id > 0)
+                if (usuario == null)
+                {
+                    MessageBox.Show("Email e/ou senha inválidos!");
+                }
+                else if (usuario.Id > 0 )
                 {
                     Program.Usuario = usuario;
                     this.Close();

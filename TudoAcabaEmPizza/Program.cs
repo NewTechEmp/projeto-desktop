@@ -4,7 +4,7 @@ namespace TudoAcabaEmPizza
 {
     internal static class Program
     {
-        public static Usuario Usuario { get; set; }
+        public static Usuario? Usuario { get; set; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
