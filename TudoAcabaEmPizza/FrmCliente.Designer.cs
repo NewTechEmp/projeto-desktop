@@ -59,7 +59,7 @@
             txtId = new TextBox();
             tbpEnderecosCliente = new TabPage();
             label12 = new Label();
-            txtEmailCliente = new TextBox();
+            txtEnderecoClienteId = new TextBox();
             label23 = new Label();
             txtIdEndereco = new TextBox();
             mskCep = new MaskedTextBox();
@@ -84,7 +84,7 @@
             txtLogradouro = new TextBox();
             tbpTelefonesCliente = new TabPage();
             label22 = new Label();
-            txtClienteEmailTelefone = new TextBox();
+            txtClienteTelefoneId = new TextBox();
             btnObterTelefone = new Button();
             btnEditarTelefone = new Button();
             btnInserirTelefone = new Button();
@@ -208,7 +208,7 @@
             tabControl1.Location = new Point(6, 22);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(756, 354);
+            tabControl1.Size = new Size(756, 446);
             tabControl1.TabIndex = 0;
             // 
             // tbpDadosCliente
@@ -378,7 +378,7 @@
             // tbpEnderecosCliente
             // 
             tbpEnderecosCliente.Controls.Add(label12);
-            tbpEnderecosCliente.Controls.Add(txtEmailCliente);
+            tbpEnderecosCliente.Controls.Add(txtEnderecoClienteId);
             tbpEnderecosCliente.Controls.Add(label23);
             tbpEnderecosCliente.Controls.Add(txtIdEndereco);
             tbpEnderecosCliente.Controls.Add(mskCep);
@@ -413,19 +413,19 @@
             // 
             label12.AutoSize = true;
             label12.ForeColor = SystemColors.HotTrack;
-            label12.Location = new Point(118, 108);
+            label12.Location = new Point(109, 106);
             label12.Name = "label12";
-            label12.Size = new Size(93, 15);
+            label12.Size = new Size(58, 15);
             label12.TabIndex = 38;
-            label12.Text = "Email do Cliente";
+            label12.Text = "ID Cliente";
             label12.Click += label12_Click;
             // 
-            // txtEmailCliente
+            // txtEnderecoClienteId
             // 
-            txtEmailCliente.Location = new Point(217, 105);
-            txtEmailCliente.Name = "txtEmailCliente";
-            txtEmailCliente.Size = new Size(212, 23);
-            txtEmailCliente.TabIndex = 37;
+            txtEnderecoClienteId.Location = new Point(176, 103);
+            txtEnderecoClienteId.Name = "txtEnderecoClienteId";
+            txtEnderecoClienteId.Size = new Size(212, 23);
+            txtEnderecoClienteId.TabIndex = 37;
             // 
             // label23
             // 
@@ -627,7 +627,7 @@
             // tbpTelefonesCliente
             // 
             tbpTelefonesCliente.Controls.Add(label22);
-            tbpTelefonesCliente.Controls.Add(txtClienteEmailTelefone);
+            tbpTelefonesCliente.Controls.Add(txtClienteTelefoneId);
             tbpTelefonesCliente.Controls.Add(btnObterTelefone);
             tbpTelefonesCliente.Controls.Add(btnEditarTelefone);
             tbpTelefonesCliente.Controls.Add(btnInserirTelefone);
@@ -643,7 +643,7 @@
             tbpTelefonesCliente.Location = new Point(4, 24);
             tbpTelefonesCliente.Name = "tbpTelefonesCliente";
             tbpTelefonesCliente.Padding = new Padding(3);
-            tbpTelefonesCliente.Size = new Size(748, 326);
+            tbpTelefonesCliente.Size = new Size(748, 418);
             tbpTelefonesCliente.TabIndex = 2;
             tbpTelefonesCliente.Text = "Telefones Cliente";
             tbpTelefonesCliente.UseVisualStyleBackColor = true;
@@ -652,19 +652,19 @@
             // 
             label22.AutoSize = true;
             label22.ForeColor = SystemColors.HotTrack;
-            label22.Location = new Point(161, 98);
+            label22.Location = new Point(191, 98);
             label22.Name = "label22";
-            label22.Size = new Size(93, 15);
+            label22.Size = new Size(58, 15);
             label22.TabIndex = 35;
-            label22.Text = "Email do Cliente";
+            label22.Text = "ID Cliente";
             // 
-            // txtClienteEmailTelefone
+            // txtClienteTelefoneId
             // 
-            txtClienteEmailTelefone.Location = new Point(257, 95);
-            txtClienteEmailTelefone.Name = "txtClienteEmailTelefone";
-            txtClienteEmailTelefone.PlaceholderText = "Insira o email do Cliente";
-            txtClienteEmailTelefone.Size = new Size(211, 23);
-            txtClienteEmailTelefone.TabIndex = 34;
+            txtClienteTelefoneId.Location = new Point(257, 95);
+            txtClienteTelefoneId.Name = "txtClienteTelefoneId";
+            txtClienteTelefoneId.PlaceholderText = "Insira o ID do Cliente";
+            txtClienteTelefoneId.Size = new Size(211, 23);
+            txtClienteTelefoneId.TabIndex = 34;
             // 
             // btnObterTelefone
             // 
@@ -872,8 +872,8 @@
         private TextBox txtNome;
         private TextBox txtId;
         private Label label12;
-        private TextBox txtEmailCliente;
+        private TextBox txtEnderecoClienteId;
         private Label label22;
-        private TextBox txtClienteEmailTelefone;
+        private TextBox txtClienteTelefoneId;
     }
 }

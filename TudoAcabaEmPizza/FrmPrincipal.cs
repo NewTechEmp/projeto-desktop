@@ -73,5 +73,12 @@ namespace TudoAcabaEmPizza
             frmTipoPag.MdiParent = this;
             frmTipoPag.Show();
         }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
+        }
     }
 }
