@@ -22,10 +22,10 @@ namespace TudoAcabaEmPizza
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            //FrmLogin login = new();            
-            //login.StartPosition = FormStartPosition.CenterScreen;
-            //login.ShowDialog();
-            //tslUsuario.Text = $"{Program.Usuario.Nome}  -  {Program.Usuario.Nivel.Nome}";
+            FrmLogin login = new();
+            login.StartPosition = FormStartPosition.CenterScreen;
+            login.ShowDialog();
+            tslUsuario.Text = $"{Program.Usuario.Nome}  -  {Program.Usuario.Nivel.Descricao}";
         }
 
         private void tipoDeBordaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,13 +64,13 @@ namespace TudoAcabaEmPizza
 
         private void tipoTelefoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tipoDePagamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmTipoPag frmTipoPag = new();
-            frmTipoPag.MdiParent = this;    
+            frmTipoPag.MdiParent = this;
             frmTipoPag.Show();
         }
     }

@@ -39,9 +39,12 @@
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             clienteToolStripMenuItem = new ToolStripMenuItem();
-            caixaToolStripMenuItem = new ToolStripMenuItem();
             tipoToolStripMenuItem = new ToolStripMenuItem();
+            caixaToolStripMenuItem = new ToolStripMenuItem();
+            toolStrip1 = new ToolStrip();
+            tslUsuario = new ToolStripLabel();
             menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -124,6 +127,13 @@
             clienteToolStripMenuItem.Text = "&Cliente";
             clienteToolStripMenuItem.Click += clienteToolStripMenuItem_Click;
             // 
+            // tipoToolStripMenuItem
+            // 
+            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
+            tipoToolStripMenuItem.Size = new Size(199, 26);
+            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
+            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
+            // 
             // caixaToolStripMenuItem
             // 
             caixaToolStripMenuItem.ForeColor = Color.Black;
@@ -132,12 +142,20 @@
             caixaToolStripMenuItem.Text = "&Caixa";
             caixaToolStripMenuItem.Click += caixaToolStripMenuItem_Click;
             // 
-            // tipoToolStripMenuItem
+            // toolStrip1
             // 
-            tipoToolStripMenuItem.Name = "tipoToolStripMenuItem";
-            tipoToolStripMenuItem.Size = new Size(199, 26);
-            tipoToolStripMenuItem.Text = "&Tipo de Endereço";
-            tipoToolStripMenuItem.Click += tipoToolStripMenuItem_Click;
+            toolStrip1.Dock = DockStyle.Bottom;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tslUsuario });
+            toolStrip1.Location = new Point(0, 425);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1029, 25);
+            toolStrip1.TabIndex = 2;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // tslUsuario
+            // 
+            tslUsuario.Name = "tslUsuario";
+            tslUsuario.Size = new Size(0, 22);
             // 
             // FrmPrincipal
             // 
@@ -145,6 +163,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGreen;
             ClientSize = new Size(1029, 450);
+            Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.ControlText;
@@ -156,6 +175,8 @@
             Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,5 +196,7 @@
         private ToolStripMenuItem clienteToolStripMenuItem;
         private ToolStripMenuItem tipoDePagamentoToolStripMenuItem;
         private ToolStripMenuItem tipoToolStripMenuItem;
+        private ToolStrip toolStrip1;
+        private ToolStripLabel tslUsuario;
     }
 }

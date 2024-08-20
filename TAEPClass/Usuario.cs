@@ -15,17 +15,19 @@ namespace TAEPClass
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
-        public string Senha { get; set; }   
+        public string Senha { get; set; }
+        public DateTime DataCad {  get; set; }
         public bool Ativo {  get; set; }    
         public Nivel Nivel {  get; set; }
 
         public Usuario() { }
-        public Usuario(int id, string nome, string email, string senha, bool ativo, Nivel nivelId)
+        public Usuario(int id, string nome, string email, string senha, DateTime dataCad, bool ativo, Nivel nivelId)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Senha = senha;
+            DataCad = dataCad;
             Ativo = ativo;
             Nivel = nivelId;
         }
@@ -97,8 +99,9 @@ namespace TAEPClass
                               dr.GetString(1),
                               dr.GetString(2),
                               dr.GetString(3),
-                              dr.GetBoolean(4),
-                              Nivel.ObterPorId(dr.GetInt32(5))
+                              dr.GetDateTime(4),
+                              dr.GetBoolean(5),
+                              Nivel.ObterPorId(dr.GetInt32(6))
                              );
             }
             return usuario;
@@ -127,46 +130,50 @@ namespace TAEPClass
                                         dr.GetString(1),
                                         dr.GetString(2),
                                         dr.GetString(3),
-                                        dr.GetBoolean(4),
-                                        Nivel.ObterPorId((5))
+                                        dr.GetDateTime(4),
+                                        dr.GetBoolean(5),
+                                        Nivel.ObterPorId((6))
                                      )
                          );
             }
             return lista;
         }
-        public static Usuario EfetuarLogin(string email, string senha)
+        public static Usuario? EfetuarLogin(string email, string senha)
         {
             Usuario usuario = new();
-            if (usuario.VerificarSenha(senha))
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from usuarios where email = '{email}' and ativo = 1";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
-                var cmd = Banco.Abrir();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $"select * from usuarios where email = '{email}' and senha = '{senha}' and ativo = 1";
-                var dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    usuario.Id = dr.GetInt32(0);
-                    usuario.Nome = dr.GetString(1);
-                    usuario.Email = dr.GetString(2);
-                    usuario.Senha = dr.GetString(3);
-                    usuario.Ativo = dr.GetBoolean(4);
-                    usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(5)));
-                }
-                return usuario;
+                usuario.Id = dr.GetInt32(0);
+                usuario.Nome = dr.GetString(1);
+                usuario.Email = dr.GetString(2);
+                usuario.Senha = dr.GetString(3);
+                usuario.DataCad = dr.GetDateTime(4);
+                usuario.Ativo = dr.GetBoolean(5);
+                usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(6)));
+            }
+            string hashPass = usuario.Senha;
+            if (!VerificarSenha(senha, hashPass))
+            {    
+                return null;
             }
             else
             {
-                return null;
+                return usuario;
             }
         }
-        private void CriptografarSenha(string senha)
+        private string CriptografarSenha(string senha)
         {
             string salt = BCryptNet.GenerateSalt(10);
-            senha = BCryptNet.HashPassword(Senha,salt);
+            string CripSenha = BCryptNet.HashPassword(senha,salt);
+            return CripSenha;
         }
-        private bool VerificarSenha(string senha)
+        private static bool VerificarSenha(string senha,string hashPass)
         {
-            return BCryptNet.Verify(senha,Senha);
+            return BCryptNet.Verify(senha, hashPass);
         }
     }
 }
