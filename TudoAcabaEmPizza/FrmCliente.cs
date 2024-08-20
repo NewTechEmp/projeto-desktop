@@ -38,11 +38,10 @@ namespace TudoAcabaEmPizza
         {
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Cliente cliente = new(
-                txtNome.Text,
-                dtpDatanasc.Value,
-                mskCpf.Text,
-                txtEmail.Text,
-                txtSenha.Text);
+              Usuario.ObterPorId(Convert.ToInt32(txtUsuarioId.Text))
+               , dtpDatanasc.Value
+               ,mskCpf.Text
+               );
             cliente.Inserir();
             if (cliente.Id > 0)
             {
@@ -122,10 +121,8 @@ namespace TudoAcabaEmPizza
         {
             if (btnConsultarCliente.Text == "&Consultar")
             {
-                txtNome.Clear();
+                txtUsuarioId.Clear();
                 mskCpf.Clear();
-                txtEmail.Clear();
-                txtSenha.Clear();
                 txtId.ReadOnly = false;
                 txtId.Focus();
                 btnConsultarCliente.Text = "&Obter por ID";
@@ -135,9 +132,8 @@ namespace TudoAcabaEmPizza
                 if (txtId.Text.Length > 0)
                 {
                     Cliente cliente = Cliente.ObterPorId(int.Parse(txtId.Text));
-                    txtNome.Text = cliente.Nome;
+                    Usuario usuario = Usuario.ObterPorId(int.Parse(txtUsuarioId.Text));
                     mskCpf.Text = cliente.Cpf;
-                    txtEmail.Text = cliente.Email;
                     txtId.ReadOnly = true;
                     btnConsultarCliente.Text = "&Consultar";
                     btnEditarCliente.Enabled = true;

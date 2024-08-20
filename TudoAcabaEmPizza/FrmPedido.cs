@@ -91,27 +91,7 @@ namespace TudoAcabaEmPizza
             Pedido pedido = new();
             pedido.Cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
             pedido.Usuario = Program.Usuario;
-            // Primeiro, verifique se o texto não é nulo ou vazio
-            if (string.IsNullOrWhiteSpace(cmbStatus.Text))
-            {
-                // Trate a situação onde o texto está vazio ou nulo
-                Console.WriteLine("O texto está vazio ou nulo.");
-            }
-            else
-            {
-                // Tente converter o texto para um inteiro
-                if (int.TryParse(cmbStatus.Text, out int statusId))
-                {
-                    // Se a conversão for bem-sucedida, chame o método ObterPorId
-                    var status = Status.ObterPorId(statusId);
-                    // Faça algo com o status obtido
-                }
-                else
-                {
-                    // Trate a situação onde a conversão falhou
-                    Console.WriteLine("Não foi possível converter o texto para um inteiro.");
-                }
-            }
+            pedido.StatusId = Status.ObterPorId(int.Parse(cmbStatus.Text));
             pedido.ClasseDesconto = null;
             pedido.Inserir();
             txtNumeroPedido.Text = pedido.Id.ToString();
@@ -127,7 +107,7 @@ namespace TudoAcabaEmPizza
                 var cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
                 if (cliente.Id > 0)
                 {
-                    txtClienteNome.Text = cliente.Nome;
+                    txtClienteNome.Text = cliente.Cpf;
                 }
 
             }

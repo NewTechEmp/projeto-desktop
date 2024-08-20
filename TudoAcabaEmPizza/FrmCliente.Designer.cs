@@ -44,8 +44,6 @@
             txtClienteId = new TextBox();
             dtpDatanasc = new DateTimePicker();
             mskCpf = new MaskedTextBox();
-            label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -53,9 +51,7 @@
             btnInserir = new Button();
             btnConsultarCliente = new Button();
             btnEditarCliente = new Button();
-            txtSenha = new TextBox();
-            txtEmail = new TextBox();
-            txtNome = new TextBox();
+            txtUsuarioId = new TextBox();
             txtId = new TextBox();
             tbpEnderecosCliente = new TabPage();
             label12 = new Label();
@@ -216,8 +212,6 @@
             tbpDadosCliente.Controls.Add(txtClienteId);
             tbpDadosCliente.Controls.Add(dtpDatanasc);
             tbpDadosCliente.Controls.Add(mskCpf);
-            tbpDadosCliente.Controls.Add(label7);
-            tbpDadosCliente.Controls.Add(label6);
             tbpDadosCliente.Controls.Add(label5);
             tbpDadosCliente.Controls.Add(label4);
             tbpDadosCliente.Controls.Add(label3);
@@ -225,14 +219,12 @@
             tbpDadosCliente.Controls.Add(btnInserir);
             tbpDadosCliente.Controls.Add(btnConsultarCliente);
             tbpDadosCliente.Controls.Add(btnEditarCliente);
-            tbpDadosCliente.Controls.Add(txtSenha);
-            tbpDadosCliente.Controls.Add(txtEmail);
-            tbpDadosCliente.Controls.Add(txtNome);
+            tbpDadosCliente.Controls.Add(txtUsuarioId);
             tbpDadosCliente.Controls.Add(txtId);
             tbpDadosCliente.Location = new Point(4, 24);
             tbpDadosCliente.Name = "tbpDadosCliente";
             tbpDadosCliente.Padding = new Padding(3);
-            tbpDadosCliente.Size = new Size(748, 326);
+            tbpDadosCliente.Size = new Size(748, 418);
             tbpDadosCliente.TabIndex = 0;
             tbpDadosCliente.Text = "Dados Cliente";
             tbpDadosCliente.UseVisualStyleBackColor = true;
@@ -250,41 +242,23 @@
             // dtpDatanasc
             // 
             dtpDatanasc.Format = DateTimePickerFormat.Short;
-            dtpDatanasc.Location = new Point(173, 100);
+            dtpDatanasc.Location = new Point(173, 137);
             dtpDatanasc.Name = "dtpDatanasc";
             dtpDatanasc.Size = new Size(105, 23);
             dtpDatanasc.TabIndex = 24;
             // 
             // mskCpf
             // 
-            mskCpf.Location = new Point(173, 135);
+            mskCpf.Location = new Point(173, 172);
             mskCpf.Mask = "000.000.000-00";
             mskCpf.Name = "mskCpf";
             mskCpf.Size = new Size(390, 23);
             mskCpf.TabIndex = 23;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(129, 231);
-            label7.Name = "label7";
-            label7.Size = new Size(39, 15);
-            label7.TabIndex = 16;
-            label7.Text = "Senha";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(129, 188);
-            label6.Name = "label6";
-            label6.Size = new Size(36, 15);
-            label6.TabIndex = 17;
-            label6.Text = "Email";
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(129, 143);
+            label5.Location = new Point(129, 180);
             label5.Name = "label5";
             label5.Size = new Size(28, 15);
             label5.TabIndex = 18;
@@ -293,7 +267,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(69, 106);
+            label4.Location = new Point(69, 143);
             label4.Name = "label4";
             label4.Size = new Size(98, 15);
             label4.TabIndex = 19;
@@ -302,16 +276,16 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(129, 59);
+            label3.Location = new Point(108, 96);
             label3.Name = "label3";
-            label3.Size = new Size(40, 15);
+            label3.Size = new Size(60, 15);
             label3.TabIndex = 20;
-            label3.Text = "Nome";
+            label3.Text = "Usuário Id";
             // 
             // ID
             // 
             ID.AutoSize = true;
-            ID.Location = new Point(149, 13);
+            ID.Location = new Point(149, 50);
             ID.Name = "ID";
             ID.Size = new Size(18, 15);
             ID.TabIndex = 21;
@@ -346,30 +320,16 @@
             btnEditarCliente.Text = "&Editar";
             btnEditarCliente.UseVisualStyleBackColor = true;
             // 
-            // txtSenha
+            // txtUsuarioId
             // 
-            txtSenha.Location = new Point(173, 223);
-            txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(390, 23);
-            txtSenha.TabIndex = 7;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(173, 180);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(390, 23);
-            txtEmail.TabIndex = 8;
-            // 
-            // txtNome
-            // 
-            txtNome.Location = new Point(173, 56);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(390, 23);
-            txtNome.TabIndex = 11;
+            txtUsuarioId.Location = new Point(173, 93);
+            txtUsuarioId.Name = "txtUsuarioId";
+            txtUsuarioId.Size = new Size(390, 23);
+            txtUsuarioId.TabIndex = 11;
             // 
             // txtId
             // 
-            txtId.Location = new Point(173, 13);
+            txtId.Location = new Point(173, 50);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(68, 23);
@@ -404,7 +364,7 @@
             tbpEnderecosCliente.Location = new Point(4, 24);
             tbpEnderecosCliente.Name = "tbpEnderecosCliente";
             tbpEnderecosCliente.Padding = new Padding(3);
-            tbpEnderecosCliente.Size = new Size(748, 326);
+            tbpEnderecosCliente.Size = new Size(748, 418);
             tbpEnderecosCliente.TabIndex = 1;
             tbpEnderecosCliente.Text = "Endereços Cliente";
             tbpEnderecosCliente.UseVisualStyleBackColor = true;
@@ -858,8 +818,6 @@
         private TextBox txtClienteId;
         private DateTimePicker dtpDatanasc;
         private MaskedTextBox mskCpf;
-        private Label label7;
-        private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
@@ -867,9 +825,7 @@
         private Button btnInserir;
         private Button btnConsultarCliente;
         private Button btnEditarCliente;
-        private TextBox txtSenha;
-        private TextBox txtEmail;
-        private TextBox txtNome;
+        private TextBox txtUsuarioId;
         private TextBox txtId;
         private Label label12;
         private TextBox txtEnderecoClienteId;
