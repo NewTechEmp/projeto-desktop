@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TAEPClass;
+using static Mysqlx.Notice.Warning.Types;
 
 namespace TudoAcabaEmPizza
 {
@@ -38,9 +39,9 @@ namespace TudoAcabaEmPizza
         {
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Cliente cliente = new(
-              Usuario.ObterPorId(Convert.ToInt32(txtUsuarioId.Text))
+              Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text))
                , dtpDatanasc.Value
-               ,mskCpf.Text
+               , mskCpf.Text
                );
             cliente.Inserir();
             if (cliente.Id > 0)
@@ -165,7 +166,7 @@ namespace TudoAcabaEmPizza
                     mskCep.Text = endereco.Cep;
                     txtLogradouro.Text = endereco.Logradouro;
                     txtComplemento.Text = endereco.Complemento;
-                    
+
                     txtBairro.Text = endereco.Bairro;
                     txtCidade.Text = endereco.Cidade;
                     txtNumero.Text = endereco.Numero;
@@ -185,6 +186,11 @@ namespace TudoAcabaEmPizza
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
             cmbTipoEndereco.ValueMember = "id";
+
+            var nivel = Nivel.ObterLista();
+            cbmNivel.DataSource = nivel;
+            cbmNivel.DisplayMember = "descricao";
+            cbmNivel.ValueMember = "id";
         }
 
         private void tbpDadosCliente_Click(object sender, EventArgs e)
@@ -200,6 +206,27 @@ namespace TudoAcabaEmPizza
         private void label12_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tdpUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInserirUsuario_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario(
+                txtNomeUsuario.Text, 
+                txtEmailUsuario.Text, 
+                txtSenhaUsuario.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cbmNivel.SelectedValue)));
+            usuario.Inserir();
+            MessageBox.Show("Usuário inserido com sucesso");
         }
     }
 }
