@@ -18,7 +18,7 @@ namespace TAEPClass
         public string Ddd { get; set; } 
         public string Numero { get; set; }
         public bool Ativo { get; set; } 
-        public string ClienteEmail { get; set; }
+        public int ClienteId { get; set; }
         public TipoTelefone TipoTelefones { get; set; }
 
         public Telefone() { }
@@ -26,32 +26,32 @@ namespace TAEPClass
         {
             Id = id;
         }
-        public Telefone(int id, string ddi, string ddd, string numero, bool ativo, string clienteEmail, TipoTelefone tipoTelefone)
+        public Telefone(int id, string ddi, string ddd, string numero, bool ativo, int clienteId, TipoTelefone tipoTelefone)
         {
             Id = id;
             Ddi = ddi;
             Ddd = ddd;
             Numero = numero;
             Ativo = ativo;
-            ClienteEmail = clienteEmail;
+            ClienteId = clienteId;
             TipoTelefones = tipoTelefone;
         }
-        public Telefone( string ddi, string ddd, string numero, string clienteEmail, TipoTelefone tipoTelefone)
+        public Telefone( string ddi, string ddd, string numero, int clienteId, TipoTelefone tipoTelefone)
         {
             Ddi = ddi;
             Ddd = ddd;
             Numero = numero;
-            ClienteEmail = clienteEmail;
+            ClienteId = clienteId;
             TipoTelefones = tipoTelefone;
         }
 
-        public Telefone(string ddd, string ddi, string numero, bool ativo, string clienteEmail, TipoTelefone tipoTelefone)
+        public Telefone(string ddd, string ddi, string numero, bool ativo, int clienteId, TipoTelefone tipoTelefone)
         {
             Ddi = ddi;
             Ddd = ddd;
             Numero = numero;
             Ativo = ativo;
-            ClienteEmail = clienteEmail;
+            ClienteId = clienteId;
             TipoTelefones = tipoTelefone;
         }
 
@@ -65,7 +65,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spddi", Ddi);
             cmd.Parameters.AddWithValue("spddd", Ddd);
             cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("sp_telefone_cliente_email", ClienteEmail);
+            cmd.Parameters.AddWithValue("sp_telefone_cliente_email", ClienteId);
             cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
@@ -105,19 +105,19 @@ namespace TAEPClass
                         dr.GetString(2),
                         dr.GetString(3),
                         dr.GetBoolean(4),
-                        dr.GetString(6),
+                        dr.GetInt32(6),
                      TipoTelefone.ObterPorId(dr.GetInt32(5))
 
                     );
             }
             return telefone;
         }
-        public static List<Telefone> ObterListaPorCliente(string clienteEmail)
+        public static List<Telefone> ObterListaPorCliente(int clienteid)
         {
             List<Telefone> telefone = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from telefones where email_cliente = {clienteEmail}";
+            cmd.CommandText = $"select * from telefones where cliente_id = {clienteid}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -128,7 +128,7 @@ namespace TAEPClass
                         dr.GetString(2),
                         dr.GetString(3),
                         dr.GetBoolean(4),
-                      dr.GetString(6),
+                      dr.GetInt32(6),
                      TipoTelefone.ObterPorId(dr.GetInt32(5))
                         )
                     );

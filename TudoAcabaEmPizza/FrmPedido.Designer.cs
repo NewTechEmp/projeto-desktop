@@ -31,6 +31,7 @@
             label4 = new Label();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            cmbStatus = new ComboBox();
             label12 = new Label();
             label11 = new Label();
             label10 = new Label();
@@ -47,7 +48,7 @@
             clnValorUnit = new DataGridViewTextBoxColumn();
             clnQuantidade = new DataGridViewTextBoxColumn();
             btnAbrirPedido = new Button();
-            groupBox3 = new GroupBox();
+            gbProduto = new GroupBox();
             label9 = new Label();
             cmbDesconto = new ComboBox();
             btnInserirProduto = new Button();
@@ -59,7 +60,7 @@
             txtDescricao = new TextBox();
             label5 = new Label();
             txtCodBarras = new TextBox();
-            groupBox2 = new GroupBox();
+            gbCliente = new GroupBox();
             label14 = new Label();
             label13 = new Label();
             txtClienteNome = new TextBox();
@@ -67,11 +68,11 @@
             label3 = new Label();
             label2 = new Label();
             txtVendedor = new TextBox();
-            textBox1 = new TextBox();
+            txtNumeroPedido = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedido).BeginInit();
-            groupBox3.SuspendLayout();
-            groupBox2.SuspendLayout();
+            gbProduto.SuspendLayout();
+            gbCliente.SuspendLayout();
             SuspendLayout();
             // 
             // label4
@@ -99,6 +100,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cmbStatus);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label10);
@@ -109,12 +111,12 @@
             groupBox1.Controls.Add(button3);
             groupBox1.Controls.Add(dgvPedido);
             groupBox1.Controls.Add(btnAbrirPedido);
-            groupBox1.Controls.Add(groupBox3);
-            groupBox1.Controls.Add(groupBox2);
+            groupBox1.Controls.Add(gbProduto);
+            groupBox1.Controls.Add(gbCliente);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtVendedor);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtNumeroPedido);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label4);
             groupBox1.ForeColor = Color.ForestGreen;
@@ -127,6 +129,14 @@
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(15, 485);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(177, 29);
+            cmbStatus.TabIndex = 22;
             // 
             // label12
             // 
@@ -143,7 +153,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label11.Location = new Point(850, 571);
+            label11.Location = new Point(850, 586);
             label11.Name = "label11";
             label11.Size = new Size(82, 21);
             label11.TabIndex = 18;
@@ -154,7 +164,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label10.Location = new Point(850, 502);
+            label10.Location = new Point(850, 513);
             label10.Name = "label10";
             label10.Size = new Size(83, 21);
             label10.TabIndex = 18;
@@ -163,14 +173,14 @@
             // 
             // txtSubTotal
             // 
-            txtSubTotal.Location = new Point(850, 529);
+            txtSubTotal.Location = new Point(850, 537);
             txtSubTotal.Name = "txtSubTotal";
             txtSubTotal.Size = new Size(190, 29);
             txtSubTotal.TabIndex = 21;
             // 
             // txtDesconto
             // 
-            txtDesconto.Location = new Point(850, 595);
+            txtDesconto.Location = new Point(850, 610);
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(190, 29);
             txtDesconto.TabIndex = 21;
@@ -204,10 +214,10 @@
             // 
             dgvPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPedido.Columns.AddRange(new DataGridViewColumn[] { clnCod, clnDescricao, clnDesconto, clnValorItem, clnValorUnit, clnQuantidade });
-            dgvPedido.Location = new Point(14, 515);
+            dgvPedido.Location = new Point(14, 520);
             dgvPedido.Name = "dgvPedido";
             dgvPedido.RowHeadersVisible = false;
-            dgvPedido.Size = new Size(830, 278);
+            dgvPedido.Size = new Size(830, 273);
             dgvPedido.TabIndex = 18;
             // 
             // clnCod
@@ -266,25 +276,25 @@
             btnAbrirPedido.UseVisualStyleBackColor = true;
             btnAbrirPedido.Click += btnAbrirPedido_Click;
             // 
-            // groupBox3
+            // gbProduto
             // 
-            groupBox3.Controls.Add(label9);
-            groupBox3.Controls.Add(cmbDesconto);
-            groupBox3.Controls.Add(btnInserirProduto);
-            groupBox3.Controls.Add(txtQuantidade);
-            groupBox3.Controls.Add(label8);
-            groupBox3.Controls.Add(label7);
-            groupBox3.Controls.Add(txtValorUnit);
-            groupBox3.Controls.Add(label6);
-            groupBox3.Controls.Add(txtDescricao);
-            groupBox3.Controls.Add(label5);
-            groupBox3.Controls.Add(txtCodBarras);
-            groupBox3.Location = new Point(15, 327);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1011, 152);
-            groupBox3.TabIndex = 11;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Produto";
+            gbProduto.Controls.Add(label9);
+            gbProduto.Controls.Add(cmbDesconto);
+            gbProduto.Controls.Add(btnInserirProduto);
+            gbProduto.Controls.Add(txtQuantidade);
+            gbProduto.Controls.Add(label8);
+            gbProduto.Controls.Add(label7);
+            gbProduto.Controls.Add(txtValorUnit);
+            gbProduto.Controls.Add(label6);
+            gbProduto.Controls.Add(txtDescricao);
+            gbProduto.Controls.Add(label5);
+            gbProduto.Controls.Add(txtCodBarras);
+            gbProduto.Location = new Point(15, 327);
+            gbProduto.Name = "gbProduto";
+            gbProduto.Size = new Size(1011, 152);
+            gbProduto.TabIndex = 11;
+            gbProduto.TabStop = false;
+            gbProduto.Text = "Produto";
             // 
             // label9
             // 
@@ -382,18 +392,18 @@
             txtCodBarras.Size = new Size(153, 29);
             txtCodBarras.TabIndex = 0;
             // 
-            // groupBox2
+            // gbCliente
             // 
-            groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(label13);
-            groupBox2.Controls.Add(txtClienteNome);
-            groupBox2.Controls.Add(txtClienteId);
-            groupBox2.Location = new Point(15, 200);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(846, 109);
-            groupBox2.TabIndex = 10;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Dados do Cliente";
+            gbCliente.Controls.Add(label14);
+            gbCliente.Controls.Add(label13);
+            gbCliente.Controls.Add(txtClienteNome);
+            gbCliente.Controls.Add(txtClienteId);
+            gbCliente.Location = new Point(15, 200);
+            gbCliente.Name = "gbCliente";
+            gbCliente.Size = new Size(846, 109);
+            gbCliente.TabIndex = 10;
+            gbCliente.TabStop = false;
+            gbCliente.Text = "Dados do Cliente";
             // 
             // label14
             // 
@@ -428,6 +438,7 @@
             txtClienteId.Name = "txtClienteId";
             txtClienteId.Size = new Size(138, 29);
             txtClienteId.TabIndex = 0;
+            txtClienteId.TextChanged += txtClienteId_TextChanged;
             // 
             // label3
             // 
@@ -454,16 +465,16 @@
             txtVendedor.Size = new Size(739, 29);
             txtVendedor.TabIndex = 7;
             // 
-            // textBox1
+            // txtNumeroPedido
             // 
-            textBox1.Font = new Font("Segoe UI", 24F);
-            textBox1.ForeColor = Color.Green;
-            textBox1.Location = new Point(871, 59);
-            textBox1.Name = "textBox1";
-            textBox1.RightToLeft = RightToLeft.Yes;
-            textBox1.Size = new Size(169, 50);
-            textBox1.TabIndex = 6;
-            textBox1.Text = "0";
+            txtNumeroPedido.Font = new Font("Segoe UI", 24F);
+            txtNumeroPedido.ForeColor = Color.Green;
+            txtNumeroPedido.Location = new Point(871, 59);
+            txtNumeroPedido.Name = "txtNumeroPedido";
+            txtNumeroPedido.RightToLeft = RightToLeft.Yes;
+            txtNumeroPedido.Size = new Size(169, 50);
+            txtNumeroPedido.TabIndex = 6;
+            txtNumeroPedido.Text = "0";
             // 
             // FrmPedido
             // 
@@ -481,10 +492,10 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedido).EndInit();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            gbProduto.ResumeLayout(false);
+            gbProduto.PerformLayout();
+            gbCliente.ResumeLayout(false);
+            gbCliente.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -493,12 +504,12 @@
         private Label label4;
         private Label label1;
         private GroupBox groupBox1;
-        private TextBox textBox1;
-        private GroupBox groupBox2;
+        private TextBox txtNumeroPedido;
+        private GroupBox gbCliente;
         private Label label3;
         private Label label2;
         private TextBox txtVendedor;
-        private GroupBox groupBox3;
+        private GroupBox gbProduto;
         private TextBox txtValorUnit;
         private Label label6;
         private TextBox txtDescricao;
@@ -530,5 +541,6 @@
         private DataGridViewTextBoxColumn clnQuantidade;
         private Label label14;
         private Label label13;
+        private ComboBox cmbStatus;
     }
 }

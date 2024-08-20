@@ -55,7 +55,7 @@ namespace TudoAcabaEmPizza
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskUf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Endereco endereco = new(
-                 txtEmailCliente.Text,
+                int.Parse(txtEnderecoClienteId.Text),
                  mskCep.Text,
                  txtLogradouro.Text,
                  txtNumero.Text,
@@ -67,15 +67,15 @@ namespace TudoAcabaEmPizza
 
                  );
             endereco.Inserir();
-            FrmCliente_Load(txtEmailCliente.Text);
+            FrmCliente_Load(int.Parse(txtEnderecoClienteId.Text));
 
         }
 
-        private void FrmCliente_Load(string clienteEmail)
+        private void FrmCliente_Load(int clienteId)
         {
 
 
-            var listaEnderecos = Endereco.ObterListaPorCliente(clienteEmail);
+            var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
             dgvEnderecos.Rows.Clear();
@@ -104,7 +104,7 @@ namespace TudoAcabaEmPizza
                 mskDdi.Text
                 , mskDdd.Text
                 , mskNumeroTelefone.Text
-                , txtClienteEmailTelefone.Text
+                , int.Parse(txtClienteTelefoneId.Text)
                 , TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
 
                 );
@@ -153,7 +153,7 @@ namespace TudoAcabaEmPizza
                 mskCep.Clear();
                 txtLogradouro.Clear();
                 txtComplemento.Clear();
-                txtEmailCliente.Clear();
+                txtEnderecoClienteId.Clear();
                 txtBairro.Clear();
                 txtCidade.Clear();
                 txtNumero.Clear();
@@ -169,7 +169,7 @@ namespace TudoAcabaEmPizza
                     mskCep.Text = endereco.Cep;
                     txtLogradouro.Text = endereco.Logradouro;
                     txtComplemento.Text = endereco.Complemento;
-                    endereco.ClienteEmail = txtEmailCliente.Text;
+                    
                     txtBairro.Text = endereco.Bairro;
                     txtCidade.Text = endereco.Cidade;
                     txtNumero.Text = endereco.Numero;
