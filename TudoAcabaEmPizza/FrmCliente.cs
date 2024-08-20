@@ -39,15 +39,12 @@ namespace TudoAcabaEmPizza
         {
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Cliente cliente = new(
-              Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text))
+              int.Parse(txtIdUsuario.Text)
                , dtpDatanasc.Value
                , mskCpf.Text
                );
             cliente.Inserir();
-            if (cliente.Id > 0)
-            {
-                MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
-            }
+            FrmCliente_Load(int.Parse(txtIdUsuario.Text));
         }
 
         private void buSalvar_Click(object sender, EventArgs e)

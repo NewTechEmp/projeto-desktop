@@ -55,7 +55,7 @@
             txtSenhaUsuario = new TextBox();
             txtEmailUsuario = new TextBox();
             txtNomeUsuario = new TextBox();
-            textBox4 = new TextBox();
+            iduser = new TextBox();
             tbpDadosCliente = new TabPage();
             txtClienteId = new TextBox();
             txtId = new TextBox();
@@ -240,7 +240,7 @@
             tdpUsuario.Controls.Add(txtSenhaUsuario);
             tdpUsuario.Controls.Add(txtEmailUsuario);
             tdpUsuario.Controls.Add(txtNomeUsuario);
-            tdpUsuario.Controls.Add(textBox4);
+            tdpUsuario.Controls.Add(iduser);
             tdpUsuario.Location = new Point(4, 24);
             tdpUsuario.Name = "tdpUsuario";
             tdpUsuario.Padding = new Padding(3);
@@ -372,13 +372,13 @@
             txtNomeUsuario.Size = new Size(250, 23);
             txtNomeUsuario.TabIndex = 27;
             // 
-            // textBox4
+            // iduser
             // 
-            textBox4.Location = new Point(222, 75);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(51, 23);
-            textBox4.TabIndex = 28;
+            iduser.Location = new Point(222, 75);
+            iduser.Name = "iduser";
+            iduser.ReadOnly = true;
+            iduser.Size = new Size(51, 23);
+            iduser.TabIndex = 28;
             // 
             // tbpDadosCliente
             // 
@@ -1003,6 +1003,6 @@
         private TextBox txtSenhaUsuario;
         private TextBox txtEmailUsuario;
         private TextBox txtNomeUsuario;
-        private TextBox textBox4;
+        private TextBox iduser;
     }
 }

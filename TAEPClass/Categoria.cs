@@ -73,11 +73,11 @@ namespace TAEPClass
             cmd.CommandType = CommandType.Text;
             if (descricao == null)
             {
-                cmd.CommandText = "select * from categorias order by nome";
+                cmd.CommandText = "select * from categorias order by descricao";
             }
             else
             {
-                cmd.CommandText = $"select * from categorias where nome like '%{descricao}%' order by nome";
+                cmd.CommandText = $"select * from categorias where descricao like '%{descricao}%' order by descricao";
             }
 
             var dr = cmd.ExecuteReader();

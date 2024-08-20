@@ -13,14 +13,14 @@ namespace TAEPClass
         
 
         public int Id { get; set; }   
-        public Usuario Usuario { get; set; }   
+        public int Usuario { get; set; }   
         public DateTime DataNasc { get; set; }
         public string Cpf {  get; set; }
      
 
         public Cliente(){}
 
-        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf)
+        public Cliente(int id, int usuario, DateTime dataNasc, string cpf)
         {
             Id = id;
             Usuario = usuario;
@@ -28,7 +28,7 @@ namespace TAEPClass
             Cpf = cpf;
         }
 
-        public Cliente(Usuario usuario, DateTime dataNasc, string cpf)
+        public Cliente(int usuario, DateTime dataNasc, string cpf)
         {
             Usuario = usuario;
             DataNasc = dataNasc;
@@ -67,7 +67,7 @@ namespace TAEPClass
             {
                 cliente = new(
 
-                    Usuario.ObterPorId(dr.GetInt32(0))
+                    (dr.GetInt32(0))
                     , dr.GetDateTime(1)
                     ,dr.GetString(3)
                    );
@@ -87,7 +87,7 @@ namespace TAEPClass
             {
                 clientes.Add(
                     new(
-                     Usuario.ObterPorId(dr.GetInt32(0))
+                     (dr.GetInt32(0))
                     , dr.GetDateTime(1)
                     , dr.GetString(3)
                     )

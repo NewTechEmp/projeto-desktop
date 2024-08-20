@@ -10,74 +10,54 @@ namespace TAEPClass
 {
     public class Produto
     {
+
         public int Id { get; set; }
-        public string Nome { get; set; }   
+        public string Rotulo { get; set; } 
         public string Descricao { get; set; }   
         public double ValorUnit {  get; set; }  
         public string CodBarras { get; set; }   
-        public string? LinkImagem { get; set; }
+        public string NomeImagem { get; set; }
+        public bool Destaque {  get; set; }
         public DateTime DataCad {  get; set; }
-        public Categoria CategoriaId { get; set; }   
-        public bool Ativo {  get; set; }
-
-        public Produto(string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, Categoria categoriaId)
-        {
-            Nome = nome;
-            Descricao = descricao;
-            ValorUnit = valorUnit;
-            CodBarras = codBarras;
-            LinkImagem = linkImagem;
-            CategoriaId = categoriaId;
-        }
+        public bool Ativo { get; set; }
+        public Categoria CategoriaId { get; set; }
         public Produto () { }
-        public Produto(int id) 
+
+        public Produto(int id, string rotulo, string descricao, double valorUnit, string codBarras, string nomeImagem, bool destaque, DateTime dataCad, bool ativo, Categoria categoriaId)
         {
             Id = id;
-        }
-        public Produto(int id, string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, DateTime dataCad, Categoria categoriaId, bool ativo)
-        {
-            Id = id;
-            Nome = nome;
+            Rotulo = rotulo;
             Descricao = descricao;
             ValorUnit = valorUnit;
             CodBarras = codBarras;
-            LinkImagem = linkImagem;
+            NomeImagem = nomeImagem;
+            Destaque = destaque;
             DataCad = dataCad;
-            CategoriaId = categoriaId;
             Ativo = ativo;
-        }
-
-        public Produto(string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, DateTime dataCad, Categoria categoriaId, bool ativo)
-        {
-            Nome = nome;
-            Descricao = descricao;
-            ValorUnit = valorUnit;
-            CodBarras = codBarras;
-            LinkImagem = linkImagem;
-            DataCad = dataCad;
             CategoriaId = categoriaId;
-            Ativo = ativo;
         }
 
-        public Produto(string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, DateTime dataCad, Categoria categoriaId)
+        public Produto(string rotulo, string descricao, double valorUnit, string codBarras, string nomeImagem, bool destaque, DateTime dataCad, bool ativo, Categoria categoriaId)
         {
-            Nome = nome;
+            Rotulo = rotulo;
             Descricao = descricao;
             ValorUnit = valorUnit;
             CodBarras = codBarras;
-            LinkImagem = linkImagem;
+            NomeImagem = nomeImagem;
+            Destaque = destaque;
             DataCad = dataCad;
             CategoriaId = categoriaId;
         }
 
-        public Produto(int id, string nome, string descricao, double valorUnit, string codBarras, string? linkImagem, Categoria categoriaId)
+        public Produto(int id, string rotulo, string descricao, double valorUnit, string codBarras, string nomeImagem, bool destaque, Categoria categoriaId)
         {
             Id = id;
-            Nome = nome;
+            Rotulo = rotulo;
             Descricao = descricao;
             ValorUnit = valorUnit;
             CodBarras = codBarras;
-            LinkImagem = linkImagem;
+            NomeImagem = nomeImagem;
+            Destaque = destaque;
             CategoriaId = categoriaId;
         }
 
@@ -86,11 +66,12 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("sprotulo",Rotulo);
+            cmd.Parameters.AddWithValue("spdescricao ", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
-            cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
+            cmd.Parameters.AddWithValue("spnome_imagem", NomeImagem);
+            cmd.Parameters.AddWithValue("spdestaque", Destaque);
             cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
@@ -101,11 +82,12 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_update";
             cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
+            cmd.Parameters.AddWithValue("sprotulo", Rotulo);
+            cmd.Parameters.AddWithValue("spdescricao ", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
-            cmd.Parameters.AddWithValue("splink_imagem", LinkImagem);
+            cmd.Parameters.AddWithValue("spnome_imagem", NomeImagem);
+            cmd.Parameters.AddWithValue("spdestaque", Destaque);
             cmd.Parameters.AddWithValue("spcategorias_id", CategoriaId.Id);
             try
             {
@@ -147,17 +129,16 @@ namespace TAEPClass
             {
                 produto.Add(
                     new(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetDouble(3),
-                        dr.GetString(4),
-                        dr.GetString(5),
-                        dr.GetDateTime(6),
-                        Categoria.ObterPorId((5)),
-                        dr.GetBoolean(7)
-                    )
-                );
+                        dr.GetInt32(0)
+                        , dr.GetString(1)
+                        , dr.GetString(2)
+                        , dr.GetDouble(3)
+                        , dr.GetString(4)
+                        , dr.GetString(5)
+                        , dr.GetBoolean(6)
+                        , Categoria.ObterPorId((7))
+
+                ));
             }
 
             return produto;
@@ -172,15 +153,17 @@ namespace TAEPClass
             while (dr.Read())
             {
                 produto = new(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetDouble(3),
-                        dr.GetString(4),
-                        dr.GetString(5),
-                        dr.GetDateTime(6),
-                        Categoria.ObterPorId((5)),
-                        dr.GetBoolean(7)
+                         dr.GetInt32(0)
+                        ,dr.GetString(1)
+                        ,dr.GetString(2)
+                        ,dr.GetDouble(3)
+                        ,dr.GetString(4)
+                        ,dr.GetString(5)
+                        ,dr.GetBoolean(6)
+                        ,Categoria.ObterPorId((7))
+
+
+
                 );
             }
             return produto;
