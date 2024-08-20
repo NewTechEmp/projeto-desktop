@@ -80,5 +80,12 @@ namespace TudoAcabaEmPizza
             frmPedido.MdiParent = this;
             frmPedido.Show();
         }
+
+        private void cadastroUsuárioEClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsuario frmUsuario = new();
+            frmUsuario.MdiParent = this;
+            frmUsuario.Show();
+        }
     }
 }

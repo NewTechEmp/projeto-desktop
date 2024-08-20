@@ -43,6 +43,7 @@
             caixaToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             tslUsuario = new ToolStripLabel();
+            cadastroUsuárioEClienteToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // usuarioToolStripMenuItem
             // 
+            usuarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastroUsuárioEClienteToolStripMenuItem });
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             usuarioToolStripMenuItem.Size = new Size(76, 25);
             usuarioToolStripMenuItem.Text = "&Usuario";
@@ -157,6 +159,13 @@
             tslUsuario.Name = "tslUsuario";
             tslUsuario.Size = new Size(0, 22);
             // 
+            // cadastroUsuárioEClienteToolStripMenuItem
+            // 
+            cadastroUsuárioEClienteToolStripMenuItem.Name = "cadastroUsuárioEClienteToolStripMenuItem";
+            cadastroUsuárioEClienteToolStripMenuItem.Size = new Size(264, 26);
+            cadastroUsuárioEClienteToolStripMenuItem.Text = "&Cadastro &Usuário e &Cliente";
+            cadastroUsuárioEClienteToolStripMenuItem.Click += cadastroUsuárioEClienteToolStripMenuItem_Click;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(9F, 15F);
@@ -198,5 +207,6 @@
         private ToolStripMenuItem tipoToolStripMenuItem;
         private ToolStrip toolStrip1;
         private ToolStripLabel tslUsuario;
+        private ToolStripMenuItem cadastroUsuárioEClienteToolStripMenuItem;
     }
 }

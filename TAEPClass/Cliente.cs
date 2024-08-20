@@ -13,24 +13,24 @@ namespace TAEPClass
         
 
         public int Id { get; set; }   
-        public Usuario Usuarioid { get; set; }   
+        public Usuario Usuario { get; set; }   
         public DateTime DataNasc { get; set; }
         public string Cpf {  get; set; }
      
 
         public Cliente(){}
 
-        public Cliente(int id, Usuario usuarioid, DateTime dataNasc, string cpf)
+        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf)
         {
             Id = id;
-            Usuarioid = usuarioid;
+            Usuario = usuario;
             DataNasc = dataNasc;
             Cpf = cpf;
         }
 
-        public Cliente(Usuario usuarioid, DateTime dataNasc, string cpf)
+        public Cliente(Usuario usuario, DateTime dataNasc, string cpf)
         {
-            Usuarioid = usuarioid;
+            Usuario = usuario;
             DataNasc = dataNasc;
             Cpf = cpf;
         }
@@ -40,12 +40,12 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
-            cmd.Parameters.AddWithValue("spusuario_id",Usuarioid);
+            cmd.Parameters.AddWithValue("spusuario_id",Usuario);
             cmd.Parameters.AddWithValue("spdata_nasc",DataNasc);
             cmd.Parameters.AddWithValue("spcpf",Cpf);
 
 
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.ExecuteNonQuery();
         }
         public bool Editar(int id)
         {
