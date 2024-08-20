@@ -13,51 +13,26 @@ namespace TAEPClass
         
 
         public int Id { get; set; }   
-        public string Nome { get; set; }   
+        public Usuario Usuarioid { get; set; }   
         public DateTime DataNasc { get; set; }
         public string Cpf {  get; set; }
-        public string Email { get; set; }   
-        public string Senha {  get; set; }
-        public DateTime DataCad {  get; set; }
-        public bool Ativo {  get; set; }
-        public List<Endereco> Enderecos{ get; set;}
-        public List<Telefone> Telefones { get; set; }
+     
 
         public Cliente(){}
-        public Cliente(int id, string nome, DateTime dataNasc, string cpf, string email, string senha, DateTime datacad, bool ativo, List<Endereco> endereco, List<Telefone> telefone)
+
+        public Cliente(int id, Usuario usuarioid, DateTime dataNasc, string cpf)
         {
             Id = id;
-            Nome = nome;
+            Usuarioid = usuarioid;
             DataNasc = dataNasc;
             Cpf = cpf;
-            Email = email;
-            Senha = senha;
-            DataCad = datacad;
-            Ativo = ativo;
-            Enderecos = endereco;
-            Telefones = telefone;
         }
 
-        public Cliente(string nome, DateTime dataNasc, string cpf, string email, string senha, DateTime datacad, bool ativo, List<Endereco> enderecos, List<Telefone> telefones)
+        public Cliente(Usuario usuarioid, DateTime dataNasc, string cpf)
         {
-            Nome = nome;
+            Usuarioid = usuarioid;
             DataNasc = dataNasc;
             Cpf = cpf;
-            Email = email;
-            Senha = senha;
-            DataCad = datacad;
-            Ativo = ativo;
-            Enderecos = enderecos;
-            Telefones = telefones;
-        }
-
-        public Cliente(string nome, DateTime dataNasc, string cpf, string email, string senha)
-        {
-            Nome = nome;
-            DataNasc = dataNasc;
-            Cpf = cpf;
-            Email = email;
-            Senha = senha;
         }
 
         public void Inserir()
@@ -65,11 +40,11 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
-            cmd.Parameters.AddWithValue("spcpf", Cpf);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spusuario_id",Usuarioid);
+            cmd.Parameters.AddWithValue("spdata_nasc",DataNasc);
+            cmd.Parameters.AddWithValue("spcpf",Cpf);
+
+
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id)
@@ -77,20 +52,8 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_update";
-            cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("sptelefone", Telefones);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
-        }
-        public bool Deletar(int id, bool ativo)
-        {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_delete";
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spativo", ativo);
+            cmd.Parameters.AddWithValue("spcpf", Cpf);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public static Cliente ObterPorId(int id)
@@ -103,17 +66,11 @@ namespace TAEPClass
             while (dr.Read())
             {
                 cliente = new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetDateTime(6),
-                    dr.GetBoolean(7),
-                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
-                   Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
-                   ));
+
+                    Usuario.ObterPorId(dr.GetInt32(0))
+                    , dr.GetDateTime(1)
+                    ,dr.GetString(3)
+                   );
                   
             }
 
@@ -130,24 +87,14 @@ namespace TAEPClass
             {
                 clientes.Add(
                     new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetDateTime(6),
-                    dr.GetBoolean(7),
-                    Endereco.ObterListaPorCliente(dr.GetInt32(0)),
-                    Telefone.ObterListaPorCliente(dr.GetInt32(0))
+                     Usuario.ObterPorId(dr.GetInt32(0))
+                    , dr.GetDateTime(1)
+                    , dr.GetString(3)
                     )
                 );
             }
             return clientes;
         }
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Id, DataCad);
-        }
+       
     }
 }
