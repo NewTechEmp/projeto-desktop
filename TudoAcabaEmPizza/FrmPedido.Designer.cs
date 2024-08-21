@@ -69,6 +69,7 @@
             label2 = new Label();
             txtVendedor = new TextBox();
             txtNumeroPedido = new TextBox();
+            label15 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedido).BeginInit();
             gbProduto.SuspendLayout();
@@ -109,6 +110,7 @@
             groupBox1.Controls.Add(txtTotal);
             groupBox1.Controls.Add(btnExcluirItem);
             groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(dgvPedido);
             groupBox1.Controls.Add(btnAbrirPedido);
             groupBox1.Controls.Add(gbProduto);
@@ -133,7 +135,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(15, 485);
+            cmbStatus.Location = new Point(122, 485);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(177, 29);
             cmbStatus.TabIndex = 22;
@@ -287,7 +289,7 @@
             gbProduto.Controls.Add(txtValorUnit);
             gbProduto.Controls.Add(label6);
             gbProduto.Controls.Add(txtDescricao);
-            gbProduto.Controls.Add(label5);
+            gbProduto.Controls.Add(label15);
             gbProduto.Controls.Add(txtCodBarras);
             gbProduto.Location = new Point(15, 327);
             gbProduto.Name = "gbProduto";
@@ -379,11 +381,11 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(28, 61);
+            label5.Location = new Point(16, 493);
             label5.Name = "label5";
-            label5.Size = new Size(99, 15);
+            label5.Size = new Size(100, 15);
             label5.TabIndex = 9;
-            label5.Text = "Código de barras";
+            label5.Text = "Status do Pedido";
             // 
             // txtCodBarras
             // 
@@ -476,6 +478,16 @@
             txtNumeroPedido.TabIndex = 6;
             txtNumeroPedido.Text = "0";
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label15.Location = new Point(16, 61);
+            label15.Name = "label15";
+            label15.Size = new Size(100, 15);
+            label15.TabIndex = 9;
+            label15.Text = "Código de Barras";
+            // 
             // FrmPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
@@ -542,5 +554,6 @@
         private Label label14;
         private Label label13;
         private ComboBox cmbStatus;
+        private Label label15;
     }
 }
