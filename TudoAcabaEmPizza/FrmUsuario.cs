@@ -31,5 +31,10 @@ namespace TudoAcabaEmPizza
         {
 
         }
+
+        private void txtNivel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

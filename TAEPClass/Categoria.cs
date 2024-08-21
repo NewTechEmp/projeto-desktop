@@ -17,24 +17,25 @@ namespace TAEPClass
 
         // construtores
         public Categoria() { }
-        public Categoria(string descricao, string sigla)
+        public Categoria(string sigla, string descricao)
         {
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
         }
-        public Categoria(int id, string descricao, string sigla, bool ativo)
+        public Categoria(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
             Ativo = ativo;
         }
 
-        public Categoria(int id, string descricao, string sigla)
+        public Categoria(int id, string sigla, string descricao)
         {
             Id = id;
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
+            
         }
 
         // métodos da classe
@@ -43,7 +44,7 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_insert";
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
@@ -53,7 +54,7 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_update";
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
@@ -73,11 +74,11 @@ namespace TAEPClass
             cmd.CommandType = CommandType.Text;
             if (descricao == null)
             {
-                cmd.CommandText = "select * from categorias order by nome";
+                cmd.CommandText = "select * from categorias order by descricao";
             }
             else
             {
-                cmd.CommandText = $"select * from categorias where nome like '%{descricao}%' order by nome";
+                cmd.CommandText = $"select * from categorias where descricao like '%{descricao}%' order by descricao";
             }
 
             var dr = cmd.ExecuteReader();

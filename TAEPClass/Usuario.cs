@@ -48,6 +48,14 @@ namespace TAEPClass
             Senha = senha;
             Nivel = nivelId;
         }
+
+        public Usuario(string nome, string email, string senha)
+        {
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+        }
+
         public void Inserir()
         {
             CriptografarSenha(Senha);
@@ -165,7 +173,7 @@ namespace TAEPClass
                 return usuario;
             }
         }
-        private string CriptografarSenha(string senha)
+        public string CriptografarSenha(string senha)
         {
             string salt = BCryptNet.GenerateSalt(10);
             string CripSenha = BCryptNet.HashPassword(senha,salt);

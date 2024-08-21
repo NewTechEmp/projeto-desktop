@@ -11,22 +11,22 @@ namespace TAEPClass
     internal class Adicional
     {
         public int Id { get; set; }
+        public double Preco { get; set; }
         public string Descricao { get; set; }
-        public string Sigla { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public Adicional() { }
-        public Adicional(string descricao, string sigla)
+        public Adicional(double preco, string descricao)
         {
+            Preco = preco;
             Descricao = descricao;
-            Sigla = sigla;
         }
-        public Adicional(int id, string descricao, string sigla, bool ativo)
+        public Adicional(int id, double preco, string descricao, bool ativo)
         {
             Id = id;
+            Preco = preco;
             Descricao = descricao;
-            Sigla = sigla;
             Ativo = ativo;
         }
 
@@ -37,7 +37,7 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_adicional_insert";
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("sppreco", Preco);
             cmd.ExecuteNonQuery();
         }
         public void Editar()
@@ -47,7 +47,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_adicional_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("sppreco", Preco);
             cmd.ExecuteNonQuery();
         }
         public void Desativar()
@@ -68,7 +68,7 @@ namespace TAEPClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                adicional.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
+                adicional.Add(new(dr.GetInt32(0), dr.GetDouble(1), dr.GetString(2), dr.GetBoolean(3)));
             }
             return adicional;
         }
@@ -82,8 +82,8 @@ namespace TAEPClass
             while (dr.Read())
             {
                 adicional.Id = dr.GetInt32(0);
-                adicional.Descricao = dr.GetString(1);
-                adicional.Sigla = dr.GetString(2);
+                adicional.Preco = dr.GetDouble(1);
+                adicional.Descricao = dr.GetString(2);
                 adicional.Ativo = dr.GetBoolean(3);
             }
             return adicional;

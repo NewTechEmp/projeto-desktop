@@ -88,6 +88,21 @@ namespace TAEPClass
             }
             return nivel;
         }
+        public static Nivel ObterPorDescricao(string descricao) {
+            Nivel nivel = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"select * from niveis where id  = {descricao}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                nivel.Id = dr.GetInt32(0);
+                nivel.Descricao = dr.GetString(1);
+                nivel.Sigla = dr.GetString(2);
+                nivel.Ativo = dr.GetBoolean(3);
+            }
+            return nivel;
+        }
 
     }
 }

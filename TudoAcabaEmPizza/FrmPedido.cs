@@ -127,7 +127,7 @@ namespace TudoAcabaEmPizza
                 var cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
                 if (cliente.Id > 0)
                 {
-                    txtClienteNome.Text = cliente.Nome;
+                    txtClienteNome.Text = cliente.Usuario.Nome;
                 }
 
             }

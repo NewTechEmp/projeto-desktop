@@ -11,22 +11,22 @@ namespace TAEPClass
     public class ClasseDesconto
     {
         public int Id { get; set; }
+        public double  Desconto{ get; set; }
         public string Descricao { get; set; }
-        public string Sigla { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public ClasseDesconto() { }
-        public ClasseDesconto(string descricao, string sigla)
+        public ClasseDesconto(double desconto, string descricao)
         {
+            Desconto = desconto;
             Descricao = descricao;
-            Sigla = sigla;
         }
-        public ClasseDesconto(int id, string descricao, string sigla, bool ativo)
+        public ClasseDesconto(int id, double desconto, string descricao, bool ativo)
         {
             Id = id;
+            Desconto = desconto;
             Descricao = descricao;
-            Sigla = sigla;
             Ativo = ativo;
         }
 
@@ -37,7 +37,7 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_classedesconto_insert";
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("spDesconto", Desconto);
             cmd.ExecuteNonQuery();
         }
         public void Editar()
@@ -47,7 +47,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_classedesconto_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
-            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("spDesconto", Desconto);
             cmd.ExecuteNonQuery();
         }
         public void Desativar()
@@ -68,7 +68,7 @@ namespace TAEPClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                classeDesconto.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetBoolean(3)));
+                classeDesconto.Add(new(dr.GetInt32(0), dr.GetDouble(1), dr.GetString(2), dr.GetBoolean(3)));
             }
             return classeDesconto;
         }
@@ -82,8 +82,8 @@ namespace TAEPClass
             while (dr.Read())
             {
                 classeDesconto.Id = dr.GetInt32(0);
-                classeDesconto.Descricao = dr.GetString(1);
-                classeDesconto.Sigla = dr.GetString(2);
+                classeDesconto.Desconto = dr.GetDouble(1);
+                classeDesconto.Descricao = dr.GetString(2);
                 classeDesconto.Ativo = dr.GetBoolean(3);
             }
             return classeDesconto;

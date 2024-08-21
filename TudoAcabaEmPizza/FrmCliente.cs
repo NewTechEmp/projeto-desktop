@@ -37,13 +37,22 @@ namespace TudoAcabaEmPizza
         private void btnInserir_Click(object sender, EventArgs e)
         {
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            Cliente cliente = new(
+            const string descricao = "Cliente";
+            Nivel nivel = Nivel.ObterPorDescricao(descricao);
+            Usuario usuario = new(
                 txtNome.Text,
-                dtpDatanasc.Value,
-                mskCpf.Text,
                 txtEmail.Text,
-                txtSenha.Text);
-            cliente.Inserir();
+                txtSenha.Text,
+                nivel
+            );
+            usuario.Inserir();
+
+            Cliente cliente = new(
+                usuario,
+                mskCpf.Text,
+                dtpDatanasc.Value
+             );
+            cliente.Inserir(txtSenha.Text);
             if (cliente.Id > 0)
             {
                 MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
@@ -135,9 +144,9 @@ namespace TudoAcabaEmPizza
                 if (txtId.Text.Length > 0)
                 {
                     Cliente cliente = Cliente.ObterPorId(int.Parse(txtId.Text));
-                    txtNome.Text = cliente.Nome;
+                    txtNome.Text = cliente.Usuario.Nome;
                     mskCpf.Text = cliente.Cpf;
-                    txtEmail.Text = cliente.Email;
+                    txtEmail.Text = cliente.Usuario.Email;
                     txtId.ReadOnly = true;
                     btnConsultarCliente.Text = "&Consultar";
                     btnEditarCliente.Enabled = true;

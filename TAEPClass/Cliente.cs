@@ -13,85 +13,62 @@ namespace TAEPClass
         
 
         public int Id { get; set; }   
-        public string Nome { get; set; }   
+        public Usuario Usuario { get; set; }
+        public string Cpf { get; set; }
         public DateTime DataNasc { get; set; }
-        public string Cpf {  get; set; }
-        public string Email { get; set; }   
-        public string Senha {  get; set; }
-        public DateTime DataCad {  get; set; }
-        public bool Ativo {  get; set; }
         public List<Endereco> Enderecos{ get; set;}
         public List<Telefone> Telefones { get; set; }
 
-        public Cliente(){}
-        public Cliente(int id, string nome, DateTime dataNasc, string cpf, string email, string senha, DateTime datacad, bool ativo, List<Endereco> endereco, List<Telefone> telefone)
+        public Cliente() { }
+        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
         {
             Id = id;
-            Nome = nome;
-            DataNasc = dataNasc;
+            Usuario = usuario;
             Cpf = cpf;
-            Email = email;
-            Senha = senha;
-            DataCad = datacad;
-            Ativo = ativo;
-            Enderecos = endereco;
-            Telefones = telefone;
-        }
-
-        public Cliente(string nome, DateTime dataNasc, string cpf, string email, string senha, DateTime datacad, bool ativo, List<Endereco> enderecos, List<Telefone> telefones)
-        {
-            Nome = nome;
             DataNasc = dataNasc;
-            Cpf = cpf;
-            Email = email;
-            Senha = senha;
-            DataCad = datacad;
-            Ativo = ativo;
             Enderecos = enderecos;
             Telefones = telefones;
         }
 
-        public Cliente(string nome, DateTime dataNasc, string cpf, string email, string senha)
+        public Cliente(Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
         {
-            Nome = nome;
-            DataNasc = dataNasc;
+            Usuario = usuario;
             Cpf = cpf;
-            Email = email;
-            Senha = senha;
+            DataNasc = dataNasc;
+            Enderecos = enderecos;
+            Telefones = telefones;
         }
 
-        public void Inserir()
+        public Cliente(Usuario usuario, string cpf, DateTime dataNasc)
+        {
+            Usuario = usuario;
+            Cpf = cpf;
+            DataNasc = dataNasc;
+        }
+
+        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc)
+        {
+            Id = id;
+            Usuario = usuario;
+            Cpf = cpf;
+            DataNasc = dataNasc;
+        }
+
+        public Cliente(string cpf, DateTime dataNasc)
+        {
+            Cpf = cpf;
+            DataNasc = dataNasc;
+        }
+
+        public void Inserir(string senha)
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
-            cmd.Parameters.AddWithValue("spcpf", Cpf);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spsenha", Senha);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
-        }
-        public bool Editar(int id)
-        {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_update";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("sptelefone", Telefones);
-            cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
-        }
-        public bool Deletar(int id, bool ativo)
-        {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_cliente_delete";
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spativo", ativo);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
+            cmd.Parameters.AddWithValue("spcpf", Cpf);
+
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public static Cliente ObterPorId(int id)
         {
@@ -104,15 +81,11 @@ namespace TAEPClass
             {
                 cliente = new(
                     dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetDateTime(6),
-                    dr.GetBoolean(7),
-                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
-                   Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
+                    Usuario.ObterPorId(1),
+                    dr.GetString(2),
+                    dr.GetDateTime(3),
+                    Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
+                    Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
                    ));
                   
             }
@@ -124,30 +97,26 @@ namespace TAEPClass
             List<Cliente> clientes = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from clientes order by nome";
+            cmd.CommandText = $"select * from vw_clientes order by nome";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 clientes.Add(
                     new(
                     dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetDateTime(6),
-                    dr.GetBoolean(7),
-                    Endereco.ObterListaPorCliente(dr.GetInt32(0)),
-                    Telefone.ObterListaPorCliente(dr.GetInt32(0))
+                    Usuario.ObterPorId(1),
+                    dr.GetString(2),
+                    dr.GetDateTime(3),
+                    Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
+                    Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
                     )
-                );
+                ));
             }
             return clientes;
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, DataCad);
+            return HashCode.Combine(Id, Usuario.DataCad);
         }
     }
 }

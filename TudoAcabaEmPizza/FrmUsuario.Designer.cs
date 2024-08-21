@@ -102,6 +102,7 @@
             txtNivel.Name = "txtNivel";
             txtNivel.Size = new Size(105, 23);
             txtNivel.TabIndex = 5;
+            txtNivel.TextChanged += txtNivel_TextChanged;
             // 
             // txtSenha
             // 
