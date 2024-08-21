@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gbProdutos = new GroupBox();
+            cbDestaque = new CheckBox();
             btnAddFoto = new Button();
             pb_foto = new PictureBox();
             cbmCategoria = new ComboBox();
@@ -37,10 +38,10 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            label2 = new Label();
+            label6 = new Label();
             txtValor = new TextBox();
             txtDescricao = new TextBox();
-            txtNome = new TextBox();
+            txtRotulo = new TextBox();
             btnConsultar = new Button();
             btnEditar = new Button();
             btnInserir = new Button();
@@ -63,6 +64,7 @@
             // 
             // gbProdutos
             // 
+            gbProdutos.Controls.Add(cbDestaque);
             gbProdutos.Controls.Add(btnAddFoto);
             gbProdutos.Controls.Add(pb_foto);
             gbProdutos.Controls.Add(cbmCategoria);
@@ -71,10 +73,10 @@
             gbProdutos.Controls.Add(label5);
             gbProdutos.Controls.Add(label4);
             gbProdutos.Controls.Add(label3);
-            gbProdutos.Controls.Add(label2);
+            gbProdutos.Controls.Add(label6);
             gbProdutos.Controls.Add(txtValor);
             gbProdutos.Controls.Add(txtDescricao);
-            gbProdutos.Controls.Add(txtNome);
+            gbProdutos.Controls.Add(txtRotulo);
             gbProdutos.Controls.Add(btnConsultar);
             gbProdutos.Controls.Add(btnEditar);
             gbProdutos.Controls.Add(btnInserir);
@@ -87,6 +89,16 @@
             gbProdutos.TabIndex = 16;
             gbProdutos.TabStop = false;
             gbProdutos.Text = "Dados de inserção";
+            // 
+            // cbDestaque
+            // 
+            cbDestaque.AutoSize = true;
+            cbDestaque.Location = new Point(277, 249);
+            cbDestaque.Name = "cbDestaque";
+            cbDestaque.Size = new Size(75, 19);
+            cbDestaque.TabIndex = 24;
+            cbDestaque.Text = "Destaque";
+            cbDestaque.UseVisualStyleBackColor = true;
             // 
             // btnAddFoto
             // 
@@ -111,14 +123,14 @@
             // cbmCategoria
             // 
             cbmCategoria.FormattingEnabled = true;
-            cbmCategoria.Location = new Point(131, 228);
+            cbmCategoria.Location = new Point(131, 220);
             cbmCategoria.Name = "cbmCategoria";
             cbmCategoria.Size = new Size(211, 23);
             cbmCategoria.TabIndex = 21;
             // 
             // mskCodigo
             // 
-            mskCodigo.Location = new Point(131, 199);
+            mskCodigo.Location = new Point(131, 191);
             mskCodigo.Mask = "0.000000.000000";
             mskCodigo.Name = "mskCodigo";
             mskCodigo.Size = new Size(211, 23);
@@ -127,7 +139,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(31, 231);
+            label7.Location = new Point(31, 223);
             label7.Name = "label7";
             label7.Size = new Size(66, 15);
             label7.TabIndex = 19;
@@ -136,7 +148,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(31, 207);
+            label5.Location = new Point(31, 199);
             label5.Name = "label5";
             label5.Size = new Size(97, 15);
             label5.TabIndex = 19;
@@ -145,7 +157,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 178);
+            label4.Location = new Point(84, 170);
             label4.Name = "label4";
             label4.Size = new Size(41, 15);
             label4.TabIndex = 19;
@@ -154,24 +166,24 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(67, 149);
+            label3.Location = new Point(67, 141);
             label3.Name = "label3";
             label3.Size = new Size(61, 15);
             label3.TabIndex = 19;
             label3.Text = " Descrição";
             // 
-            // label2
+            // label6
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(74, 115);
-            label2.Name = "label2";
-            label2.Size = new Size(48, 15);
-            label2.TabIndex = 19;
-            label2.Text = "* Nome";
+            label6.AutoSize = true;
+            label6.Location = new Point(77, 107);
+            label6.Name = "label6";
+            label6.Size = new Size(50, 15);
+            label6.TabIndex = 19;
+            label6.Text = "* Rotulo";
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(131, 170);
+            txtValor.Location = new Point(131, 162);
             txtValor.Name = "txtValor";
             txtValor.PlaceholderText = "Obrigatório";
             txtValor.Size = new Size(211, 23);
@@ -179,18 +191,19 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(131, 141);
+            txtDescricao.Location = new Point(131, 133);
             txtDescricao.Name = "txtDescricao";
+            txtDescricao.PlaceholderText = "Obrigatório";
             txtDescricao.Size = new Size(211, 23);
             txtDescricao.TabIndex = 18;
             // 
-            // txtNome
+            // txtRotulo
             // 
-            txtNome.Location = new Point(131, 112);
-            txtNome.Name = "txtNome";
-            txtNome.PlaceholderText = "Obrigatório";
-            txtNome.Size = new Size(211, 23);
-            txtNome.TabIndex = 18;
+            txtRotulo.Location = new Point(131, 104);
+            txtRotulo.Name = "txtRotulo";
+            txtRotulo.PlaceholderText = "Obrigatório";
+            txtRotulo.Size = new Size(211, 23);
+            txtRotulo.TabIndex = 18;
             // 
             // btnConsultar
             // 
@@ -377,5 +390,8 @@
         private Button btnAddFoto;
         private PictureBox pb_foto;
         private OpenFileDialog openFileDialog1;
+        private Label label6;
+        private TextBox txtRotulo;
+        private CheckBox cbDestaque;
     }
 }

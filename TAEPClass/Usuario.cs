@@ -65,7 +65,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spsenha", Senha);
-            cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            cmd.Parameters.AddWithValue("spniveis_id", Nivel.Id);
             cmd.ExecuteNonQuery();
         }
         public bool Editar(int id, string senhaConfirmar)
