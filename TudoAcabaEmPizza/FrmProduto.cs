@@ -48,11 +48,11 @@ namespace TudoAcabaEmPizza
                 if (txtId.Text.Length > 0)
                 {
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
-                    txtNome.Text = produto.Nome;
+                    txtRotulo.Text = produto.Rotulo;
                     txtDescricao.Text = produto.Descricao;
                     txtValor.Text = Convert.ToString(produto.ValorUnit);
                     mskCodigo.Text = produto.CodBarras;
-                    pb_foto.Image = Image.FromFile(produto.LinkImagem);
+                    pb_foto.Image = Image.FromFile(produto.NomeImagem);
                     cbmCategoria.SelectedIndex = cbmCategoria.FindString(produto.CategoriaId.Descricao);
                     btnEditar.Enabled = true;
                 }
@@ -76,11 +76,11 @@ namespace TudoAcabaEmPizza
             {
                 dgvProdutos.Rows.Add();
                 dgvProdutos.Rows[count].Cells[0].Value = produto.Id;
-                dgvProdutos.Rows[count].Cells[1].Value = produto.Nome;
+                dgvProdutos.Rows[count].Cells[1].Value = produto.Rotulo;
                 dgvProdutos.Rows[count].Cells[2].Value = produto.Descricao;
                 dgvProdutos.Rows[count].Cells[3].Value = produto.ValorUnit;
                 dgvProdutos.Rows[count].Cells[4].Value = produto.CodBarras;
-                dgvProdutos.Rows[count].Cells[5].Value = produto.LinkImagem;
+                dgvProdutos.Rows[count].Cells[5].Value = produto.NomeImagem;
                 dgvProdutos.Rows[count].Cells[6].Value = produto.CategoriaId;
 
 
@@ -113,14 +113,16 @@ namespace TudoAcabaEmPizza
                     }
                 }
             }
+
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             Produto produto = new Produto(
-                txtNome.Text
+                txtRotulo.Text
               , txtDescricao.Text
               , Convert.ToDouble(txtValor.Text)
               , mskCodigo.Text
               , pb_foto.ImageLocation = destinoCompleto
+              ,cbDestaque.Checked
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
                 );
 
@@ -138,16 +140,17 @@ namespace TudoAcabaEmPizza
                 , double.Parse(txtValor.Text)
                 , mskCodigo.Text
                 , pb_foto.ImageLocation = destinoCompleto
+                , cbDestaque.Checked
                 , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
                 );
             if (produto.Editar(produto.Id))
             {
                 FrmProduto_Load(sender, e);
-                MessageBox.Show($"O produto \" {produto.Nome} \" foi alterado com sucesso!");
+                MessageBox.Show($"O produto \" {produto.Rotulo} \" foi alterado com sucesso!");
             }
             else
             {
-                MessageBox.Show($"Falha ao alterar o produto \" {produto.Nome} \"!");
+                MessageBox.Show($"Falha ao alterar o produto \" {produto.Rotulo} \"!");
             }
         }
 

@@ -61,13 +61,25 @@ namespace TAEPClass
             CategoriaId = categoriaId;
         }
 
+        public Produto(string rotulo, string descricao, double valorUnit, string codBarras, string nomeImagem, bool destaque, Categoria categoriaId)
+        {
+            Rotulo = rotulo;
+            Descricao = descricao;
+            ValorUnit = valorUnit;
+            CodBarras = codBarras;
+            NomeImagem = nomeImagem;
+            Destaque = destaque;
+            CategoriaId = categoriaId;
+
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_insert";
             cmd.Parameters.AddWithValue("sprotulo",Rotulo);
-            cmd.Parameters.AddWithValue("spdescricao ", Descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValorUnit);
             cmd.Parameters.AddWithValue("spcod_barras", CodBarras);
             cmd.Parameters.AddWithValue("spnome_imagem", NomeImagem);
