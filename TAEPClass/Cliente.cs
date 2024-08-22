@@ -44,7 +44,7 @@ namespace TAEPClass
             Usuario = usuario;
             Cpf = cpf;
             DataNasc = dataNasc;
-        }
+        } 
 
         public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc)
         {
@@ -60,14 +60,14 @@ namespace TAEPClass
             DataNasc = dataNasc;
         }
 
-        public void Inserir(string senha)
+        public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
-            cmd.Parameters.AddWithValue("spdatanasc", DataNasc);
+            cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
+            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
             cmd.Parameters.AddWithValue("spcpf", Cpf);
-
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public static Cliente ObterPorId(int id)

@@ -18,43 +18,34 @@ namespace TudoAcabaEmPizza
         {
             InitializeComponent();
         }
-
-        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        private void btnInserirUsuario_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnInserir_Click(object sender, EventArgs e)
-        {
-            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            const string descricao = "Cliente";
-            Nivel nivel = Nivel.ObterPorDescricao(descricao);
-            Usuario usuario = new(
-                txtNome.Text,
-                txtEmail.Text,
-                txtSenha.Text,
-                nivel
+            Usuario usuario = new Usuario(
+                txtNomeUsuario.Text,
+                txtEmailUsuario.Text,
+                txtSenhaUsuario.Text,
+                Nivel.ObterPorId(Convert.ToInt32(cbmNivel.SelectedValue))
             );
             usuario.Inserir();
+            if (usuario.Id > 0)
+            {
+                txtIdUsuario.Text = usuario.Id.ToString();
+                MessageBox.Show($"Cliente {usuario.GetHashCode()} cadastrado com sucesso");
+            }
+        }
 
+        private void btnInserirCliente_Click(object sender, EventArgs e)
+        {
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Cliente cliente = new(
-                usuario,
+                Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text)),
                 mskCpf.Text,
-                dtpDatanasc.Value
+                dtpDatanasc.Value.Date
              );
-            cliente.Inserir(txtSenha.Text);
+            cliente.Inserir();
             if (cliente.Id > 0)
             {
+                txtClienteId.Text = cliente.Id.ToString();
                 MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
             }
         }
@@ -82,8 +73,6 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(int clienteId)
         {
-
-
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
@@ -131,27 +120,13 @@ namespace TudoAcabaEmPizza
         {
             if (btnConsultarCliente.Text == "&Consultar")
             {
-                txtNome.Clear();
+                txtNomeUsuario.Clear();
                 mskCpf.Clear();
-                txtEmail.Clear();
-                txtSenha.Clear();
+                txtEmailUsuario.Clear();
+                txtSenhaUsuario.Clear();
                 txtId.ReadOnly = false;
                 txtId.Focus();
                 btnConsultarCliente.Text = "&Obter por ID";
-            }
-            else
-            {
-                if (txtId.Text.Length > 0)
-                {
-                    Cliente cliente = Cliente.ObterPorId(int.Parse(txtId.Text));
-                    txtNome.Text = cliente.Usuario.Nome;
-                    mskCpf.Text = cliente.Cpf;
-                    txtEmail.Text = cliente.Usuario.Email;
-                    txtId.ReadOnly = true;
-                    btnConsultarCliente.Text = "&Consultar";
-                    btnEditarCliente.Enabled = true;
-
-                }
             }
         }
 
@@ -178,7 +153,7 @@ namespace TudoAcabaEmPizza
                     mskCep.Text = endereco.Cep;
                     txtLogradouro.Text = endereco.Logradouro;
                     txtComplemento.Text = endereco.Complemento;
-                    
+
                     txtBairro.Text = endereco.Bairro;
                     txtCidade.Text = endereco.Cidade;
                     txtNumero.Text = endereco.Numero;
@@ -194,6 +169,12 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
+            string descNivel = "Cliente";
+            var nivel = Nivel.ObterLista();
+            cbmNivel.DataSource = nivel;
+            cbmNivel.DisplayMember = "descricao";
+            cbmNivel.ValueMember = "id";
+
             var tipoEndereco = TipoEndereco.ObterLista();
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
@@ -211,6 +192,21 @@ namespace TudoAcabaEmPizza
         }
 
         private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNomeUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbmNivel_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

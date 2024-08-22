@@ -45,7 +45,6 @@
             btnObterUsuarioPorId = new Button();
             btnEditarUsuario = new Button();
             btnInserirUsuario = new Button();
-            label6 = new Label();
             label7 = new Label();
             label24 = new Label();
             label25 = new Label();
@@ -64,9 +63,8 @@
             label5 = new Label();
             label4 = new Label();
             ID = new Label();
-            btnInserir = new Button();
+            btnInserirCliente = new Button();
             btnConsultarCliente = new Button();
-            btnEditarCliente = new Button();
             tbpEnderecosCliente = new TabPage();
             label12 = new Label();
             txtEnderecoClienteId = new TextBox();
@@ -137,7 +135,6 @@
             grbCliente.TabIndex = 1;
             grbCliente.TabStop = false;
             grbCliente.Text = "Dados de Inserção";
-            grbCliente.Enter += grbCliente_Enter;
             // 
             // dgvEnderecos
             // 
@@ -146,7 +143,7 @@
             dgvEnderecos.Location = new Point(10, 382);
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.RowHeadersVisible = false;
-            dgvEnderecos.Size = new Size(752, 179);
+            dgvEnderecos.Size = new Size(739, 179);
             dgvEnderecos.TabIndex = 35;
             // 
             // clnCep
@@ -221,7 +218,7 @@
             tabControl1.Location = new Point(3, 22);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(756, 446);
+            tabControl1.Size = new Size(756, 362);
             tabControl1.TabIndex = 0;
             // 
             // tdpUsuario
@@ -230,7 +227,6 @@
             tdpUsuario.Controls.Add(btnObterUsuarioPorId);
             tdpUsuario.Controls.Add(btnEditarUsuario);
             tdpUsuario.Controls.Add(btnInserirUsuario);
-            tdpUsuario.Controls.Add(label6);
             tdpUsuario.Controls.Add(label7);
             tdpUsuario.Controls.Add(label24);
             tdpUsuario.Controls.Add(label25);
@@ -244,20 +240,18 @@
             tdpUsuario.Location = new Point(4, 24);
             tdpUsuario.Name = "tdpUsuario";
             tdpUsuario.Padding = new Padding(3);
-            tdpUsuario.Size = new Size(748, 418);
+            tdpUsuario.Size = new Size(748, 334);
             tdpUsuario.TabIndex = 3;
             tdpUsuario.Text = "Dados Usuário";
             tdpUsuario.UseVisualStyleBackColor = true;
-            tdpUsuario.Click += tdpUsuario_Click;
             // 
             // txtIdUsuario
             // 
             txtIdUsuario.Location = new Point(555, 117);
             txtIdUsuario.Name = "txtIdUsuario";
+            txtIdUsuario.ReadOnly = true;
             txtIdUsuario.Size = new Size(100, 23);
             txtIdUsuario.TabIndex = 39;
-            txtIdUsuario.Text = "0";
-            txtIdUsuario.Visible = false;
             // 
             // btnObterUsuarioPorId
             // 
@@ -276,6 +270,7 @@
             btnEditarUsuario.TabIndex = 37;
             btnEditarUsuario.Text = "&Editar";
             btnEditarUsuario.UseVisualStyleBackColor = true;
+            btnEditarUsuario.Click += btnEditarUsuario_Click;
             // 
             // btnInserirUsuario
             // 
@@ -286,15 +281,6 @@
             btnInserirUsuario.Text = "&Inserir";
             btnInserirUsuario.UseVisualStyleBackColor = true;
             btnInserirUsuario.Click += btnInserirUsuario_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(168, 242);
-            label6.Name = "label6";
-            label6.Size = new Size(34, 15);
-            label6.TabIndex = 30;
-            label6.Text = "Nivel";
             // 
             // label7
             // 
@@ -350,6 +336,7 @@
             cbmNivel.Name = "cbmNivel";
             cbmNivel.Size = new Size(250, 23);
             cbmNivel.TabIndex = 29;
+            cbmNivel.SelectedIndexChanged += cbmNivel_SelectedIndexChanged;
             // 
             // txtSenhaUsuario
             // 
@@ -357,6 +344,7 @@
             txtSenhaUsuario.Name = "txtSenhaUsuario";
             txtSenhaUsuario.Size = new Size(250, 23);
             txtSenhaUsuario.TabIndex = 25;
+            txtSenhaUsuario.UseSystemPasswordChar = true;
             // 
             // txtEmailUsuario
             // 
@@ -371,6 +359,7 @@
             txtNomeUsuario.Name = "txtNomeUsuario";
             txtNomeUsuario.Size = new Size(250, 23);
             txtNomeUsuario.TabIndex = 27;
+            txtNomeUsuario.TextChanged += txtNomeUsuario_TextChanged;
             // 
             // iduser
             // 
@@ -389,13 +378,12 @@
             tbpDadosCliente.Controls.Add(label5);
             tbpDadosCliente.Controls.Add(label4);
             tbpDadosCliente.Controls.Add(ID);
-            tbpDadosCliente.Controls.Add(btnInserir);
+            tbpDadosCliente.Controls.Add(btnInserirCliente);
             tbpDadosCliente.Controls.Add(btnConsultarCliente);
-            tbpDadosCliente.Controls.Add(btnEditarCliente);
             tbpDadosCliente.Location = new Point(4, 24);
             tbpDadosCliente.Name = "tbpDadosCliente";
             tbpDadosCliente.Padding = new Padding(3);
-            tbpDadosCliente.Size = new Size(748, 418);
+            tbpDadosCliente.Size = new Size(748, 334);
             tbpDadosCliente.TabIndex = 0;
             tbpDadosCliente.Text = "Dados Cliente";
             tbpDadosCliente.UseVisualStyleBackColor = true;
@@ -462,15 +450,15 @@
             ID.TabIndex = 21;
             ID.Text = "ID";
             // 
-            // btnInserir
+            // btnInserirCliente
             // 
-            btnInserir.Location = new Point(330, 206);
-            btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
-            btnInserir.TabIndex = 13;
-            btnInserir.Text = "&Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
-            btnInserir.Click += btnInserir_Click;
+            btnInserirCliente.Location = new Point(330, 206);
+            btnInserirCliente.Name = "btnInserirCliente";
+            btnInserirCliente.Size = new Size(75, 23);
+            btnInserirCliente.TabIndex = 13;
+            btnInserirCliente.Text = "&Inserir";
+            btnInserirCliente.UseVisualStyleBackColor = true;
+            btnInserirCliente.Click += btnInserirCliente_Click;
             // 
             // btnConsultarCliente
             // 
@@ -481,15 +469,6 @@
             btnConsultarCliente.Text = "&Consultar";
             btnConsultarCliente.UseVisualStyleBackColor = true;
             btnConsultarCliente.Click += btnConsultarCliente_Click;
-            // 
-            // btnEditarCliente
-            // 
-            btnEditarCliente.Location = new Point(174, 206);
-            btnEditarCliente.Name = "btnEditarCliente";
-            btnEditarCliente.Size = new Size(75, 23);
-            btnEditarCliente.TabIndex = 15;
-            btnEditarCliente.Text = "&Editar";
-            btnEditarCliente.UseVisualStyleBackColor = true;
             // 
             // tbpEnderecosCliente
             // 
@@ -520,7 +499,7 @@
             tbpEnderecosCliente.Location = new Point(4, 24);
             tbpEnderecosCliente.Name = "tbpEnderecosCliente";
             tbpEnderecosCliente.Padding = new Padding(3);
-            tbpEnderecosCliente.Size = new Size(748, 418);
+            tbpEnderecosCliente.Size = new Size(748, 334);
             tbpEnderecosCliente.TabIndex = 1;
             tbpEnderecosCliente.Text = "Endereços Cliente";
             tbpEnderecosCliente.UseVisualStyleBackColor = true;
@@ -759,7 +738,7 @@
             tbpTelefonesCliente.Location = new Point(4, 24);
             tbpTelefonesCliente.Name = "tbpTelefonesCliente";
             tbpTelefonesCliente.Padding = new Padding(3);
-            tbpTelefonesCliente.Size = new Size(748, 418);
+            tbpTelefonesCliente.Size = new Size(748, 334);
             tbpTelefonesCliente.TabIndex = 2;
             tbpTelefonesCliente.Text = "Telefones Cliente";
             tbpTelefonesCliente.UseVisualStyleBackColor = true;
@@ -946,9 +925,8 @@
         private Label label4;
         private Label label3;
         private Label ID;
-        private Button btnInserir;
+        private Button btnInserirCliente;
         private Button btnConsultarCliente;
-        private Button btnEditarCliente;
         private TabPage tbpEnderecosCliente;
         private Label label12;
         private TextBox txtEnderecoClienteId;
@@ -994,7 +972,6 @@
         private Button btnObterUsuarioPorId;
         private Button btnEditarUsuario;
         private Button btnInserirUsuario;
-        private Label label6;
         private Label label7;
         private Label label24;
         private Label label25;

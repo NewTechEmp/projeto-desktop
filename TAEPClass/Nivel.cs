@@ -92,7 +92,7 @@ namespace TAEPClass
             Nivel nivel = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from niveis where id  = {descricao}";
+            cmd.CommandText = $"select * from niveis where descricao  = '{descricao}'";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

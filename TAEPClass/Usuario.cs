@@ -58,15 +58,15 @@ namespace TAEPClass
 
         public void Inserir()
         {
-            CriptografarSenha(Senha);
+            string senhaCriptografada = CriptografarSenha(Senha);
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_insert";
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
             cmd.Parameters.AddWithValue("spniveis_id", Nivel.Id);
-            cmd.ExecuteNonQuery();
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public bool Editar(int id, string senhaConfirmar)
         {
@@ -79,6 +79,7 @@ namespace TAEPClass
                 cmd.CommandText = "sp_usuario_update";
                 cmd.Parameters.AddWithValue("spid", Id);
                 cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spemail", Email);
                 cmd.Parameters.AddWithValue("spsenha", Senha);
                 cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
                 try
@@ -182,6 +183,11 @@ namespace TAEPClass
         private static bool VerificarSenha(string senha,string hashPass)
         {
             return BCryptNet.Verify(senha, hashPass);
+
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, DataCad, Nivel.Sigla, Email);
         }
     }
 }
