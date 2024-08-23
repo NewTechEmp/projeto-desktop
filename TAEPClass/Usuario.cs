@@ -66,7 +66,11 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
             cmd.Parameters.AddWithValue("spniveis_id", Nivel.Id);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            var resultado = cmd.ExecuteScalar();
+            if (resultado != null)
+            {
+                Id = Convert.ToInt32(resultado);
+            }
         }
         public bool Editar(int id, string senhaConfirmar)
         {
@@ -183,7 +187,6 @@ namespace TAEPClass
         private static bool VerificarSenha(string senha,string hashPass)
         {
             return BCryptNet.Verify(senha, hashPass);
-
         }
         public override int GetHashCode()
         {
