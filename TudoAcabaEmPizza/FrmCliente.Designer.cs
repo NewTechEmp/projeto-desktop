@@ -255,9 +255,11 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(118, 235);
             label4.Name = "label4";
-            label4.Size = new Size(98, 15);
+            label4.Size = new Size(102, 15);
             label4.TabIndex = 45;
             label4.Text = "Data Nascimento";
             // 
@@ -463,10 +465,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.ForeColor = SystemColors.HotTrack;
+            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.ForestGreen;
             label12.Location = new Point(109, 106);
             label12.Name = "label12";
-            label12.Size = new Size(58, 15);
+            label12.Size = new Size(62, 15);
             label12.TabIndex = 38;
             label12.Text = "ID Cliente";
             // 
@@ -523,10 +526,11 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.ForeColor = SystemColors.HotTrack;
+            label23.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label23.ForeColor = Color.ForestGreen;
             label23.Location = new Point(10, 103);
             label23.Name = "label23";
-            label23.Size = new Size(18, 15);
+            label23.Size = new Size(20, 15);
             label23.TabIndex = 36;
             label23.Text = "ID";
             // 
@@ -542,7 +546,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Showcard Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.ForeColor = SystemColors.HotTrack;
+            label16.ForeColor = Color.ForestGreen;
             label16.Location = new Point(75, 40);
             label16.Name = "label16";
             label16.Size = new Size(628, 40);
@@ -609,10 +613,11 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.ForeColor = SystemColors.HotTrack;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.ForestGreen;
             label13.Location = new Point(338, 206);
             label13.Name = "label13";
-            label13.Size = new Size(38, 15);
+            label13.Size = new Size(41, 15);
             label13.TabIndex = 26;
             label13.Text = "Bairro";
             // 
@@ -637,7 +642,8 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.ForeColor = SystemColors.HotTrack;
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.ForestGreen;
             label10.Location = new Point(574, 106);
             label10.Name = "label10";
             label10.Size = new Size(21, 15);
@@ -647,30 +653,33 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.ForeColor = SystemColors.HotTrack;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.ForestGreen;
             label9.Location = new Point(344, 159);
             label9.Name = "label9";
-            label9.Size = new Size(82, 15);
+            label9.Size = new Size(86, 15);
             label9.TabIndex = 9;
             label9.Text = "Tipo Endereço";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.ForeColor = SystemColors.HotTrack;
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.ForestGreen;
             label8.Location = new Point(0, 156);
             label8.Name = "label8";
-            label8.Size = new Size(69, 15);
+            label8.Size = new Size(71, 15);
             label8.TabIndex = 8;
             label8.Text = "Logradouro";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = SystemColors.HotTrack;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(470, 106);
             label2.Name = "label2";
-            label2.Size = new Size(28, 15);
+            label2.Size = new Size(27, 15);
             label2.TabIndex = 7;
             label2.Text = "CEP";
             // 
