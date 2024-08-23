@@ -16,8 +16,7 @@ public static class Banco
     
     public static string caminho = System.Environment.CurrentDirectory;
    
-    public static string caminhoFotos = caminho+@"\fotos\";  // Substitua por um caminho válido
-
+    public static string caminhoFotos = caminho+@"\fotos\";  
     public static MySqlCommand Abrir()
     {
         MySqlCommand cmd = new MySqlCommand();

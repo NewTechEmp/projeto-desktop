@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TAEPClass;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 
 namespace TudoAcabaEmPizza
 {
@@ -18,6 +19,7 @@ namespace TudoAcabaEmPizza
         string foto = "";
         string pastaDestino = Banco.caminhoFotos;
         string destinoCompleto = "";
+        string DestinoCortado = "";
       
         public FrmProduto()
         {
@@ -112,7 +114,35 @@ namespace TudoAcabaEmPizza
                         return;
                     }
                 }
+                
             }
+            string[] destinoCortado = destinoCompleto.Split('\\');
+
+            // Mostra o resultado para verificar se o array foi dividido corretamente
+            if (destinoCortado.Length > 0)
+            {
+                string ultimaParte = destinoCortado[destinoCortado.Length - 1];
+                Random a = new Random();
+                int num = a.Next(10000,99999);
+                int userID = Program.Usuario.Id;
+                string userName = Program.Usuario.Nome;
+                string userEmail = Program.Usuario.Email;
+                DateTime data = DateTime.Now;
+                string userNivel = Program.Usuario.Nivel.Descricao;
+                var concat = $"{userID}-{userName}-{userEmail}-{userNivel}-{data}-{num}-";
+
+                MessageBox.Show("A última parte do caminho é: " + ultimaParte);
+                DestinoCortado = concat + ultimaParte;
+
+                
+            }
+            else
+            {
+                MessageBox.Show("O array está vazio.");
+            }
+
+            
+
 
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
@@ -121,10 +151,10 @@ namespace TudoAcabaEmPizza
               , txtDescricao.Text
               , Convert.ToDouble(txtValor.Text)
               , mskCodigo.Text
-              , pb_foto.ImageLocation = destinoCompleto
-              ,cbDestaque.Checked
+              , pb_foto.ImageLocation = DestinoCortado
+              , cbDestaque.Checked
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
-                );
+                ) ;  
 
             produto.Inserir();
             MessageBox.Show("produto inserido com sucesso");
