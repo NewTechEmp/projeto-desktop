@@ -41,7 +41,16 @@
             clnTipoEnd = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tdpUsuario = new TabPage();
+            label5 = new Label();
+            label4 = new Label();
+            txtClienteId = new TextBox();
+            dtpDatanasc = new DateTimePicker();
+            mskCpf = new MaskedTextBox();
+            txtNivelId = new TextBox();
             txtIdUsuario = new TextBox();
+            txtEmailUsuario = new TextBox();
+            txtNomeUsuario = new TextBox();
+            txtIdUser = new TextBox();
             btnObterUsuarioPorId = new Button();
             btnEditarUsuario = new Button();
             btnInserirUsuario = new Button();
@@ -50,21 +59,7 @@
             label25 = new Label();
             label26 = new Label();
             label27 = new Label();
-            cbmNivel = new ComboBox();
             txtSenhaUsuario = new TextBox();
-            txtEmailUsuario = new TextBox();
-            txtNomeUsuario = new TextBox();
-            iduser = new TextBox();
-            tbpDadosCliente = new TabPage();
-            txtClienteId = new TextBox();
-            txtId = new TextBox();
-            dtpDatanasc = new DateTimePicker();
-            mskCpf = new MaskedTextBox();
-            label5 = new Label();
-            label4 = new Label();
-            ID = new Label();
-            btnInserirCliente = new Button();
-            btnConsultarCliente = new Button();
             tbpEnderecosCliente = new TabPage();
             label12 = new Label();
             txtEnderecoClienteId = new TextBox();
@@ -109,7 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvEnderecos).BeginInit();
             tabControl1.SuspendLayout();
             tdpUsuario.SuspendLayout();
-            tbpDadosCliente.SuspendLayout();
             tbpEnderecosCliente.SuspendLayout();
             tbpTelefonesCliente.SuspendLayout();
             SuspendLayout();
@@ -212,7 +206,6 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tdpUsuario);
-            tabControl1.Controls.Add(tbpDadosCliente);
             tabControl1.Controls.Add(tbpEnderecosCliente);
             tabControl1.Controls.Add(tbpTelefonesCliente);
             tabControl1.Location = new Point(3, 22);
@@ -223,7 +216,16 @@
             // 
             // tdpUsuario
             // 
+            tdpUsuario.Controls.Add(label5);
+            tdpUsuario.Controls.Add(label4);
+            tdpUsuario.Controls.Add(txtClienteId);
+            tdpUsuario.Controls.Add(dtpDatanasc);
+            tdpUsuario.Controls.Add(mskCpf);
+            tdpUsuario.Controls.Add(txtNivelId);
             tdpUsuario.Controls.Add(txtIdUsuario);
+            tdpUsuario.Controls.Add(txtEmailUsuario);
+            tdpUsuario.Controls.Add(txtNomeUsuario);
+            tdpUsuario.Controls.Add(txtIdUser);
             tdpUsuario.Controls.Add(btnObterUsuarioPorId);
             tdpUsuario.Controls.Add(btnEditarUsuario);
             tdpUsuario.Controls.Add(btnInserirUsuario);
@@ -232,18 +234,69 @@
             tdpUsuario.Controls.Add(label25);
             tdpUsuario.Controls.Add(label26);
             tdpUsuario.Controls.Add(label27);
-            tdpUsuario.Controls.Add(cbmNivel);
             tdpUsuario.Controls.Add(txtSenhaUsuario);
-            tdpUsuario.Controls.Add(txtEmailUsuario);
-            tdpUsuario.Controls.Add(txtNomeUsuario);
-            tdpUsuario.Controls.Add(iduser);
             tdpUsuario.Location = new Point(4, 24);
             tdpUsuario.Name = "tdpUsuario";
             tdpUsuario.Padding = new Padding(3);
             tdpUsuario.Size = new Size(748, 334);
             tdpUsuario.TabIndex = 3;
-            tdpUsuario.Text = "Dados Usuário";
+            tdpUsuario.Text = "Dados Cliente";
             tdpUsuario.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(352, 235);
+            label5.Name = "label5";
+            label5.Size = new Size(28, 15);
+            label5.TabIndex = 44;
+            label5.Text = "CPF";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(118, 235);
+            label4.Name = "label4";
+            label4.Size = new Size(98, 15);
+            label4.TabIndex = 45;
+            label4.Text = "Data Nascimento";
+            // 
+            // txtClienteId
+            // 
+            txtClienteId.Location = new Point(555, 178);
+            txtClienteId.Multiline = true;
+            txtClienteId.Name = "txtClienteId";
+            txtClienteId.ReadOnly = true;
+            txtClienteId.Size = new Size(100, 23);
+            txtClienteId.TabIndex = 41;
+            txtClienteId.Visible = false;
+            // 
+            // dtpDatanasc
+            // 
+            dtpDatanasc.Format = DateTimePickerFormat.Short;
+            dtpDatanasc.Location = new Point(222, 229);
+            dtpDatanasc.Name = "dtpDatanasc";
+            dtpDatanasc.Size = new Size(105, 23);
+            dtpDatanasc.TabIndex = 43;
+            dtpDatanasc.UseWaitCursor = true;
+            dtpDatanasc.Value = new DateTime(2024, 8, 23, 9, 38, 30, 0);
+            // 
+            // mskCpf
+            // 
+            mskCpf.Location = new Point(386, 229);
+            mskCpf.Mask = "000.000.000-00";
+            mskCpf.Name = "mskCpf";
+            mskCpf.Size = new Size(86, 23);
+            mskCpf.TabIndex = 42;
+            // 
+            // txtNivelId
+            // 
+            txtNivelId.Location = new Point(555, 149);
+            txtNivelId.Name = "txtNivelId";
+            txtNivelId.ReadOnly = true;
+            txtNivelId.Size = new Size(100, 23);
+            txtNivelId.TabIndex = 40;
+            txtNivelId.Visible = false;
             // 
             // txtIdUsuario
             // 
@@ -252,15 +305,39 @@
             txtIdUsuario.ReadOnly = true;
             txtIdUsuario.Size = new Size(100, 23);
             txtIdUsuario.TabIndex = 39;
+            txtIdUsuario.Visible = false;
+            // 
+            // txtEmailUsuario
+            // 
+            txtEmailUsuario.Location = new Point(222, 157);
+            txtEmailUsuario.Name = "txtEmailUsuario";
+            txtEmailUsuario.Size = new Size(250, 23);
+            txtEmailUsuario.TabIndex = 26;
+            // 
+            // txtNomeUsuario
+            // 
+            txtNomeUsuario.Location = new Point(222, 114);
+            txtNomeUsuario.Name = "txtNomeUsuario";
+            txtNomeUsuario.Size = new Size(250, 23);
+            txtNomeUsuario.TabIndex = 27;
+            // 
+            // txtIdUser
+            // 
+            txtIdUser.Location = new Point(222, 75);
+            txtIdUser.Name = "txtIdUser";
+            txtIdUser.ReadOnly = true;
+            txtIdUser.Size = new Size(51, 23);
+            txtIdUser.TabIndex = 28;
             // 
             // btnObterUsuarioPorId
             // 
             btnObterUsuarioPorId.Location = new Point(387, 304);
             btnObterUsuarioPorId.Name = "btnObterUsuarioPorId";
-            btnObterUsuarioPorId.Size = new Size(75, 23);
+            btnObterUsuarioPorId.Size = new Size(85, 23);
             btnObterUsuarioPorId.TabIndex = 36;
-            btnObterUsuarioPorId.Text = "&Obter Por ID";
+            btnObterUsuarioPorId.Text = "&Consultar";
             btnObterUsuarioPorId.UseVisualStyleBackColor = true;
+            btnObterUsuarioPorId.Click += btnObterUsuarioPorId_Click;
             // 
             // btnEditarUsuario
             // 
@@ -329,146 +406,13 @@
             label27.TabIndex = 35;
             label27.Text = "ID";
             // 
-            // cbmNivel
-            // 
-            cbmNivel.FormattingEnabled = true;
-            cbmNivel.Location = new Point(222, 239);
-            cbmNivel.Name = "cbmNivel";
-            cbmNivel.Size = new Size(250, 23);
-            cbmNivel.TabIndex = 29;
-            cbmNivel.SelectedIndexChanged += cbmNivel_SelectedIndexChanged;
-            // 
             // txtSenhaUsuario
             // 
-            txtSenhaUsuario.Location = new Point(222, 200);
+            txtSenhaUsuario.Location = new Point(222, 195);
             txtSenhaUsuario.Name = "txtSenhaUsuario";
             txtSenhaUsuario.Size = new Size(250, 23);
             txtSenhaUsuario.TabIndex = 25;
             txtSenhaUsuario.UseSystemPasswordChar = true;
-            // 
-            // txtEmailUsuario
-            // 
-            txtEmailUsuario.Location = new Point(222, 157);
-            txtEmailUsuario.Name = "txtEmailUsuario";
-            txtEmailUsuario.Size = new Size(250, 23);
-            txtEmailUsuario.TabIndex = 26;
-            // 
-            // txtNomeUsuario
-            // 
-            txtNomeUsuario.Location = new Point(222, 114);
-            txtNomeUsuario.Name = "txtNomeUsuario";
-            txtNomeUsuario.Size = new Size(250, 23);
-            txtNomeUsuario.TabIndex = 27;
-            txtNomeUsuario.TextChanged += txtNomeUsuario_TextChanged;
-            // 
-            // iduser
-            // 
-            iduser.Location = new Point(222, 75);
-            iduser.Name = "iduser";
-            iduser.ReadOnly = true;
-            iduser.Size = new Size(51, 23);
-            iduser.TabIndex = 28;
-            // 
-            // tbpDadosCliente
-            // 
-            tbpDadosCliente.Controls.Add(txtClienteId);
-            tbpDadosCliente.Controls.Add(txtId);
-            tbpDadosCliente.Controls.Add(dtpDatanasc);
-            tbpDadosCliente.Controls.Add(mskCpf);
-            tbpDadosCliente.Controls.Add(label5);
-            tbpDadosCliente.Controls.Add(label4);
-            tbpDadosCliente.Controls.Add(ID);
-            tbpDadosCliente.Controls.Add(btnInserirCliente);
-            tbpDadosCliente.Controls.Add(btnConsultarCliente);
-            tbpDadosCliente.Location = new Point(4, 24);
-            tbpDadosCliente.Name = "tbpDadosCliente";
-            tbpDadosCliente.Padding = new Padding(3);
-            tbpDadosCliente.Size = new Size(748, 334);
-            tbpDadosCliente.TabIndex = 0;
-            tbpDadosCliente.Text = "Dados Cliente";
-            tbpDadosCliente.UseVisualStyleBackColor = true;
-            tbpDadosCliente.Click += tbpDadosCliente_Click;
-            // 
-            // txtClienteId
-            // 
-            txtClienteId.Location = new Point(627, 59);
-            txtClienteId.Multiline = true;
-            txtClienteId.Name = "txtClienteId";
-            txtClienteId.Size = new Size(100, 23);
-            txtClienteId.TabIndex = 2;
-            txtClienteId.Text = "0";
-            txtClienteId.Visible = false;
-            // 
-            // txtId
-            // 
-            txtId.Location = new Point(173, 50);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(68, 23);
-            txtId.TabIndex = 12;
-            // 
-            // dtpDatanasc
-            // 
-            dtpDatanasc.Format = DateTimePickerFormat.Short;
-            dtpDatanasc.Location = new Point(173, 96);
-            dtpDatanasc.Name = "dtpDatanasc";
-            dtpDatanasc.Size = new Size(105, 23);
-            dtpDatanasc.TabIndex = 24;
-            // 
-            // mskCpf
-            // 
-            mskCpf.Location = new Point(173, 131);
-            mskCpf.Mask = "000.000.000-00";
-            mskCpf.Name = "mskCpf";
-            mskCpf.Size = new Size(390, 23);
-            mskCpf.TabIndex = 23;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(129, 139);
-            label5.Name = "label5";
-            label5.Size = new Size(28, 15);
-            label5.TabIndex = 18;
-            label5.Text = "CPF";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(69, 102);
-            label4.Name = "label4";
-            label4.Size = new Size(98, 15);
-            label4.TabIndex = 19;
-            label4.Text = "Data Nascimento";
-            // 
-            // ID
-            // 
-            ID.AutoSize = true;
-            ID.Location = new Point(149, 50);
-            ID.Name = "ID";
-            ID.Size = new Size(18, 15);
-            ID.TabIndex = 21;
-            ID.Text = "ID";
-            // 
-            // btnInserirCliente
-            // 
-            btnInserirCliente.Location = new Point(330, 206);
-            btnInserirCliente.Name = "btnInserirCliente";
-            btnInserirCliente.Size = new Size(75, 23);
-            btnInserirCliente.TabIndex = 13;
-            btnInserirCliente.Text = "&Inserir";
-            btnInserirCliente.UseVisualStyleBackColor = true;
-            btnInserirCliente.Click += btnInserirCliente_Click;
-            // 
-            // btnConsultarCliente
-            // 
-            btnConsultarCliente.Location = new Point(473, 206);
-            btnConsultarCliente.Name = "btnConsultarCliente";
-            btnConsultarCliente.Size = new Size(75, 23);
-            btnConsultarCliente.TabIndex = 14;
-            btnConsultarCliente.Text = "&Consultar";
-            btnConsultarCliente.UseVisualStyleBackColor = true;
-            btnConsultarCliente.Click += btnConsultarCliente_Click;
             // 
             // tbpEnderecosCliente
             // 
@@ -513,7 +457,6 @@
             label12.Size = new Size(58, 15);
             label12.TabIndex = 38;
             label12.Text = "ID Cliente";
-            label12.Click += label12_Click;
             // 
             // txtEnderecoClienteId
             // 
@@ -887,8 +830,6 @@
             tabControl1.ResumeLayout(false);
             tdpUsuario.ResumeLayout(false);
             tdpUsuario.PerformLayout();
-            tbpDadosCliente.ResumeLayout(false);
-            tbpDadosCliente.PerformLayout();
             tbpEnderecosCliente.ResumeLayout(false);
             tbpEnderecosCliente.PerformLayout();
             tbpTelefonesCliente.ResumeLayout(false);
@@ -902,7 +843,6 @@
         private Label label1;
         private GroupBox grbCliente;
         private ComboBox cbmCategoria;
-        private ComboBox cbmNivel;
         private MaskedTextBox maskedTextBox3;
         private MaskedTextBox maskedTextBox2;
         private DataGridView dgvEnderecos;
@@ -914,19 +854,29 @@
         private DataGridViewTextBoxColumn clnCidade;
         private DataGridViewTextBoxColumn clnUf;
         private DataGridViewTextBoxColumn clnTipoEnd;
-        private TabControl tabControl1;
-        private TabPage tbpDadosCliente;
-        private TextBox txtClienteId;
         private TextBox txtUsuarioId;
-        private TextBox txtId;
-        private DateTimePicker dtpDatanasc;
-        private MaskedTextBox mskCpf;
+        private Label label3;
+        private TabControl tabControl1;
+        private TabPage tdpUsuario;
         private Label label5;
         private Label label4;
-        private Label label3;
-        private Label ID;
-        private Button btnInserirCliente;
-        private Button btnConsultarCliente;
+        private TextBox txtClienteId;
+        private DateTimePicker dtpDatanasc;
+        private MaskedTextBox mskCpf;
+        private TextBox txtNivelId;
+        private TextBox txtIdUsuario;
+        private TextBox txtEmailUsuario;
+        private TextBox txtNomeUsuario;
+        private TextBox txtIdUser;
+        private Button btnObterUsuarioPorId;
+        private Button btnEditarUsuario;
+        private Button btnInserirUsuario;
+        private Label label7;
+        private Label label24;
+        private Label label25;
+        private Label label26;
+        private Label label27;
+        private TextBox txtSenhaUsuario;
         private TabPage tbpEnderecosCliente;
         private Label label12;
         private TextBox txtEnderecoClienteId;
@@ -967,19 +917,5 @@
         private MaskedTextBox mskDdd;
         private MaskedTextBox mskDdi;
         private Label label17;
-        private TabPage tdpUsuario;
-        private TextBox txtIdUsuario;
-        private Button btnObterUsuarioPorId;
-        private Button btnEditarUsuario;
-        private Button btnInserirUsuario;
-        private Label label7;
-        private Label label24;
-        private Label label25;
-        private Label label26;
-        private Label label27;
-        private TextBox txtSenhaUsuario;
-        private TextBox txtEmailUsuario;
-        private TextBox txtNomeUsuario;
-        private TextBox iduser;
     }
 }

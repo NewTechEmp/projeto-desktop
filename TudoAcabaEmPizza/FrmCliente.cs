@@ -1,4 +1,5 @@
-﻿using MySqlX.XDevAPI;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,36 +21,38 @@ namespace TudoAcabaEmPizza
         }
         private void btnInserirUsuario_Click(object sender, EventArgs e)
         {
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Usuario usuario = new Usuario(
                 txtNomeUsuario.Text,
                 txtEmailUsuario.Text,
                 txtSenhaUsuario.Text,
-                Nivel.ObterPorId(Convert.ToInt32(cbmNivel.SelectedValue))
+                Nivel.ObterPorId(Convert.ToInt32(txtNivelId.Text))
             );
             usuario.Inserir();
             if (usuario.Id > 0)
             {
+                // limpando campos
+                txtNomeUsuario.Clear();
+                txtEmailUsuario.Clear();
+                txtSenhaUsuario.Clear();
+                // recuperando id do usuario
                 txtIdUsuario.Text = usuario.Id.ToString();
-                MessageBox.Show($"Cliente {usuario.GetHashCode()} cadastrado com sucesso");
+                // inserindo cliente
+                Cliente cliente = new(
+                    Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text)),
+                    mskCpf.Text,
+                    dtpDatanasc.Value.Date
+                 );
+                cliente.Inserir();
+                if (cliente.Id > 0)
+                {
+                    dtpDatanasc.Value = DateTime.Now;
+                    mskCpf.Clear();
+                    txtClienteId.Text = cliente.Id.ToString();
+                    MessageBox.Show($"Cliente {usuario.GetHashCode()} cadastrado com sucesso");
+                }
             }
         }
-
-        private void btnInserirCliente_Click(object sender, EventArgs e)
-        {
-            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            Cliente cliente = new(
-                Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text)),
-                mskCpf.Text,
-                dtpDatanasc.Value.Date
-             );
-            cliente.Inserir();
-            if (cliente.Id > 0)
-            {
-                txtClienteId.Text = cliente.Id.ToString();
-                MessageBox.Show($"Cliente {cliente.GetHashCode()} cadastrado com sucesso");
-            }
-        }
-
         private void buSalvar_Click(object sender, EventArgs e)
         {
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -115,21 +118,6 @@ namespace TudoAcabaEmPizza
 
 
         }
-
-        private void btnConsultarCliente_Click(object sender, EventArgs e)
-        {
-            if (btnConsultarCliente.Text == "&Consultar")
-            {
-                txtNomeUsuario.Clear();
-                mskCpf.Clear();
-                txtEmailUsuario.Clear();
-                txtSenhaUsuario.Clear();
-                txtId.ReadOnly = false;
-                txtId.Focus();
-                btnConsultarCliente.Text = "&Obter por ID";
-            }
-        }
-
         private void btnConsultarEndereco_Click(object sender, EventArgs e)
         {
             if (btnConsultarEndereco.Text == "&Consultar")
@@ -170,45 +158,38 @@ namespace TudoAcabaEmPizza
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             string descNivel = "Cliente";
-            var nivel = Nivel.ObterLista();
-            cbmNivel.DataSource = nivel;
-            cbmNivel.DisplayMember = "descricao";
-            cbmNivel.ValueMember = "id";
+            var nivel = Nivel.ObterPorDescricao(descNivel);
+            txtNivelId.Text = nivel.Id.ToString();
 
             var tipoEndereco = TipoEndereco.ObterLista();
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
             cmbTipoEndereco.ValueMember = "id";
         }
-
-        private void tbpDadosCliente_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNomeUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void cbmNivel_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnObterUsuarioPorId_Click(object sender, EventArgs e)
         {
-
+            if (btnObterUsuarioPorId.Text == "&Consultar")
+            {
+                txtNomeUsuario.Clear();
+                mskCpf.Clear();
+                txtEmailUsuario.Clear();
+                txtSenhaUsuario.Clear();
+                txtIdUser.ReadOnly = false;
+                txtIdUser.Focus();
+                btnObterUsuarioPorId.Text = "&Obter por ID";
+                if (txtIdUser.Text.Length > 0 && txtIdUser.Text != null)
+                {
+                    Cliente cliente = Cliente.ObterPorId(Convert.ToInt32(txtClienteId.Text));
+                    txtNomeUsuario.Text = cliente.Usuario.Nome;
+                    txtEmailUsuario.Text = cliente.Usuario.Email;
+                    dtpDatanasc.Value = cliente.DataNasc;
+                    mskCpf.Text = cliente.Cpf;
+                }
+            }
         }
     }
 }

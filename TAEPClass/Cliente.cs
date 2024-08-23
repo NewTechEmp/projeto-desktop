@@ -68,7 +68,11 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
             cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
             cmd.Parameters.AddWithValue("spcpf", Cpf);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            var resultado = cmd.ExecuteScalar();
+            if (resultado != null)
+            {
+                Id = Convert.ToInt32(resultado);
+            }
         }
         public static Cliente ObterPorId(int id)
         {
@@ -113,10 +117,6 @@ namespace TAEPClass
                 ));
             }
             return clientes;
-        }
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Id, Usuario.DataCad);
         }
     }
 }
