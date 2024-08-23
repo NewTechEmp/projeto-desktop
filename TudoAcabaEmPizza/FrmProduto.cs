@@ -35,7 +35,7 @@ namespace TudoAcabaEmPizza
             {
                 mskCodigo.Clear();
                 txtDescricao.Clear();
-                txtNome.Clear();
+                txtRotulo.Clear();
 
                 txtValor.Clear();
                 pb_foto.Image = null;
@@ -159,6 +159,17 @@ namespace TudoAcabaEmPizza
             origemCompleto = "";
             foto = "";
             pastaDestino = Banco.caminhoFotos;
+
+            string[] arrayTexte = pastaDestino.Split('\\');
+            int tamanhoArray = arrayTexte.Length;
+            MessageBox.Show("tamanho = " + tamanhoArray);
+            for(int i = 0; i<tamanhoArray; i++)
+            {
+                MessageBox.Show("Conteudo da posição "+i+" = " + arrayTexte[i]);
+            }
+         
+
+
             destinoCompleto = "";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)

@@ -11,12 +11,18 @@ using System.Security.Cryptography.X509Certificates;
 
 public static class Banco
 {
- 
+
     private static string strconn = @"server=127.0.0.1;database=tudo_acaba_em_pizza_db;user id=root;password=";
-    
+
     public static string caminho = System.Environment.CurrentDirectory;
-   
-    public static string caminhoFotos = caminho+@"\fotos\";  // Substitua por um caminho válido
+
+    public static string caminhoFotos = caminho + @"\fotos\";  // Substitua por um caminho válido
+
+ 
+
+        
+
+
 
     public static MySqlCommand Abrir()
     {
