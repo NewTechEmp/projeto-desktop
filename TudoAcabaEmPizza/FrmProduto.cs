@@ -123,7 +123,7 @@ namespace TudoAcabaEmPizza
             {
                 string ultimaParte = destinoCortado[destinoCortado.Length - 1];
                 Random a = new Random();
-                int num = a.Next(10000,99999);
+                int num = a.Next(10000,99999); // equivalente ao rand
                 int userID = Program.Usuario.Id;
                 string userName = Program.Usuario.Nome;
                 string userEmail = Program.Usuario.Email;

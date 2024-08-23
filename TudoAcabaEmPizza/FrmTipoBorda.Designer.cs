@@ -64,22 +64,22 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(6, 68);
             label1.Name = "label1";
-            label1.Size = new Size(105, 23);
+            label1.Size = new Size(97, 25);
             label1.TabIndex = 1;
             label1.Text = "Descrição";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.ForestGreen;
             label2.Location = new Point(6, 115);
             label2.Name = "label2";
-            label2.Size = new Size(65, 23);
+            label2.Size = new Size(63, 25);
             label2.TabIndex = 1;
             label2.Text = "Preço";
             // 
@@ -141,11 +141,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.ForestGreen;
             label4.Location = new Point(6, 18);
             label4.Name = "label4";
-            label4.Size = new Size(28, 23);
+            label4.Size = new Size(32, 25);
             label4.TabIndex = 1;
             label4.Text = "ID";
             // 

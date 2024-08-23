@@ -118,7 +118,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 18.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(287, 23);
             label1.Name = "label1";
             label1.Size = new Size(197, 31);
@@ -255,6 +255,7 @@
             // 
             // btnObterUsuarioPorId
             // 
+            btnObterUsuarioPorId.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnObterUsuarioPorId.Location = new Point(387, 304);
             btnObterUsuarioPorId.Name = "btnObterUsuarioPorId";
             btnObterUsuarioPorId.Size = new Size(75, 23);
@@ -264,6 +265,8 @@
             // 
             // btnEditarUsuario
             // 
+            btnEditarUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEditarUsuario.ForeColor = SystemColors.ActiveCaptionText;
             btnEditarUsuario.Location = new Point(287, 304);
             btnEditarUsuario.Name = "btnEditarUsuario";
             btnEditarUsuario.Size = new Size(75, 23);
@@ -274,6 +277,7 @@
             // 
             // btnInserirUsuario
             // 
+            btnInserirUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInserirUsuario.Location = new Point(188, 304);
             btnInserirUsuario.Name = "btnInserirUsuario";
             btnInserirUsuario.Size = new Size(75, 23);
@@ -285,15 +289,19 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.ForestGreen;
             label7.Location = new Point(168, 203);
             label7.Name = "label7";
-            label7.Size = new Size(39, 15);
+            label7.Size = new Size(41, 15);
             label7.TabIndex = 31;
             label7.Text = "Senha";
             // 
             // label24
             // 
             label24.AutoSize = true;
+            label24.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label24.ForeColor = Color.ForestGreen;
             label24.Location = new Point(171, 157);
             label24.Name = "label24";
             label24.Size = new Size(36, 15);
@@ -303,9 +311,11 @@
             // label25
             // 
             label25.AutoSize = true;
+            label25.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label25.ForeColor = Color.ForestGreen;
             label25.Location = new Point(176, 117);
             label25.Name = "label25";
-            label25.Size = new Size(40, 15);
+            label25.Size = new Size(41, 15);
             label25.TabIndex = 33;
             label25.Text = "Nome";
             // 
@@ -313,6 +323,7 @@
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label26.ForeColor = Color.ForestGreen;
             label26.Location = new Point(271, 20);
             label26.Name = "label26";
             label26.Size = new Size(173, 25);
@@ -323,6 +334,7 @@
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label27.ForeColor = Color.ForestGreen;
             label27.Location = new Point(188, 78);
             label27.Name = "label27";
             label27.Size = new Size(20, 15);
