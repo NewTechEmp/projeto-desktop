@@ -40,6 +40,7 @@
             txtTotal = new TextBox();
             btnExcluirItem = new Button();
             button3 = new Button();
+            label5 = new Label();
             dgvPedido = new DataGridView();
             clnCod = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
@@ -58,7 +59,7 @@
             txtValorUnit = new TextBox();
             label6 = new Label();
             txtDescricao = new TextBox();
-            label5 = new Label();
+            label15 = new Label();
             txtCodBarras = new TextBox();
             gbCliente = new GroupBox();
             label14 = new Label();
@@ -69,7 +70,6 @@
             label2 = new Label();
             txtVendedor = new TextBox();
             txtNumeroPedido = new TextBox();
-            label15 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedido).BeginInit();
             gbProduto.SuspendLayout();
@@ -211,6 +211,16 @@
             button3.TabIndex = 19;
             button3.Text = "Finalizar &Pedido";
             button3.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label5.Location = new Point(16, 493);
+            label5.Name = "label5";
+            label5.Size = new Size(100, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Status do Pedido";
             // 
             // dgvPedido
             // 
@@ -377,15 +387,15 @@
             txtDescricao.Size = new Size(246, 29);
             txtDescricao.TabIndex = 10;
             // 
-            // label5
+            // label15
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(16, 493);
-            label5.Name = "label5";
-            label5.Size = new Size(100, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Status do Pedido";
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label15.Location = new Point(16, 61);
+            label15.Name = "label15";
+            label15.Size = new Size(100, 15);
+            label15.TabIndex = 9;
+            label15.Text = "Código de Barras";
             // 
             // txtCodBarras
             // 
@@ -466,6 +476,7 @@
             txtVendedor.Name = "txtVendedor";
             txtVendedor.Size = new Size(739, 29);
             txtVendedor.TabIndex = 7;
+            txtVendedor.TextChanged += txtVendedor_TextChanged;
             // 
             // txtNumeroPedido
             // 
@@ -477,16 +488,6 @@
             txtNumeroPedido.Size = new Size(169, 50);
             txtNumeroPedido.TabIndex = 6;
             txtNumeroPedido.Text = "0";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label15.Location = new Point(16, 61);
-            label15.Name = "label15";
-            label15.Size = new Size(100, 15);
-            label15.TabIndex = 9;
-            label15.Text = "Código de Barras";
             // 
             // FrmPedido
             // 

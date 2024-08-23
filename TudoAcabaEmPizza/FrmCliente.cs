@@ -26,7 +26,7 @@ namespace TudoAcabaEmPizza
                 txtNomeUsuario.Text,
                 txtEmailUsuario.Text,
                 txtSenhaUsuario.Text,
-                Nivel.ObterPorId(Convert.ToInt32(txtNivelId.Text))
+                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
             );
             usuario.Inserir();
             if (usuario.Id > 0)
@@ -76,6 +76,8 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(int clienteId)
         {
+            
+
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
@@ -157,9 +159,11 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            string descNivel = "Cliente";
-            var nivel = Nivel.ObterPorDescricao(descNivel);
-            txtNivelId.Text = nivel.Id.ToString();
+            var nivel = Nivel.ObterLista();
+            cmbNivel.DataSource = nivel;
+            cmbNivel.DisplayMember = "descricao";
+            cmbNivel.ValueMember = "id";
+
 
             var tipoEndereco = TipoEndereco.ObterLista();
             cmbTipoEndereco.DataSource = tipoEndereco;
@@ -190,6 +194,11 @@ namespace TudoAcabaEmPizza
                     mskCpf.Text = cliente.Cpf;
                 }
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

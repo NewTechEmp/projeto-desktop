@@ -36,6 +36,7 @@
             categoriaToolStripMenuItem = new ToolStripMenuItem();
             cadastroEConsultasToolStripMenuItem = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
+            cadastroUsuárioEClienteToolStripMenuItem = new ToolStripMenuItem();
             cadastreSeToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
             clienteToolStripMenuItem = new ToolStripMenuItem();
@@ -43,7 +44,7 @@
             caixaToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             tslUsuario = new ToolStripLabel();
-            cadastroUsuárioEClienteToolStripMenuItem = new ToolStripMenuItem();
+            nOVOPEDIDOToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             // pedidoToolStripMenuItem
             // 
-            pedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDePagamentoToolStripMenuItem });
+            pedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDePagamentoToolStripMenuItem, nOVOPEDIDOToolStripMenuItem });
             pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
             pedidoToolStripMenuItem.Size = new Size(69, 25);
             pedidoToolStripMenuItem.Text = "&Pedido";
@@ -108,6 +109,13 @@
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             usuarioToolStripMenuItem.Size = new Size(76, 25);
             usuarioToolStripMenuItem.Text = "&Usuario";
+            // 
+            // cadastroUsuárioEClienteToolStripMenuItem
+            // 
+            cadastroUsuárioEClienteToolStripMenuItem.Name = "cadastroUsuárioEClienteToolStripMenuItem";
+            cadastroUsuárioEClienteToolStripMenuItem.Size = new Size(264, 26);
+            cadastroUsuárioEClienteToolStripMenuItem.Text = "&Cadastro &Usuário e &Cliente";
+            cadastroUsuárioEClienteToolStripMenuItem.Click += cadastroUsuárioEClienteToolStripMenuItem_Click;
             // 
             // cadastreSeToolStripMenuItem
             // 
@@ -159,12 +167,12 @@
             tslUsuario.Name = "tslUsuario";
             tslUsuario.Size = new Size(0, 22);
             // 
-            // cadastroUsuárioEClienteToolStripMenuItem
+            // nOVOPEDIDOToolStripMenuItem
             // 
-            cadastroUsuárioEClienteToolStripMenuItem.Name = "cadastroUsuárioEClienteToolStripMenuItem";
-            cadastroUsuárioEClienteToolStripMenuItem.Size = new Size(264, 26);
-            cadastroUsuárioEClienteToolStripMenuItem.Text = "&Cadastro &Usuário e &Cliente";
-            cadastroUsuárioEClienteToolStripMenuItem.Click += cadastroUsuárioEClienteToolStripMenuItem_Click;
+            nOVOPEDIDOToolStripMenuItem.Name = "nOVOPEDIDOToolStripMenuItem";
+            nOVOPEDIDOToolStripMenuItem.Size = new Size(213, 26);
+            nOVOPEDIDOToolStripMenuItem.Text = "&NOVO PEDIDO";
+            nOVOPEDIDOToolStripMenuItem.Click += nOVOPEDIDOToolStripMenuItem_Click;
             // 
             // FrmPrincipal
             // 
@@ -208,5 +216,6 @@
         private ToolStrip toolStrip1;
         private ToolStripLabel tslUsuario;
         private ToolStripMenuItem cadastroUsuárioEClienteToolStripMenuItem;
+        private ToolStripMenuItem nOVOPEDIDOToolStripMenuItem;
     }
 }

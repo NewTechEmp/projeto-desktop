@@ -76,9 +76,7 @@ namespace TudoAcabaEmPizza
 
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPedido frmPedido = new();
-            frmPedido.MdiParent = this;
-            frmPedido.Show();
+          
         }
 
         private void cadastroUsuárioEClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,6 +84,13 @@ namespace TudoAcabaEmPizza
             FrmUsuario frmUsuario = new();
             frmUsuario.MdiParent = this;
             frmUsuario.Show();
+        }
+
+        private void nOVOPEDIDOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
         }
     }
 }

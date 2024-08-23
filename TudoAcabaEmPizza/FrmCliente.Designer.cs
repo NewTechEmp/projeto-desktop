@@ -41,12 +41,13 @@
             clnTipoEnd = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
             tdpUsuario = new TabPage();
+            cmbNivel = new ComboBox();
             label5 = new Label();
+            label3 = new Label();
             label4 = new Label();
             txtClienteId = new TextBox();
             dtpDatanasc = new DateTimePicker();
             mskCpf = new MaskedTextBox();
-            txtNivelId = new TextBox();
             txtIdUsuario = new TextBox();
             txtEmailUsuario = new TextBox();
             txtNomeUsuario = new TextBox();
@@ -216,12 +217,13 @@
             // 
             // tdpUsuario
             // 
+            tdpUsuario.Controls.Add(cmbNivel);
             tdpUsuario.Controls.Add(label5);
+            tdpUsuario.Controls.Add(label3);
             tdpUsuario.Controls.Add(label4);
             tdpUsuario.Controls.Add(txtClienteId);
             tdpUsuario.Controls.Add(dtpDatanasc);
             tdpUsuario.Controls.Add(mskCpf);
-            tdpUsuario.Controls.Add(txtNivelId);
             tdpUsuario.Controls.Add(txtIdUsuario);
             tdpUsuario.Controls.Add(txtEmailUsuario);
             tdpUsuario.Controls.Add(txtNomeUsuario);
@@ -243,6 +245,14 @@
             tdpUsuario.Text = "Dados Cliente";
             tdpUsuario.UseVisualStyleBackColor = true;
             // 
+            // cmbNivel
+            // 
+            cmbNivel.FormattingEnabled = true;
+            cmbNivel.Location = new Point(222, 258);
+            cmbNivel.Name = "cmbNivel";
+            cmbNivel.Size = new Size(121, 23);
+            cmbNivel.TabIndex = 46;
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -251,6 +261,18 @@
             label5.Size = new Size(28, 15);
             label5.TabIndex = 44;
             label5.Text = "CPF";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.ForestGreen;
+            label3.Location = new Point(119, 261);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 15);
+            label3.TabIndex = 45;
+            label3.Text = "Nivel do Usuário";
+            label3.Click += label4_Click;
             // 
             // label4
             // 
@@ -262,6 +284,7 @@
             label4.Size = new Size(102, 15);
             label4.TabIndex = 45;
             label4.Text = "Data Nascimento";
+            label4.Click += label4_Click;
             // 
             // txtClienteId
             // 
@@ -271,7 +294,6 @@
             txtClienteId.ReadOnly = true;
             txtClienteId.Size = new Size(100, 23);
             txtClienteId.TabIndex = 41;
-            txtClienteId.Visible = false;
             // 
             // dtpDatanasc
             // 
@@ -291,15 +313,6 @@
             mskCpf.Size = new Size(86, 23);
             mskCpf.TabIndex = 42;
             // 
-            // txtNivelId
-            // 
-            txtNivelId.Location = new Point(555, 149);
-            txtNivelId.Name = "txtNivelId";
-            txtNivelId.ReadOnly = true;
-            txtNivelId.Size = new Size(100, 23);
-            txtNivelId.TabIndex = 40;
-            txtNivelId.Visible = false;
-            // 
             // txtIdUsuario
             // 
             txtIdUsuario.Location = new Point(555, 117);
@@ -307,7 +320,6 @@
             txtIdUsuario.ReadOnly = true;
             txtIdUsuario.Size = new Size(100, 23);
             txtIdUsuario.TabIndex = 39;
-            txtIdUsuario.Visible = false;
             // 
             // txtEmailUsuario
             // 
@@ -884,7 +896,6 @@
         private TextBox txtClienteId;
         private DateTimePicker dtpDatanasc;
         private MaskedTextBox mskCpf;
-        private TextBox txtNivelId;
         private TextBox txtIdUsuario;
         private TextBox txtEmailUsuario;
         private TextBox txtNomeUsuario;
@@ -938,5 +949,6 @@
         private MaskedTextBox mskDdd;
         private MaskedTextBox mskDdi;
         private Label label17;
+        private ComboBox cmbNivel;
     }
 }

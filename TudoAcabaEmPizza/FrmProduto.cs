@@ -131,7 +131,7 @@ namespace TudoAcabaEmPizza
                 string userNivel = Program.Usuario.Nivel.Descricao;
                 var concat = $"{userID}-{userName}-{userEmail}-{userNivel}-{data}-{num}-";
 
-                MessageBox.Show("A última parte do caminho é: " + ultimaParte);
+               
                 DestinoCortado = concat + ultimaParte;
 
                 
@@ -189,16 +189,6 @@ namespace TudoAcabaEmPizza
             origemCompleto = "";
             foto = "";
             pastaDestino = Banco.caminhoFotos;
-
-            string[] arrayTexte = pastaDestino.Split('\\');
-            int tamanhoArray = arrayTexte.Length;
-            MessageBox.Show("tamanho = " + tamanhoArray);
-            for(int i = 0; i<tamanhoArray; i++)
-            {
-                MessageBox.Show("Conteudo da posição "+i+" = " + arrayTexte[i]);
-            }
-         
-
 
             destinoCompleto = "";
 

@@ -93,7 +93,7 @@
             // cbDestaque
             // 
             cbDestaque.AutoSize = true;
-            cbDestaque.Location = new Point(277, 249);
+            cbDestaque.Location = new Point(131, 249);
             cbDestaque.Name = "cbDestaque";
             cbDestaque.Size = new Size(75, 19);
             cbDestaque.TabIndex = 24;
@@ -139,45 +139,50 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(31, 223);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label7.Location = new Point(57, 223);
             label7.Name = "label7";
-            label7.Size = new Size(66, 15);
+            label7.Size = new Size(68, 15);
             label7.TabIndex = 19;
             label7.Text = "* Categoria";
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label5.Location = new Point(31, 199);
             label5.Name = "label5";
-            label5.Size = new Size(97, 15);
+            label5.Size = new Size(99, 15);
             label5.TabIndex = 19;
             label5.Text = "Codigo de barras";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.Location = new Point(84, 170);
             label4.Name = "label4";
-            label4.Size = new Size(41, 15);
+            label4.Size = new Size(43, 15);
             label4.TabIndex = 19;
             label4.Text = "* Valor";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(67, 141);
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.Location = new Point(61, 136);
             label3.Name = "label3";
-            label3.Size = new Size(61, 15);
+            label3.Size = new Size(69, 15);
             label3.TabIndex = 19;
-            label3.Text = " Descrição";
+            label3.Text = " *Descrição";
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label6.Location = new Point(77, 107);
             label6.Name = "label6";
-            label6.Size = new Size(50, 15);
+            label6.Size = new Size(52, 15);
             label6.TabIndex = 19;
             label6.Text = "* Rotulo";
             // 
@@ -244,10 +249,11 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(107, 74);
             label1.Name = "label1";
-            label1.Size = new Size(18, 15);
+            label1.Size = new Size(20, 15);
             label1.TabIndex = 0;
             label1.Text = "ID";
             // 

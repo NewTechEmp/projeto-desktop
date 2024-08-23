@@ -88,9 +88,10 @@ namespace TAEPClass
                     Usuario.ObterPorId(1),
                     dr.GetString(2),
                     dr.GetDateTime(3),
-                    Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
-                    Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
-                   ));
+                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
+                    Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0)))
+
+                  );
                   
             }
 
