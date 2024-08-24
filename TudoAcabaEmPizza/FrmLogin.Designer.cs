@@ -119,11 +119,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.SeaGreen;
             label3.Location = new Point(234, 50);
             label3.Name = "label3";
-            label3.Size = new Size(107, 36);
+            label3.Size = new Size(111, 33);
             label3.TabIndex = 5;
             label3.Text = "LOGIN";
             // 
@@ -137,6 +137,7 @@
             Name = "FrmLogin";
             Text = "FrmLogin";
             Load += FrmLogin_Load;
+            KeyDown += FrmLogin_KeyDown;
             gbLogin.ResumeLayout(false);
             gbLogin.PerformLayout();
             ResumeLayout(false);

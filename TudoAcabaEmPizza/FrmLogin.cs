@@ -16,23 +16,14 @@ namespace TudoAcabaEmPizza
         public FrmLogin()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEntrar_Click(object sender, EventArgs e)
+        private void Login()
         {
             if (txtEmail.Text != string.Empty && txtSenha.Text != string.Empty)
             {
                 var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text);
-                if (usuario == null)
-                {
-                    MessageBox.Show("Email e/ou senha inválidos!");
-                }
-                else if (usuario.Id > 0 )
+                if (usuario.Id > 0)
                 {
                     Program.Usuario = usuario;
                     this.Close();
@@ -49,9 +40,27 @@ namespace TudoAcabaEmPizza
             }
         }
 
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
         }
     }
 }

@@ -76,7 +76,7 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(int clienteId)
         {
-            
+
 
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
@@ -199,6 +199,20 @@ namespace TudoAcabaEmPizza
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+        private void mskCep_TextChanged(object sender, EventArgs e)
+        {
+            mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            if (mskCep.Text.Length == 8)
+            {
+                WebCEP webCEP = new(mskCep.Text);
+                txtLogradouro.Text = webCEP.TipoLagradouro + " " + webCEP.Lagradouro;
+                txtBairro.Text = webCEP.Bairro;
+                txtCidade.Text = webCEP.Cidade;
+                mskUf.Text = webCEP.UF;
+                txtNumero.Focus();
+
+            }
         }
     }
 }

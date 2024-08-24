@@ -112,11 +112,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 18.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 18.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.ForestGreen;
             label1.Location = new Point(287, 23);
             label1.Name = "label1";
-            label1.Size = new Size(197, 31);
+            label1.Size = new Size(172, 29);
             label1.TabIndex = 0;
             label1.Text = "Dados Cliente";
             // 
@@ -553,15 +553,16 @@
             mskCep.Name = "mskCep";
             mskCep.Size = new Size(64, 23);
             mskCep.TabIndex = 34;
+            mskCep.TextChanged += mskCep_TextChanged;
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Showcard Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.ForestGreen;
             label16.Location = new Point(75, 40);
             label16.Name = "label16";
-            label16.Size = new Size(628, 40);
+            label16.Size = new Size(519, 37);
             label16.TabIndex = 33;
             label16.Text = "cadastro de endereços do cliente";
             // 
@@ -840,11 +841,11 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Showcard Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = SystemColors.HotTrack;
             label17.Location = new Point(82, 28);
             label17.Name = "label17";
-            label17.Size = new Size(618, 40);
+            label17.Size = new Size(524, 37);
             label17.TabIndex = 13;
             label17.Text = "Cadastro de Telefones do Cliente";
             // 

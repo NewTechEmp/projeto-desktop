@@ -154,6 +154,7 @@ namespace TAEPClass
         public static Usuario? EfetuarLogin(string email, string senha)
         {
             Usuario usuario = new();
+
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = $"select * from usuarios where email = '{email}' and ativo = 1";
@@ -170,8 +171,13 @@ namespace TAEPClass
             }
             string hashPass = usuario.Senha;
             if (!VerificarSenha(senha, hashPass))
-            {    
-                return null;
+            {
+                usuario.Id = -1;
+                usuario.Nome = null;
+                usuario.Email = null;
+                usuario.Senha = null;
+                usuario.Nivel = null;
+                return usuario;
             }
             else
             {
