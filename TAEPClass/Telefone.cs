@@ -61,13 +61,17 @@ namespace TAEPClass
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_endereco_insert";
+            cmd.CommandText = "sp_telefone_insert";
             cmd.Parameters.AddWithValue("spddi", Ddi);
             cmd.Parameters.AddWithValue("spddd", Ddd);
             cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("sp_telefone_cliente_email", ClienteId);
+            cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
             cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones.Id);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            var resultado = cmd.ExecuteScalar();
+            if (resultado != null)
+            {
+                Id = Convert.ToInt32(resultado);
+            }
         }
         public bool Editar(int id)
         {

@@ -58,20 +58,18 @@ namespace TudoAcabaEmPizza
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskUf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Endereco endereco = new(
+                mskCep.Text,
+                txtLogradouro.Text,
+                txtNumero.Text,
+                txtComplemento.Text,
+                txtBairro.Text,
+                txtCidade.Text,
+                mskUf.Text,
                 int.Parse(txtEnderecoClienteId.Text),
-                 mskCep.Text,
-                 txtLogradouro.Text,
-                 txtNumero.Text,
-                 txtComplemento.Text,
-                 txtBairro.Text,
-                 txtCidade.Text,
-                 mskUf.Text,
-                 TipoEndereco.ObterPorId(Convert.ToInt32(cmbTipoEndereco.SelectedValue))
-
-                 );
+                TipoEndereco.ObterPorId(Convert.ToInt32(cmbTipoEndereco.SelectedValue))
+            );
             endereco.Inserir();
             FrmCliente_Load(int.Parse(txtEnderecoClienteId.Text));
-
         }
 
         private void FrmCliente_Load(int clienteId)
@@ -104,18 +102,18 @@ namespace TudoAcabaEmPizza
             mskNumeroTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             Telefone telefone = new(
-                mskDdi.Text
-                , mskDdd.Text
-                , mskNumeroTelefone.Text
-                , int.Parse(txtClienteTelefoneId.Text)
-                , TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
-
-                );
+                mskDdi.Text,
+                mskDdd.Text,
+                mskNumeroTelefone.Text,
+                int.Parse(txtClienteTelefoneId.Text),
+                TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
+            );
 
             telefone.Inserir();
             if (telefone.Id > 0)
             {
-                MessageBox.Show($"O telefone {telefone.Numero} foi cadastrado com sucesso");
+                string telefoneCompleto = $"+{telefone.Ddi} ({telefone.Ddd}) {telefone.Numero}";
+                MessageBox.Show($"O telefone {telefoneCompleto} foi cadastrado com sucesso");
             }
 
 
@@ -161,7 +159,7 @@ namespace TudoAcabaEmPizza
         {
             var nivel = Nivel.ObterLista();
             cmbNivel.DataSource = nivel;
-            cmbNivel.DisplayMember = "descricao";
+            cmbNivel.DisplayMember = "sigla";
             cmbNivel.ValueMember = "id";
 
 
@@ -169,6 +167,11 @@ namespace TudoAcabaEmPizza
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
             cmbTipoEndereco.ValueMember = "id";
+
+            var tipoTelefone = TipoTelefone.ObterLista();
+            cmbTipoTelefone.DataSource = tipoTelefone;
+            cmbTipoTelefone.DisplayMember = "descricao";
+            cmbTipoTelefone.ValueMember = "id";
         }
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {

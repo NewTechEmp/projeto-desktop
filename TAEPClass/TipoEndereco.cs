@@ -11,18 +11,18 @@ namespace TAEPClass
     public class TipoEndereco
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
         public string Sigla { get; set; }
+        public string Descricao { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public TipoEndereco() { }
-        public TipoEndereco(string descricao, string sigla)
+        public TipoEndereco(string sigla, string descricao)
         {
             Descricao = descricao;
             Sigla = sigla;
         }
-        public TipoEndereco(int id, string descricao, string sigla, bool ativo)
+        public TipoEndereco(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
             Descricao = descricao;

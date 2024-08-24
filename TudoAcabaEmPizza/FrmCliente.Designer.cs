@@ -248,7 +248,7 @@
             // cmbNivel
             // 
             cmbNivel.FormattingEnabled = true;
-            cmbNivel.Location = new Point(222, 258);
+            cmbNivel.Location = new Point(555, 226);
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(121, 23);
             cmbNivel.TabIndex = 46;
@@ -256,7 +256,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(352, 235);
+            label5.Location = new Point(175, 266);
             label5.Name = "label5";
             label5.Size = new Size(28, 15);
             label5.TabIndex = 44;
@@ -267,7 +267,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.ForestGreen;
-            label3.Location = new Point(119, 261);
+            label3.Location = new Point(451, 235);
             label3.Name = "label3";
             label3.Size = new Size(98, 15);
             label3.TabIndex = 45;
@@ -279,7 +279,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.ForestGreen;
-            label4.Location = new Point(118, 235);
+            label4.Location = new Point(105, 235);
             label4.Name = "label4";
             label4.Size = new Size(102, 15);
             label4.TabIndex = 45;
@@ -300,17 +300,17 @@
             dtpDatanasc.Format = DateTimePickerFormat.Short;
             dtpDatanasc.Location = new Point(222, 229);
             dtpDatanasc.Name = "dtpDatanasc";
-            dtpDatanasc.Size = new Size(105, 23);
+            dtpDatanasc.Size = new Size(119, 23);
             dtpDatanasc.TabIndex = 43;
             dtpDatanasc.UseWaitCursor = true;
             dtpDatanasc.Value = new DateTime(2024, 8, 23, 9, 38, 30, 0);
             // 
             // mskCpf
             // 
-            mskCpf.Location = new Point(386, 229);
+            mskCpf.Location = new Point(222, 258);
             mskCpf.Mask = "000.000.000-00";
             mskCpf.Name = "mskCpf";
-            mskCpf.Size = new Size(86, 23);
+            mskCpf.Size = new Size(119, 23);
             mskCpf.TabIndex = 42;
             // 
             // txtIdUsuario
@@ -382,7 +382,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.ForestGreen;
-            label7.Location = new Point(168, 203);
+            label7.Location = new Point(162, 203);
             label7.Name = "label7";
             label7.Size = new Size(41, 15);
             label7.TabIndex = 31;
@@ -393,7 +393,7 @@
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label24.ForeColor = Color.ForestGreen;
-            label24.Location = new Point(171, 157);
+            label24.Location = new Point(162, 165);
             label24.Name = "label24";
             label24.Size = new Size(36, 15);
             label24.TabIndex = 32;
@@ -404,7 +404,7 @@
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label25.ForeColor = Color.ForestGreen;
-            label25.Location = new Point(176, 117);
+            label25.Location = new Point(166, 122);
             label25.Name = "label25";
             label25.Size = new Size(41, 15);
             label25.TabIndex = 33;
@@ -426,7 +426,7 @@
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label27.ForeColor = Color.ForestGreen;
-            label27.Location = new Point(188, 78);
+            label27.Location = new Point(183, 78);
             label27.Name = "label27";
             label27.Size = new Size(20, 15);
             label27.TabIndex = 35;
@@ -617,7 +617,7 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = SystemColors.HotTrack;
-            label14.Location = new Point(25, 244);
+            label14.Location = new Point(10, 244);
             label14.Name = "label14";
             label14.Size = new Size(44, 15);
             label14.TabIndex = 27;
@@ -628,7 +628,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.ForestGreen;
-            label13.Location = new Point(338, 206);
+            label13.Location = new Point(335, 206);
             label13.Name = "label13";
             label13.Size = new Size(41, 15);
             label13.TabIndex = 26;
@@ -646,7 +646,7 @@
             // 
             label11.AutoSize = true;
             label11.ForeColor = SystemColors.HotTrack;
-            label11.Location = new Point(7, 198);
+            label11.Location = new Point(0, 198);
             label11.Name = "label11";
             label11.Size = new Size(84, 15);
             label11.TabIndex = 11;
@@ -668,7 +668,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.ForestGreen;
-            label9.Location = new Point(344, 159);
+            label9.Location = new Point(338, 159);
             label9.Name = "label9";
             label9.Size = new Size(86, 15);
             label9.TabIndex = 9;
@@ -732,7 +732,7 @@
             // 
             // txtClienteTelefoneId
             // 
-            txtClienteTelefoneId.Location = new Point(257, 95);
+            txtClienteTelefoneId.Location = new Point(269, 95);
             txtClienteTelefoneId.Name = "txtClienteTelefoneId";
             txtClienteTelefoneId.PlaceholderText = "Insira o ID do Cliente";
             txtClienteTelefoneId.Size = new Size(211, 23);
@@ -770,7 +770,7 @@
             // 
             label21.AutoSize = true;
             label21.ForeColor = SystemColors.HotTrack;
-            label21.Location = new Point(161, 214);
+            label21.Location = new Point(147, 214);
             label21.Name = "label21";
             label21.Size = new Size(93, 15);
             label21.TabIndex = 28;
@@ -779,7 +779,7 @@
             // cmbTipoTelefone
             // 
             cmbTipoTelefone.FormattingEnabled = true;
-            cmbTipoTelefone.Location = new Point(257, 211);
+            cmbTipoTelefone.Location = new Point(269, 206);
             cmbTipoTelefone.Name = "cmbTipoTelefone";
             cmbTipoTelefone.Size = new Size(211, 23);
             cmbTipoTelefone.TabIndex = 27;
@@ -816,23 +816,23 @@
             // 
             // mskNumeroTelefone
             // 
-            mskNumeroTelefone.Location = new Point(257, 182);
-            mskNumeroTelefone.Mask = "000000000";
+            mskNumeroTelefone.Location = new Point(269, 182);
+            mskNumeroTelefone.Mask = "00000-0000";
             mskNumeroTelefone.Name = "mskNumeroTelefone";
             mskNumeroTelefone.Size = new Size(211, 23);
             mskNumeroTelefone.TabIndex = 23;
             // 
             // mskDdd
             // 
-            mskDdd.Location = new Point(257, 153);
-            mskDdd.Mask = "00";
+            mskDdd.Location = new Point(269, 153);
+            mskDdd.Mask = "(00)";
             mskDdd.Name = "mskDdd";
             mskDdd.Size = new Size(211, 23);
             mskDdd.TabIndex = 22;
             // 
             // mskDdi
             // 
-            mskDdi.Location = new Point(257, 124);
+            mskDdi.Location = new Point(269, 124);
             mskDdi.Mask = "+00";
             mskDdi.Name = "mskDdi";
             mskDdi.Size = new Size(211, 23);

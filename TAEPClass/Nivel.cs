@@ -12,18 +12,18 @@ namespace TAEPClass
     public class Nivel
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
         public string Sigla { get; set; }
+        public string Descricao { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public Nivel() { }
-        public Nivel(string nome, string sigla)
+        public Nivel(string sigla, string descricao)
         {
-            Descricao = nome;
+            Descricao = descricao;
             Sigla = sigla;
         }
-        public Nivel(int id, string descricao, string sigla, bool ativo)
+        public Nivel(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
             Descricao = descricao;
@@ -36,7 +36,7 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_niveis_insert";
-            cmd.Parameters.AddWithValue("spnome", Descricao);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
             cmd.ExecuteNonQuery();
         }
