@@ -18,6 +18,10 @@ namespace TudoAcabaEmPizza
             InitializeComponent();
             this.KeyPreview = true;
         }
+
+        /// <summary>
+        /// Realiza o login do usuário com base nos dados informados nos campos de email e senha.
+        /// </summary>
         private void Login()
         {
             if (txtEmail.Text != string.Empty && txtSenha.Text != string.Empty)

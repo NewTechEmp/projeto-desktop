@@ -12,15 +12,56 @@ namespace TAEPClass
     public  class Usuario
     {
 
+        /// <summary>
+        /// Identificador único do usuário.
+        /// </summary>
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public DateTime DataCad {  get; set; }
-        public bool Ativo {  get; set; }    
-        public Nivel Nivel {  get; set; }
 
+        /// <summary>
+        /// Nome do usuário.
+        /// </summary>
+        public string Nome { get; set; }
+
+        /// <summary>
+        /// Endereço de e-mail do usuário.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Senha do usuário (criptografada).
+        /// </summary>
+        public string Senha { get; set; }
+
+        /// <summary>
+        /// Data de cadastro do usuário.
+        /// </summary>
+        public DateTime DataCad { get; set; }
+
+        /// <summary>
+        /// Indica se o usuário está ativo ou não.
+        /// </summary>
+        public bool Ativo { get; set; }
+
+        /// <summary>
+        /// Nível de acesso do usuário.
+        /// </summary>
+        public Nivel Nivel { get; set; }
+
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public Usuario() { }
+
+        /// <summary>
+        /// Construtor com parâmetros.
+        /// </summary>
+        /// <param name="id">Identificador único do usuário.</param>
+        /// <param name="nome">Nome do usuário.</param>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="senha">Senha do usuário.</param>
+        /// <param name="dataCad">Data de cadastro do usuário.</param>
+        /// <param name="ativo">Indica se o usuário está ativo ou não.</param>
+        /// <param name="nivelId">Nível de acesso do usuário.</param>
         public Usuario(int id, string nome, string email, string senha, DateTime dataCad, bool ativo, Nivel nivelId)
         {
             Id = id;
@@ -32,23 +73,27 @@ namespace TAEPClass
             Nivel = nivelId;
         }
 
-        public Usuario(string nome, string email, string senha, bool ativo, Nivel nivelId)
+        /// <summary>
+        /// Construtor com parâmetros (sem ID).
+        /// </summary>
+        /// <param name="nome">Nome do usuário.</param>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="senha">Senha do usuário.</param>
+        /// <param name="nivelId">Nível de acesso do usuário.</param>
+        public Usuario(string nome, string email, string senha, Nivel nivelId)
         {
             Nome = nome;
             Email = email;
             Senha = senha;
-            Ativo = ativo;
             Nivel = nivelId;
         }
 
-        public Usuario (string nome, string email, string senha, Nivel nivelId )
-        {
-            Nome= nome;
-            Email = email;
-            Senha = senha;
-            Nivel = nivelId;
-        }
-
+        /// <summary>
+        /// Construtor com parâmetros (sem ID e Nível).
+        /// </summary>
+        /// <param name="nome">Nome do usuário.</param>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="senha">Senha do usuário.</param>
         public Usuario(string nome, string email, string senha)
         {
             Nome = nome;
@@ -56,101 +101,161 @@ namespace TAEPClass
             Senha = senha;
         }
 
+        /// <summary>
+        /// Obtém um usuário pelo seu ID.
+        /// </summary>
+        /// <param name="id">Identificador único do usuário.</param>
+        /// <returns>Usuário encontrado ou null se não encontrado.</returns>
+        public static Usuario ObterPorId(int id)
+        {
+            using (var cmd = Banco.Abrir())
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $"SELECT * FROM usuarios WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        var usuario = new Usuario
+                        {
+                            Id = dr.GetInt32(0),
+                            Nome = dr.GetString(1),
+                            Email = dr.GetString(2),
+                            Senha = dr.GetString(3),
+                            DataCad = dr.GetDateTime(4),
+                            Ativo = dr.GetBoolean(5),
+                            Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(6)))
+                        };
+
+                        return usuario;
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Obtém uma lista de usuários (opcionalmente filtrada por nome).
+        /// </summary>
+        /// <param name="nome">Nome do usuário (opcional).</param>
+        /// <returns>Lista de usuários.</returns>
+        public static List<Usuario> ObterLista(string nome = null)
+        {
+            using (var cmd = Banco.Abrir())
+            {
+                cmd.CommandType = CommandType.Text;
+                if (nome == null)
+                {
+                    cmd.CommandText = "SELECT * FROM usuarios ORDER BY nome";
+                }
+                else
+                {
+                    cmd.CommandText = $"SELECT * FROM usuarios WHERE nome LIKE '%{nome}%' ORDER BY nome";
+                }
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    var lista = new List<Usuario>();
+                    while (dr.Read())
+                    {
+                        lista.Add(new Usuario
+                        {
+                            Id = dr.GetInt32(0),
+                            Nome = dr.GetString(1),
+                            Email = dr.GetString(2),
+                            Senha = dr.GetString(3),
+                            DataCad = dr.GetDateTime(4),
+                            Ativo = dr.GetBoolean(5),
+                            Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(6)))
+                        });
+                    }
+                    return lista;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Insere um novo usuário.
+        /// </summary>
         public void Inserir()
         {
             string senhaCriptografada = CriptografarSenha(Senha);
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_usuario_insert";
-            cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
-            cmd.Parameters.AddWithValue("spniveis_id", Nivel.Id);
-            var resultado = cmd.ExecuteScalar();
-            if (resultado != null)
+            using (var cmd = Banco.Abrir())
             {
-                Id = Convert.ToInt32(resultado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_insert";
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spemail", Email);
+                cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
+                cmd.Parameters.AddWithValue("spniveis_id", Nivel.Id);
+                var resultado = cmd.ExecuteScalar();
+                if (resultado != null)
+                {
+                    Id = Convert.ToInt32(resultado);
+                }
             }
         }
+
+        /// <summary>
+        /// Edita um usuário existente.
+        /// </summary>
+        /// <param name="id">Identificador único do usuário.</param>
+        /// <param name="senhaConfirmar">Senha de confirmação.</param>
+        /// <returns>True se a edição foi bem-sucedida, false caso contrário.</returns>
         public bool Editar(int id, string senhaConfirmar)
         {
             bool resultado = false;
             if (senhaConfirmar == Senha)
             {
-                CriptografarSenha(Senha);
-                var cmd = Banco.Abrir();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "sp_usuario_update";
-                cmd.Parameters.AddWithValue("spid", Id);
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spemail", Email);
-                cmd.Parameters.AddWithValue("spsenha", Senha);
-                cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
-                try
+                string senhaCriptografada = CriptografarSenha(Senha);
+                using (var cmd = Banco.Abrir())
                 {
-                    cmd.ExecuteNonQuery();
-                    resultado = true;
-                }
-                catch (Exception)
-                {
-                    throw;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "sp_usuario_update";
+                    cmd.Parameters.AddWithValue("spid", Id);
+                    cmd.Parameters.AddWithValue("spnome", Nome);
+                    cmd.Parameters.AddWithValue("spemail", Email);
+                    cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
+                    cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        resultado = true;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                 }
             }
             return resultado;
         }
-        public static Usuario ObterPorId(int id)
+
+        /// <summary>
+        /// Ativa ou desativa um usuário.
+        /// </summary>
+        /// <param name="id">Identificador único do usuário.</param>
+        /// <param name="ativo">Indica se o usuário deve ser ativado ou desativado.</param>
+        public void AtivarOuDesativar(int id, bool ativo) 
         {
-            Usuario usuario = new Usuario();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where id={id}";
-            var dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            using (var cmd = Banco.Abrir())
             {
-                usuario = new(dr.GetInt32(0),
-                              dr.GetString(1),
-                              dr.GetString(2),
-                              dr.GetString(3),
-                              dr.GetDateTime(4),
-                              dr.GetBoolean(5),
-                              Nivel.ObterPorId(dr.GetInt32(6))
-                             );
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_set_ativo";
+                cmd.Parameters.AddWithValue("spid", id);
+                cmd.Parameters.AddWithValue("spativo", ativo);
+                cmd.ExecuteNonQuery();
             }
-            return usuario;
         }
-        public static List<Usuario> ObterLista(string nome = null)
-        {
-            // listar o usuario
-            List<Usuario> lista = new List<Usuario>();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            if (nome == null)
-            {
-                cmd.CommandText = "select * from usuarios order by nome";
-            }
-            else
-            {
-                cmd.CommandText = $"select * from usuarios where nome like '%{nome}%' order by nome";
-            }
 
-
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                lista.Add(new Usuario(
-                                        dr.GetInt32(0),
-                                        dr.GetString(1),
-                                        dr.GetString(2),
-                                        dr.GetString(3),
-                                        dr.GetDateTime(4),
-                                        dr.GetBoolean(5),
-                                        Nivel.ObterPorId((6))
-                                     )
-                         );
-            }
-            return lista;
-        }
+        /// <summary>
+        /// Efetua login de um usuário.
+        /// </summary>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="senha">Senha do usuário.</param>
+        /// <returns>Usuário logado ou null se as credenciais forem inválidas.</returns>
         public static Usuario EfetuarLogin(string email, string senha)
         {
             int nivelId = 0;
@@ -199,16 +304,33 @@ namespace TAEPClass
             return null;
         }
 
-        public string CriptografarSenha(string senha)
+        /// <summary>
+        /// Criptografa uma senha.
+        /// </summary>
+        /// <param name="senha">Senha a ser criptografada.</param>
+        /// <returns>Senha criptografada.</returns>
+        private string CriptografarSenha(string senha)
         {
             string salt = BCryptNet.GenerateSalt(10);
             string CripSenha = BCryptNet.HashPassword(senha,salt);
             return CripSenha;
         }
+
+        /// <summary>
+        /// Verifica se uma senha coincide com uma senha criptografada.
+        /// </summary>
+        /// <param name="senha">Senha a ser verificada.</param>
+        /// <param name="hashPass">Senha criptografada.</param>
+        /// <returns>True se as senhas coincidem, false caso contrário.</returns>
         private static bool VerificarSenha(string senha,string hashPass)
         {
             return BCryptNet.Verify(senha, hashPass);
         }
+
+        /// <summary>
+        /// Retorna um código de hash para o objeto.
+        /// </summary>
+        /// <returns>Código de hash.</returns>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, DataCad, Nivel.Sigla, Email);
