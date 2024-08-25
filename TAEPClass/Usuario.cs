@@ -151,39 +151,54 @@ namespace TAEPClass
             }
             return lista;
         }
-        public static Usuario? EfetuarLogin(string email, string senha)
+        public static Usuario EfetuarLogin(string email, string senha)
         {
-            Usuario usuario = new();
+            int nivelId = 0;
+            //recuperando id do nivel cliente
+            using (var cmdNivel = Banco.Abrir())
+            { 
+                string comandoNivel = "SELECT id FROM niveis WHERE descricao = 'cliente'";
+                cmdNivel.CommandType = CommandType.Text;
+                cmdNivel.CommandText = comandoNivel;
+                nivelId = Convert.ToInt32(cmdNivel.ExecuteScalar());
+            }
+            // recuperando usuario
+            using (var cmd = Banco.Abrir())
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $"SELECT * FROM usuarios WHERE email = @email AND ativo = 1 AND nivel_id != @nivelId";
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@nivelId", nivelId);
 
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from usuarios where email = '{email}' and ativo = 1";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                usuario.Id = dr.GetInt32(0);
-                usuario.Nome = dr.GetString(1);
-                usuario.Email = dr.GetString(2);
-                usuario.Senha = dr.GetString(3);
-                usuario.DataCad = dr.GetDateTime(4);
-                usuario.Ativo = dr.GetBoolean(5);
-                usuario.Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(6)));
+                using (var dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        var usuario = new Usuario
+                        {
+                            Id = dr.GetInt32(0),
+                            Nome = dr.GetString(1),
+                            Email = dr.GetString(2),
+                            Senha = dr.GetString(3),
+                            DataCad = dr.GetDateTime(4),
+                            Ativo = dr.GetBoolean(5),
+                            Nivel = Nivel.ObterPorId(Convert.ToInt32(dr.GetInt32(6)))
+                        };
+
+                        if (VerificarSenha(senha, usuario.Senha))
+                        {
+                            return usuario;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
             }
-            string hashPass = usuario.Senha;
-            if (!VerificarSenha(senha, hashPass))
-            {
-                usuario.Id = -1;
-                usuario.Nome = null;
-                usuario.Email = null;
-                usuario.Senha = null;
-                usuario.Nivel = null;
-                return usuario;
-            }
-            else
-            {
-                return usuario;
-            }
+            return null;
         }
+
         public string CriptografarSenha(string senha)
         {
             string salt = BCryptNet.GenerateSalt(10);
