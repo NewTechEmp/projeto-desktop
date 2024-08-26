@@ -21,12 +21,14 @@ namespace TudoAcabaEmPizza
         }
         private void btnInserirUsuario_Click(object sender, EventArgs e)
         {
+            Nivel nivel = Nivel.ObterPorDescricao("Cliente");
+            int nivelId = nivel.Id;
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Usuario usuario = new Usuario(
                 txtNomeUsuario.Text,
                 txtEmailUsuario.Text,
                 txtSenhaUsuario.Text,
-                Nivel.ObterPorId(Convert.ToInt32(cmbNivel.SelectedValue))
+                Nivel.ObterPorId(nivelId)
             );
             usuario.Inserir();
             if (usuario.Id > 0)
@@ -65,17 +67,15 @@ namespace TudoAcabaEmPizza
                 txtBairro.Text,
                 txtCidade.Text,
                 mskUf.Text,
-                int.Parse(txtEnderecoClienteId.Text),
+                int.Parse(txtClienteId.Text),
                 TipoEndereco.ObterPorId(Convert.ToInt32(cmbTipoEndereco.SelectedValue))
             );
             endereco.Inserir();
-            FrmCliente_Load(int.Parse(txtEnderecoClienteId.Text));
+            FrmCliente_Load(int.Parse(txtClienteId.Text));
         }
 
         private void FrmCliente_Load(int clienteId)
         {
-
-
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
             int count = 0;
             // Preenche o DataGridView com todos os endereços
@@ -90,7 +90,7 @@ namespace TudoAcabaEmPizza
                 dgvEnderecos.Rows[count].Cells[4].Value = endereco.Bairro;
                 dgvEnderecos.Rows[count].Cells[5].Value = endereco.Cidade;
                 dgvEnderecos.Rows[count].Cells[6].Value = endereco.Uf;
-                dgvEnderecos.Rows[count].Cells[7].Value = endereco.TipoEnderecos;
+                dgvEnderecos.Rows[count].Cells[7].Value = endereco.TipoEnderecos.Descricao;
                 count++;
             }
         }
@@ -125,7 +125,7 @@ namespace TudoAcabaEmPizza
                 mskCep.Clear();
                 txtLogradouro.Clear();
                 txtComplemento.Clear();
-                txtEnderecoClienteId.Clear();
+                txtClienteId.Clear();
                 txtBairro.Clear();
                 txtCidade.Clear();
                 txtNumero.Clear();
@@ -141,7 +141,7 @@ namespace TudoAcabaEmPizza
                     mskCep.Text = endereco.Cep;
                     txtLogradouro.Text = endereco.Logradouro;
                     txtComplemento.Text = endereco.Complemento;
-
+                    txtClienteId.Text = Convert.ToString(endereco.ClienteId);
                     txtBairro.Text = endereco.Bairro;
                     txtCidade.Text = endereco.Cidade;
                     txtNumero.Text = endereco.Numero;
@@ -157,12 +157,6 @@ namespace TudoAcabaEmPizza
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            var nivel = Nivel.ObterLista();
-            cmbNivel.DataSource = nivel;
-            cmbNivel.DisplayMember = "sigla";
-            cmbNivel.ValueMember = "id";
-
-
             var tipoEndereco = TipoEndereco.ObterLista();
             cmbTipoEndereco.DataSource = tipoEndereco;
             cmbTipoEndereco.DisplayMember = "descricao";
@@ -216,6 +210,11 @@ namespace TudoAcabaEmPizza
                 txtNumero.Focus();
 
             }
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

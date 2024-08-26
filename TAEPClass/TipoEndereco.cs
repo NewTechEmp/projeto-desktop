@@ -25,8 +25,8 @@ namespace TAEPClass
         public TipoEndereco(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
             Ativo = ativo;
         }
 
@@ -82,8 +82,8 @@ namespace TAEPClass
             while (dr.Read())
             {
                 tipoEndereco.Id = dr.GetInt32(0);
-                tipoEndereco.Descricao = dr.GetString(1);
-                tipoEndereco.Sigla = dr.GetString(2);
+                tipoEndereco.Sigla = dr.GetString(1);
+                tipoEndereco.Descricao = dr.GetString(2);
                 tipoEndereco.Ativo = dr.GetBoolean(3);
             }
             return tipoEndereco;
