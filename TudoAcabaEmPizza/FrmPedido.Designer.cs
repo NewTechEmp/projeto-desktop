@@ -64,7 +64,7 @@
             gbCliente = new GroupBox();
             label14 = new Label();
             label13 = new Label();
-            txtClienteNome = new TextBox();
+            txtClienteCPF = new TextBox();
             txtClienteId = new TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -408,7 +408,7 @@
             // 
             gbCliente.Controls.Add(label14);
             gbCliente.Controls.Add(label13);
-            gbCliente.Controls.Add(txtClienteNome);
+            gbCliente.Controls.Add(txtClienteCPF);
             gbCliente.Controls.Add(txtClienteId);
             gbCliente.Location = new Point(15, 200);
             gbCliente.Name = "gbCliente";
@@ -437,12 +437,12 @@
             label13.TabIndex = 2;
             label13.Text = "Nome";
             // 
-            // txtClienteNome
+            // txtClienteCPF
             // 
-            txtClienteNome.Location = new Point(314, 44);
-            txtClienteNome.Name = "txtClienteNome";
-            txtClienteNome.Size = new Size(459, 29);
-            txtClienteNome.TabIndex = 1;
+            txtClienteCPF.Location = new Point(314, 44);
+            txtClienteCPF.Name = "txtClienteCPF";
+            txtClienteCPF.Size = new Size(459, 29);
+            txtClienteCPF.TabIndex = 1;
             // 
             // txtClienteId
             // 
@@ -484,6 +484,7 @@
             txtNumeroPedido.ForeColor = Color.Green;
             txtNumeroPedido.Location = new Point(871, 59);
             txtNumeroPedido.Name = "txtNumeroPedido";
+            txtNumeroPedido.ReadOnly = true;
             txtNumeroPedido.RightToLeft = RightToLeft.Yes;
             txtNumeroPedido.Size = new Size(169, 50);
             txtNumeroPedido.TabIndex = 6;
@@ -528,7 +529,7 @@
         private TextBox txtDescricao;
         private Label label5;
         private TextBox txtCodBarras;
-        private TextBox txtClienteNome;
+        private TextBox txtClienteCPF;
         private TextBox txtClienteId;
         private Label label7;
         private Button btnAbrirPedido;

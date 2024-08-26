@@ -59,7 +59,7 @@ namespace TudoAcabaEmPizza
                 dgvProdutos.Rows[count].Cells[5].Value = produto.NomeImagem; // Define o valor da célula da coluna Nome da Imagem
                 dgvProdutos.Rows[count].Cells[6].Value = produto.CategoriaId.Descricao; // Define o valor da célula da coluna Categoria
                 count++;
-                textBox2.Text = produto.CategoriaId.Descricao;
+                
             }
         }
 

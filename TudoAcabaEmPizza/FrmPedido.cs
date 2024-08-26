@@ -89,9 +89,9 @@ namespace TudoAcabaEmPizza
         private void btnAbrirPedido_Click(object sender, EventArgs e)
         {
             Pedido pedido = new();
-            pedido.Cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
+            pedido.Usuario = Usuario.ObterPorId(int.Parse(txtClienteId.Text));
             pedido.Usuario = Program.Usuario;
-            pedido.StatusId = Status.ObterPorId(int.Parse(cmbStatus.Text));
+            Status.ObterPorId(Convert.ToInt32(cmbStatus.SelectedValue));
             pedido.ClasseDesconto = null;
             pedido.Inserir();
             txtNumeroPedido.Text = pedido.Id.ToString();
@@ -101,13 +101,13 @@ namespace TudoAcabaEmPizza
 
         private void txtClienteId_TextChanged(object sender, EventArgs e)
         {
-            txtClienteNome.Clear();
+            txtClienteCPF.Clear();
             if (txtClienteId.Text.Length > 0)
             {
                 var cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
                 if (cliente.Id > 0)
                 {
-                    txtClienteNome.Text = cliente.Cpf;
+                    txtClienteCPF.Text = cliente.Cpf;
                 }
 
             }

@@ -58,7 +58,6 @@
             clnCategoria = new DataGridViewTextBoxColumn();
             label9 = new Label();
             openFileDialog1 = new OpenFileDialog();
-            textBox2 = new TextBox();
             gbProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_foto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
@@ -66,7 +65,6 @@
             // 
             // gbProdutos
             // 
-            gbProdutos.Controls.Add(textBox2);
             gbProdutos.Controls.Add(cbDestaque);
             gbProdutos.Controls.Add(btnAddFoto);
             gbProdutos.Controls.Add(pb_foto);
@@ -349,13 +347,6 @@
             openFileDialog1.Filter = resources.GetString("openFileDialog1.Filter");
             openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(131, 297);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(206, 23);
-            textBox2.TabIndex = 25;
-            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -410,6 +401,5 @@
         private TextBox txtRotulo;
         private CheckBox cbDestaque;
         private TextBox textBox1;
-        private TextBox textBox2;
     }
 }
