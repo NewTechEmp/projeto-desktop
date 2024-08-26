@@ -3,76 +3,44 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
 using TAEPClass;
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
 
 namespace TudoAcabaEmPizza
 {
     public partial class FrmProduto : Form
     {
-        string origemCompleto = "";
-        string foto = "";
-        string pastaDestino = Banco.caminhoFotos;
-        string destinoCompleto = "";
-        string DestinoCortado = "";
-      
+        private string origemCompleto = "";
+        private string destinoCompleto = "";
+        private string pastaDestino = Banco.caminhoFotos;
+
         public FrmProduto()
         {
             InitializeComponent();
         }
 
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            if (btnConsultar.Text == "&Consultar")
-            {
-                mskCodigo.Clear();
-                txtDescricao.Clear();
-                txtRotulo.Clear();
-
-                txtValor.Clear();
-                pb_foto.Image = null;
-                txtId.ReadOnly = false;
-                txtId.Focus();
-                btnConsultar.Text = "&Obter por ID";
-            }
-            else
-            {
-                if (txtId.Text.Length > 0)
-                {
-                    Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
-                    txtRotulo.Text = produto.Rotulo;
-                    txtDescricao.Text = produto.Descricao;
-                    txtValor.Text = Convert.ToString(produto.ValorUnit);
-                    mskCodigo.Text = produto.CodBarras;
-                    pb_foto.Image = Image.FromFile(produto.NomeImagem);
-                    cbmCategoria.SelectedIndex = cbmCategoria.FindString(produto.CategoriaId.Descricao);
-                    btnEditar.Enabled = true;
-                }
-            }
-        }
-
         private void FrmProduto_Load(object sender, EventArgs e)
+        {
+            // Carregar categorias e produtos na inicialização
+            CarregarCategorias();
+            CarregarProdutos();
+        }
+
+        private void CarregarCategorias()
         {
             var categorias = Categoria.ObterLista();
             cbmCategoria.DataSource = categorias;
             cbmCategoria.DisplayMember = "descricao";
             cbmCategoria.ValueMember = "id";
+        }
 
+        private void CarregarProdutos()
+        {
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
             int count = 0;
-
-
 
             foreach (var produto in lista)
             {
@@ -84,142 +52,189 @@ namespace TudoAcabaEmPizza
                 dgvProdutos.Rows[count].Cells[4].Value = produto.CodBarras;
                 dgvProdutos.Rows[count].Cells[5].Value = produto.NomeImagem;
                 dgvProdutos.Rows[count].Cells[6].Value = produto.CategoriaId;
-
-
                 count++;
-                //
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (btnConsultar.Text == "&Consultar")
+            {
+                LimparCampos();
+                txtId.ReadOnly = false;
+                txtId.Focus();
+                btnConsultar.Text = "&Obter por ID";
+            }
+            else
+            {
+                if (int.TryParse(txtId.Text, out int id))
+                {
+                    CarregarProdutoPorId(id);
+                }
+            }
+        }
+
+        private void LimparCampos()
+        {
+            mskCodigo.Clear();
+            txtDescricao.Clear();
+            txtRotulo.Clear();
+            txtValor.Clear();
+            pb_foto.Image = null;
+        }
+
+        private void CarregarProdutoPorId(int id)
+        {
+            Produto produto = Produto.ObterPorId(id);
+            txtRotulo.Text = produto.Rotulo;
+            txtDescricao.Text = produto.Descricao;
+            txtValor.Text = produto.ValorUnit.ToString();
+            mskCodigo.Text = produto.CodBarras;
+            pb_foto.Image = Image.FromFile(produto.NomeImagem);
+            cbmCategoria.SelectedIndex = cbmCategoria.FindString(produto.CategoriaId.Descricao);
+            btnEditar.Enabled = true;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            if (destinoCompleto == "")
+            if (string.IsNullOrEmpty(origemCompleto) || !File.Exists(origemCompleto))
             {
-                if(MessageBox.Show("Sem foto selecionada, deseja continuar?", "ERRO", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show("Sem foto selecionada, deseja continuar?", "ERRO", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     return;
                 }
             }
-            if(destinoCompleto != "")
+            else
             {
-                System.IO.File.Copy(origemCompleto, destinoCompleto, true);
+                // Copiar a imagem para a pasta de destino se necessário
+                CopiarImagemParaDestino();
+            }
+
+            Produto produto = new Produto(
+                txtRotulo.Text,
+                txtDescricao.Text,
+                Convert.ToDouble(txtValor.Text),
+                mskCodigo.Text,
+                destinoCompleto,
+                cbDestaque.Checked,
+                Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
+            );
+
+            produto.Inserir();
+            MessageBox.Show("Produto inserido com sucesso");
+        }
+
+
+        private void CopiarImagemParaDestino()
+        {
+            if (!string.IsNullOrEmpty(origemCompleto) && File.Exists(origemCompleto))
+            {
+                // Obtém o nome do arquivo original e a extensão
+                string nomeArquivoOriginal = Path.GetFileName(origemCompleto);
+                string extensaoArquivo = Path.GetExtension(origemCompleto);
+
+                // Remove a extensão para obter o nome base do arquivo
+                string nomeBase = Path.GetFileNameWithoutExtension(nomeArquivoOriginal).Replace(" ", "_");
+
+                // Gera um novo nome para o arquivo com base nas propriedades fornecidas
+                Random random = new Random();
+                int numeroAleatorio = random.Next(100000, 999999); // Número aleatório
+                int usuarioId = Program.Usuario.Id;
+                string usuarioNome = Program.Usuario.Nome.Replace(" ", "-");
+                string usuarioEmail = Program.Usuario.Email.Replace("@", "");
+                DateTime dataAtual = DateTime.Now;
+                string dataFormatada = dataAtual.ToString("yyyy-MM-dd_HH-mm-ss");
+                string nivelUsuario = Program.Usuario.Nivel.Descricao;
+                string enderecoIp = GetLocalIPAddress().Replace(".", "_");
+
+                // Monta o novo nome para o arquivo com a mesma extensão do arquivo original
+                string novoNomeArquivo = $"{enderecoIp}-{usuarioId}-{usuarioNome}-{usuarioEmail}-{nivelUsuario}-{dataFormatada}-{numeroAleatorio}-{nomeBase}{extensaoArquivo}";
+
+                // Define o novo caminho completo com o novo nome
+                destinoCompleto = Path.Combine(pastaDestino, novoNomeArquivo);
+
+                // Verifica se o arquivo já existe no destino e renomeia se necessário
                 if (File.Exists(destinoCompleto))
                 {
-                    pb_foto.ImageLocation = destinoCompleto;
+                    MessageBox.Show("O arquivo já existe no destino, troque o nome dessa imagem");
                 }
                 else
                 {
-                    if(MessageBox.Show("Erro ao localizar foto, deseja continuar ?","ERRO",MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        return;
-                    }
+                    // Copia o arquivo para o destino com o novo nome
+                    File.Copy(origemCompleto, destinoCompleto);
                 }
-                
+
+                // Armazena apenas o nome do arquivo no destino
+                destinoCompleto = novoNomeArquivo;
             }
-            string[] destinoCortado = destinoCompleto.Split('\\');
-
-            // Mostra o resultado para verificar se o array foi dividido corretamente
-            if (destinoCortado.Length > 0)
-            {
-                string ultimaParte = destinoCortado[destinoCortado.Length - 1];
-                Random a = new Random();
-                int num = a.Next(10000,99999); // equivalente ao rand
-                int userID = Program.Usuario.Id;
-                string userName = Program.Usuario.Nome;
-                string userEmail = Program.Usuario.Email;
-                DateTime data = DateTime.Now;
-                string userNivel = Program.Usuario.Nivel.Descricao;
-                var concat = $"{userID}-{userName}-{userEmail}-{userNivel}-{data}-{num}-";
-
-               
-                DestinoCortado = concat + ultimaParte;
-
-                
-            }
-            else
-            {
-                MessageBox.Show("O array está vazio.");
-            }
-
-            
-
-
-            mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-
-            Produto produto = new Produto(
-                txtRotulo.Text
-              , txtDescricao.Text
-              , Convert.ToDouble(txtValor.Text)
-              , mskCodigo.Text
-              , pb_foto.ImageLocation = DestinoCortado
-              , cbDestaque.Checked
-              , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
-                ) ;  
-
-            produto.Inserir();
-            MessageBox.Show("produto inserido com sucesso");
-
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Produto produto = new(
-                int.Parse(txtId.Text)
-                , txtNome.Text
-                , txtDescricao.Text
-                , double.Parse(txtValor.Text)
-                , mskCodigo.Text
-                , pb_foto.ImageLocation = destinoCompleto
-                , cbDestaque.Checked
-                , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
-                );
+            Produto produto = new Produto(
+                int.Parse(txtId.Text),
+                txtRotulo.Text,
+                txtDescricao.Text,
+                double.Parse(txtValor.Text),
+                mskCodigo.Text,
+                destinoCompleto,
+                cbDestaque.Checked,
+                Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
+            );
+
             if (produto.Editar(produto.Id))
             {
-                FrmProduto_Load(sender, e);
-                MessageBox.Show($"O produto \" {produto.Rotulo} \" foi alterado com sucesso!");
+                CarregarProdutos();
+                MessageBox.Show($"O produto \"{produto.Rotulo}\" foi alterado com sucesso!");
             }
             else
             {
-                MessageBox.Show($"Falha ao alterar o produto \" {produto.Rotulo} \"!");
+                MessageBox.Show($"Falha ao alterar o produto \"{produto.Rotulo}\"!");
             }
         }
 
         private void btnAddFoto_Click(object sender, EventArgs e)
         {
-            origemCompleto = "";
-            foto = "";
-            pastaDestino = Banco.caminhoFotos;
-
-            destinoCompleto = "";
+            openFileDialog1.Filter = "Image Files (*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG)|*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG|Common Image Files|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP|All Image Files (*.*)|*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG";
+            openFileDialog1.Title = "Selecione uma imagem";
+            openFileDialog1.Multiselect = false;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                origemCompleto=openFileDialog1.FileName;
-                foto=openFileDialog1.SafeFileName;
-                destinoCompleto = pastaDestino + foto;
+                origemCompleto = openFileDialog1.FileName;
+                pb_foto.Image = Image.FromFile(origemCompleto);
+                pb_foto.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            if(File.Exists(destinoCompleto))
+        }
+
+        private string GetLocalIPAddress()
+        {
+            try
             {
-                if(MessageBox.Show("Arquivo já existe, deseja substituir ?","Substituir",MessageBoxButtons.YesNo)==DialogResult.No)
+                string hostName = Dns.GetHostName();
+                IPAddress[] addresses = Dns.GetHostAddresses(hostName);
+
+                foreach (IPAddress address in addresses)
                 {
-                    return;
+                    if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        return address.ToString();
+                    }
                 }
+
+                return "IP não encontrado";
             }
-            System.IO.File.Copy(origemCompleto, destinoCompleto, true);
-            if (File.Exists(destinoCompleto))
+            catch (Exception ex)
             {
-                pb_foto.ImageLocation = origemCompleto;
-                MessageBox.Show("arquivo achado com sucesso");
-            }
-            else
-            {
-                MessageBox.Show("Arquivo não copiado");
+                MessageBox.Show($"Erro ao obter IP: {ex.Message}");
+                return "Erro ao obter IP";
             }
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
+            // Se necessário, você pode adicionar algum código aqui para lidar com a seleção do arquivo
         }
     }
 }

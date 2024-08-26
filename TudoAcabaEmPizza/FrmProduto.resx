@@ -141,4 +141,7 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="openFileDialog1.Filter" xml:space="preserve">
+    <value>Image Files (*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG)|*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG|Common Image Files|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP|All Image Files (*.*)|*.BMP;*.JPG;*.JPEG;*.JFIF;*.GIF;*.PNG;*.TIFF;*.ICO;*.WEBP;*.RAW;*.HEIF;*.HEIC;*.SVG</value>
+  </data>
 </root>
