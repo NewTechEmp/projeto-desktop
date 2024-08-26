@@ -86,8 +86,8 @@ namespace TAEPClass
             {
                 Categoria cat = new Categoria();
                 cat.Id = dr.GetInt32(0);
-                cat.Descricao = dr.GetString(1);
-                cat.Sigla = null;
+                cat.Sigla = dr.GetString(1);
+                cat.Descricao = dr.GetString(2);
 
                 lista.Add(cat);
             }
@@ -99,13 +99,13 @@ namespace TAEPClass
             Categoria categoria = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from categorias where id  = {id}";
+            cmd.CommandText = $"select * from categorias where id = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 categoria.Id = dr.GetInt32(0);
-                categoria.Descricao = dr.GetString(1);
-                categoria.Sigla = dr.GetString(2);
+                categoria.Sigla = dr.GetString(1);
+                categoria.Descricao = dr.GetString(2);
                 categoria.Ativo = dr.GetBoolean(3);
             }
             return categoria;

@@ -172,10 +172,9 @@ namespace TAEPClass
                         ,dr.GetString(4)
                         ,dr.GetString(5)
                         ,dr.GetBoolean(6)
-                        ,Categoria.ObterPorId((7))
-
-
-
+                        ,dr.GetDateTime(7)
+                        ,dr.GetBoolean(8)
+                        ,Categoria.ObterPorId(dr.GetInt32((9)))
                 );
             }
             return produto;
