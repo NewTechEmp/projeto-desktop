@@ -46,7 +46,7 @@ namespace TudoAcabaEmPizza
             var lista = Produto.ObterLista(); // Obtém a lista de produtos
             dgvProdutos.Rows.Clear(); // Limpa as linhas existentes no DataGridView
             int count = 0;
-
+            
             // Adiciona cada produto à DataGridView
             foreach (var produto in lista)
             {
@@ -57,8 +57,9 @@ namespace TudoAcabaEmPizza
                 dgvProdutos.Rows[count].Cells[3].Value = produto.ValorUnit; // Define o valor da célula da coluna Valor Unitário
                 dgvProdutos.Rows[count].Cells[4].Value = produto.CodBarras; // Define o valor da célula da coluna Código de Barras
                 dgvProdutos.Rows[count].Cells[5].Value = produto.NomeImagem; // Define o valor da célula da coluna Nome da Imagem
-                dgvProdutos.Rows[count].Cells[6].Value = produto.CategoriaId; // Define o valor da célula da coluna Categoria ID
+                dgvProdutos.Rows[count].Cells[6].Value = produto.CategoriaId.Descricao; // Define o valor da célula da coluna Categoria
                 count++;
+                textBox2.Text = produto.CategoriaId.Descricao;
             }
         }
 
@@ -97,11 +98,13 @@ namespace TudoAcabaEmPizza
         private void CarregarProdutoPorId(int id)
         {
             Produto produto = Produto.ObterPorId(id); // Obtém o produto com base no ID
+            string caminhoCompleto = pastaDestino + produto.NomeImagem;
             txtRotulo.Text = produto.Rotulo; // Define o texto do campo Rótulo
             txtDescricao.Text = produto.Descricao; // Define o texto do campo Descrição
             txtValor.Text = produto.ValorUnit.ToString(); // Define o texto do campo Valor Unitário
             mskCodigo.Text = produto.CodBarras; // Define o texto do campo Código de Barras
-            pb_foto.Image = Image.FromFile(produto.NomeImagem); // Carrega a imagem do produto no PictureBox
+            pb_foto.Image = Image.FromFile(caminhoCompleto); // Carrega a imagem do produto no PictureBox
+            cbDestaque.Checked = produto.Destaque; // Define se o produto e destaque no checkbox
             cbmCategoria.SelectedIndex = cbmCategoria.FindString(produto.CategoriaId.Descricao); // Define a categoria selecionada
             btnEditar.Enabled = true; // Habilita o botão Editar
         }
