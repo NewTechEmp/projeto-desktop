@@ -73,7 +73,6 @@ namespace TudoAcabaEmPizza
             endereco.Inserir();
             FrmCliente_Load(int.Parse(txtClienteId.Text));
         }
-
         private void FrmCliente_Load(int clienteId)
         {
             var listaEnderecos = Endereco.ObterListaPorCliente(clienteId);
@@ -94,7 +93,6 @@ namespace TudoAcabaEmPizza
                 count++;
             }
         }
-
         private void btnInserirTelefone_Click(object sender, EventArgs e)
         {
             mskDdi.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -105,56 +103,16 @@ namespace TudoAcabaEmPizza
                 mskDdi.Text,
                 mskDdd.Text,
                 mskNumeroTelefone.Text,
-                int.Parse(txtClienteTelefoneId.Text),
+                int.Parse(txtClienteId.Text),
                 TipoTelefone.ObterPorId(Convert.ToInt32(cmbTipoTelefone.SelectedValue))
             );
-
             telefone.Inserir();
             if (telefone.Id > 0)
             {
                 string telefoneCompleto = $"+{telefone.Ddi} ({telefone.Ddd}) {telefone.Numero}";
                 MessageBox.Show($"O telefone {telefoneCompleto} foi cadastrado com sucesso");
             }
-
-
         }
-        private void btnConsultarEndereco_Click(object sender, EventArgs e)
-        {
-            if (btnConsultarEndereco.Text == "&Consultar")
-            {
-                mskCep.Clear();
-                txtLogradouro.Clear();
-                txtComplemento.Clear();
-                txtClienteId.Clear();
-                txtBairro.Clear();
-                txtCidade.Clear();
-                txtNumero.Clear();
-                txtIdEndereco.ReadOnly = false;
-                txtIdEndereco.Focus();
-                btnConsultarEndereco.Text = "&Obter por ID";
-            }
-            else
-            {
-                if (txtIdEndereco.Text.Length > 0)
-                {
-                    Endereco endereco = Endereco.ObterPorId(int.Parse(txtIdEndereco.Text));
-                    mskCep.Text = endereco.Cep;
-                    txtLogradouro.Text = endereco.Logradouro;
-                    txtComplemento.Text = endereco.Complemento;
-                    txtClienteId.Text = Convert.ToString(endereco.ClienteId);
-                    txtBairro.Text = endereco.Bairro;
-                    txtCidade.Text = endereco.Cidade;
-                    txtNumero.Text = endereco.Numero;
-
-
-                    txtIdEndereco.ReadOnly = true;
-                    btnConsultarEndereco.Text = "&Consultar";
-                    btnEditarEndereco.Enabled = true;
-
-                }
-            }
-        }
-
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             var tipoEndereco = TipoEndereco.ObterLista();
@@ -181,22 +139,22 @@ namespace TudoAcabaEmPizza
                 txtSenhaUsuario.Clear();
                 txtIdUser.ReadOnly = false;
                 txtIdUser.Focus();
-                btnObterUsuarioPorId.Text = "&Obter por ID";
-                if (txtIdUser.Text.Length > 0 && txtIdUser.Text != null)
-                {
-                    Cliente cliente = Cliente.ObterPorId(Convert.ToInt32(txtClienteId.Text));
-                    txtNomeUsuario.Text = cliente.Usuario.Nome;
-                    txtEmailUsuario.Text = cliente.Usuario.Email;
-                    dtpDatanasc.Value = cliente.DataNasc;
-                    mskCpf.Text = cliente.Cpf;
-                }
+                btnObterUsuarioPorId.Text = "&Buscar";
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+            else
+            {
+                // realizar a busca dos dados do cliente
+                Cliente cliente = Cliente.ObterPorId(int.Parse(txtIdUser.Text));
+                txtNomeUsuario.Text = cliente.Usuario.Nome;
+                txtEmailUsuario.Text = cliente.Usuario.Email;
+                dtpDatanasc.Value = Convert.ToDateTime(cliente.DataNasc);
+                mskCpf.Text = cliente.Cpf;
+                // mudando text e desativando txtId
+                txtIdUser.Enabled = false;
+                txtSenhaUsuario.PlaceholderText = "[Digite uma senha caso queira mudar-la]";
+                btnObterUsuarioPorId.Enabled = true;
+            }
+        } 
         private void mskCep_TextChanged(object sender, EventArgs e)
         {
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -208,13 +166,22 @@ namespace TudoAcabaEmPizza
                 txtCidade.Text = webCEP.Cidade;
                 mskUf.Text = webCEP.UF;
                 txtNumero.Focus();
-
             }
         }
 
-        private void label16_Click(object sender, EventArgs e)
+        private void dgvEnderecos_SelectionChanged(object sender, EventArgs e)
         {
-
+            btnSalvarEndereco.Enabled = false;
+            DataGridViewRow selectedRow = dgvEnderecos.SelectedRows[0];
+            mskCep.Text = selectedRow.Cells[0].Value.ToString();
+            mskCep.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            txtLogradouro.Text = selectedRow.Cells[1].Value.ToString();
+            txtNumero.Text = selectedRow.Cells[2].Value.ToString();
+            txtComplemento.Text = selectedRow.Cells[3].Value.ToString();
+            txtBairro.Text = selectedRow.Cells[4].Value.ToString();
+            txtCidade.Text = selectedRow.Cells[5].Value.ToString();
+            txtComplemento.Text = selectedRow.Cells[6].Value.ToString();
+            cmbTipoEndereco.SelectedValue = selectedRow.Cells[7].Value.ToString();
         }
     }
 }

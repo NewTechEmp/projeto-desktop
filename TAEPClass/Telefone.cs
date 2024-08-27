@@ -19,7 +19,7 @@ namespace TAEPClass
         public string Numero { get; set; }
         public bool Ativo { get; set; } 
         public int ClienteId { get; set; }
-        public TipoTelefone TipoTelefones { get; set; }
+        public TipoTelefone TipoTelefone { get; set; }
 
         public Telefone() { }
         public Telefone(int id) 
@@ -34,7 +34,7 @@ namespace TAEPClass
             Numero = numero;
             Ativo = ativo;
             ClienteId = clienteId;
-            TipoTelefones = tipoTelefone;
+            TipoTelefone = tipoTelefone;
         }
         public Telefone( string ddi, string ddd, string numero, int clienteId, TipoTelefone tipoTelefone)
         {
@@ -42,7 +42,7 @@ namespace TAEPClass
             Ddd = ddd;
             Numero = numero;
             ClienteId = clienteId;
-            TipoTelefones = tipoTelefone;
+            TipoTelefone = tipoTelefone;
         }
 
         public Telefone(string ddd, string ddi, string numero, bool ativo, int clienteId, TipoTelefone tipoTelefone)
@@ -52,7 +52,7 @@ namespace TAEPClass
             Numero = numero;
             Ativo = ativo;
             ClienteId = clienteId;
-            TipoTelefones = tipoTelefone;
+            TipoTelefone = tipoTelefone;
         }
 
         
@@ -66,7 +66,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spddd", Ddd);
             cmd.Parameters.AddWithValue("spnumero", Numero);
             cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones.Id);
+            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefone.Id);
             var resultado = cmd.ExecuteScalar();
             if (resultado != null)
             {
@@ -82,7 +82,7 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spddi", Ddi);
             cmd.Parameters.AddWithValue("spddd", Ddd);
             cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefones.Id);
+            cmd.Parameters.AddWithValue("sptipo_telefone_id", TipoTelefone.Id);
             return cmd.ExecuteNonQuery() > -1 ? true : false;
         }
         public bool Deletar(int id, bool ativo)

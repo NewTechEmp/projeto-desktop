@@ -159,10 +159,10 @@ namespace TudoAcabaEmPizza
                 Random random = new Random();
                 int numeroAleatorio = random.Next(100000, 999999); // Gera um número aleatório
                 int usuarioId = Program.Usuario.Id; // Obtém o ID do usuário
-                string usuarioNome = Program.Usuario.Nome.Replace(" ", "-"); // Obtém o nome do usuário
-                string usuarioEmail = Program.Usuario.Email.Replace("@", ""); // Obtém o e-mail do usuário
+                string usuarioNome = Program.Usuario.Nome.Replace(" ", "_"); // Obtém o nome do usuário
+                string usuarioEmail = Program.Usuario.Email.Replace("", "_"); // Obtém o e-mail do usuário
                 DateTime dataAtual = DateTime.Now; // Obtém a data e hora atual
-                string dataFormatada = dataAtual.ToString("yyyy-MM-dd_HH-mm-ss"); // Formata a data e hora
+                string dataFormatada = dataAtual.ToString("yyyy_MM_dd__HH_mm_ss"); // Formata a data e hora
                 string nivelUsuario = Program.Usuario.Nivel.Descricao; // Obtém o nível do usuário
                 string enderecoIp = GetLocalIPAddress().Replace(".", "_"); // Obtém o IP local e substitui pontos por underlines
 

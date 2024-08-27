@@ -20,14 +20,14 @@ namespace TAEPClass
         public Nivel() { }
         public Nivel(string sigla, string descricao)
         {
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
         }
         public Nivel(int id, string sigla, string descricao, bool ativo)
         {
             Id = id;
-            Descricao = descricao;
             Sigla = sigla;
+            Descricao = descricao;
             Ativo = ativo;
         }
         // métodos da classe
@@ -36,8 +36,8 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_niveis_insert";
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.ExecuteNonQuery();
         }
         public void Editar()
@@ -46,8 +46,8 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_niveis_update";
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.ExecuteNonQuery();
         }
         public void Desativar()
@@ -82,8 +82,8 @@ namespace TAEPClass
             while (dr.Read())
             {
                 nivel.Id = dr.GetInt32(0);
-                nivel.Descricao = dr.GetString(1);
-                nivel.Sigla = dr.GetString(2);
+                nivel.Sigla = dr.GetString(1);
+                nivel.Descricao = dr.GetString(2);
                 nivel.Ativo = dr.GetBoolean(3);
             }
             return nivel;
