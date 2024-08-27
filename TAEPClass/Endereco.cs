@@ -1,34 +1,97 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TAEPClass;
 
 namespace TAEPClass
 {
+    /// <summary>
+    /// Representa um endereço no sistema.
+    /// </summary>
     public class Endereco
     {
-
+        /// <summary>
+        /// Identificador único do endereço.
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Código de Endereçamento Postal (CEP).
+        /// </summary>
         public string Cep { get; set; }
+
+        /// <summary>
+        /// Logradouro do endereço (rua, avenida, etc.).
+        /// </summary>
         public string Logradouro { get; set; }
+
+        /// <summary>
+        /// Número do endereço.
+        /// </summary>
         public string Numero { get; set; }
+
+        /// <summary>
+        /// Complemento do endereço (apartamento, bloco, etc.).
+        /// </summary>
         public string Complemento { get; set; }
-        public string Bairro { get; set; }  
-        public string Cidade { get; set; }  
-        public string Uf {  get; set; }
+
+        /// <summary>
+        /// Bairro do endereço.
+        /// </summary>
+        public string Bairro { get; set; }
+
+        /// <summary>
+        /// Cidade do endereço.
+        /// </summary>
+        public string Cidade { get; set; }
+
+        /// <summary>
+        /// Unidade Federativa (Estado) do endereço.
+        /// </summary>
+        public string Uf { get; set; }
+
+        /// <summary>
+        /// Indica se o endereço está ativo ou não.
+        /// </summary>
         public bool Ativo { get; set; }
+
+        /// <summary>
+        /// Identificador do cliente associado ao endereço.
+        /// </summary>
         public int ClienteId { get; set; }
+
+        /// <summary>
+        /// Tipo de endereço (residencial, comercial, etc.).
+        /// </summary>
         public TipoEndereco TipoEnderecos { get; set; }
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public Endereco() { }
-        public Endereco(int id) 
+
+        /// <summary>
+        /// Construtor com identificador.
+        /// </summary>
+        /// <param name="id">Identificador único do endereço.</param>
+        public Endereco(int id)
         {
             Id = id;
         }
 
+        /// <summary>
+        /// Construtor com todos os parâmetros.
+        /// </summary>
+        /// <param name="id">Identificador único do endereço.</param>
+        /// <param name="cep">Código de Endereçamento Postal (CEP).</param>
+        /// <param name="logradouro">Logradouro do endereço.</param>
+        /// <param name="numero">Número do endereço.</param>
+        /// <param name="complemento">Complemento do endereço.</param>
+        /// <param name="bairro">Bairro do endereço.</param>
+        /// <param name="cidade">Cidade do endereço.</param>
+        /// <param name="uf">Unidade Federativa (Estado) do endereço.</param>
+        /// <param name="ativo">Indica se o endereço está ativo.</param>
+        /// <param name="clienteId">Identificador do cliente associado.</param>
+        /// <param name="tipoEnderecos">Tipo de endereço.</param>
         public Endereco(int id, string cep, string logradouro, string numero, string complemento, string bairro, string cidade, string uf, bool ativo, int clienteId, TipoEndereco tipoEnderecos)
         {
             Id = id;
@@ -44,6 +107,19 @@ namespace TAEPClass
             TipoEnderecos = tipoEnderecos;
         }
 
+        /// <summary>
+        /// Construtor com parâmetros, sem o identificador.
+        /// </summary>
+        /// <param name="cep">Código de Endereçamento Postal (CEP).</param>
+        /// <param name="logradouro">Logradouro do endereço.</param>
+        /// <param name="numero">Número do endereço.</param>
+        /// <param name="complemento">Complemento do endereço.</param>
+        /// <param name="bairro">Bairro do endereço.</param>
+        /// <param name="cidade">Cidade do endereço.</param>
+        /// <param name="uf">Unidade Federativa (Estado) do endereço.</param>
+        /// <param name="ativo">Indica se o endereço está ativo.</param>
+        /// <param name="clienteId">Identificador do cliente associado.</param>
+        /// <param name="tipoEnderecos">Tipo de endereço.</param>
         public Endereco(string cep, string logradouro, string numero, string complemento, string bairro, string cidade, string uf, bool ativo, int clienteId, TipoEndereco tipoEnderecos)
         {
             Cep = cep;
@@ -57,6 +133,18 @@ namespace TAEPClass
             ClienteId = clienteId;
             TipoEnderecos = tipoEnderecos;
         }
+
+        /// <summary>
+        /// Construtor com parâmetros, sem o identificador e o complemento.
+        /// </summary>
+        /// <param name="cep">Código de Endereçamento Postal (CEP).</param>
+        /// <param name="logradouro">Logradouro do endereço.</param>
+        /// <param name="numero">Número do endereço.</param>
+        /// <param name="bairro">Bairro do endereço.</param>
+        /// <param name="cidade">Cidade do endereço.</param>
+        /// <param name="uf">Unidade Federativa (Estado) do endereço.</param>
+        /// <param name="clienteId">Identificador do cliente associado.</param>
+        /// <param name="tipoEnderecos">Tipo de endereço.</param>
         public Endereco(string cep, string logradouro, string numero, string complemento, string bairro, string cidade, string uf, int clienteId, TipoEndereco tipoEnderecos)
         {
             Cep = cep;
@@ -70,104 +158,152 @@ namespace TAEPClass
             TipoEnderecos = tipoEnderecos;
         }
 
+        /// <summary>
+        /// Insere um novo endereço no banco de dados.
+        /// </summary>
         public void Inserir()
         {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_enderecos_insert";
-            cmd.Parameters.AddWithValue("spcep", Cep);
-            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
-            cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
-            cmd.Parameters.AddWithValue("spbairro", Bairro);
-            cmd.Parameters.AddWithValue("spcidade", Cidade);
-            cmd.Parameters.AddWithValue("spuf", Uf);
-            cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_endereco_id", TipoEnderecos.Id);
-            var resultado = cmd.ExecuteScalar();
-            if (resultado != null)
+            using (var cmd = Banco.Abrir())
             {
-                Id = Convert.ToInt32(resultado);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_enderecos_insert";
+                cmd.Parameters.AddWithValue("@cep", Cep);
+                cmd.Parameters.AddWithValue("@logradouro", Logradouro);
+                cmd.Parameters.AddWithValue("@numero", Numero);
+                cmd.Parameters.AddWithValue("@complemento", Complemento);
+                cmd.Parameters.AddWithValue("@bairro", Bairro);
+                cmd.Parameters.AddWithValue("@cidade", Cidade);
+                cmd.Parameters.AddWithValue("@uf", Uf);
+                cmd.Parameters.AddWithValue("@cliente_id", ClienteId);
+                cmd.Parameters.AddWithValue("@tipo_endereco_id", TipoEnderecos.Id);
+
+                var resultado = cmd.ExecuteScalar();
+                if (resultado != null)
+                {
+                    Id = Convert.ToInt32(resultado);
+                }
             }
         }
+
+        /// <summary>
+        /// Edita um endereço existente.
+        /// </summary>
+        /// <param name="id">Identificador único do endereço a ser editado.</param>
+        /// <returns>True se a edição foi bem-sucedida, false caso contrário.</returns>
         public bool Editar(int id)
         {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_enderecos_update";
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spemail_cliente", ClienteId);
-            cmd.Parameters.AddWithValue("sptipo_endereco", TipoEnderecos.Id);
-            cmd.Parameters.AddWithValue("spcep", Cep);
-            cmd.Parameters.AddWithValue("splogradouro", Logradouro);
-            cmd.Parameters.AddWithValue("spnumero", Numero);
-            cmd.Parameters.AddWithValue("spcomplemento", Complemento);
-            cmd.Parameters.AddWithValue("spbairro", Bairro);
-            cmd.Parameters.AddWithValue("spcidade", Cidade);
-            cmd.Parameters.AddWithValue("spuf", Uf);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
+            using (var cmd = Banco.Abrir())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_enderecos_update";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@cep", Cep);
+                cmd.Parameters.AddWithValue("@logradouro", Logradouro);
+                cmd.Parameters.AddWithValue("@numero", Numero);
+                cmd.Parameters.AddWithValue("@complemento", Complemento);
+                cmd.Parameters.AddWithValue("@bairro", Bairro);
+                cmd.Parameters.AddWithValue("@cidade", Cidade);
+                cmd.Parameters.AddWithValue("@uf", Uf);
+                cmd.Parameters.AddWithValue("@cliente_id", ClienteId);
+                cmd.Parameters.AddWithValue("@tipo_endereco_id", TipoEnderecos.Id);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
         }
-        public bool Deletar(int id, bool ativo) 
+
+        /// <summary>
+        /// Deleta um endereço do banco de dados.
+        /// </summary>
+        /// <param name="id">Identificador único do endereço a ser deletado.</param>
+        /// <param name="ativo">Indica se o endereço deve ser mantido ativo ou não.</param>
+        /// <returns>True se a deleção foi bem-sucedida, false caso contrário.</returns>
+        public bool Deletar(int id, bool ativo)
         {
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_enderecos_delete";
-            cmd.Parameters.AddWithValue("spid", id);
-            cmd.Parameters.AddWithValue("spativo", ativo);
-            return cmd.ExecuteNonQuery() > -1 ? true : false;
+            using (var cmd = Banco.Abrir())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_enderecos_delete";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@ativo", ativo);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
         }
+
+        /// <summary>
+        /// Obtém um endereço pelo seu ID.
+        /// </summary>
+        /// <param name="id">Identificador único do endereço.</param>
+        /// <returns>O endereço encontrado ou null se não encontrado.</returns>
         public static Endereco ObterPorId(int id)
         {
-            Endereco endereco = new Endereco();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from enderecos where id = {id}";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            using (var cmd = Banco.Abrir())
             {
-                endereco = new(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetString(3),
-                        dr.GetString(4),
-                        dr.GetString(5),
-                        dr.GetString(6),
-                        dr.GetString(7),
-                        dr.GetBoolean(8),
-                        dr.GetInt32(9),
-                        TipoEndereco.ObterPorId(dr.GetInt32(10))
-                    );
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM enderecos WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        return new Endereco
+                        {
+                            Id = dr.GetInt32(0),
+                            Cep = dr.GetString(1),
+                            Logradouro = dr.GetString(2),
+                            Numero = dr.GetString(3),
+                            Complemento = dr.GetString(4),
+                            Bairro = dr.GetString(5),
+                            Cidade = dr.GetString(6),
+                            Uf = dr.GetString(7),
+                            Ativo = dr.GetBoolean(8),
+                            ClienteId = dr.GetInt32(9),
+                            TipoEnderecos = TipoEndereco.ObterPorId(dr.GetInt32(10))
+                        };
+                    }
+                }
             }
-            return endereco;
+            return null;
         }
+
+        /// <summary>
+        /// Obtém uma lista de endereços associados a um cliente.
+        /// </summary>
+        /// <param name="clienteId">Identificador único do cliente.</param>
+        /// <returns>Lista de endereços associados ao cliente.</returns>
         public static List<Endereco> ObterListaPorCliente(int clienteId)
         {
-            List<Endereco> enderecos = new();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"SELECT * FROM enderecos WHERE cliente_id = {clienteId}";
+            var enderecos = new List<Endereco>();
 
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            using (var cmd = Banco.Abrir())
             {
-                enderecos.Add(
-                    new Endereco(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetString(3),
-                        dr.GetString(4),
-                        dr.GetString(5),
-                        dr.GetString(6),
-                        dr.GetString(7),
-                        dr.GetBoolean(8),
-                        dr.GetInt32(9),
-                        TipoEndereco.ObterPorId(dr.GetInt32(10))
-                        )
-                    );
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM enderecos WHERE cliente_id = @clienteId";
+                cmd.Parameters.AddWithValue("@clienteId", clienteId);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        enderecos.Add(new Endereco
+                        {
+                            Id = dr.GetInt32(0),
+                            Cep = dr.GetString(1),
+                            Logradouro = dr.GetString(2),
+                            Numero = dr.GetString(3),
+                            Complemento = dr.GetString(4),
+                            Bairro = dr.GetString(5),
+                            Cidade = dr.GetString(6),
+                            Uf = dr.GetString(7),
+                            Ativo = dr.GetBoolean(8),
+                            ClienteId = dr.GetInt32(9),
+                            TipoEnderecos = TipoEndereco.ObterPorId(dr.GetInt32(10))
+                        });
+                    }
+                }
             }
-            
+
             return enderecos;
         }
     }

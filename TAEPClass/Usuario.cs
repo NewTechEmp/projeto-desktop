@@ -89,6 +89,38 @@ namespace TAEPClass
         }
 
         /// <summary>
+        /// Construtor com parâmetros (sem ID).
+        /// </summary>
+        /// /// <param name="id">Id do usuário.</param>
+        /// <param name="nome">Nome do usuário.</param>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="senha">Senha do usuário.</param>
+        /// <param name="nivelId">Nível de acesso do usuário.</param>
+        public Usuario(int id, string nome, string email, string senha, Nivel nivelId)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            Nivel = nivelId;
+        }
+
+        /// <summary>
+        /// Construtor com parâmetros (sem ID).
+        /// </summary>
+        /// /// <param name="id">Id do usuário.</param>
+        /// <param name="nome">Nome do usuário.</param>
+        /// <param name="email">Endereço de e-mail do usuário.</param>
+        /// <param name="nivelId">Nível de acesso do usuário.</param>
+        public Usuario(int id, string nome, string email, Nivel nivelId)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+            Nivel = nivelId;
+        }
+
+        /// <summary>
         /// Construtor com parâmetros (sem ID e Nível).
         /// </summary>
         /// <param name="nome">Nome do usuário.</param>
@@ -204,20 +236,19 @@ namespace TAEPClass
         /// <param name="id">Identificador único do usuário.</param>
         /// <param name="senhaConfirmar">Senha de confirmação.</param>
         /// <returns>True se a edição foi bem-sucedida, false caso contrário.</returns>
-        public bool Editar(int id, string senhaConfirmar)
+        public bool Editar(int id, string senhaConfirmar,string senha)
         {
             bool resultado = false;
             if (senhaConfirmar == Senha)
             {
-                string senhaCriptografada = CriptografarSenha(Senha);
                 using (var cmd = Banco.Abrir())
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "sp_usuario_update";
-                    cmd.Parameters.AddWithValue("spid", Id);
+                    cmd.Parameters.AddWithValue("spid", id);
                     cmd.Parameters.AddWithValue("spnome", Nome);
                     cmd.Parameters.AddWithValue("spemail", Email);
-                    cmd.Parameters.AddWithValue("spsenha", senhaCriptografada);
+                    cmd.Parameters.AddWithValue("spsenha", senha);
                     cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
                     try
                     {
@@ -309,7 +340,7 @@ namespace TAEPClass
         /// </summary>
         /// <param name="senha">Senha a ser criptografada.</param>
         /// <returns>Senha criptografada.</returns>
-        private string CriptografarSenha(string senha)
+        public string CriptografarSenha(string senha)
         {
             string salt = BCryptNet.GenerateSalt(10);
             string CripSenha = BCryptNet.HashPassword(senha,salt);
