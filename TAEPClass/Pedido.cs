@@ -64,6 +64,7 @@ namespace TAEPClass
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_pedido_insert";
+            cmd.Parameters.AddWithValue("spdata_pedido", DataPedido);
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
             cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
             cmd.Parameters.AddWithValue("spclasse_desconto_id", ClasseDesconto.Id);

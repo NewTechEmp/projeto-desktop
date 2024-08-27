@@ -13,17 +13,16 @@ namespace TAEPClass
     public class ItemPedido
     {
         public int Id { get; set; }
-
         public double ValorUnit { get; set; }
-
-        public double Quantidade { get; set; }  
-        public Pedido PedidoId { get; set; }
-        public Produto ProdutoId { get; set; }  
-
+        public double Quantidade { get; set; }
+        public int PedidoId { get; set; }
+        public Produto ProdutoId { get; set; }
         public TamanhoPizza TamanhoPizzaId { get; set; }
+        public bool PizzaMeia { get; set; }
+        public Produto? ProdutoSaborDoisId { get; set; }
         public ItemPedido() { }
 
-        public ItemPedido(int id, double valorUnit, double quantidade, Pedido pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
+        public ItemPedido(int id, double valorUnit, double quantidade, int pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
         {
             Id = id;
             ValorUnit = valorUnit;
@@ -33,7 +32,7 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
         }
 
-        public ItemPedido(double valorUnit, double quantidade, Pedido pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
+        public ItemPedido(double valorUnit, double quantidade, int pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
         {
             ValorUnit = valorUnit;
             Quantidade = quantidade;
@@ -42,13 +41,23 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
         }
 
+        public ItemPedido (int pedidoId, Produto produtoId, double valorUnit, double quantidade, TamanhoPizza tamanhoPizzaId)
+        {
+            PedidoId = pedidoId;
+            ProdutoId = produtoId;
+            ValorUnit = valorUnit;
+            Quantidade = quantidade;
+            TamanhoPizzaId = tamanhoPizzaId;
+
+        }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_itempedido_insert";
             cmd.Parameters.AddWithValue("spquantidade", Quantidade);
-            cmd.Parameters.AddWithValue(" sppedido_id", PedidoId.Id);
+            cmd.Parameters.AddWithValue(" sppedido_id", PedidoId);
             cmd.Parameters.AddWithValue("spprodutos_id", ProdutoId.Id);
             cmd.Parameters.AddWithValue("sptamanho_pizza_id", TamanhoPizzaId.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
@@ -72,7 +81,7 @@ namespace TAEPClass
                 itens.Add(new(dr.GetInt32(0)
                     , dr.GetDouble(2)
                     ,dr.GetDouble(3)
-                    , Pedido.ObterPorId(dr.GetInt32(4))
+                    ,dr.GetInt32(4)
                     , Produto.ObterPorId(dr.GetInt32(5))
                     , TamanhoPizza.ObterPorId(dr.GetInt32(6))
                     ));
@@ -80,9 +89,17 @@ namespace TAEPClass
             return itens;
 
         }
-        public bool Alterar(int id)
+        public bool Editar(int id)
         {
-            return true;
+            bool resultado = false;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_itempedido_update";
+            cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spquantidade ", Quantidade);
+
+            return cmd.ExecuteNonQuery() > -1 ? true : false;
+
         }
 
         public static void Remover(int id)
