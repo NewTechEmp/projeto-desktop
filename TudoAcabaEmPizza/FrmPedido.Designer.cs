@@ -33,7 +33,9 @@
             groupBox1 = new GroupBox();
             cmbStatus = new ComboBox();
             label12 = new Label();
+            label9 = new Label();
             label11 = new Label();
+            cmbDesconto = new ComboBox();
             label10 = new Label();
             txtSubTotal = new TextBox();
             txtDesconto = new TextBox();
@@ -50,12 +52,13 @@
             clnQuantidade = new DataGridViewTextBoxColumn();
             btnAbrirPedido = new Button();
             gbProduto = new GroupBox();
-            label9 = new Label();
-            cmbDesconto = new ComboBox();
+            radioButtonPizza = new CheckBox();
+            cmbTamanhoPizza = new ComboBox();
             btnInserirProduto = new Button();
-            txtQuantidade = new TextBox();
             label8 = new Label();
+            Quantidade = new Label();
             label7 = new Label();
+            txtQuantidade = new TextBox();
             txtValorUnit = new TextBox();
             label6 = new Label();
             txtDescricao = new TextBox();
@@ -103,7 +106,9 @@
             // 
             groupBox1.Controls.Add(cmbStatus);
             groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(cmbDesconto);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(txtSubTotal);
             groupBox1.Controls.Add(txtDesconto);
@@ -135,7 +140,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(122, 485);
+            cmbStatus.Location = new Point(122, 497);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(177, 29);
             cmbStatus.TabIndex = 22;
@@ -151,6 +156,17 @@
             label12.Text = "Total";
             label12.Click += label9_Click;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label9.Location = new Point(346, 505);
+            label9.Name = "label9";
+            label9.Size = new Size(104, 15);
+            label9.TabIndex = 18;
+            label9.Text = "Tipo de Desconto";
+            label9.Click += label9_Click;
+            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -161,6 +177,14 @@
             label11.TabIndex = 18;
             label11.Text = "Desconto";
             label11.Click += label9_Click;
+            // 
+            // cmbDesconto
+            // 
+            cmbDesconto.FormattingEnabled = true;
+            cmbDesconto.Location = new Point(456, 497);
+            cmbDesconto.Name = "cmbDesconto";
+            cmbDesconto.Size = new Size(181, 29);
+            cmbDesconto.TabIndex = 17;
             // 
             // label10
             // 
@@ -216,7 +240,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(16, 493);
+            label5.Location = new Point(16, 505);
             label5.Name = "label5";
             label5.Size = new Size(100, 15);
             label5.TabIndex = 9;
@@ -226,7 +250,7 @@
             // 
             dgvPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPedido.Columns.AddRange(new DataGridViewColumn[] { clnCod, clnDescricao, clnDesconto, clnValorItem, clnValorUnit, clnQuantidade });
-            dgvPedido.Location = new Point(14, 520);
+            dgvPedido.Location = new Point(14, 532);
             dgvPedido.Name = "dgvPedido";
             dgvPedido.RowHeadersVisible = false;
             dgvPedido.Size = new Size(830, 273);
@@ -290,12 +314,13 @@
             // 
             // gbProduto
             // 
-            gbProduto.Controls.Add(label9);
-            gbProduto.Controls.Add(cmbDesconto);
+            gbProduto.Controls.Add(radioButtonPizza);
+            gbProduto.Controls.Add(cmbTamanhoPizza);
             gbProduto.Controls.Add(btnInserirProduto);
-            gbProduto.Controls.Add(txtQuantidade);
             gbProduto.Controls.Add(label8);
+            gbProduto.Controls.Add(Quantidade);
             gbProduto.Controls.Add(label7);
+            gbProduto.Controls.Add(txtQuantidade);
             gbProduto.Controls.Add(txtValorUnit);
             gbProduto.Controls.Add(label6);
             gbProduto.Controls.Add(txtDescricao);
@@ -308,24 +333,23 @@
             gbProduto.TabStop = false;
             gbProduto.Text = "Produto";
             // 
-            // label9
+            // radioButtonPizza
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(738, 61);
-            label9.Name = "label9";
-            label9.Size = new Size(60, 15);
-            label9.TabIndex = 18;
-            label9.Text = "Desconto";
-            label9.Click += label9_Click;
+            radioButtonPizza.AutoSize = true;
+            radioButtonPizza.Location = new Point(17, 29);
+            radioButtonPizza.Name = "radioButtonPizza";
+            radioButtonPizza.Size = new Size(127, 25);
+            radioButtonPizza.TabIndex = 20;
+            radioButtonPizza.Text = "É uma pizza?";
+            radioButtonPizza.UseVisualStyleBackColor = true;
             // 
-            // cmbDesconto
+            // cmbTamanhoPizza
             // 
-            cmbDesconto.FormattingEnabled = true;
-            cmbDesconto.Location = new Point(725, 89);
-            cmbDesconto.Name = "cmbDesconto";
-            cmbDesconto.Size = new Size(121, 29);
-            cmbDesconto.TabIndex = 17;
+            cmbTamanhoPizza.FormattingEnabled = true;
+            cmbTamanhoPizza.Location = new Point(430, 107);
+            cmbTamanhoPizza.Name = "cmbTamanhoPizza";
+            cmbTamanhoPizza.Size = new Size(104, 29);
+            cmbTamanhoPizza.TabIndex = 19;
             // 
             // btnInserirProduto
             // 
@@ -335,37 +359,48 @@
             btnInserirProduto.TabIndex = 16;
             btnInserirProduto.Text = "&Inserir";
             btnInserirProduto.UseVisualStyleBackColor = true;
-            // 
-            // txtQuantidade
-            // 
-            txtQuantidade.Location = new Point(585, 89);
-            txtQuantidade.Name = "txtQuantidade";
-            txtQuantidade.Size = new Size(121, 29);
-            txtQuantidade.TabIndex = 15;
+            btnInserirProduto.Click += btnInserirProduto_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label8.Location = new Point(601, 61);
+            label8.Location = new Point(430, 84);
             label8.Name = "label8";
-            label8.Size = new Size(71, 15);
+            label8.Size = new Size(104, 15);
             label8.TabIndex = 14;
-            label8.Text = "Quantidade";
+            label8.Text = "Tamanho da pizza";
+            // 
+            // Quantidade
+            // 
+            Quantidade.AutoSize = true;
+            Quantidade.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            Quantidade.Location = new Point(524, 25);
+            Quantidade.Name = "Quantidade";
+            Quantidade.Size = new Size(71, 15);
+            Quantidade.TabIndex = 13;
+            Quantidade.Text = "Quantidade";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(442, 61);
+            label7.Location = new Point(373, 19);
             label7.Name = "label7";
             label7.Size = new Size(81, 15);
             label7.TabIndex = 13;
             label7.Text = "Valor unitário";
             // 
+            // txtQuantidade
+            // 
+            txtQuantidade.Location = new Point(501, 47);
+            txtQuantidade.Name = "txtQuantidade";
+            txtQuantidade.Size = new Size(121, 29);
+            txtQuantidade.TabIndex = 12;
+            // 
             // txtValorUnit
             // 
-            txtValorUnit.Location = new Point(442, 89);
+            txtValorUnit.Location = new Point(355, 47);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(121, 29);
             txtValorUnit.TabIndex = 12;
@@ -374,7 +409,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(178, 61);
+            label6.Location = new Point(167, 89);
             label6.Name = "label6";
             label6.Size = new Size(61, 15);
             label6.TabIndex = 11;
@@ -382,7 +417,7 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(178, 89);
+            txtDescricao.Location = new Point(167, 107);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(246, 29);
             txtDescricao.TabIndex = 10;
@@ -391,7 +426,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label15.Location = new Point(16, 61);
+            label15.Location = new Point(177, 19);
             label15.Name = "label15";
             label15.Size = new Size(100, 15);
             label15.TabIndex = 9;
@@ -399,7 +434,7 @@
             // 
             // txtCodBarras
             // 
-            txtCodBarras.Location = new Point(6, 89);
+            txtCodBarras.Location = new Point(167, 47);
             txtCodBarras.Name = "txtCodBarras";
             txtCodBarras.Size = new Size(153, 29);
             txtCodBarras.TabIndex = 0;
@@ -481,7 +516,7 @@
             // txtNumeroPedido
             // 
             txtNumeroPedido.Font = new Font("Segoe UI", 24F);
-            txtNumeroPedido.ForeColor = Color.Green;
+            txtNumeroPedido.ForeColor = Color.FromArgb(0, 192, 0);
             txtNumeroPedido.Location = new Point(871, 59);
             txtNumeroPedido.Name = "txtNumeroPedido";
             txtNumeroPedido.ReadOnly = true;
@@ -534,7 +569,6 @@
         private Label label7;
         private Button btnAbrirPedido;
         private Button btnInserirProduto;
-        private TextBox txtQuantidade;
         private Label label8;
         private DataGridView dgvPedido;
         private Button btnExcluirItem;
@@ -557,5 +591,9 @@
         private Label label13;
         private ComboBox cmbStatus;
         private Label label15;
+        private ComboBox cmbTamanhoPizza;
+        private Label Quantidade;
+        private TextBox txtQuantidade;
+        private CheckBox radioButtonPizza;
     }
 }

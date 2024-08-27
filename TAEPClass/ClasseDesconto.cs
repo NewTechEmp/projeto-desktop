@@ -64,7 +64,7 @@ namespace TAEPClass
             List<ClasseDesconto> classeDesconto = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from classedesconto";
+            cmd.CommandText = "select * from classes_desconto";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -77,7 +77,7 @@ namespace TAEPClass
             ClasseDesconto classeDesconto = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from classedesconto where id  = {id}";
+            cmd.CommandText = $"select * from classes_desconto where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
