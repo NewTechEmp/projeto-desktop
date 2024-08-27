@@ -69,7 +69,11 @@ namespace TAEPClass
             cmd.Parameters.AddWithValue("spcliente_id", Cliente.Id);
             cmd.Parameters.AddWithValue("spclasse_desconto_id", ClasseDesconto.Id);
             cmd.Parameters.AddWithValue("spstatus_id", StatusId.Id);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            var resultado = cmd.ExecuteScalar();
+            if (resultado != null)
+            {
+                Id = Convert.ToInt32(resultado);
+            }
         }
         public static Pedido ObterPorId(int id)
         {

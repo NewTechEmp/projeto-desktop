@@ -142,7 +142,7 @@
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(122, 497);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(177, 29);
+            cmbStatus.Size = new Size(160, 29);
             cmbStatus.TabIndex = 22;
             // 
             // label12
@@ -160,7 +160,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(346, 505);
+            label9.Location = new Point(295, 499);
             label9.Name = "label9";
             label9.Size = new Size(104, 15);
             label9.TabIndex = 18;
@@ -181,9 +181,9 @@
             // cmbDesconto
             // 
             cmbDesconto.FormattingEnabled = true;
-            cmbDesconto.Location = new Point(456, 497);
+            cmbDesconto.Location = new Point(405, 491);
             cmbDesconto.Name = "cmbDesconto";
-            cmbDesconto.Size = new Size(181, 29);
+            cmbDesconto.Size = new Size(215, 29);
             cmbDesconto.TabIndex = 17;
             // 
             // label10
@@ -338,17 +338,17 @@
             radioButtonPizza.AutoSize = true;
             radioButtonPizza.Location = new Point(17, 29);
             radioButtonPizza.Name = "radioButtonPizza";
-            radioButtonPizza.Size = new Size(127, 25);
+            radioButtonPizza.Size = new Size(69, 25);
             radioButtonPizza.TabIndex = 20;
-            radioButtonPizza.Text = "É uma pizza?";
+            radioButtonPizza.Text = "Pizza";
             radioButtonPizza.UseVisualStyleBackColor = true;
             // 
             // cmbTamanhoPizza
             // 
             cmbTamanhoPizza.FormattingEnabled = true;
-            cmbTamanhoPizza.Location = new Point(430, 107);
+            cmbTamanhoPizza.Location = new Point(359, 105);
             cmbTamanhoPizza.Name = "cmbTamanhoPizza";
-            cmbTamanhoPizza.Size = new Size(104, 29);
+            cmbTamanhoPizza.Size = new Size(263, 29);
             cmbTamanhoPizza.TabIndex = 19;
             // 
             // btnInserirProduto
@@ -365,7 +365,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label8.Location = new Point(430, 84);
+            label8.Location = new Point(359, 82);
             label8.Name = "label8";
             label8.Size = new Size(104, 15);
             label8.TabIndex = 14;
@@ -375,7 +375,7 @@
             // 
             Quantidade.AutoSize = true;
             Quantidade.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Quantidade.Location = new Point(524, 25);
+            Quantidade.Location = new Point(538, 23);
             Quantidade.Name = "Quantidade";
             Quantidade.Size = new Size(71, 15);
             Quantidade.TabIndex = 13;
@@ -385,7 +385,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(373, 19);
+            label7.Location = new Point(390, 17);
             label7.Name = "label7";
             label7.Size = new Size(81, 15);
             label7.TabIndex = 13;
@@ -393,14 +393,14 @@
             // 
             // txtQuantidade
             // 
-            txtQuantidade.Location = new Point(501, 47);
+            txtQuantidade.Location = new Point(515, 45);
             txtQuantidade.Name = "txtQuantidade";
             txtQuantidade.Size = new Size(121, 29);
             txtQuantidade.TabIndex = 12;
             // 
             // txtValorUnit
             // 
-            txtValorUnit.Location = new Point(355, 47);
+            txtValorUnit.Location = new Point(372, 45);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(121, 29);
             txtValorUnit.TabIndex = 12;
@@ -409,7 +409,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(167, 89);
+            label6.Location = new Point(96, 87);
             label6.Name = "label6";
             label6.Size = new Size(61, 15);
             label6.TabIndex = 11;
@@ -417,7 +417,7 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.Location = new Point(167, 107);
+            txtDescricao.Location = new Point(96, 105);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(246, 29);
             txtDescricao.TabIndex = 10;
@@ -426,7 +426,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label15.Location = new Point(177, 19);
+            label15.Location = new Point(167, 17);
             label15.Name = "label15";
             label15.Size = new Size(100, 15);
             label15.TabIndex = 9;
@@ -434,9 +434,9 @@
             // 
             // txtCodBarras
             // 
-            txtCodBarras.Location = new Point(167, 47);
+            txtCodBarras.Location = new Point(96, 45);
             txtCodBarras.Name = "txtCodBarras";
-            txtCodBarras.Size = new Size(153, 29);
+            txtCodBarras.Size = new Size(246, 29);
             txtCodBarras.TabIndex = 0;
             // 
             // gbCliente
