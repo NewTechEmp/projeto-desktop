@@ -14,50 +14,50 @@ namespace TAEPClass
 
         public int Id { get; set; }   
         public Usuario Usuario { get; set; }
-        public string Cpf { get; set; }
         public DateTime DataNasc { get; set; }
+        public string Cpf { get; set; }
         public List<Endereco> Enderecos{ get; set;}
         public List<Telefone> Telefones { get; set; }
 
         public Cliente() { }
-        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
+        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf, List<Endereco> enderecos, List<Telefone> telefones)
         {
             Id = id;
             Usuario = usuario;
-            Cpf = cpf;
             DataNasc = dataNasc;
+            Cpf = cpf;
             Enderecos = enderecos;
             Telefones = telefones;
         }
 
-        public Cliente(Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
+        public Cliente(Usuario usuario, DateTime dataNasc, string cpf, List<Endereco> enderecos, List<Telefone> telefones)
         {
             Usuario = usuario;
-            Cpf = cpf;
             DataNasc = dataNasc;
+            Cpf = cpf;
             Enderecos = enderecos;
             Telefones = telefones;
         }
 
-        public Cliente(Usuario usuario, string cpf, DateTime dataNasc)
+        public Cliente(Usuario usuario, DateTime dataNasc, string cpf)
         {
             Usuario = usuario;
-            Cpf = cpf;
             DataNasc = dataNasc;
+            Cpf = cpf;
         } 
 
-        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc)
+        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf)
         {
             Id = id;
             Usuario = usuario;
-            Cpf = cpf;
             DataNasc = dataNasc;
+            Cpf = cpf;
         }
 
-        public Cliente(string cpf, DateTime dataNasc)
+        public Cliente(DateTime dataNasc, string cpf)
         {
+            DataNasc = dataNasc; 
             Cpf = cpf;
-            DataNasc = dataNasc;
         }
 
         public void Inserir()
@@ -86,8 +86,8 @@ namespace TAEPClass
                 cliente = new(
                     dr.GetInt32(0),
                     Usuario.ObterPorId(1),
-                    dr.GetString(2),
-                    Convert.ToDateTime(dr.GetDateTime(3)),
+                    dr.GetDateTime(2),
+                    dr.GetString(3),
                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
                     Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0)))
                   );
@@ -109,8 +109,8 @@ namespace TAEPClass
                     new(
                     dr.GetInt32(0),
                     Usuario.ObterPorId(1),
-                    dr.GetString(2),
-                    dr.GetDateTime(3),
+                    dr.GetDateTime(2),
+                    dr.GetString(3),
                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
                     Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
                     )

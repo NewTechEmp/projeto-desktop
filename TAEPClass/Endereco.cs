@@ -167,15 +167,15 @@ namespace TAEPClass
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_enderecos_insert";
-                cmd.Parameters.AddWithValue("@cep", Cep);
-                cmd.Parameters.AddWithValue("@logradouro", Logradouro);
-                cmd.Parameters.AddWithValue("@numero", Numero);
-                cmd.Parameters.AddWithValue("@complemento", Complemento);
-                cmd.Parameters.AddWithValue("@bairro", Bairro);
-                cmd.Parameters.AddWithValue("@cidade", Cidade);
-                cmd.Parameters.AddWithValue("@uf", Uf);
-                cmd.Parameters.AddWithValue("@cliente_id", ClienteId);
-                cmd.Parameters.AddWithValue("@tipo_endereco_id", TipoEnderecos.Id);
+                cmd.Parameters.AddWithValue("spcep", Cep);
+                cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+                cmd.Parameters.AddWithValue("spnumero", Numero);
+                cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+                cmd.Parameters.AddWithValue("spbairro", Bairro);
+                cmd.Parameters.AddWithValue("spcidade", Cidade);
+                cmd.Parameters.AddWithValue("spuf", Uf);
+                cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
+                cmd.Parameters.AddWithValue("sptipo_endereco_id", TipoEnderecos.Id);
 
                 var resultado = cmd.ExecuteScalar();
                 if (resultado != null)
@@ -196,16 +196,16 @@ namespace TAEPClass
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_enderecos_update";
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@cep", Cep);
-                cmd.Parameters.AddWithValue("@logradouro", Logradouro);
-                cmd.Parameters.AddWithValue("@numero", Numero);
-                cmd.Parameters.AddWithValue("@complemento", Complemento);
-                cmd.Parameters.AddWithValue("@bairro", Bairro);
-                cmd.Parameters.AddWithValue("@cidade", Cidade);
-                cmd.Parameters.AddWithValue("@uf", Uf);
-                cmd.Parameters.AddWithValue("@cliente_id", ClienteId);
-                cmd.Parameters.AddWithValue("@tipo_endereco_id", TipoEnderecos.Id);
+                cmd.Parameters.AddWithValue("spid", id);
+                cmd.Parameters.AddWithValue("spcep", Cep);
+                cmd.Parameters.AddWithValue("splogradouro", Logradouro);
+                cmd.Parameters.AddWithValue("spnumero", Numero);
+                cmd.Parameters.AddWithValue("spcomplemento", Complemento);
+                cmd.Parameters.AddWithValue("spbairro", Bairro);
+                cmd.Parameters.AddWithValue("spcidade", Cidade);
+                cmd.Parameters.AddWithValue("spuf", Uf);
+                cmd.Parameters.AddWithValue("spcliente_id", ClienteId);
+                cmd.Parameters.AddWithValue("sptipo_endereco_id", TipoEnderecos.Id);
 
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -223,8 +223,8 @@ namespace TAEPClass
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_enderecos_delete";
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@ativo", ativo);
+                cmd.Parameters.AddWithValue("spid", id);
+                cmd.Parameters.AddWithValue("spativo", ativo);
 
                 return cmd.ExecuteNonQuery() > 0;
             }

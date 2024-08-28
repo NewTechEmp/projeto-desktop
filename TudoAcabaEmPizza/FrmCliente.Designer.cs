@@ -54,6 +54,7 @@
             tbpEnderecosCliente = new TabPage();
             txtEnderecoId = new TextBox();
             dgvEnderecos = new DataGridView();
+            IdEndereco = new DataGridViewTextBoxColumn();
             clnCep = new DataGridViewTextBoxColumn();
             clnLogradouro = new DataGridViewTextBoxColumn();
             clnNumeroCasa = new DataGridViewTextBoxColumn();
@@ -399,18 +400,26 @@
             // 
             // dgvEnderecos
             // 
+            dgvEnderecos.AllowUserToOrderColumns = true;
             dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { clnCep, clnLogradouro, clnNumeroCasa, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEnd });
+            dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { IdEndereco, clnCep, clnLogradouro, clnNumeroCasa, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEnd });
             dgvEnderecos.Location = new Point(-1, 324);
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.RowHeadersVisible = false;
+            dgvEnderecos.ScrollBars = ScrollBars.Horizontal;
+            dgvEnderecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEnderecos.Size = new Size(749, 195);
             dgvEnderecos.TabIndex = 35;
-            dgvEnderecos.SelectionChanged += dgvEnderecos_SelectionChanged;
+            // 
+            // IdEndereco
+            // 
+            IdEndereco.Frozen = true;
+            IdEndereco.HeaderText = "Id";
+            IdEndereco.Name = "IdEndereco";
+            IdEndereco.Visible = false;
             // 
             // clnCep
             // 
-            clnCep.Frozen = true;
             clnCep.HeaderText = "CEP";
             clnCep.Name = "clnCep";
             clnCep.ReadOnly = true;
@@ -418,7 +427,6 @@
             // 
             // clnLogradouro
             // 
-            clnLogradouro.Frozen = true;
             clnLogradouro.HeaderText = "Logradouro";
             clnLogradouro.Name = "clnLogradouro";
             clnLogradouro.ReadOnly = true;
@@ -426,7 +434,6 @@
             // 
             // clnNumeroCasa
             // 
-            clnNumeroCasa.Frozen = true;
             clnNumeroCasa.HeaderText = "N°";
             clnNumeroCasa.Name = "clnNumeroCasa";
             clnNumeroCasa.ReadOnly = true;
@@ -434,14 +441,12 @@
             // 
             // clnComplemento
             // 
-            clnComplemento.Frozen = true;
             clnComplemento.HeaderText = "Complemento";
             clnComplemento.Name = "clnComplemento";
             clnComplemento.ReadOnly = true;
             // 
             // clnBairro
             // 
-            clnBairro.Frozen = true;
             clnBairro.HeaderText = "Bairro";
             clnBairro.Name = "clnBairro";
             clnBairro.ReadOnly = true;
@@ -449,7 +454,6 @@
             // 
             // clnCidade
             // 
-            clnCidade.Frozen = true;
             clnCidade.HeaderText = "Cidade";
             clnCidade.Name = "clnCidade";
             clnCidade.ReadOnly = true;
@@ -457,7 +461,6 @@
             // 
             // clnUf
             // 
-            clnUf.Frozen = true;
             clnUf.HeaderText = "UF";
             clnUf.Name = "clnUf";
             clnUf.ReadOnly = true;
@@ -465,7 +468,6 @@
             // 
             // clnTipoEnd
             // 
-            clnTipoEnd.Frozen = true;
             clnTipoEnd.HeaderText = "Tipo End";
             clnTipoEnd.Name = "clnTipoEnd";
             clnTipoEnd.ReadOnly = true;
@@ -853,14 +855,6 @@
         private MaskedTextBox maskedTextBox3;
         private MaskedTextBox maskedTextBox2;
         private DataGridView dgvEnderecos;
-        private DataGridViewTextBoxColumn clnCep;
-        private DataGridViewTextBoxColumn clnLogradouro;
-        private DataGridViewTextBoxColumn clnNumeroCasa;
-        private DataGridViewTextBoxColumn clnComplemento;
-        private DataGridViewTextBoxColumn clnBairro;
-        private DataGridViewTextBoxColumn clnCidade;
-        private DataGridViewTextBoxColumn clnUf;
-        private DataGridViewTextBoxColumn clnTipoEnd;
         private TextBox txtUsuarioId;
         private TabControl tabControl1;
         private TabPage tdpUsuario;
@@ -922,5 +916,14 @@
         private DataGridViewTextBoxColumn clnTipoTelefone;
         private TextBox txtEnderecoId;
         private TextBox txtTelefoneId;
+        private DataGridViewTextBoxColumn IdEndereco;
+        private DataGridViewTextBoxColumn clnCep;
+        private DataGridViewTextBoxColumn clnLogradouro;
+        private DataGridViewTextBoxColumn clnNumeroCasa;
+        private DataGridViewTextBoxColumn clnComplemento;
+        private DataGridViewTextBoxColumn clnBairro;
+        private DataGridViewTextBoxColumn clnCidade;
+        private DataGridViewTextBoxColumn clnUf;
+        private DataGridViewTextBoxColumn clnTipoEnd;
     }
 }
