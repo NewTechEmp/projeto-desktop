@@ -58,6 +58,7 @@ namespace TudoAcabaEmPizza
             CarregarTipoDesconto();
             CarregaGridProduto();
             TamanhoDePizza();
+            CarregaGridItemPedido();
 
         }
         private void CarregaGridProduto()
@@ -76,6 +77,24 @@ namespace TudoAcabaEmPizza
                 dgvProdutos.Rows[count].Cells[4].Value = produtos.CodBarras;
                 dgvProdutos.Rows[count].Cells[5].Value = produtos.NomeImagem;
                 dgvProdutos.Rows[count].Cells[6].Value = produtos.CategoriaId.Descricao;
+                count++;
+            }
+        }
+
+        private void CarregaGridItemPedido()
+        {
+            var itemPedido = ItemPedido.ObterListaPorPedido(int.Parse(txtNumeroPedido.Text));
+            int count = 0;
+            // Preenche o DataGridView com todos os endereços
+            dgvItemPedido.Rows.Clear();
+            foreach (var itensPedido in itemPedido)
+            {
+                int rowIndex = dgvItemPedido.Rows.Add();
+                dgvItemPedido.Rows[count].Cells[0].Value = itensPedido.Id;
+                dgvItemPedido.Rows[count].Cells[1].Value = itensPedido.ValorUnit;
+                dgvItemPedido.Rows[count].Cells[2].Value = itensPedido.PedidoId;
+                dgvItemPedido.Rows[count].Cells[3].Value = itensPedido.ProdutoId;
+                dgvItemPedido.Rows[count].Cells[5].Value = itensPedido.ProdutoSaborDois;
                 count++;
             }
         }
@@ -137,7 +156,7 @@ namespace TudoAcabaEmPizza
 
         private void btnAbrirPedido_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new();
+            TAEPClass.Pedido pedido = new();
             pedido.Cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
             pedido.Usuario = Program.Usuario;
             pedido.StatusId = Status.ObterPorId(Convert.ToInt32(cmbStatus.SelectedValue));
@@ -151,15 +170,13 @@ namespace TudoAcabaEmPizza
 
         private void txtClienteId_TextChanged(object sender, EventArgs e)
         {
-            txtClienteCPF.Clear();
             if (txtClienteId.Text.Length > 0)
             {
-                var cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
+                Cliente cliente = Cliente.ObterPorId(Convert.ToInt32(txtClienteId.Text));
                 if (cliente.Id > 0)
                 {
                     txtClienteCPF.Text = cliente.Cpf;
                 }
-
             }
         }
 
@@ -173,31 +190,17 @@ namespace TudoAcabaEmPizza
         private void btnInserirProduto_Click(object sender, EventArgs e)
         {
 
-            ItemPedido itempedido = new(int.Parse(txtNumeroPedido.Text)
+            ItemPedido itempedido = new(Pedido.ObterPorId(int.Parse(txtNumeroPedido.Text))
              , Produto.ObterPorId(int.Parse(txtCodProduto.Text))
              , double.Parse(txtQuantidade.Text)
              , double.Parse(txtValorUnit.Text)
              , TamanhoPizza.ObterPorId(Convert.ToInt32(cmbTamanhoPizza.SelectedValue))
              , radioButtonMeia.Checked
-
-
-
-
+             , txtDescricaoSaborDois.Text
              );
             itempedido.Inserir();
 
-            // limpar o datagrid 
-
-            // limpar os campos
-            txtCodProduto.Clear();
-            txtRotulo.Clear();
-            txtQuantidade.Text = "1";
-            txtCodProduto.Clear();
-            txtValorUnit.Clear();
-            txtCodProduto.Focus();
-            // carrega grid
-
-        }
+    }
 
         private void CarregarTamanhosPizza()
         {
@@ -270,13 +273,30 @@ namespace TudoAcabaEmPizza
         {
             if (radioButtonMeia.Checked)
             {
-                txtSaborDois.Enabled = true;
-                
+                txtCodSaborDois.Enabled = true;
+               txtDescricaoSaborDois.Enabled = true;
 
-            }
+
+           }
             else
             {
-                txtSaborDois.Enabled = false;
+                txtCodSaborDois.Enabled = false;
+               txtDescricaoSaborDois.Enabled = false;
+            }
+        }
+
+        private void txtCodSaborDois_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCodSaborDois.Text.Length > 0)
+            {
+                produto = Produto.ObterPorId(int.Parse(txtCodSaborDois.Text));
+                if (produto.Id > 0)
+                {
+                    txtDescricaoSaborDois.Text = produto.Rotulo;
+            
+
+
+                }
             }
         }
     }

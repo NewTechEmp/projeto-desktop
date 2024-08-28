@@ -15,14 +15,14 @@ namespace TAEPClass
         public int Id { get; set; }
         public double ValorUnit { get; set; }
         public double Quantidade { get; set; }
-        public int PedidoId { get; set; }
+        public Pedido PedidoId { get; set; }
         public Produto ProdutoId { get; set; }
         public TamanhoPizza TamanhoPizzaId { get; set; }
         public bool PizzaMeia { get; set; }
-        public Produto? ProdutoSaborDoisId { get; set; }
+        public string? ProdutoSaborDois { get; set; }
         public ItemPedido() { }
 
-        public ItemPedido(int id, double valorUnit, double quantidade, int pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
+        public ItemPedido(int id, double valorUnit, double quantidade, Pedido pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
         {
             Id = id;
             ValorUnit = valorUnit;
@@ -32,7 +32,7 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
         }
 
-        public ItemPedido(double valorUnit, double quantidade, int pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
+        public ItemPedido(double valorUnit, double quantidade, Pedido pedidoId, Produto produtoId, TamanhoPizza tamanhoPizzaId)
         {
             ValorUnit = valorUnit;
             Quantidade = quantidade;
@@ -41,7 +41,7 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
         }
 
-        public ItemPedido (int pedidoId, Produto produtoId, double valorUnit, double quantidade, TamanhoPizza tamanhoPizzaId, bool pizzaMeia)
+        public ItemPedido (Pedido pedidoId, Produto produtoId, double valorUnit, double quantidade, TamanhoPizza tamanhoPizzaId, bool pizzaMeia, string produtoSaborDois)
         {
             PedidoId = pedidoId;
             ProdutoId = produtoId;
@@ -49,6 +49,9 @@ namespace TAEPClass
             Quantidade = quantidade;
             TamanhoPizzaId = tamanhoPizzaId;
             PizzaMeia = pizzaMeia;
+            ProdutoSaborDois = produtoSaborDois;
+
+
 
         }
 
@@ -58,9 +61,13 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_itempedido_insert";
             cmd.Parameters.AddWithValue("spquantidade", Quantidade);
-            cmd.Parameters.AddWithValue(" sppedido_id", PedidoId);
+            cmd.Parameters.AddWithValue("sppedido_id", PedidoId.Id);
             cmd.Parameters.AddWithValue("spprodutos_id", ProdutoId.Id);
             cmd.Parameters.AddWithValue("sptamanho_pizza_id", TamanhoPizzaId.Id);
+            cmd.Parameters.AddWithValue("sppizza_meia", PizzaMeia);
+            cmd.Parameters.AddWithValue("spproduto_sabor_dois", ProdutoSaborDois);
+
+
             Id = Convert.ToInt32(cmd.ExecuteScalar());
 
         }
@@ -80,11 +87,11 @@ namespace TAEPClass
             while (dr.Read())
             {
                 itens.Add(new(dr.GetInt32(0)
-                    , dr.GetDouble(2)
-                    ,dr.GetDouble(3)
-                    ,dr.GetInt32(4)
-                    , Produto.ObterPorId(dr.GetInt32(5))
-                    , TamanhoPizza.ObterPorId(dr.GetInt32(6))
+                    , dr.GetDouble(1)
+                    ,dr.GetDouble(2)
+                    ,Pedido.ObterPorId(dr.GetInt32(3))
+                    , Produto.ObterPorId(dr.GetInt32(4))
+                    , TamanhoPizza.ObterPorId(dr.GetInt32(5))
                     ));
             }
             return itens;
