@@ -187,7 +187,7 @@
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmPrincipal";
-            Text = "Form1";
+            Text = "frmPrincipal";
             WindowState = FormWindowState.Maximized;
             Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
