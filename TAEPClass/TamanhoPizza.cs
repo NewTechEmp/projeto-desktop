@@ -64,7 +64,7 @@ namespace TAEPClass
             List<TamanhoPizza> tamanhoPizza = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tamanhopizza";
+            cmd.CommandText = "select * from tamanhos_pizza";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -77,7 +77,7 @@ namespace TAEPClass
             TamanhoPizza tamanhoPizza = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from tamanhopizza where id  = {id}";
+            cmd.CommandText = $"select * from tamanhos_pizza where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

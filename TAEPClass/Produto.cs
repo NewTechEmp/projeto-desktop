@@ -129,11 +129,11 @@ namespace TAEPClass
             cmd.CommandType = CommandType.Text;
             if (descricao == null)
             {
-                cmd.CommandText = "select * from produtos order by descricao";
+                cmd.CommandText = "select * from produtos order by rotulo";
             }
             else
             {
-                cmd.CommandText = $"select * from produtos where nome like '%{descricao}%' order by descricao";
+                cmd.CommandText = $"select * from produtos where rotulo like '%{descricao}%' order by rotulo";
             }
 
             var dr = cmd.ExecuteReader();

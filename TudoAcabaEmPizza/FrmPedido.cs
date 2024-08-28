@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,22 +56,51 @@ namespace TudoAcabaEmPizza
             txtVendedor.Text = $"{Program.Usuario.Id} - {Program.Usuario.Nome}";
             CarregarStatus();
             CarregarTipoDesconto();
+            CarregaGridProduto();
+            TamanhoDePizza();
 
+        }
+        private void CarregaGridProduto()
+        {
+            var produto = Produto.ObterLista();
+            int count = 0;
+            // Preenche o DataGridView com todos os endereços
+            dgvProdutos.Rows.Clear();
+            foreach (var produtos in produto)
+            {
+                int rowIndex = dgvProdutos.Rows.Add();
+                dgvProdutos.Rows[count].Cells[0].Value = produtos.Id;
+                dgvProdutos.Rows[count].Cells[1].Value = produtos.Rotulo;
+                dgvProdutos.Rows[count].Cells[2].Value = produtos.Descricao;
+                dgvProdutos.Rows[count].Cells[3].Value = produtos.ValorUnit;
+                dgvProdutos.Rows[count].Cells[4].Value = produtos.CodBarras;
+                dgvProdutos.Rows[count].Cells[5].Value = produtos.NomeImagem;
+                dgvProdutos.Rows[count].Cells[6].Value = produtos.CategoriaId.Descricao;
+                count++;
+            }
         }
         private void CarregarStatus()
         {
             var status = Status.ObterLista();
-            cmbStatus.DataSource = status; 
-            cmbStatus.DisplayMember = "descricao"; 
-            cmbStatus.ValueMember = "id"; 
+            cmbStatus.DataSource = status;
+            cmbStatus.DisplayMember = "descricao";
+            cmbStatus.ValueMember = "id";
+        }
+
+        public void TamanhoDePizza()
+        {
+            var tamanhoPizza = TamanhoPizza.ObterLista();
+            cmbTamanhoPizza.DataSource = tamanhoPizza;
+            cmbTamanhoPizza.DisplayMember = "descricao";
+            cmbTamanhoPizza.ValueMember = "id";
         }
 
         private void CarregarTipoDesconto()
         {
             var classeDesconto = ClasseDesconto.ObterLista();
-            cmbDesconto.DataSource = classeDesconto; 
+            cmbDesconto.DataSource = classeDesconto;
             cmbDesconto.DisplayMember = "descricao";
-            cmbDesconto.ValueMember = "id"; 
+            cmbDesconto.ValueMember = "id";
         }
 
 
@@ -115,6 +145,7 @@ namespace TudoAcabaEmPizza
             pedido.Inserir();
             txtNumeroPedido.Text = pedido.Id.ToString();
             gbProduto.Enabled = true;
+            gbBuscaProduto.Enabled = true;
             btnAbrirPedido.Enabled = false;
         }
 
@@ -126,7 +157,7 @@ namespace TudoAcabaEmPizza
                 var cliente = Cliente.ObterPorId(int.Parse(txtClienteId.Text));
                 if (cliente.Id > 0)
                 {
-                    txtClienteCPF.Text = cliente.Usuario.Nome;
+                    txtClienteCPF.Text = cliente.Cpf;
                 }
 
             }
@@ -137,27 +168,19 @@ namespace TudoAcabaEmPizza
 
         }
 
+
+
         private void btnInserirProduto_Click(object sender, EventArgs e)
         {
 
-            if (radioButtonPizza.Checked)
-            {
-               
-                cmbTamanhoPizza.Visible = true;
-               
-                CarregarTamanhosPizza();
-            }
-            else
-            {
-             // se não for marcado não exibira o campo
-                cmbTamanhoPizza.Visible = false;
-            }
-
             ItemPedido itempedido = new(int.Parse(txtNumeroPedido.Text)
-             ,Produto.ObterPorId(int.Parse(txtCodBarras.Text))
-             ,double.Parse(txtQuantidade.Text)
-             ,double.Parse(txtValorUnit.Text)
+             , Produto.ObterPorId(int.Parse(txtCodProduto.Text))
+             , double.Parse(txtQuantidade.Text)
+             , double.Parse(txtValorUnit.Text)
              , TamanhoPizza.ObterPorId(Convert.ToInt32(cmbTamanhoPizza.SelectedValue))
+             , radioButtonMeia.Checked
+
+
 
 
              );
@@ -166,22 +189,96 @@ namespace TudoAcabaEmPizza
             // limpar o datagrid 
 
             // limpar os campos
-            txtCodBarras.Clear();
-            txtDescricao.Clear();
+            txtCodProduto.Clear();
+            txtRotulo.Clear();
             txtQuantidade.Text = "1";
-            txtCodBarras.Clear();
+            txtCodProduto.Clear();
             txtValorUnit.Clear();
-            txtCodBarras.Focus();
+            txtCodProduto.Focus();
             // carrega grid
 
         }
 
         private void CarregarTamanhosPizza()
         {
-            var tamanhoPizzas = TamanhoPizza.ObterLista(); 
-            cmbTamanhoPizza.DataSource = tamanhoPizzas; 
-            cmbTamanhoPizza.DisplayMember = "descricao"; 
-            cmbTamanhoPizza.ValueMember = "id"; 
+            var tamanhoPizzas = TamanhoPizza.ObterLista();
+            cmbTamanhoPizza.DataSource = tamanhoPizzas;
+            cmbTamanhoPizza.DisplayMember = "descricao";
+            cmbTamanhoPizza.ValueMember = "id";
+        }
+
+        private void txtBuscaProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBuscaProduto.Text.Length > 0)
+            {
+                var produto = Produto.ObterLista(txtBuscaProduto.Text);
+                dgvProdutos.Rows.Clear();
+                int count = 0;
+                foreach (var produtos in produto)
+                {
+                    dgvProdutos.Rows.Add();
+                    dgvProdutos.Rows[count].Cells[0].Value = produtos.Id;
+                    dgvProdutos.Rows[count].Cells[1].Value = produtos.Rotulo;
+                    dgvProdutos.Rows[count].Cells[2].Value = produtos.Descricao;
+                    dgvProdutos.Rows[count].Cells[3].Value = produtos.ValorUnit;
+                    dgvProdutos.Rows[count].Cells[4].Value = produtos.CodBarras;
+                    dgvProdutos.Rows[count].Cells[5].Value = produtos.NomeImagem;
+                    dgvProdutos.Rows[count].Cells[6].Value = produtos.CategoriaId.Descricao;
+                    count++;
+                }
+            }
+            else
+            {
+                FrmPedido_Load(sender, e);
+            }
+        }
+        Produto produto = new();
+        private void txtCodProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCodProduto.Text.Length > 0)
+            {
+                produto = Produto.ObterPorId(int.Parse(txtCodProduto.Text));
+                if (produto.Id > 0)
+                {
+                    txtRotulo.Text = produto.Rotulo;
+                    txtValorUnit.Text = produto.ValorUnit.ToString();
+
+
+                }
+            }
+        }
+
+        private void radioButtonPizza_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonPizza.Checked)
+            {
+                cmbTamanhoPizza.Enabled = true;
+                TamanhoDePizza();
+            }
+            else
+            {
+                cmbTamanhoPizza.Enabled = false;
+            }
+        }
+
+        private void cmbTamanhoPizza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonMeia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMeia.Checked)
+            {
+                txtSaborDois.Enabled = true;
+                
+
+            }
+            else
+            {
+                txtSaborDois.Enabled = false;
+            }
         }
     }
 }
+

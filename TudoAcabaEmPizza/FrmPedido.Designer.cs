@@ -52,6 +52,8 @@
             clnQuantidade = new DataGridViewTextBoxColumn();
             btnAbrirPedido = new Button();
             gbProduto = new GroupBox();
+            txtSaborDois = new TextBox();
+            radioButtonMeia = new CheckBox();
             radioButtonPizza = new CheckBox();
             cmbTamanhoPizza = new ComboBox();
             btnInserirProduto = new Button();
@@ -61,9 +63,10 @@
             txtQuantidade = new TextBox();
             txtValorUnit = new TextBox();
             label6 = new Label();
-            txtDescricao = new TextBox();
+            txtRotulo = new TextBox();
+            label16 = new Label();
             label15 = new Label();
-            txtCodBarras = new TextBox();
+            txtCodProduto = new TextBox();
             gbCliente = new GroupBox();
             label14 = new Label();
             label13 = new Label();
@@ -73,16 +76,28 @@
             label2 = new Label();
             txtVendedor = new TextBox();
             txtNumeroPedido = new TextBox();
+            gbBuscaProduto = new GroupBox();
+            txtBuscaProduto = new TextBox();
+            dgvProdutos = new DataGridView();
+            clnId = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnDescricaoproduto = new DataGridViewTextBoxColumn();
+            clnValorProduto = new DataGridViewTextBoxColumn();
+            clnCodBarrasProduto = new DataGridViewTextBoxColumn();
+            clnImagem = new DataGridViewTextBoxColumn();
+            clnCategoria = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedido).BeginInit();
             gbProduto.SuspendLayout();
             gbCliente.SuspendLayout();
+            gbBuscaProduto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(306, 537);
+            label4.Location = new Point(307, 573);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(0, 21);
@@ -126,13 +141,14 @@
             groupBox1.Controls.Add(txtNumeroPedido);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(gbBuscaProduto);
             groupBox1.ForeColor = Color.ForestGreen;
             groupBox1.Location = new Point(50, 22);
             groupBox1.Margin = new Padding(2, 3, 2, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2, 3, 2, 3);
             groupBox1.RightToLeft = RightToLeft.No;
-            groupBox1.Size = new Size(1083, 811);
+            groupBox1.Size = new Size(1083, 847);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
@@ -140,7 +156,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(122, 497);
+            cmbStatus.Location = new Point(121, 603);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(160, 29);
             cmbStatus.TabIndex = 22;
@@ -149,7 +165,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label12.Location = new Point(850, 642);
+            label12.Location = new Point(851, 718);
             label12.Name = "label12";
             label12.Size = new Size(48, 21);
             label12.TabIndex = 18;
@@ -160,7 +176,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(295, 499);
+            label9.Location = new Point(294, 605);
             label9.Name = "label9";
             label9.Size = new Size(104, 15);
             label9.TabIndex = 18;
@@ -171,7 +187,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label11.Location = new Point(850, 586);
+            label11.Location = new Point(851, 690);
             label11.Name = "label11";
             label11.Size = new Size(82, 21);
             label11.TabIndex = 18;
@@ -181,7 +197,7 @@
             // cmbDesconto
             // 
             cmbDesconto.FormattingEnabled = true;
-            cmbDesconto.Location = new Point(405, 491);
+            cmbDesconto.Location = new Point(403, 603);
             cmbDesconto.Name = "cmbDesconto";
             cmbDesconto.Size = new Size(215, 29);
             cmbDesconto.TabIndex = 17;
@@ -190,7 +206,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label10.Location = new Point(850, 513);
+            label10.Location = new Point(850, 662);
             label10.Name = "label10";
             label10.Size = new Size(83, 21);
             label10.TabIndex = 18;
@@ -199,28 +215,31 @@
             // 
             // txtSubTotal
             // 
-            txtSubTotal.Location = new Point(850, 537);
+            txtSubTotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSubTotal.Location = new Point(939, 661);
             txtSubTotal.Name = "txtSubTotal";
-            txtSubTotal.Size = new Size(190, 29);
+            txtSubTotal.Size = new Size(139, 22);
             txtSubTotal.TabIndex = 21;
             // 
             // txtDesconto
             // 
-            txtDesconto.Location = new Point(850, 610);
+            txtDesconto.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtDesconto.Location = new Point(939, 689);
             txtDesconto.Name = "txtDesconto";
-            txtDesconto.Size = new Size(190, 29);
+            txtDesconto.Size = new Size(139, 22);
             txtDesconto.TabIndex = 21;
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(850, 666);
+            txtTotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotal.Location = new Point(939, 721);
             txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(190, 29);
+            txtTotal.Size = new Size(139, 22);
             txtTotal.TabIndex = 21;
             // 
             // btnExcluirItem
             // 
-            btnExcluirItem.Location = new Point(850, 701);
+            btnExcluirItem.Location = new Point(851, 749);
             btnExcluirItem.Name = "btnExcluirItem";
             btnExcluirItem.Size = new Size(131, 43);
             btnExcluirItem.TabIndex = 20;
@@ -229,7 +248,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(850, 750);
+            button3.Location = new Point(851, 798);
             button3.Name = "button3";
             button3.Size = new Size(215, 43);
             button3.TabIndex = 19;
@@ -240,7 +259,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(16, 505);
+            label5.Location = new Point(15, 611);
             label5.Name = "label5";
             label5.Size = new Size(100, 15);
             label5.TabIndex = 9;
@@ -250,10 +269,10 @@
             // 
             dgvPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPedido.Columns.AddRange(new DataGridViewColumn[] { clnCod, clnDescricao, clnDesconto, clnValorItem, clnValorUnit, clnQuantidade });
-            dgvPedido.Location = new Point(14, 532);
+            dgvPedido.Location = new Point(15, 638);
             dgvPedido.Name = "dgvPedido";
             dgvPedido.RowHeadersVisible = false;
-            dgvPedido.Size = new Size(830, 273);
+            dgvPedido.Size = new Size(830, 203);
             dgvPedido.TabIndex = 18;
             // 
             // clnCod
@@ -304,7 +323,7 @@
             // 
             // btnAbrirPedido
             // 
-            btnAbrirPedido.Location = new Point(887, 245);
+            btnAbrirPedido.Location = new Point(902, 158);
             btnAbrirPedido.Name = "btnAbrirPedido";
             btnAbrirPedido.Size = new Size(139, 44);
             btnAbrirPedido.TabIndex = 17;
@@ -314,6 +333,8 @@
             // 
             // gbProduto
             // 
+            gbProduto.Controls.Add(txtSaborDois);
+            gbProduto.Controls.Add(radioButtonMeia);
             gbProduto.Controls.Add(radioButtonPizza);
             gbProduto.Controls.Add(cmbTamanhoPizza);
             gbProduto.Controls.Add(btnInserirProduto);
@@ -323,33 +344,60 @@
             gbProduto.Controls.Add(txtQuantidade);
             gbProduto.Controls.Add(txtValorUnit);
             gbProduto.Controls.Add(label6);
-            gbProduto.Controls.Add(txtDescricao);
+            gbProduto.Controls.Add(txtRotulo);
+            gbProduto.Controls.Add(label16);
             gbProduto.Controls.Add(label15);
-            gbProduto.Controls.Add(txtCodBarras);
-            gbProduto.Location = new Point(15, 327);
+            gbProduto.Controls.Add(txtCodProduto);
+            gbProduto.Enabled = false;
+            gbProduto.Location = new Point(17, 442);
             gbProduto.Name = "gbProduto";
             gbProduto.Size = new Size(1011, 152);
             gbProduto.TabIndex = 11;
             gbProduto.TabStop = false;
             gbProduto.Text = "Produto";
             // 
+            // txtSaborDois
+            // 
+            txtSaborDois.Location = new Point(504, 105);
+            txtSaborDois.Name = "txtSaborDois";
+            txtSaborDois.PlaceholderText = "Indique qual será o sabor dois";
+            txtSaborDois.Size = new Size(295, 29);
+            txtSaborDois.TabIndex = 22;
+            // 
+            // radioButtonMeia
+            // 
+            radioButtonMeia.AutoSize = true;
+            radioButtonMeia.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButtonMeia.Location = new Point(290, 107);
+            radioButtonMeia.Name = "radioButtonMeia";
+            radioButtonMeia.Size = new Size(105, 24);
+            radioButtonMeia.TabIndex = 21;
+            radioButtonMeia.Text = "Pizza  Meia";
+            radioButtonMeia.UseVisualStyleBackColor = true;
+            radioButtonMeia.CheckedChanged += radioButtonMeia_CheckedChanged;
+            // 
             // radioButtonPizza
             // 
             radioButtonPizza.AutoSize = true;
+            radioButtonPizza.Checked = true;
+            radioButtonPizza.CheckState = CheckState.Checked;
+            radioButtonPizza.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioButtonPizza.Location = new Point(17, 29);
             radioButtonPizza.Name = "radioButtonPizza";
-            radioButtonPizza.Size = new Size(69, 25);
+            radioButtonPizza.Size = new Size(63, 24);
             radioButtonPizza.TabIndex = 20;
             radioButtonPizza.Text = "Pizza";
             radioButtonPizza.UseVisualStyleBackColor = true;
+            radioButtonPizza.CheckedChanged += radioButtonPizza_CheckedChanged;
             // 
             // cmbTamanhoPizza
             // 
             cmbTamanhoPizza.FormattingEnabled = true;
-            cmbTamanhoPizza.Location = new Point(359, 105);
+            cmbTamanhoPizza.Location = new Point(14, 105);
             cmbTamanhoPizza.Name = "cmbTamanhoPizza";
-            cmbTamanhoPizza.Size = new Size(263, 29);
+            cmbTamanhoPizza.Size = new Size(172, 29);
             cmbTamanhoPizza.TabIndex = 19;
+            cmbTamanhoPizza.SelectedIndexChanged += cmbTamanhoPizza_SelectedIndexChanged;
             // 
             // btnInserirProduto
             // 
@@ -365,7 +413,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label8.Location = new Point(359, 82);
+            label8.Location = new Point(14, 82);
             label8.Name = "label8";
             label8.Size = new Size(104, 15);
             label8.TabIndex = 14;
@@ -375,7 +423,7 @@
             // 
             Quantidade.AutoSize = true;
             Quantidade.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Quantidade.Location = new Point(538, 23);
+            Quantidade.Location = new Point(739, 17);
             Quantidade.Name = "Quantidade";
             Quantidade.Size = new Size(71, 15);
             Quantidade.TabIndex = 13;
@@ -385,7 +433,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label7.Location = new Point(390, 17);
+            label7.Location = new Point(610, 25);
             label7.Name = "label7";
             label7.Size = new Size(81, 15);
             label7.TabIndex = 13;
@@ -393,14 +441,14 @@
             // 
             // txtQuantidade
             // 
-            txtQuantidade.Location = new Point(515, 45);
+            txtQuantidade.Location = new Point(724, 45);
             txtQuantidade.Name = "txtQuantidade";
             txtQuantidade.Size = new Size(121, 29);
             txtQuantidade.TabIndex = 12;
             // 
             // txtValorUnit
             // 
-            txtValorUnit.Location = new Point(372, 45);
+            txtValorUnit.Location = new Point(597, 45);
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(121, 29);
             txtValorUnit.TabIndex = 12;
@@ -409,18 +457,28 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(96, 87);
+            label6.Location = new Point(351, 25);
             label6.Name = "label6";
-            label6.Size = new Size(61, 15);
+            label6.Size = new Size(44, 15);
             label6.TabIndex = 11;
-            label6.Text = "Descrição";
+            label6.Text = "Rótulo";
             // 
-            // txtDescricao
+            // txtRotulo
             // 
-            txtDescricao.Location = new Point(96, 105);
-            txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(246, 29);
-            txtDescricao.TabIndex = 10;
+            txtRotulo.Location = new Point(348, 45);
+            txtRotulo.Name = "txtRotulo";
+            txtRotulo.Size = new Size(246, 29);
+            txtRotulo.TabIndex = 10;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Location = new Point(414, 108);
+            label16.Name = "label16";
+            label16.Size = new Size(84, 20);
+            label16.TabIndex = 9;
+            label16.Text = "Sabor Dois";
             // 
             // label15
             // 
@@ -428,16 +486,17 @@
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label15.Location = new Point(167, 17);
             label15.Name = "label15";
-            label15.Size = new Size(100, 15);
+            label15.Size = new Size(110, 15);
             label15.TabIndex = 9;
-            label15.Text = "Código de Barras";
+            label15.Text = "Código do produto";
             // 
-            // txtCodBarras
+            // txtCodProduto
             // 
-            txtCodBarras.Location = new Point(96, 45);
-            txtCodBarras.Name = "txtCodBarras";
-            txtCodBarras.Size = new Size(246, 29);
-            txtCodBarras.TabIndex = 0;
+            txtCodProduto.Location = new Point(96, 45);
+            txtCodProduto.Name = "txtCodProduto";
+            txtCodProduto.Size = new Size(246, 29);
+            txtCodProduto.TabIndex = 0;
+            txtCodProduto.TextChanged += txtCodProduto_TextChanged;
             // 
             // gbCliente
             // 
@@ -445,7 +504,7 @@
             gbCliente.Controls.Add(label13);
             gbCliente.Controls.Add(txtClienteCPF);
             gbCliente.Controls.Add(txtClienteId);
-            gbCliente.Location = new Point(15, 200);
+            gbCliente.Location = new Point(31, 119);
             gbCliente.Name = "gbCliente";
             gbCliente.Size = new Size(846, 109);
             gbCliente.TabIndex = 10;
@@ -490,7 +549,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(871, 35);
+            label3.Location = new Point(804, 35);
             label3.Name = "label3";
             label3.Size = new Size(73, 21);
             label3.TabIndex = 9;
@@ -499,7 +558,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(15, 133);
+            label2.Location = new Point(31, 82);
             label2.Name = "label2";
             label2.Size = new Size(84, 21);
             label2.TabIndex = 8;
@@ -507,7 +566,7 @@
             // 
             // txtVendedor
             // 
-            txtVendedor.Location = new Point(122, 130);
+            txtVendedor.Location = new Point(138, 79);
             txtVendedor.Name = "txtVendedor";
             txtVendedor.Size = new Size(739, 29);
             txtVendedor.TabIndex = 7;
@@ -517,7 +576,7 @@
             // 
             txtNumeroPedido.Font = new Font("Segoe UI", 24F);
             txtNumeroPedido.ForeColor = Color.FromArgb(0, 192, 0);
-            txtNumeroPedido.Location = new Point(871, 59);
+            txtNumeroPedido.Location = new Point(897, 60);
             txtNumeroPedido.Name = "txtNumeroPedido";
             txtNumeroPedido.ReadOnly = true;
             txtNumeroPedido.RightToLeft = RightToLeft.Yes;
@@ -525,12 +584,98 @@
             txtNumeroPedido.TabIndex = 6;
             txtNumeroPedido.Text = "0";
             // 
+            // gbBuscaProduto
+            // 
+            gbBuscaProduto.Controls.Add(txtBuscaProduto);
+            gbBuscaProduto.Controls.Add(dgvProdutos);
+            gbBuscaProduto.Enabled = false;
+            gbBuscaProduto.Location = new Point(15, 234);
+            gbBuscaProduto.Name = "gbBuscaProduto";
+            gbBuscaProduto.Size = new Size(1036, 202);
+            gbBuscaProduto.TabIndex = 24;
+            gbBuscaProduto.TabStop = false;
+            gbBuscaProduto.Text = "Busca de Produto";
+            // 
+            // txtBuscaProduto
+            // 
+            txtBuscaProduto.Location = new Point(6, 26);
+            txtBuscaProduto.Name = "txtBuscaProduto";
+            txtBuscaProduto.PlaceholderText = "Digite aqui para buscar os produtos";
+            txtBuscaProduto.Size = new Size(1010, 29);
+            txtBuscaProduto.TabIndex = 24;
+            txtBuscaProduto.TextChanged += txtBuscaProduto_TextChanged;
+            // 
+            // dgvProdutos
+            // 
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnDescricaoproduto, clnValorProduto, clnCodBarrasProduto, clnImagem, clnCategoria });
+            dgvProdutos.Location = new Point(6, 61);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.RowHeadersVisible = false;
+            dgvProdutos.Size = new Size(1010, 135);
+            dgvProdutos.TabIndex = 23;
+            // 
+            // clnId
+            // 
+            clnId.Frozen = true;
+            clnId.HeaderText = "ID";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            clnId.Width = 40;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome do Produto";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 180;
+            // 
+            // clnDescricaoproduto
+            // 
+            clnDescricaoproduto.Frozen = true;
+            clnDescricaoproduto.HeaderText = "Descrição do Produto";
+            clnDescricaoproduto.Name = "clnDescricaoproduto";
+            clnDescricaoproduto.ReadOnly = true;
+            clnDescricaoproduto.Width = 200;
+            // 
+            // clnValorProduto
+            // 
+            clnValorProduto.Frozen = true;
+            clnValorProduto.HeaderText = "Valor Unit";
+            clnValorProduto.Name = "clnValorProduto";
+            clnValorProduto.ReadOnly = true;
+            clnValorProduto.Width = 115;
+            // 
+            // clnCodBarrasProduto
+            // 
+            clnCodBarrasProduto.Frozen = true;
+            clnCodBarrasProduto.HeaderText = "Código de Barras do Produto";
+            clnCodBarrasProduto.Name = "clnCodBarrasProduto";
+            clnCodBarrasProduto.ReadOnly = true;
+            clnCodBarrasProduto.Width = 220;
+            // 
+            // clnImagem
+            // 
+            clnImagem.Frozen = true;
+            clnImagem.HeaderText = "Imagem";
+            clnImagem.Name = "clnImagem";
+            clnImagem.ReadOnly = true;
+            clnImagem.Width = 153;
+            // 
+            // clnCategoria
+            // 
+            clnCategoria.Frozen = true;
+            clnCategoria.HeaderText = "Categoria";
+            clnCategoria.Name = "clnCategoria";
+            clnCategoria.ReadOnly = true;
+            // 
             // FrmPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1144, 845);
+            ClientSize = new Size(1132, 881);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.HotTrack;
@@ -545,6 +690,9 @@
             gbProduto.PerformLayout();
             gbCliente.ResumeLayout(false);
             gbCliente.PerformLayout();
+            gbBuscaProduto.ResumeLayout(false);
+            gbBuscaProduto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
         }
 
@@ -561,9 +709,9 @@
         private GroupBox gbProduto;
         private TextBox txtValorUnit;
         private Label label6;
-        private TextBox txtDescricao;
+        private TextBox txtRotulo;
         private Label label5;
-        private TextBox txtCodBarras;
+        private TextBox txtCodProduto;
         private TextBox txtClienteCPF;
         private TextBox txtClienteId;
         private Label label7;
@@ -594,6 +742,19 @@
         private ComboBox cmbTamanhoPizza;
         private Label Quantidade;
         private TextBox txtQuantidade;
+        private DataGridView dgvProdutos;
+        private DataGridViewTextBoxColumn clnId;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnDescricaoproduto;
+        private DataGridViewTextBoxColumn clnValorProduto;
+        private DataGridViewTextBoxColumn clnCodBarrasProduto;
+        private DataGridViewTextBoxColumn clnImagem;
+        private DataGridViewTextBoxColumn clnCategoria;
+        private TextBox txtSaborDois;
+        private CheckBox radioButtonMeia;
+        private Label label16;
+        private GroupBox gbBuscaProduto;
+        private TextBox txtBuscaProduto;
         private CheckBox radioButtonPizza;
     }
 }

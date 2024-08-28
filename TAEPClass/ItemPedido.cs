@@ -41,13 +41,14 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
         }
 
-        public ItemPedido (int pedidoId, Produto produtoId, double valorUnit, double quantidade, TamanhoPizza tamanhoPizzaId)
+        public ItemPedido (int pedidoId, Produto produtoId, double valorUnit, double quantidade, TamanhoPizza tamanhoPizzaId, bool pizzaMeia)
         {
             PedidoId = pedidoId;
             ProdutoId = produtoId;
             ValorUnit = valorUnit;
             Quantidade = quantidade;
             TamanhoPizzaId = tamanhoPizzaId;
+            PizzaMeia = pizzaMeia;
 
         }
 
