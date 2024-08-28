@@ -76,26 +76,65 @@ namespace TAEPClass
         }
         public static Cliente ObterPorId(int id)
         {
-            Cliente cliente = new();
-            var cmd = Banco.Abrir();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from clientes where id = {id}";
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            Cliente cliente = null;
+            using (var cmd = Banco.Abrir())
             {
-                cliente = new(
-                    dr.GetInt32(0),
-                    Usuario.ObterPorId(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
-                    Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
-                    Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0)))
-                  );
-                  
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM clientes WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        try
+                        {
+                            // Verifique se as colunas realmente contêm dados válidos e não são nulas
+                            if (dr.IsDBNull(0) || dr.IsDBNull(1) || dr.IsDBNull(2) || dr.IsDBNull(3))
+                                throw new Exception("Dados incompletos na linha do resultado.");
+
+                            int clienteId = dr.GetInt32(0);
+                            int usuarioId = dr.GetInt32(1);
+                            DateTime dataCadastro = dr.GetDateTime(2);
+                            string nome = dr.GetString(3);
+
+                            // Crie o cliente com os dados recuperados
+                            cliente = new Cliente(
+                                clienteId,
+                                Usuario.ObterPorId(usuarioId),
+                                dataCadastro,
+                                nome,
+                                Endereco.ObterListaPorCliente(clienteId),
+                                Telefone.ObterListaPorCliente(clienteId)
+                            );
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            // Trate erros de conversão de tipos
+                            Console.WriteLine($"Erro de conversão de dados: {ex.Message}");
+                        }
+                        catch (OverflowException ex)
+                        {
+                            // Trate erros de estouro
+                            Console.WriteLine($"Erro de estouro: {ex.Message}");
+                        }
+                        catch (Exception ex)
+                        {
+                            // Trate outros erros
+                            Console.WriteLine($"Erro inesperado: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nenhum dado encontrado para o ID especificado.");
+                    }
+                }
             }
 
             return cliente;
         }
+
+
         public static List<Cliente> ObterLista()
         {
             List<Cliente> clientes = new();

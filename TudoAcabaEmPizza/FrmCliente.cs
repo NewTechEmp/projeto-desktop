@@ -162,7 +162,7 @@ namespace TudoAcabaEmPizza
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            usuario.Editar()
+            
         }
         private void btnObterUsuarioPorId_Click(object sender, EventArgs e)
         {

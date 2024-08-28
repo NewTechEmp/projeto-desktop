@@ -49,6 +49,28 @@ namespace TudoAcabaEmPizza
         {
 
         }
+        private void CarregarAdicionais()
+        {
+            var adicionais = Adicional.ObterLista();
+            cmbAdicionais.DataSource = adicionais;
+            cmbAdicionais.DisplayMember = "descricao";
+            cmbAdicionais.ValueMember = "id";
+
+
+
+        }
+
+
+        private void CarregarTipoBorda()
+        {
+            var tipoBorda = TipoBorda.ObterLista();
+            cmbTipoBorda.DataSource = tipoBorda;
+            cmbTipoBorda.DisplayMember = "descricao";
+            cmbTipoBorda.ValueMember = "id";
+
+
+
+        }
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
@@ -59,6 +81,8 @@ namespace TudoAcabaEmPizza
             CarregaGridProduto();
             TamanhoDePizza();
             CarregaGridItemPedido();
+            CarregarAdicionais();
+            CarregarTipoBorda();
 
         }
         private void CarregaGridProduto()
@@ -200,7 +224,7 @@ namespace TudoAcabaEmPizza
              );
             itempedido.Inserir();
 
-    }
+        }
 
         private void CarregarTamanhosPizza()
         {
@@ -274,14 +298,14 @@ namespace TudoAcabaEmPizza
             if (radioButtonMeia.Checked)
             {
                 txtCodSaborDois.Enabled = true;
-               txtDescricaoSaborDois.Enabled = true;
+                txtDescricaoSaborDois.Enabled = true;
 
 
-           }
+            }
             else
             {
                 txtCodSaborDois.Enabled = false;
-               txtDescricaoSaborDois.Enabled = false;
+                txtDescricaoSaborDois.Enabled = false;
             }
         }
 
@@ -293,10 +317,35 @@ namespace TudoAcabaEmPizza
                 if (produto.Id > 0)
                 {
                     txtDescricaoSaborDois.Text = produto.Rotulo;
-            
+
 
 
                 }
+            }
+        }
+
+        private void txtNumeroPedido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbAdicionais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAdicionais.SelectedItem != null)
+            {
+
+                var selecionado = (Adicional)cmbAdicionais.SelectedItem;
+                txtValorAdicional.Text = selecionado.Preco.ToString("F2"); // Formata como double com 2 casas decimais
+            }
+        }
+
+        private void cmbTipoBorda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoBorda.SelectedItem != null)
+            {
+
+                var escolhido = (TipoBorda)cmbTipoBorda.SelectedItem;
+                txtValorTipoBorda.Text = escolhido.Valor.ToString("F2"); // Formata como double com 2 casas decimais
             }
         }
     }

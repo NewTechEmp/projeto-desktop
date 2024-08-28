@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TAEPClass
 {
-    internal class Adicional
+    public class Adicional
     {
         public int Id { get; set; }
         public double Preco { get; set; }
@@ -64,7 +64,7 @@ namespace TAEPClass
             List<Adicional> adicional = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from adicional";
+            cmd.CommandText = "select * from adicionais";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

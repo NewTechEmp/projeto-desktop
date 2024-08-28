@@ -40,7 +40,7 @@ namespace TudoAcabaEmPizza
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            TipoBorda tipoBorda = new(txtDescricao.Text, double.Parse(txtPreco.Text));
+            TipoBorda tipoBorda = new(double.Parse(txtPreco.Text), txtDescricao.Text );
             tipoBorda.Inserir();
             FrmTipoBorda_Load(sender,e);
            
@@ -61,8 +61,8 @@ namespace TudoAcabaEmPizza
                 if (txtId.Text.Length > 0)
                 {
                     TipoBorda tipoBorda = TipoBorda.ObterPorId(int.Parse(txtId.Text));
-                    txtDescricao.Text = tipoBorda.Descricao;
                     txtPreco.Text = Convert.ToString(tipoBorda.Valor);
+                    txtDescricao.Text = tipoBorda.Descricao;
                     txtId.ReadOnly = true;
                     btnObterPorId.Text = "&Consultar";
                     btnEditar.Enabled = true;
@@ -75,8 +75,9 @@ namespace TudoAcabaEmPizza
         {
             TipoBorda tipoBorda = new(
                    int.Parse(txtId.Text)
-                   , txtDescricao.Text
                    , double.Parse(txtPreco.Text)
+                   , txtDescricao.Text
+                   
                    );
             if (tipoBorda.Editar(tipoBorda.Id))
             {

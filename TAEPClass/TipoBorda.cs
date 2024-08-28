@@ -11,31 +11,32 @@ namespace TAEPClass
     public class TipoBorda
     {
         public int Id { get; set; }
-        public string Descricao { get; set; }
         public double Valor { get; set; }
+        public string Descricao { get; set; }
         public bool Ativo { get; set; }
 
         // construtores
         public TipoBorda() { }
-        public TipoBorda(string descricao, double valor)
+        public TipoBorda(double valor, string descricao )
         {
             Descricao = descricao;
             Valor = valor;
            
         }
-        public TipoBorda(int id, string descricao, double valor, bool ativo)
+        public TipoBorda(int id, double valor, string descricao, bool ativo)
         {
             Id = id;
-            Descricao = descricao;
             Valor = valor;
+            Descricao = descricao;
             Ativo = ativo;
         }
 
-        public TipoBorda(int id, string descricao, double valor)
+        public TipoBorda(int id,double valor, string descricao)
         {
             Id = id;
-            Descricao = descricao;
             Valor = valor;
+            Descricao = descricao;
+           
         }
 
         // métodos da classe
@@ -76,7 +77,7 @@ namespace TAEPClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                tipoBorda.Add(new(dr.GetInt32(0), dr.GetString(1), dr.GetDouble(2), dr.GetBoolean(3)));
+                tipoBorda.Add(new(dr.GetInt32(0), dr.GetDouble(1), dr.GetString(2),  dr.GetBoolean(3)));
             }
             return tipoBorda;
         }
@@ -90,8 +91,8 @@ namespace TAEPClass
             while (dr.Read())
             {
                 tipoBorda.Id = dr.GetInt32(0);
-                tipoBorda.Descricao = dr.GetString(1);
-                tipoBorda.Valor = dr.GetDouble(2);
+                tipoBorda.Valor = dr.GetDouble(1);
+                tipoBorda.Descricao = dr.GetString(2);
                 tipoBorda.Ativo = dr.GetBoolean(3);
             }
             return tipoBorda;
