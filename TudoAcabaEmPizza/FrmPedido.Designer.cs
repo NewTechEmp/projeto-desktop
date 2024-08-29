@@ -32,11 +32,11 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             gbTipoBorda = new GroupBox();
-            button2 = new Button();
+            btnInserirTipoBorda = new Button();
             txtValorTipoBorda = new TextBox();
             cmbTipoBorda = new ComboBox();
             gbAdicionais = new GroupBox();
-            button1 = new Button();
+            btnInserirAdicional = new Button();
             txtValorAdicional = new TextBox();
             cmbAdicionais = new ComboBox();
             cmbStatus = new ComboBox();
@@ -44,8 +44,6 @@
             label9 = new Label();
             label11 = new Label();
             cmbDesconto = new ComboBox();
-            label10 = new Label();
-            txtSubTotal = new TextBox();
             txtDesconto = new TextBox();
             txtTotal = new TextBox();
             btnExcluirItem = new Button();
@@ -85,6 +83,7 @@
             label3 = new Label();
             label2 = new Label();
             txtVendedor = new TextBox();
+            txtNumeroItemPedido = new TextBox();
             txtNumeroPedido = new TextBox();
             gbBuscaProduto = new GroupBox();
             txtBuscaProduto = new TextBox();
@@ -118,13 +117,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Showcard Gothic", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.ForestGreen;
-            label1.Location = new Point(426, 14);
+            label1.Location = new Point(0, 14);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.RightToLeft = RightToLeft.No;
-            label1.Size = new Size(174, 46);
+            label1.Size = new Size(130, 33);
             label1.TabIndex = 0;
             label1.Text = "Pedido!";
             label1.Click += label1_Click;
@@ -138,8 +137,6 @@
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(cmbDesconto);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(txtSubTotal);
             groupBox1.Controls.Add(txtDesconto);
             groupBox1.Controls.Add(txtTotal);
             groupBox1.Controls.Add(btnExcluirItem);
@@ -152,6 +149,7 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtVendedor);
+            groupBox1.Controls.Add(txtNumeroItemPedido);
             groupBox1.Controls.Add(txtNumeroPedido);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label4);
@@ -169,28 +167,30 @@
             // 
             // gbTipoBorda
             // 
-            gbTipoBorda.Controls.Add(button2);
+            gbTipoBorda.Controls.Add(btnInserirTipoBorda);
             gbTipoBorda.Controls.Add(txtValorTipoBorda);
             gbTipoBorda.Controls.Add(cmbTipoBorda);
-            gbTipoBorda.Location = new Point(601, 567);
+            gbTipoBorda.Enabled = false;
+            gbTipoBorda.Location = new Point(602, 557);
             gbTipoBorda.Name = "gbTipoBorda";
-            gbTipoBorda.Size = new Size(570, 100);
+            gbTipoBorda.Size = new Size(570, 69);
             gbTipoBorda.TabIndex = 26;
             gbTipoBorda.TabStop = false;
             gbTipoBorda.Text = "Tipo de Borda";
             // 
-            // button2
+            // btnInserirTipoBorda
             // 
-            button2.Location = new Point(453, 37);
-            button2.Name = "button2";
-            button2.Size = new Size(87, 33);
-            button2.TabIndex = 2;
-            button2.Text = "&Inserir";
-            button2.UseVisualStyleBackColor = true;
+            btnInserirTipoBorda.Location = new Point(463, 25);
+            btnInserirTipoBorda.Name = "btnInserirTipoBorda";
+            btnInserirTipoBorda.Size = new Size(87, 33);
+            btnInserirTipoBorda.TabIndex = 2;
+            btnInserirTipoBorda.Text = "&Inserir";
+            btnInserirTipoBorda.UseVisualStyleBackColor = true;
+            btnInserirTipoBorda.Click += btnInserirTipoBorda_Click;
             // 
             // txtValorTipoBorda
             // 
-            txtValorTipoBorda.Location = new Point(262, 40);
+            txtValorTipoBorda.Location = new Point(260, 28);
             txtValorTipoBorda.Name = "txtValorTipoBorda";
             txtValorTipoBorda.Size = new Size(170, 29);
             txtValorTipoBorda.TabIndex = 1;
@@ -198,7 +198,7 @@
             // cmbTipoBorda
             // 
             cmbTipoBorda.FormattingEnabled = true;
-            cmbTipoBorda.Location = new Point(6, 40);
+            cmbTipoBorda.Location = new Point(0, 28);
             cmbTipoBorda.Name = "cmbTipoBorda";
             cmbTipoBorda.Size = new Size(200, 29);
             cmbTipoBorda.TabIndex = 0;
@@ -206,28 +206,30 @@
             // 
             // gbAdicionais
             // 
-            gbAdicionais.Controls.Add(button1);
+            gbAdicionais.Controls.Add(btnInserirAdicional);
             gbAdicionais.Controls.Add(txtValorAdicional);
             gbAdicionais.Controls.Add(cmbAdicionais);
-            gbAdicionais.Location = new Point(11, 567);
+            gbAdicionais.Enabled = false;
+            gbAdicionais.Location = new Point(5, 557);
             gbAdicionais.Name = "gbAdicionais";
-            gbAdicionais.Size = new Size(564, 100);
+            gbAdicionais.Size = new Size(564, 69);
             gbAdicionais.TabIndex = 25;
             gbAdicionais.TabStop = false;
             gbAdicionais.Text = "Adicionais";
             // 
-            // button1
+            // btnInserirAdicional
             // 
-            button1.Location = new Point(453, 37);
-            button1.Name = "button1";
-            button1.Size = new Size(87, 33);
-            button1.TabIndex = 2;
-            button1.Text = "&Inserir";
-            button1.UseVisualStyleBackColor = true;
+            btnInserirAdicional.Location = new Point(453, 28);
+            btnInserirAdicional.Name = "btnInserirAdicional";
+            btnInserirAdicional.Size = new Size(87, 33);
+            btnInserirAdicional.TabIndex = 2;
+            btnInserirAdicional.Text = "&Inserir";
+            btnInserirAdicional.UseVisualStyleBackColor = true;
+            btnInserirAdicional.Click += button1_Click_1;
             // 
             // txtValorAdicional
             // 
-            txtValorAdicional.Location = new Point(262, 40);
+            txtValorAdicional.Location = new Point(248, 28);
             txtValorAdicional.Name = "txtValorAdicional";
             txtValorAdicional.Size = new Size(170, 29);
             txtValorAdicional.TabIndex = 1;
@@ -235,7 +237,7 @@
             // cmbAdicionais
             // 
             cmbAdicionais.FormattingEnabled = true;
-            cmbAdicionais.Location = new Point(6, 40);
+            cmbAdicionais.Location = new Point(6, 28);
             cmbAdicionais.Name = "cmbAdicionais";
             cmbAdicionais.Size = new Size(200, 29);
             cmbAdicionais.TabIndex = 0;
@@ -244,7 +246,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(138, 677);
+            cmbStatus.Location = new Point(122, 632);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(160, 29);
             cmbStatus.TabIndex = 22;
@@ -264,7 +266,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label9.Location = new Point(339, 685);
+            label9.Location = new Point(299, 640);
             label9.Name = "label9";
             label9.Size = new Size(104, 15);
             label9.TabIndex = 18;
@@ -274,10 +276,10 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label11.Location = new Point(995, 712);
+            label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(977, 717);
             label11.Name = "label11";
-            label11.Size = new Size(82, 21);
+            label11.Size = new Size(75, 20);
             label11.TabIndex = 18;
             label11.Text = "Desconto";
             label11.Click += label9_Click;
@@ -285,36 +287,18 @@
             // cmbDesconto
             // 
             cmbDesconto.FormattingEnabled = true;
-            cmbDesconto.Location = new Point(449, 677);
+            cmbDesconto.Location = new Point(409, 632);
             cmbDesconto.Name = "cmbDesconto";
             cmbDesconto.Size = new Size(215, 29);
             cmbDesconto.TabIndex = 17;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label10.Location = new Point(994, 684);
-            label10.Name = "label10";
-            label10.Size = new Size(83, 21);
-            label10.TabIndex = 18;
-            label10.Text = "Sub-Total";
-            label10.Click += label9_Click;
-            // 
-            // txtSubTotal
-            // 
-            txtSubTotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSubTotal.Location = new Point(1083, 683);
-            txtSubTotal.Name = "txtSubTotal";
-            txtSubTotal.Size = new Size(133, 22);
-            txtSubTotal.TabIndex = 21;
+            cmbDesconto.SelectedIndexChanged += cmbDesconto_SelectedIndexChanged;
             // 
             // txtDesconto
             // 
-            txtDesconto.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtDesconto.Location = new Point(1083, 712);
+            txtDesconto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtDesconto.Location = new Point(1058, 713);
             txtDesconto.Name = "txtDesconto";
-            txtDesconto.Size = new Size(133, 22);
+            txtDesconto.Size = new Size(151, 29);
             txtDesconto.TabIndex = 21;
             // 
             // txtTotal
@@ -347,7 +331,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(32, 685);
+            label5.Location = new Point(16, 640);
             label5.Name = "label5";
             label5.Size = new Size(100, 15);
             label5.TabIndex = 9;
@@ -355,12 +339,13 @@
             // 
             // dgvItemPedido
             // 
+            dgvItemPedido.BackgroundColor = Color.Green;
             dgvItemPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvItemPedido.Columns.AddRange(new DataGridViewColumn[] { clnIdItemPedido, clnValorUnitItemPedido, clnQuantidadeItemPedido, clnValorItem, clnCodProdutoItemPedido, clnSaborDois });
-            dgvItemPedido.Location = new Point(16, 712);
+            dgvItemPedido.Location = new Point(5, 667);
             dgvItemPedido.Name = "dgvItemPedido";
             dgvItemPedido.RowHeadersVisible = false;
-            dgvItemPedido.Size = new Size(973, 156);
+            dgvItemPedido.Size = new Size(966, 202);
             dgvItemPedido.TabIndex = 18;
             // 
             // clnIdItemPedido
@@ -412,7 +397,7 @@
             // 
             // btnAbrirPedido
             // 
-            btnAbrirPedido.Location = new Point(1038, 154);
+            btnAbrirPedido.Location = new Point(1043, 129);
             btnAbrirPedido.Name = "btnAbrirPedido";
             btnAbrirPedido.Size = new Size(139, 44);
             btnAbrirPedido.TabIndex = 17;
@@ -440,7 +425,7 @@
             gbProduto.Controls.Add(label15);
             gbProduto.Controls.Add(txtCodProduto);
             gbProduto.Enabled = false;
-            gbProduto.Location = new Point(11, 419);
+            gbProduto.Location = new Point(5, 409);
             gbProduto.Name = "gbProduto";
             gbProduto.Size = new Size(1160, 142);
             gbProduto.TabIndex = 11;
@@ -614,7 +599,7 @@
             gbCliente.Controls.Add(label13);
             gbCliente.Controls.Add(txtClienteCPF);
             gbCliente.Controls.Add(txtClienteId);
-            gbCliente.Location = new Point(28, 89);
+            gbCliente.Location = new Point(32, 79);
             gbCliente.Name = "gbCliente";
             gbCliente.Size = new Size(1000, 109);
             gbCliente.TabIndex = 10;
@@ -659,7 +644,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1094, 25);
+            label3.Location = new Point(1094, 12);
             label3.Name = "label3";
             label3.Size = new Size(88, 21);
             label3.TabIndex = 9;
@@ -668,7 +653,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(236, 62);
+            label2.Location = new Point(249, 31);
             label2.Name = "label2";
             label2.Size = new Size(84, 21);
             label2.TabIndex = 8;
@@ -676,17 +661,29 @@
             // 
             // txtVendedor
             // 
-            txtVendedor.Location = new Point(342, 59);
+            txtVendedor.Location = new Point(339, 28);
             txtVendedor.Name = "txtVendedor";
             txtVendedor.Size = new Size(480, 29);
             txtVendedor.TabIndex = 7;
             txtVendedor.TextChanged += txtVendedor_TextChanged;
             // 
+            // txtNumeroItemPedido
+            // 
+            txtNumeroItemPedido.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNumeroItemPedido.ForeColor = Color.FromArgb(0, 192, 0);
+            txtNumeroItemPedido.Location = new Point(907, 22);
+            txtNumeroItemPedido.Name = "txtNumeroItemPedido";
+            txtNumeroItemPedido.RightToLeft = RightToLeft.Yes;
+            txtNumeroItemPedido.Size = new Size(94, 29);
+            txtNumeroItemPedido.TabIndex = 6;
+            txtNumeroItemPedido.Text = "0";
+            txtNumeroItemPedido.TextChanged += txtNumeroPedido_TextChanged;
+            // 
             // txtNumeroPedido
             // 
             txtNumeroPedido.Font = new Font("Segoe UI", 24F);
             txtNumeroPedido.ForeColor = Color.FromArgb(0, 192, 0);
-            txtNumeroPedido.Location = new Point(1047, 53);
+            txtNumeroPedido.Location = new Point(1047, 40);
             txtNumeroPedido.Name = "txtNumeroPedido";
             txtNumeroPedido.ReadOnly = true;
             txtNumeroPedido.RightToLeft = RightToLeft.Yes;
@@ -700,7 +697,7 @@
             gbBuscaProduto.Controls.Add(txtBuscaProduto);
             gbBuscaProduto.Controls.Add(dgvProdutos);
             gbBuscaProduto.Enabled = false;
-            gbBuscaProduto.Location = new Point(15, 204);
+            gbBuscaProduto.Location = new Point(5, 194);
             gbBuscaProduto.Name = "gbBuscaProduto";
             gbBuscaProduto.Size = new Size(1162, 209);
             gbBuscaProduto.TabIndex = 24;
@@ -838,12 +835,10 @@
         private Button button3;
         private Label label9;
         private ComboBox cmbDesconto;
-        private TextBox txtSubTotal;
         private TextBox txtDesconto;
         private TextBox txtTotal;
         private Label label12;
         private Label label11;
-        private Label label10;
         private Label label14;
         private Label label13;
         private ComboBox cmbStatus;
@@ -877,9 +872,10 @@
         private ComboBox cmbAdicionais;
         private TextBox txtValorAdicional;
         private GroupBox gbTipoBorda;
-        private Button button2;
+        private Button btnInserirTipoBorda;
         private TextBox txtValorTipoBorda;
         private ComboBox cmbTipoBorda;
-        private Button button1;
+        private Button btnInserirAdicional;
+        private TextBox txtNumeroItemPedido;
     }
 }

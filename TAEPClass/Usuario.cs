@@ -239,7 +239,7 @@ namespace TAEPClass
         public bool Editar(int id, string senhaConfirmar,string senha)
         {
             bool resultado = false;
-            if (senhaConfirmar == Senha)
+            if (senhaConfirmar == senha)
             {
                 using (var cmd = Banco.Abrir())
                 {

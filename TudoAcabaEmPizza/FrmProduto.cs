@@ -160,14 +160,15 @@ namespace TudoAcabaEmPizza
                 int numeroAleatorio = random.Next(100000, 999999); // Gera um número aleatório
                 int usuarioId = Program.Usuario.Id; // Obtém o ID do usuário
                 string usuarioNome = Program.Usuario.Nome.Replace(" ", "_"); // Obtém o nome do usuário
-                string usuarioEmail = Program.Usuario.Email.Replace("", "_"); // Obtém o e-mail do usuário
+                string usuarioEmail = Program.Usuario.Email.Replace("@", "_"); // Obtém o e-mail do usuário
+                string emailSemPonto = usuarioEmail.Replace(".", "_");
                 DateTime dataAtual = DateTime.Now; // Obtém a data e hora atual
                 string dataFormatada = dataAtual.ToString("yyyy_MM_dd__HH_mm_ss"); // Formata a data e hora
                 string nivelUsuario = Program.Usuario.Nivel.Descricao; // Obtém o nível do usuário
                 string enderecoIp = GetLocalIPAddress().Replace(".", "_"); // Obtém o IP local e substitui pontos por underlines
 
                 // Monta o novo nome para o arquivo com a mesma extensão do arquivo original
-                string novoNomeArquivo = $"{enderecoIp}-{usuarioId}-{usuarioNome}-{usuarioEmail}-{nivelUsuario}-{dataFormatada}-{numeroAleatorio}-{nomeBase}{extensaoArquivo}";
+                string novoNomeArquivo = $"{enderecoIp}-{usuarioId}-{usuarioNome}-{emailSemPonto}-{nivelUsuario}-{dataFormatada}-{numeroAleatorio}-{nomeBase}{extensaoArquivo}";
 
                 // Define o novo caminho completo com o novo nome
                 destinoCompleto = Path.Combine(pastaDestino, novoNomeArquivo);

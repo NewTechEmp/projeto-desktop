@@ -284,7 +284,7 @@ namespace TudoAcabaEmPizza
                     txtEmailUsuario.Text,
                     txtSenhaUsuario.Text
                 );
-                usuario.Editar();
+                
 
                 // Chama o método Atualizar para salvar as mudanças no banco de dados
                 

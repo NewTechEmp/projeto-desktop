@@ -32,6 +32,7 @@
             grbCliente = new GroupBox();
             tabControl1 = new TabControl();
             tdpUsuario = new TabPage();
+            txtIdBackUser = new TextBox();
             txtSenhaBack = new TextBox();
             txtNivelId = new TextBox();
             label5 = new Label();
@@ -102,7 +103,8 @@
             mskDdd = new MaskedTextBox();
             mskDdi = new MaskedTextBox();
             label17 = new Label();
-            txtIdBackUser = new TextBox();
+            txtConfSenha = new TextBox();
+            label3 = new Label();
             grbCliente.SuspendLayout();
             tabControl1.SuspendLayout();
             tdpUsuario.SuspendLayout();
@@ -161,11 +163,13 @@
             tdpUsuario.Controls.Add(btnObterUsuarioPorId);
             tdpUsuario.Controls.Add(btnEditarUsuario);
             tdpUsuario.Controls.Add(btnInserirUsuario);
+            tdpUsuario.Controls.Add(label3);
             tdpUsuario.Controls.Add(label7);
             tdpUsuario.Controls.Add(label24);
             tdpUsuario.Controls.Add(label25);
             tdpUsuario.Controls.Add(label26);
             tdpUsuario.Controls.Add(label27);
+            tdpUsuario.Controls.Add(txtConfSenha);
             tdpUsuario.Controls.Add(txtSenhaUsuario);
             tdpUsuario.Location = new Point(4, 24);
             tdpUsuario.Name = "tdpUsuario";
@@ -174,6 +178,15 @@
             tdpUsuario.TabIndex = 3;
             tdpUsuario.Text = "Dados Cliente";
             tdpUsuario.UseVisualStyleBackColor = true;
+            // 
+            // txtIdBackUser
+            // 
+            txtIdBackUser.Location = new Point(536, 6);
+            txtIdBackUser.Name = "txtIdBackUser";
+            txtIdBackUser.ReadOnly = true;
+            txtIdBackUser.Size = new Size(100, 23);
+            txtIdBackUser.TabIndex = 49;
+            txtIdBackUser.Visible = false;
             // 
             // txtSenhaBack
             // 
@@ -198,7 +211,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label5.ForeColor = Color.ForestGreen;
-            label5.Location = new Point(110, 254);
+            label5.Location = new Point(110, 289);
             label5.Name = "label5";
             label5.Size = new Size(27, 15);
             label5.TabIndex = 44;
@@ -209,7 +222,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.ForestGreen;
-            label4.Location = new Point(36, 218);
+            label4.Location = new Point(36, 253);
             label4.Name = "label4";
             label4.Size = new Size(102, 15);
             label4.TabIndex = 45;
@@ -228,7 +241,7 @@
             // dtpDatanasc
             // 
             dtpDatanasc.Format = DateTimePickerFormat.Short;
-            dtpDatanasc.Location = new Point(157, 214);
+            dtpDatanasc.Location = new Point(157, 249);
             dtpDatanasc.Name = "dtpDatanasc";
             dtpDatanasc.Size = new Size(119, 23);
             dtpDatanasc.TabIndex = 43;
@@ -237,7 +250,7 @@
             // 
             // mskCpf
             // 
-            mskCpf.Location = new Point(157, 250);
+            mskCpf.Location = new Point(157, 285);
             mskCpf.Mask = "000.000.000-00";
             mskCpf.Name = "mskCpf";
             mskCpf.Size = new Size(119, 23);
@@ -847,14 +860,24 @@
             label17.TabIndex = 13;
             label17.Text = "Cadastro de Telefones do Cliente";
             // 
-            // txtIdBackUser
+            // txtConfSenha
             // 
-            txtIdBackUser.Location = new Point(536, 6);
-            txtIdBackUser.Name = "txtIdBackUser";
-            txtIdBackUser.ReadOnly = true;
-            txtIdBackUser.Size = new Size(100, 23);
-            txtIdBackUser.TabIndex = 49;
-            txtIdBackUser.Visible = false;
+            txtConfSenha.Location = new Point(157, 210);
+            txtConfSenha.Name = "txtConfSenha";
+            txtConfSenha.Size = new Size(250, 23);
+            txtConfSenha.TabIndex = 25;
+            txtConfSenha.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.ForestGreen;
+            label3.Location = new Point(97, 214);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 31;
+            label3.Text = "Senha";
             // 
             // FrmCliente
             // 
@@ -961,5 +984,7 @@
         private DataGridViewTextBoxColumn clnTipoTelefone;
         private TextBox txtSenhaBack;
         private TextBox txtIdBackUser;
+        private Label label3;
+        private TextBox txtConfSenha;
     }
 }

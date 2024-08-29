@@ -16,6 +16,9 @@ namespace TAEPClass
         public Cliente Cliente { get; set; }
         public Status StatusId {  get; set; }
         public ClasseDesconto ClasseDesconto {  get; set; }
+        public ItemPedido ItemPedido { get; set; }
+        public ItemPedidoAdicional PedidoAdicional { get; set; }
+        public ItemPedidoTipoBorda PedidoTipoBorda { get; set; }
         List<ItemPedido> Itens { get; set; }
 
         public Pedido() { }

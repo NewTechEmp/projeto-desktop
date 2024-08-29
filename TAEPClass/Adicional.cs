@@ -22,12 +22,12 @@ namespace TAEPClass
             Preco = preco;
             Descricao = descricao;
         }
-        public Adicional(int id, double preco, string descricao, bool ativo)
+        public Adicional(int id, double preco, string descricao)
         {
             Id = id;
             Preco = preco;
             Descricao = descricao;
-            Ativo = ativo;
+          
         }
 
         // métodos da classe
@@ -68,7 +68,7 @@ namespace TAEPClass
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                adicional.Add(new(dr.GetInt32(0), dr.GetDouble(1), dr.GetString(2), dr.GetBoolean(3)));
+                adicional.Add(new(dr.GetInt32(0), dr.GetDouble(1), dr.GetString(2)));
             }
             return adicional;
         }
@@ -77,14 +77,13 @@ namespace TAEPClass
             Adicional adicional = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from adicional where id  = {id}";
+            cmd.CommandText = $"select * from adicionais where id  = {id}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 adicional.Id = dr.GetInt32(0);
                 adicional.Preco = dr.GetDouble(1);
                 adicional.Descricao = dr.GetString(2);
-                adicional.Ativo = dr.GetBoolean(3);
             }
             return adicional;
         }

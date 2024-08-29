@@ -71,6 +71,7 @@ namespace TudoAcabaEmPizza
 
 
         }
+        
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
@@ -83,6 +84,7 @@ namespace TudoAcabaEmPizza
             CarregaGridItemPedido();
             CarregarAdicionais();
             CarregarTipoBorda();
+           
 
         }
         private void CarregaGridProduto()
@@ -104,7 +106,6 @@ namespace TudoAcabaEmPizza
                 count++;
             }
         }
-
         private void CarregaGridItemPedido()
         {
             var itemPedido = ItemPedido.ObterListaPorPedido(int.Parse(txtNumeroPedido.Text));
@@ -192,6 +193,7 @@ namespace TudoAcabaEmPizza
             btnAbrirPedido.Enabled = false;
         }
 
+
         private void txtClienteId_TextChanged(object sender, EventArgs e)
         {
             if (txtClienteId.Text.Length > 0)
@@ -201,6 +203,24 @@ namespace TudoAcabaEmPizza
                 {
                     txtClienteCPF.Text = cliente.Cpf;
                 }
+            }
+        }
+
+        private void CarregaGrid (int id)
+        {
+            var listaItemPedido = Pedido.ObterPorId(id);
+            int count = 0;
+            // Preenche o DataGridView com todos os endereços
+            dgvItemPedido.Rows.Clear();
+            foreach (var item in listaItemPedido)
+            {
+                int rowIndex = dgvItemPedido.Rows.Add();
+                dgvItemPedido.Rows[count].Cells[0].Value = item.Id;
+                dgvItemPedido.Rows[count].Cells[1].Value = item.Nome;
+                dgvItemPedido.Rows[count].Cells[2].Value = item.Email;
+                dgvItemPedido.Rows[count].Cells[3].Value = item.Nivel.Descricao;
+                dgvItemPedido.Rows[count].Cells[4].Value = item.Ativo;
+                count++;
             }
         }
 
@@ -223,6 +243,10 @@ namespace TudoAcabaEmPizza
              , txtDescricaoSaborDois.Text
              );
             itempedido.Inserir();
+            MessageBox.Show($"O produto: {txtRotulo.Text} foi inserido no Pedido de Número: {txtNumeroPedido.Text}");
+            txtNumeroItemPedido.Text = itempedido.Id.ToString();
+            gbAdicionais.Enabled = true;
+            gbTipoBorda.Enabled = true;
 
         }
 
@@ -281,10 +305,14 @@ namespace TudoAcabaEmPizza
             {
                 cmbTamanhoPizza.Enabled = true;
                 TamanhoDePizza();
+                cmbTipoBorda.Enabled = true;
+                cmbAdicionais.Enabled = true;
             }
             else
             {
                 cmbTamanhoPizza.Enabled = false;
+                cmbTipoBorda.Enabled = false;
+                cmbAdicionais.Enabled = false;
             }
         }
 
@@ -348,6 +376,48 @@ namespace TudoAcabaEmPizza
                 txtValorTipoBorda.Text = escolhido.Valor.ToString("F2"); // Formata como double com 2 casas decimais
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ItemPedidoAdicional itemPedidoAdicional = new ItemPedidoAdicional(
+                Convert.ToInt32(cmbAdicionais.SelectedValue),
+                int.Parse(txtNumeroItemPedido.Text)
+            );
+            itemPedidoAdicional.Inserir();
+            if (itemPedidoAdicional.Id > 0)
+            {
+                MessageBox.Show($"O Adicional foi adicionado ao pedido");
+            }
+        }
+
+        private void btnInserirTipoBorda_Click(object sender, EventArgs e)
+        {
+
+            ItemPedidoTipoBorda itemPedidoTipoBorda = new ItemPedidoTipoBorda(
+                  Convert.ToInt32(cmbTipoBorda.SelectedValue),
+                  int.Parse(txtNumeroItemPedido.Text)
+
+                );
+            itemPedidoTipoBorda.Inserir();
+            if (itemPedidoTipoBorda.Id > 0)
+            {
+                MessageBox.Show($"O tipo de borda foi adicionado ao pedido");
+            }
+        }
+
+        private void txtResumo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbDesconto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDesconto.SelectedItem != null)
+            {
+
+                var descontoEscolhido = (ClasseDesconto)cmbDesconto.SelectedItem;
+                txtDesconto.Text = descontoEscolhido.Desconto.ToString("F2"); // Formata como double com 2 casas decimais
+            }
+        }
     }
 }
-

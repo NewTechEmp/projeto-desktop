@@ -119,5 +119,27 @@ namespace TAEPClass
             cmd.ExecuteNonQuery();
         }
 
+        public static ItemPedido ObterPorId(int id)
+        {
+           ItemPedido itemPedido = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from item_pedido where id = {id}";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                itemPedido = new(dr.GetInt32(0)
+                    , dr.GetDouble(1)
+                    , dr.GetDouble(2)
+                    , Pedido.ObterPorId(dr.GetInt32(3))
+                    , Produto.ObterPorId(dr.GetInt32(4))
+                    , TamanhoPizza.ObterPorId(dr.GetInt32(5))
+                    );
+            }
+            return itemPedido;
+        }
+
+           
+        }
+
     }
-}
+
