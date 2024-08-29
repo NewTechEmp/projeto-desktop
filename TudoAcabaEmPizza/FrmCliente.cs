@@ -20,43 +20,6 @@ namespace TudoAcabaEmPizza
         {
             InitializeComponent();
         }
-        private void btnInserirUsuario_Click(object sender, EventArgs e)
-        {
-            Nivel nivel = Nivel.ObterPorDescricao("Cliente");
-            int nivelId = nivel.Id;
-            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            Usuario usuario = new Usuario(
-                txtNomeUsuario.Text,
-                txtEmailUsuario.Text,
-                txtSenhaUsuario.Text,
-                Nivel.ObterPorId(nivelId)
-            );
-            usuario.Inserir();
-            if (usuario.Id > 0)
-            {
-                // limpando campos
-                txtNomeUsuario.Clear();
-                txtEmailUsuario.Clear();
-                txtSenhaUsuario.Clear();
-                // recuperando id do usuario
-                txtIdUsuario.Text = usuario.Id.ToString();
-                // inserindo cliente
-                Cliente cliente = new(
-                    Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text)),
-                    dtpDatanasc.Value.Date,
-                    mskCpf.Text
-
-                 );
-                cliente.Inserir();
-                if (cliente.Id > 0)
-                {
-                    dtpDatanasc.Value = DateTime.Now;
-                    mskCpf.Clear();
-                    txtClienteId.Text = cliente.Id.ToString();
-                    MessageBox.Show($"Cliente {usuario.GetHashCode()} cadastrado com sucesso");
-                }
-            }
-        }
         private void buSalvar_Click(object sender, EventArgs e)
         {
             mskCep.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
@@ -83,6 +46,44 @@ namespace TudoAcabaEmPizza
                 txtCidade.Clear();
                 mskUf.Clear();
                 MessageBox.Show($"Endereço de Cep: \"{endereco.Cep} \" cadastrado com sucesso");
+            }
+        }
+        private void btnInserirUsuario_Click(object sender, EventArgs e)
+        {
+            Nivel nivel = Nivel.ObterPorDescricao("Cliente");
+            int nivelId = nivel.Id;
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            Usuario usuario = new Usuario(
+                txtNomeUsuario.Text,
+                txtEmailUsuario.Text,
+                txtSenhaUsuario.Text,
+                Nivel.ObterPorId(nivelId)
+            );
+            usuario.Inserir();
+            if (usuario.Id > 0)
+            {
+                // limpando campos
+                txtNomeUsuario.Clear();
+                txtEmailUsuario.Clear();
+                txtSenhaUsuario.Clear();
+                // recuperando id do usuario
+                txtIdUsuario.Text = usuario.Id.ToString();
+                // inserindo cliente
+                Cliente cliente = new(
+                    Usuario.ObterPorId(Convert.ToInt32(txtIdUsuario.Text)),
+                    mskCpf.Text,
+                    dtpDatanasc.Value.Date
+
+
+                 );
+                cliente.Inserir();
+                if (cliente.Id > 0)
+                {
+                    dtpDatanasc.Value = DateTime.Now;
+                    mskCpf.Clear();
+                    txtClienteId.Text = cliente.Id.ToString();
+                    MessageBox.Show($"Cliente {usuario.GetHashCode()} cadastrado com sucesso");
+                }
             }
         }
         private void btnInserirTelefone_Click(object sender, EventArgs e)
@@ -157,12 +158,12 @@ namespace TudoAcabaEmPizza
             {
                 CarregaGridEndereco(int.Parse(txtClienteId.Text));
                 CarregaGridEndereco(int.Parse(txtClienteId.Text));
-            }            
+            }
         }
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            
+
         }
         private void btnObterUsuarioPorId_Click(object sender, EventArgs e)
         {
@@ -184,6 +185,7 @@ namespace TudoAcabaEmPizza
                 txtNomeUsuario.Text = cliente.Usuario.Nome;
                 txtEmailUsuario.Text = cliente.Usuario.Email;
                 dtpDatanasc.Value = cliente.DataNasc;
+                txtSenhaBack.Text = cliente.Usuario.Senha;
                 dtpDatanasc.Enabled = false;
                 mskCpf.Text = cliente.Cpf;
                 mskCpf.Enabled = false;
@@ -213,7 +215,7 @@ namespace TudoAcabaEmPizza
                 var telefoneCliente = Telefone.ObterListaPorCliente(int.Parse(txtIdUser.Text));
                 foreach (var telefone in telefoneCliente)
                 {
-                    dgvEnderecos.Rows[count].Cells[0].Value = telefone.Id;
+                    dgvTelefones.Rows[count].Cells[0].Value = telefone.Id;
                     dgvTelefones.Rows[count].Cells[1].Value = telefone.Ddi;
                     dgvTelefones.Rows[count].Cells[2].Value = telefone.Ddd;
                     dgvTelefones.Rows[count].Cells[3].Value = telefone.Numero;
@@ -232,6 +234,66 @@ namespace TudoAcabaEmPizza
                 txtCidade.Text = webCEP.Cidade;
                 mskUf.Text = webCEP.UF;
                 txtNumero.Focus();
+            }
+        }
+
+        private void dgvTelefones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verifica se a seleção é válida
+            {
+                DataGridViewRow row = dgvTelefones.Rows[e.RowIndex];
+                mskDdi.Text = row.Cells[1].Value.ToString();
+                mskDdd.Text = row.Cells[2].Value.ToString();
+                mskNumeroTelefone.Text = row.Cells[3].Value.ToString();
+                var tipoTelefone = row.Cells[4].Value.ToString();
+                cmbTipoTelefone.SelectedItem = tipoTelefone;
+            }
+        }
+
+        private void dgvEnderecos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verifica se a seleção é válida
+            {
+                DataGridViewRow row = dgvEnderecos.Rows[e.RowIndex];
+                mskCep.Text = row.Cells[1].Value.ToString();
+                txtLogradouro.Text = row.Cells[2].Value.ToString();
+                txtNumero.Text = row.Cells[3].Value.ToString();
+                txtComplemento.Text = row.Cells[4].Value.ToString();
+                txtBairro.Text = row.Cells[5].Value.ToString();
+                txtCidade.Text = row.Cells[6].Value.ToString();
+                mskUf.Text = row.Cells[7].Value.ToString();
+                var tipoEndereco = row.Cells[8].Value.ToString();
+                cmbTipoEndereco.SelectedItem = tipoEndereco;
+            }
+        }
+
+        private void btnEditarUsuario_Click_1(object sender, EventArgs e)
+        {
+            // Verifica se o ID do cliente está preenchido
+            if (string.IsNullOrEmpty(txtIdUser.Text))
+            {
+                MessageBox.Show("Por favor, selecione um cliente para editar.");
+                return;
+            }
+
+            try
+            {
+                // Atualiza os dados do cliente com as informações do formulário
+                Usuario usuario = new(
+                    txtNomeUsuario.Text,
+                    txtEmailUsuario.Text,
+                    txtSenhaUsuario.Text
+                );
+                usuario.Editar();
+
+                // Chama o método Atualizar para salvar as mudanças no banco de dados
+                
+
+                MessageBox.Show("Cliente atualizado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atualizar cliente: {ex.Message}");
             }
         }
     }

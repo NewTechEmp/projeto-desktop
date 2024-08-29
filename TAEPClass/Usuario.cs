@@ -248,7 +248,7 @@ namespace TAEPClass
                     cmd.Parameters.AddWithValue("spid", id);
                     cmd.Parameters.AddWithValue("spnome", Nome);
                     cmd.Parameters.AddWithValue("spemail", Email);
-                    cmd.Parameters.AddWithValue("spsenha", senha);
+                    cmd.Parameters.AddWithValue("spsenha", Senha);
                     cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
                     try
                     {

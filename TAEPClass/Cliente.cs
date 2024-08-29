@@ -14,23 +14,23 @@ namespace TAEPClass
 
         public int Id { get; set; }   
         public Usuario Usuario { get; set; }
-        public DateTime DataNasc { get; set; }
         public string Cpf { get; set; }
+        public DateTime DataNasc { get; set; }
         public List<Endereco> Enderecos{ get; set;}
         public List<Telefone> Telefones { get; set; }
 
         public Cliente() { }
-        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf, List<Endereco> enderecos, List<Telefone> telefones)
+        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
         {
             Id = id;
             Usuario = usuario;
-            DataNasc = dataNasc;
             Cpf = cpf;
+            DataNasc = dataNasc;
             Enderecos = enderecos;
             Telefones = telefones;
         }
 
-        public Cliente(Usuario usuario, DateTime dataNasc, string cpf, List<Endereco> enderecos, List<Telefone> telefones)
+        public Cliente(Usuario usuario, string cpf, DateTime dataNasc, List<Endereco> enderecos, List<Telefone> telefones)
         {
             Usuario = usuario;
             DataNasc = dataNasc;
@@ -39,14 +39,14 @@ namespace TAEPClass
             Telefones = telefones;
         }
 
-        public Cliente(Usuario usuario, DateTime dataNasc, string cpf)
+        public Cliente(Usuario usuario, string cpf, DateTime dataNasc)
         {
             Usuario = usuario;
             DataNasc = dataNasc;
             Cpf = cpf;
         } 
 
-        public Cliente(int id, Usuario usuario, DateTime dataNasc, string cpf)
+        public Cliente(int id, Usuario usuario, string cpf, DateTime dataNasc)
         {
             Id = id;
             Usuario = usuario;
@@ -54,7 +54,7 @@ namespace TAEPClass
             Cpf = cpf;
         }
 
-        public Cliente(DateTime dataNasc, string cpf)
+        public Cliente(string cpf, DateTime dataNasc)
         {
             DataNasc = dataNasc; 
             Cpf = cpf;
@@ -66,8 +66,8 @@ namespace TAEPClass
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_insert";
             cmd.Parameters.AddWithValue("spusuario_id", Usuario.Id);
-            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
             cmd.Parameters.AddWithValue("spcpf", Cpf);
+            cmd.Parameters.AddWithValue("spdata_nasc", DataNasc);
             var resultado = cmd.ExecuteScalar();
             if (resultado != null)
             {
@@ -76,7 +76,6 @@ namespace TAEPClass
         }
         public static Cliente ObterPorId(int id)
         {
-            Cliente cliente = null;
             using (var cmd = Banco.Abrir())
             {
                 cmd.CommandType = CommandType.Text;
@@ -87,51 +86,17 @@ namespace TAEPClass
                 {
                     if (dr.Read())
                     {
-                        try
+                        return new Cliente
                         {
-                            // Verifique se as colunas realmente contêm dados válidos e não são nulas
-                            if (dr.IsDBNull(0) || dr.IsDBNull(1) || dr.IsDBNull(2) || dr.IsDBNull(3))
-                                throw new Exception("Dados incompletos na linha do resultado.");
-
-                            int clienteId = dr.GetInt32(0);
-                            int usuarioId = dr.GetInt32(1);
-                            DateTime dataCadastro = dr.GetDateTime(2);
-                            string nome = dr.GetString(3);
-
-                            // Crie o cliente com os dados recuperados
-                            cliente = new Cliente(
-                                clienteId,
-                                Usuario.ObterPorId(usuarioId),
-                                dataCadastro,
-                                nome,
-                                Endereco.ObterListaPorCliente(clienteId),
-                                Telefone.ObterListaPorCliente(clienteId)
-                            );
-                        }
-                        catch (InvalidCastException ex)
-                        {
-                            // Trate erros de conversão de tipos
-                            Console.WriteLine($"Erro de conversão de dados: {ex.Message}");
-                        }
-                        catch (OverflowException ex)
-                        {
-                            // Trate erros de estouro
-                            Console.WriteLine($"Erro de estouro: {ex.Message}");
-                        }
-                        catch (Exception ex)
-                        {
-                            // Trate outros erros
-                            Console.WriteLine($"Erro inesperado: {ex.Message}");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nenhum dado encontrado para o ID especificado.");
+                            Id = dr.GetInt32(0),
+                            Usuario = Usuario.ObterPorId(dr.GetInt32(1)),
+                            Cpf = dr.GetString(2),
+                            DataNasc = dr.GetDateTime(3),
+                        };
                     }
                 }
             }
-
-            return cliente;
+            return null; // Retorna null se o cliente não for encontrado
         }
 
 
@@ -148,8 +113,8 @@ namespace TAEPClass
                     new(
                     dr.GetInt32(0),
                     Usuario.ObterPorId(1),
-                    dr.GetDateTime(2),
-                    dr.GetString(3),
+                    dr.GetString(2),
+                    dr.GetDateTime(3),
                     Endereco.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))),
                     Telefone.ObterListaPorCliente(Convert.ToInt32(dr.GetInt32(0))
                     )

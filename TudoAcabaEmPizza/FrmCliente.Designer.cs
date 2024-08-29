@@ -32,6 +32,7 @@
             grbCliente = new GroupBox();
             tabControl1 = new TabControl();
             tdpUsuario = new TabPage();
+            txtSenhaBack = new TextBox();
             txtNivelId = new TextBox();
             label5 = new Label();
             label4 = new Label();
@@ -85,6 +86,7 @@
             tbpTelefonesCliente = new TabPage();
             txtTelefoneId = new TextBox();
             dgvTelefones = new DataGridView();
+            IdTelefone = new DataGridViewTextBoxColumn();
             clnDdi = new DataGridViewTextBoxColumn();
             clnDdd = new DataGridViewTextBoxColumn();
             clnTelefone = new DataGridViewTextBoxColumn();
@@ -100,6 +102,7 @@
             mskDdd = new MaskedTextBox();
             mskDdi = new MaskedTextBox();
             label17 = new Label();
+            txtIdBackUser = new TextBox();
             grbCliente.SuspendLayout();
             tabControl1.SuspendLayout();
             tdpUsuario.SuspendLayout();
@@ -143,6 +146,8 @@
             // 
             // tdpUsuario
             // 
+            tdpUsuario.Controls.Add(txtIdBackUser);
+            tdpUsuario.Controls.Add(txtSenhaBack);
             tdpUsuario.Controls.Add(txtNivelId);
             tdpUsuario.Controls.Add(label5);
             tdpUsuario.Controls.Add(label4);
@@ -169,6 +174,15 @@
             tdpUsuario.TabIndex = 3;
             tdpUsuario.Text = "Dados Cliente";
             tdpUsuario.UseVisualStyleBackColor = true;
+            // 
+            // txtSenhaBack
+            // 
+            txtSenhaBack.Location = new Point(642, 93);
+            txtSenhaBack.Name = "txtSenhaBack";
+            txtSenhaBack.ReadOnly = true;
+            txtSenhaBack.Size = new Size(100, 23);
+            txtSenhaBack.TabIndex = 48;
+            txtSenhaBack.Visible = false;
             // 
             // txtNivelId
             // 
@@ -281,6 +295,7 @@
             btnEditarUsuario.TabIndex = 37;
             btnEditarUsuario.Text = "&Editar";
             btnEditarUsuario.UseVisualStyleBackColor = true;
+            btnEditarUsuario.Click += btnEditarUsuario_Click_1;
             // 
             // btnInserirUsuario
             // 
@@ -410,6 +425,7 @@
             dgvEnderecos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEnderecos.Size = new Size(749, 195);
             dgvEnderecos.TabIndex = 35;
+            dgvEnderecos.CellClick += dgvEnderecos_CellClick;
             // 
             // IdEndereco
             // 
@@ -686,12 +702,20 @@
             // dgvTelefones
             // 
             dgvTelefones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTelefones.Columns.AddRange(new DataGridViewColumn[] { clnDdi, clnDdd, clnTelefone, clnTipoTelefone });
+            dgvTelefones.Columns.AddRange(new DataGridViewColumn[] { IdTelefone, clnDdi, clnDdd, clnTelefone, clnTipoTelefone });
             dgvTelefones.Location = new Point(-1, 328);
             dgvTelefones.Name = "dgvTelefones";
             dgvTelefones.RowHeadersVisible = false;
+            dgvTelefones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvTelefones.Size = new Size(749, 191);
             dgvTelefones.TabIndex = 36;
+            dgvTelefones.CellClick += dgvTelefones_CellClick;
+            // 
+            // IdTelefone
+            // 
+            IdTelefone.HeaderText = "Id";
+            IdTelefone.Name = "IdTelefone";
+            IdTelefone.Visible = false;
             // 
             // clnDdi
             // 
@@ -823,6 +847,15 @@
             label17.TabIndex = 13;
             label17.Text = "Cadastro de Telefones do Cliente";
             // 
+            // txtIdBackUser
+            // 
+            txtIdBackUser.Location = new Point(536, 6);
+            txtIdBackUser.Name = "txtIdBackUser";
+            txtIdBackUser.ReadOnly = true;
+            txtIdBackUser.Size = new Size(100, 23);
+            txtIdBackUser.TabIndex = 49;
+            txtIdBackUser.Visible = false;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -910,10 +943,6 @@
         private Button btnEditarUsuario;
         private Button btnInserirUsuario;
         private DataGridView dgvTelefones;
-        private DataGridViewTextBoxColumn clnDdi;
-        private DataGridViewTextBoxColumn clnDdd;
-        private DataGridViewTextBoxColumn clnTelefone;
-        private DataGridViewTextBoxColumn clnTipoTelefone;
         private TextBox txtEnderecoId;
         private TextBox txtTelefoneId;
         private DataGridViewTextBoxColumn IdEndereco;
@@ -925,5 +954,12 @@
         private DataGridViewTextBoxColumn clnCidade;
         private DataGridViewTextBoxColumn clnUf;
         private DataGridViewTextBoxColumn clnTipoEnd;
+        private DataGridViewTextBoxColumn IdTelefone;
+        private DataGridViewTextBoxColumn clnDdi;
+        private DataGridViewTextBoxColumn clnDdd;
+        private DataGridViewTextBoxColumn clnTelefone;
+        private DataGridViewTextBoxColumn clnTipoTelefone;
+        private TextBox txtSenhaBack;
+        private TextBox txtIdBackUser;
     }
 }
