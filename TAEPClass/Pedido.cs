@@ -15,6 +15,7 @@ namespace TAEPClass
         public Usuario Usuario { get; set; }
         public Cliente Cliente { get; set; }
         public Status StatusId {  get; set; }
+        public string StatusDesc { get; set; }  
         public ClasseDesconto ClasseDesconto {  get; set; }
         public ItemPedido ItemPedido { get; set; }
         public ItemPedidoAdicional PedidoAdicional { get; set; }
@@ -176,5 +177,8 @@ namespace TAEPClass
         {
             return 0.0;
         }
+
+    
+        
     }
 }

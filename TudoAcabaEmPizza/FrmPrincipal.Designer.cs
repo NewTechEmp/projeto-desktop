@@ -79,7 +79,7 @@
             // 
             nOVOPEDIDOToolStripMenuItem.Name = "nOVOPEDIDOToolStripMenuItem";
             nOVOPEDIDOToolStripMenuItem.Size = new Size(213, 26);
-            nOVOPEDIDOToolStripMenuItem.Text = "&NOVO PEDIDO";
+            nOVOPEDIDOToolStripMenuItem.Text = "&Novo Pedido";
             nOVOPEDIDOToolStripMenuItem.Click += nOVOPEDIDOToolStripMenuItem_Click;
             // 
             // produtoToolStripMenuItem

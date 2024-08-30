@@ -45,17 +45,9 @@
             label11 = new Label();
             cmbDesconto = new ComboBox();
             txtDesconto = new TextBox();
-            txtTotal = new TextBox();
-            btnExcluirItem = new Button();
-            button3 = new Button();
+            txtTotalValor = new TextBox();
+            btnFinalizarPedido = new Button();
             label5 = new Label();
-            dgvItemPedido = new DataGridView();
-            clnIdItemPedido = new DataGridViewTextBoxColumn();
-            clnValorUnitItemPedido = new DataGridViewTextBoxColumn();
-            clnQuantidadeItemPedido = new DataGridViewTextBoxColumn();
-            clnValorItem = new DataGridViewTextBoxColumn();
-            clnCodProdutoItemPedido = new DataGridViewTextBoxColumn();
-            clnSaborDois = new DataGridViewTextBoxColumn();
             btnAbrirPedido = new Button();
             gbProduto = new GroupBox();
             txtDescricaoSaborDois = new TextBox();
@@ -98,7 +90,6 @@
             groupBox1.SuspendLayout();
             gbTipoBorda.SuspendLayout();
             gbAdicionais.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvItemPedido).BeginInit();
             gbProduto.SuspendLayout();
             gbCliente.SuspendLayout();
             gbBuscaProduto.SuspendLayout();
@@ -138,11 +129,9 @@
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(cmbDesconto);
             groupBox1.Controls.Add(txtDesconto);
-            groupBox1.Controls.Add(txtTotal);
-            groupBox1.Controls.Add(btnExcluirItem);
-            groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(txtTotalValor);
+            groupBox1.Controls.Add(btnFinalizarPedido);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(dgvItemPedido);
             groupBox1.Controls.Add(btnAbrirPedido);
             groupBox1.Controls.Add(gbProduto);
             groupBox1.Controls.Add(gbCliente);
@@ -160,7 +149,7 @@
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2, 3, 2, 3);
             groupBox1.RightToLeft = RightToLeft.No;
-            groupBox1.Size = new Size(1223, 875);
+            groupBox1.Size = new Size(1223, 738);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
@@ -194,6 +183,7 @@
             txtValorTipoBorda.Name = "txtValorTipoBorda";
             txtValorTipoBorda.Size = new Size(170, 29);
             txtValorTipoBorda.TabIndex = 1;
+            txtValorTipoBorda.TextChanged += txtValorTipoBorda_TextChanged;
             // 
             // cmbTipoBorda
             // 
@@ -233,6 +223,7 @@
             txtValorAdicional.Name = "txtValorAdicional";
             txtValorAdicional.Size = new Size(170, 29);
             txtValorAdicional.TabIndex = 1;
+            txtValorAdicional.TextChanged += txtValorAdicional_TextChanged;
             // 
             // cmbAdicionais
             // 
@@ -245,17 +236,18 @@
             // 
             // cmbStatus
             // 
+            cmbStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(122, 632);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(160, 29);
+            cmbStatus.Size = new Size(160, 33);
             cmbStatus.TabIndex = 22;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label12.Location = new Point(995, 745);
+            label12.Location = new Point(899, 635);
             label12.Name = "label12";
             label12.Size = new Size(48, 21);
             label12.TabIndex = 18;
@@ -277,7 +269,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(977, 717);
+            label11.Location = new Point(648, 635);
             label11.Name = "label11";
             label11.Size = new Size(75, 20);
             label11.TabIndex = 18;
@@ -286,46 +278,41 @@
             // 
             // cmbDesconto
             // 
+            cmbDesconto.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbDesconto.FormattingEnabled = true;
             cmbDesconto.Location = new Point(409, 632);
             cmbDesconto.Name = "cmbDesconto";
-            cmbDesconto.Size = new Size(215, 29);
+            cmbDesconto.Size = new Size(215, 33);
             cmbDesconto.TabIndex = 17;
             cmbDesconto.SelectedIndexChanged += cmbDesconto_SelectedIndexChanged;
             // 
             // txtDesconto
             // 
-            txtDesconto.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtDesconto.Location = new Point(1058, 713);
+            txtDesconto.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtDesconto.Location = new Point(729, 632);
             txtDesconto.Name = "txtDesconto";
-            txtDesconto.Size = new Size(151, 29);
+            txtDesconto.Size = new Size(151, 33);
             txtDesconto.TabIndex = 21;
+            txtDesconto.TextChanged += txtDesconto_TextChanged;
             // 
-            // txtTotal
+            // txtTotalValor
             // 
-            txtTotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTotal.Location = new Point(1049, 748);
-            txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(167, 22);
-            txtTotal.TabIndex = 21;
+            txtTotalValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotalValor.Location = new Point(953, 633);
+            txtTotalValor.Name = "txtTotalValor";
+            txtTotalValor.Size = new Size(167, 33);
+            txtTotalValor.TabIndex = 21;
+            txtTotalValor.TextChanged += txtTotalValor_TextChanged;
             // 
-            // btnExcluirItem
+            // btnFinalizarPedido
             // 
-            btnExcluirItem.Location = new Point(995, 776);
-            btnExcluirItem.Name = "btnExcluirItem";
-            btnExcluirItem.Size = new Size(131, 43);
-            btnExcluirItem.TabIndex = 20;
-            btnExcluirItem.Text = "Excluir &Item";
-            btnExcluirItem.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(995, 825);
-            button3.Name = "button3";
-            button3.Size = new Size(187, 43);
-            button3.TabIndex = 19;
-            button3.Text = "Finalizar &Pedido";
-            button3.UseVisualStyleBackColor = true;
+            btnFinalizarPedido.Location = new Point(577, 685);
+            btnFinalizarPedido.Name = "btnFinalizarPedido";
+            btnFinalizarPedido.Size = new Size(187, 43);
+            btnFinalizarPedido.TabIndex = 19;
+            btnFinalizarPedido.Text = "Finalizar &Pedido";
+            btnFinalizarPedido.UseVisualStyleBackColor = true;
+            btnFinalizarPedido.Click += btnFinalizarPedido_Click;
             // 
             // label5
             // 
@@ -336,64 +323,6 @@
             label5.Size = new Size(100, 15);
             label5.TabIndex = 9;
             label5.Text = "Status do Pedido";
-            // 
-            // dgvItemPedido
-            // 
-            dgvItemPedido.BackgroundColor = Color.Green;
-            dgvItemPedido.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvItemPedido.Columns.AddRange(new DataGridViewColumn[] { clnIdItemPedido, clnValorUnitItemPedido, clnQuantidadeItemPedido, clnValorItem, clnCodProdutoItemPedido, clnSaborDois });
-            dgvItemPedido.Location = new Point(5, 667);
-            dgvItemPedido.Name = "dgvItemPedido";
-            dgvItemPedido.RowHeadersVisible = false;
-            dgvItemPedido.Size = new Size(966, 202);
-            dgvItemPedido.TabIndex = 18;
-            // 
-            // clnIdItemPedido
-            // 
-            clnIdItemPedido.Frozen = true;
-            clnIdItemPedido.HeaderText = "ID";
-            clnIdItemPedido.Name = "clnIdItemPedido";
-            clnIdItemPedido.ReadOnly = true;
-            clnIdItemPedido.Width = 120;
-            // 
-            // clnValorUnitItemPedido
-            // 
-            clnValorUnitItemPedido.Frozen = true;
-            clnValorUnitItemPedido.HeaderText = "Valor_unit";
-            clnValorUnitItemPedido.Name = "clnValorUnitItemPedido";
-            clnValorUnitItemPedido.ReadOnly = true;
-            clnValorUnitItemPedido.Width = 160;
-            // 
-            // clnQuantidadeItemPedido
-            // 
-            clnQuantidadeItemPedido.Frozen = true;
-            clnQuantidadeItemPedido.HeaderText = "Quantidade";
-            clnQuantidadeItemPedido.Name = "clnQuantidadeItemPedido";
-            clnQuantidadeItemPedido.ReadOnly = true;
-            clnQuantidadeItemPedido.Width = 130;
-            // 
-            // clnValorItem
-            // 
-            clnValorItem.Frozen = true;
-            clnValorItem.HeaderText = "NºPedido";
-            clnValorItem.Name = "clnValorItem";
-            clnValorItem.ReadOnly = true;
-            clnValorItem.Width = 150;
-            // 
-            // clnCodProdutoItemPedido
-            // 
-            clnCodProdutoItemPedido.Frozen = true;
-            clnCodProdutoItemPedido.HeaderText = "Código do Produto";
-            clnCodProdutoItemPedido.Name = "clnCodProdutoItemPedido";
-            clnCodProdutoItemPedido.Width = 190;
-            // 
-            // clnSaborDois
-            // 
-            clnSaborDois.Frozen = true;
-            clnSaborDois.HeaderText = "Produto Sabor dois";
-            clnSaborDois.Name = "clnSaborDois";
-            clnSaborDois.ReadOnly = true;
-            clnSaborDois.Width = 220;
             // 
             // btnAbrirPedido
             // 
@@ -530,6 +459,7 @@
             txtQuantidade.Name = "txtQuantidade";
             txtQuantidade.Size = new Size(233, 29);
             txtQuantidade.TabIndex = 12;
+            txtQuantidade.TextChanged += txtQuantidade_TextChanged;
             // 
             // txtValorUnit
             // 
@@ -537,6 +467,7 @@
             txtValorUnit.Name = "txtValorUnit";
             txtValorUnit.Size = new Size(121, 29);
             txtValorUnit.TabIndex = 12;
+            txtValorUnit.TextChanged += txtValorUnit_TextChanged;
             // 
             // label17
             // 
@@ -605,6 +536,7 @@
             gbCliente.TabIndex = 10;
             gbCliente.TabStop = false;
             gbCliente.Text = "Dados do Cliente";
+            gbCliente.Enter += gbCliente_Enter;
             // 
             // label14
             // 
@@ -669,6 +601,7 @@
             // 
             // txtNumeroItemPedido
             // 
+            txtNumeroItemPedido.Enabled = false;
             txtNumeroItemPedido.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNumeroItemPedido.ForeColor = Color.FromArgb(0, 192, 0);
             txtNumeroItemPedido.Location = new Point(907, 22);
@@ -677,6 +610,7 @@
             txtNumeroItemPedido.Size = new Size(94, 29);
             txtNumeroItemPedido.TabIndex = 6;
             txtNumeroItemPedido.Text = "0";
+            txtNumeroItemPedido.Visible = false;
             txtNumeroItemPedido.TextChanged += txtNumeroPedido_TextChanged;
             // 
             // txtNumeroPedido
@@ -783,7 +717,7 @@
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1284, 881);
+            ClientSize = new Size(1284, 739);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.HotTrack;
@@ -797,7 +731,6 @@
             gbTipoBorda.PerformLayout();
             gbAdicionais.ResumeLayout(false);
             gbAdicionais.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvItemPedido).EndInit();
             gbProduto.ResumeLayout(false);
             gbProduto.PerformLayout();
             gbCliente.ResumeLayout(false);
@@ -830,13 +763,11 @@
         private Button btnAbrirPedido;
         private Button btnInserirProduto;
         private Label label8;
-        private DataGridView dgvItemPedido;
-        private Button btnExcluirItem;
-        private Button button3;
+        private Button btnFinalizarPedido;
         private Label label9;
         private ComboBox cmbDesconto;
         private TextBox txtDesconto;
-        private TextBox txtTotal;
+        private TextBox txtTotalValor;
         private Label label12;
         private Label label11;
         private Label label14;
@@ -855,12 +786,6 @@
         private CheckBox radioButtonPizza;
         private TextBox txtDescricaoSaborDois;
         private Label label17;
-        private DataGridViewTextBoxColumn clnIdItemPedido;
-        private DataGridViewTextBoxColumn clnValorUnitItemPedido;
-        private DataGridViewTextBoxColumn clnQuantidadeItemPedido;
-        private DataGridViewTextBoxColumn clnValorItem;
-        private DataGridViewTextBoxColumn clnCodProdutoItemPedido;
-        private DataGridViewTextBoxColumn clnSaborDois;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnDescricaoproduto;

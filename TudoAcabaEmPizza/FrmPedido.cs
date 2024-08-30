@@ -71,7 +71,7 @@ namespace TudoAcabaEmPizza
 
 
         }
-        
+
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
@@ -81,10 +81,9 @@ namespace TudoAcabaEmPizza
             CarregarTipoDesconto();
             CarregaGridProduto();
             TamanhoDePizza();
-            CarregaGridItemPedido();
             CarregarAdicionais();
             CarregarTipoBorda();
-           
+
 
         }
         private void CarregaGridProduto()
@@ -102,27 +101,11 @@ namespace TudoAcabaEmPizza
                 dgvProdutos.Rows[count].Cells[3].Value = produtos.ValorUnit;
                 dgvProdutos.Rows[count].Cells[4].Value = produtos.CodBarras;
                 dgvProdutos.Rows[count].Cells[5].Value = produtos.NomeImagem;
-                dgvProdutos.Rows[count].Cells[6].Value = produtos.CategoriaId.Descricao;
+                dgvProdutos.Rows[count].Cells[6].Value = produtos.CategoriaId.Sigla;
                 count++;
             }
         }
-        private void CarregaGridItemPedido()
-        {
-            var itemPedido = ItemPedido.ObterListaPorPedido(int.Parse(txtNumeroPedido.Text));
-            int count = 0;
-            // Preenche o DataGridView com todos os endereços
-            dgvItemPedido.Rows.Clear();
-            foreach (var itensPedido in itemPedido)
-            {
-                int rowIndex = dgvItemPedido.Rows.Add();
-                dgvItemPedido.Rows[count].Cells[0].Value = itensPedido.Id;
-                dgvItemPedido.Rows[count].Cells[1].Value = itensPedido.ValorUnit;
-                dgvItemPedido.Rows[count].Cells[2].Value = itensPedido.PedidoId;
-                dgvItemPedido.Rows[count].Cells[3].Value = itensPedido.ProdutoId;
-                dgvItemPedido.Rows[count].Cells[5].Value = itensPedido.ProdutoSaborDois;
-                count++;
-            }
-        }
+
         private void CarregarStatus()
         {
             var status = Status.ObterLista();
@@ -178,6 +161,30 @@ namespace TudoAcabaEmPizza
         {
 
         }
+        private void AtualizarValorTotal()
+        {
+            try
+            {
+                // Convertendo os valores das TextBox para double
+                double valorUnitario = Convert.ToDouble(txtValorUnit.Text);
+                double quantidade = Convert.ToDouble(txtQuantidade.Text);
+                double valorAdicional = Convert.ToDouble(txtValorAdicional.Text);
+                double valorTipoBorda = Convert.ToDouble(txtValorTipoBorda.Text);
+                double desconto = Convert.ToDouble(txtDesconto.Text);
+
+                // Calculando o valor total
+                double valorTotal = (valorUnitario * quantidade) + valorAdicional + valorTipoBorda - desconto;
+
+                // Exibindo o valor total no txtTotalValor
+                txtTotalValor.Text = valorTotal.ToString("F2"); // "F2" formata o número com 2 casas decimais
+            }
+            catch (FormatException)
+            {
+                // Trate a exceção aqui, por exemplo, mostrar uma mensagem que não tem valor ainda
+                txtTotalValor.Text = "Sem Valor";
+            }
+        }
+
 
         private void btnAbrirPedido_Click(object sender, EventArgs e)
         {
@@ -206,23 +213,7 @@ namespace TudoAcabaEmPizza
             }
         }
 
-        private void CarregaGrid (int id)
-        {
-            var listaItemPedido = Pedido.ObterPorId(id);
-            int count = 0;
-            // Preenche o DataGridView com todos os endereços
-            dgvItemPedido.Rows.Clear();
-            foreach (var item in listaItemPedido)
-            {
-                int rowIndex = dgvItemPedido.Rows.Add();
-                dgvItemPedido.Rows[count].Cells[0].Value = item.Id;
-                dgvItemPedido.Rows[count].Cells[1].Value = item.Nome;
-                dgvItemPedido.Rows[count].Cells[2].Value = item.Email;
-                dgvItemPedido.Rows[count].Cells[3].Value = item.Nivel.Descricao;
-                dgvItemPedido.Rows[count].Cells[4].Value = item.Ativo;
-                count++;
-            }
-        }
+
 
         private void txtVendedor_TextChanged(object sender, EventArgs e)
         {
@@ -418,6 +409,54 @@ namespace TudoAcabaEmPizza
                 var descontoEscolhido = (ClasseDesconto)cmbDesconto.SelectedItem;
                 txtDesconto.Text = descontoEscolhido.Desconto.ToString("F2"); // Formata como double com 2 casas decimais
             }
+        }
+
+        private void txtDesconto_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarValorTotal();
+        }
+
+        private void txtTotalValor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorUnit_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarValorTotal();
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarValorTotal();
+        }
+
+        private void txtValorAdicional_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarValorTotal();
+        }
+
+        private void txtValorTipoBorda_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarValorTotal();
+        }
+
+        private void gbCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFinalizarPedido_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pedido finalizado com sucesso!");
+            txtCodProduto.Clear();
+            txtRotulo.Clear();
+            txtValorTipoBorda.Clear();
+            txtQuantidade.Clear();  
+            txtValorUnit.Clear();
+            txtValorAdicional.Clear();
+            txtDesconto.Clear();
+            
         }
     }
 }

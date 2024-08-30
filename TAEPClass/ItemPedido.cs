@@ -50,10 +50,18 @@ namespace TAEPClass
             TamanhoPizzaId = tamanhoPizzaId;
             PizzaMeia = pizzaMeia;
             ProdutoSaborDois = produtoSaborDois;
-
-
-
         }
+
+        public ItemPedido(int id, double valorUnit, double quantidade, Pedido pedidoId, Produto produtoid, string produtoSaborDois)
+        {
+            Id = id;
+            ValorUnit = valorUnit;
+            Quantidade = quantidade;
+            PedidoId = pedidoId;
+            ProdutoId = produtoid;
+            ProdutoSaborDois = produtoSaborDois; 
+        }
+      
 
         public void Inserir()
         {
@@ -91,7 +99,8 @@ namespace TAEPClass
                     ,dr.GetDouble(2)
                     ,Pedido.ObterPorId(dr.GetInt32(3))
                     , Produto.ObterPorId(dr.GetInt32(4))
-                    , TamanhoPizza.ObterPorId(dr.GetInt32(5))
+                    ,dr.GetString(5)
+                 
                     ));
             }
             return itens;
@@ -138,8 +147,10 @@ namespace TAEPClass
             return itemPedido;
         }
 
-           
-        }
+        
+
+
+    }
 
     }
 
