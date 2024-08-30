@@ -70,7 +70,7 @@ namespace TAEPClass
             cmd.CommandText = "sp_itempedido_insert";
             cmd.Parameters.AddWithValue("spquantidade", Quantidade);
             cmd.Parameters.AddWithValue("sppedido_id", PedidoId.Id);
-            cmd.Parameters.AddWithValue("spprodutos_id", ProdutoId.Id);
+            cmd.Parameters.AddWithValue("spproduto_id", ProdutoId.Id);
             cmd.Parameters.AddWithValue("sptamanho_pizza_id", TamanhoPizzaId.Id);
             cmd.Parameters.AddWithValue("sppizza_meia", PizzaMeia);
             cmd.Parameters.AddWithValue("spproduto_sabor_dois", ProdutoSaborDois);

@@ -14,9 +14,9 @@ public static class Banco
  
     private static string strconn = @"server=127.0.0.1;database=tudo_acaba_em_pizza_db;user id=root;password=";
     
-    public static string caminho = System.Environment.CurrentDirectory;
+    public static string caminho = @"C:\xampp\htdocs\projeto-web\";
    
-    public static string caminhoFotos = caminho+@"\fotos\";  
+    public static string caminhoFotos = caminho+ @"\images\";  
     public static MySqlCommand Abrir()
     {
         MySqlCommand cmd = new MySqlCommand();
